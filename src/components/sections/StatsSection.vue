@@ -1,11 +1,5 @@
 <template>
   <section class="stats-section section-padding" ref="sectionRef">
-    <div class="stats-bg" aria-hidden="true">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
-    </div>
-
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <span class="eyebrow">{{ $t('stats.eyebrow') }}</span>
@@ -18,27 +12,46 @@
           v-for="(stat, index) in stats"
           :key="stat.id"
           class="stat-card"
-          :style="{ '--stat-color': stat.color }"
+          :style="{ '--stat-color': stat.color, '--stat-overlay': stat.overlay }"
+          :class="{ 'stat-card--hovered': hoveredIndex === index }"
           @mouseenter="hoveredIndex = index"
           @mouseleave="hoveredIndex = -1"
-          :class="{ 'stat-card--hovered': hoveredIndex === index }"
           :aria-label="`${$t(`stats.${stat.key}`)}: ${stat.value}${stat.suffix}`"
         >
-          <div class="stat-accent"></div>
-
-          <div class="stat-icon-wrapper">
-            <i :class="['fas', stat.icon, { 'stat-icon--animated': hoveredIndex === index }]"></i>
+          <div class="stat-media">
+            <img
+              v-if="stat.image && !stat.video"
+              :src="stat.image"
+              alt=""
+              class="stat-img"
+              loading="lazy"
+            />
+            <video
+              v-if="stat.video"
+              :src="stat.video"
+              autoplay
+              muted
+              loop
+              playsinline
+              class="stat-video"
+              @error="handleVideoError(index)"
+            ></video>
           </div>
 
-          <div class="stat-value">
-            <span
-              :ref="el => { if (el) counterRefs[index] = el }"
-              class="counter"
-            >0</span>
-            <span class="suffix">{{ stat.suffix }}</span>
-          </div>
+          <div class="stat-overlay"></div>
 
-          <span class="stat-label">{{ $t(`stats.${stat.key}`) }}</span>
+          <div class="stat-accent" aria-hidden="true"></div>
+
+          <div class="stat-content">
+            <div class="stat-value">
+              <span
+                :ref="el => { if (el) counterRefs[index] = el }"
+                class="counter"
+              >0</span>
+              <span class="suffix">{{ stat.suffix }}</span>
+            </div>
+            <span class="stat-label">{{ $t(`stats.${stat.key}`) }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -51,16 +64,53 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 const sectionRef = ref(null)
 const counterRefs = ref([])
 const hoveredIndex = ref(-1)
+const videoErrors = ref([])
 let observer = null
 
 const stats = [
-  { id: 1, key: 'trips', value: 500, suffix: '+', icon: 'fa-route', color: '#c9a87c' },
-  { id: 2, key: 'clients', value: 3000, suffix: '+', icon: 'fa-users', color: '#7fb5d0' },
-  { id: 3, key: 'years', value: 10, suffix: '+', icon: 'fa-calendar-alt', color: '#d4a373' },
-  { id: 4, key: 'destinations', value: 5, suffix: '', icon: 'fa-map-marked-alt', color: '#6b8c7c' }
+  {
+    id: 1,
+    key: 'trips',
+    value: 500,
+    suffix: '+',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80',
+    color: '#c9a87c',
+    overlay: 'linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)'
+  },
+  {
+    id: 2,
+    key: 'clients',
+    value: 3000,
+    suffix: '+',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80',
+    color: '#7fb5d0',
+    overlay: 'linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)'
+  },
+  {
+    id: 3,
+    key: 'years',
+    value: 10,
+    suffix: '+',
+    image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80',
+    color: '#d4a373',
+    overlay: 'linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)'
+  },
+  {
+    id: 4,
+    key: 'destinations',
+    value: 5,
+    suffix: '',
+    image: 'https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1200&q=80',
+    color: '#6b8c7c',
+    overlay: 'linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)'
+  }
 ]
 
-function animateCounter(el, target, duration = 1800) {
+function handleVideoError(index) {
+  videoErrors.value[index] = true
+}
+
+function animateCounter(el, target, duration = 1500) {
   let start = 0
   const startTime = performance.now()
 
@@ -92,7 +142,7 @@ onMounted(() => {
         if (observer) observer.disconnect()
       }
     })
-  }, { threshold: 0.3 })
+  }, { threshold: 0.2 })
 
   if (sectionRef.value) {
     observer.observe(sectionRef.value)
@@ -110,54 +160,6 @@ onBeforeUnmount(() => {
   z-index: 1;
   overflow: hidden;
   background: var(--bg-gradient);
-
-  .stats-bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.1;
-
-      &.blob-1 {
-        width: 400px;
-        height: 400px;
-        background: #c9a87c;
-        top: -10%;
-        right: -5%;
-        animation: floatBlob 22s ease-in-out infinite;
-      }
-
-      &.blob-2 {
-        width: 300px;
-        height: 300px;
-        background: #7fb5d0;
-        bottom: 5%;
-        left: -5%;
-        animation: floatBlob 28s ease-in-out infinite reverse;
-      }
-
-      &.blob-3 {
-        width: 200px;
-        height: 200px;
-        background: #d4a373;
-        top: 40%;
-        left: 50%;
-        animation: floatBlob 30s ease-in-out infinite 8s;
-      }
-    }
-  }
-
-  @keyframes floatBlob {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -20px) scale(1.08); }
-    66% { transform: translate(-20px, 15px) scale(0.92); }
-  }
 
   .section-header {
     text-align: center;
@@ -211,115 +213,172 @@ onBeforeUnmount(() => {
 
     .stat-card {
       position: relative;
-      padding: 2rem 1.5rem;
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      text-align: center;
-      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      border-radius: 20px;
       overflow: hidden;
-      min-height: 180px;
+      min-height: 200px;
+      cursor: pointer;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.3rem;
-      will-change: transform;
 
-      @media (min-width: 768px) {
-        padding: 2.5rem 2rem;
+      @media (min-width: 481px) {
         min-height: 220px;
       }
 
-      @media (min-width: 1024px) {
-        padding: 3rem 2.5rem;
+      @media (min-width: 768px) {
         min-height: 250px;
       }
 
-      &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 24px;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.03) 0%,
-          transparent 50%
-        );
-        pointer-events: none;
+      @media (min-width: 1024px) {
+        min-height: 280px;
       }
 
       &.stat-card--hovered {
-        transform: translateY(-8px);
-        border-color: var(--stat-color, var(--accent));
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
-          0 0 40px rgba(var(--stat-color, 201, 168, 124), 0.15);
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4),
+                    0 0 50px rgba(var(--stat-color, 201, 168, 124), 0.15);
 
-        &::before {
+        .stat-img {
+          transform: scale(1.08);
+        }
+
+        .stat-video {
+          transform: scale(1.08);
+        }
+
+        .stat-overlay {
+          opacity: 0.85;
+        }
+
+        .stat-accent {
           opacity: 1;
         }
+      }
 
-        .stat-icon-wrapper i {
-          transform: scale(1.15) rotate(-5deg);
+      .stat-media {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+
+        .stat-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(0.6) saturate(1.1);
+          transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+          will-change: transform;
         }
+
+        .stat-video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.8;
+          filter: brightness(0.5);
+          transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+          will-change: transform;
+        }
+      }
+
+      .stat-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: var(--stat-overlay, linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%));
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        transition: opacity 0.5s ease;
       }
 
       .stat-accent {
         position: absolute;
         top: 0;
+        bottom: 0;
         left: 0;
-        right: 0;
-        height: 3px;
+        width: 4px;
+        z-index: 3;
         background: var(--stat-color, var(--accent));
-        border-radius: 24px 24px 0 0;
-        opacity: 0.6;
-        transition: opacity 0.3s ease;
-      }
+        opacity: 0.7;
+        transition: opacity 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 12px rgba(var(--stat-color, 201, 168, 124), 0.3);
+        border-radius: 0 2px 2px 0;
 
-      &:hover .stat-accent {
-        opacity: 1;
-      }
-
-      .stat-icon-wrapper {
-        margin-bottom: 0.5rem;
-
-        i {
-          font-size: clamp(2.2rem, 4vw, 3.2rem);
-          color: var(--stat-color, var(--accent));
-          transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-          will-change: transform;
+        [dir="rtl"] & {
+          left: auto;
+          right: 0;
+          border-radius: 2px 0 0 2px;
         }
       }
 
-      .stat-value {
-        font-family: var(--font-heading);
-        font-size: clamp(2.8rem, 6vw, 4.5rem);
-        font-weight: 300;
-        color: var(--stat-color, var(--accent));
-        line-height: 1.1;
+      .stat-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 1.5rem;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
+        gap: 0.25rem;
 
-        .suffix {
-          font-size: 0.65em;
-          color: var(--text-secondary);
-          margin-left: 0.05em;
+        @media (min-width: 768px) {
+          padding: 2rem;
         }
-      }
 
-      .stat-label {
-        font-family: var(--font-body);
-        font-size: clamp(0.7rem, 1vw, 0.85rem);
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--text-secondary);
-        margin-top: 0.3rem;
-        font-weight: 400;
+        @media (min-width: 1024px) {
+          padding: 2.5rem;
+        }
+
+        .stat-value {
+          font-family: var(--font-heading);
+          font-size: clamp(2.5rem, 10vw, 3rem);
+          font-weight: 300;
+          color: var(--stat-color, var(--accent));
+          line-height: 1.1;
+          text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          @media (min-width: 481px) {
+            font-size: clamp(2.8rem, 10vw, 3.5rem);
+          }
+
+          @media (min-width: 768px) {
+            font-size: clamp(3rem, 8vw, 4rem);
+          }
+
+          @media (min-width: 1024px) {
+            font-size: clamp(3.5rem, 6vw, 5rem);
+          }
+
+          .suffix {
+            font-size: 0.65em;
+            color: var(--text-secondary);
+            margin-left: 0.05em;
+            text-shadow: none;
+          }
+        }
+
+        .stat-label {
+          font-family: var(--font-body);
+          font-size: clamp(0.75rem, 2vw, 0.85rem);
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: var(--text-secondary);
+          font-weight: 400;
+          text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+
+          @media (min-width: 768px) {
+            font-size: 0.9rem;
+          }
+
+          @media (min-width: 1024px) {
+            font-size: 1rem;
+          }
+        }
       }
     }
   }

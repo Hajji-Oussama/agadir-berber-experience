@@ -17,7 +17,6 @@
           :style="{ backgroundImage: `url(${service.image})` }"
         >
           <div class="service-overlay">
-            <span class="service-icon">{{ service.icon }}</span>
             <h3>{{ $t(`services.${service.key}`) }}</h3>
             <p>{{ $t(`services.${service.key}_desc`) }}</p>
             <router-link to="/services" class="service-link">
@@ -35,22 +34,18 @@
 const servicesList = [
   {
     key: 'quad',
-    icon: '&#127945;',
     image: 'https://images.unsplash.com/photo-1539786747937-59bf46e47b08?w=1200&q=80'
   },
   {
     key: 'buggy',
-    icon: '&#128661;',
     image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80'
   },
   {
     key: 'horse',
-    icon: '&#128052;',
     image: 'https://images.unsplash.com/photo-1546195643-70f48f9c5b83?w=1200&q=80'
   },
   {
     key: 'camel',
-    icon: '&#128043;',
     image: 'https://images.unsplash.com/photo-1577538928304-4f5f4a9ae289?w=1200&q=80'
   }
 ]
@@ -147,10 +142,6 @@ const servicesList = [
         backdrop-filter: blur(16px);
       }
 
-      .service-icon {
-        transform: scale(1.1) rotate(-5deg);
-      }
-
       .arrow {
         transform: translateX(6px);
       }
@@ -171,13 +162,6 @@ const servicesList = [
 
     @media (min-width: 768px) {
       padding: 2.5rem 2.5rem 3rem;
-    }
-
-    .service-icon {
-      font-size: 2.2rem;
-      display: block;
-      margin-bottom: 0.6rem;
-      transition: transform 0.4s ease;
     }
 
     h3 {
