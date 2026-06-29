@@ -1,0 +1,50 @@
+{
+  "title": "Choisissez Votre Expérience",
+  "subtitle": "Des dunes pleines d'adrénaline aux balades paisibles au coucher du soleil — trouvez votre aventure parfaite.",
+  "services": [
+    {
+      "id": "quad",
+      "name": "Quad Biking",
+      "description": "Ressentez l'adrénaline à travers les dunes dorées.",
+      "image": "https://images.unsplash.com/photo-1539786747937-59bf46e47b08?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Quad",
+      "price": 450,
+      "duration": "2 heures",
+      "category": "desert"
+    },
+    {
+      "id": "buggy",
+      "name": "Buggy Off-Road",
+      "description": "Conquérez le terrain accidenté avec style.",
+      "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Buggy",
+      "price": 550,
+      "duration": "3 heures",
+      "category": "desert"
+    },
+    {
+      "id": "horse",
+      "name": "Équitation",
+      "description": "Une balade paisible au coucher du soleil le long de la côte.",
+      "image": "https://images.unsplash.com/photo-1546195643-70f48f9c5b83?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Équitation",
+      "price": 350,
+      "duration": "2 heures",
+      "category": "beach"
+    },
+    {
+      "id": "camel",
+      "name": "Balade à dos de chameau",
+      "description": "Vivez la façon traditionnelle de voyager dans le désert.",
+      "image": "https://images.unsplash.com/photo-1577538928304-4f5f4a9ae289?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Chameau",
+      "price": 250,
+      "duration": "1.5 heures",
+      "category": "desert"
+    }
+  ]
+}

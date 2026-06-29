@@ -1,0 +1,50 @@
+{
+  "title": "اكتشف مغامرتك القادمة",
+  "subtitle": "تجارب مختارة بعناية لإلهامك. من كثبان الصحراء إلى آفاق المحيط.",
+  "trips": [
+    {
+      "id": 1,
+      "name": "الجولة الكبرى للشمال",
+      "description": "استكشف جبال الريف والشواطئ المتوسطية البكر.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+      "price": 2990,
+      "duration": "3 أيام",
+      "places": 8,
+      "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20الجولة%20الكبرى",
+      "accentColor": "#c9a87c"
+    },
+    {
+      "id": 2,
+      "name": "رحلة الصحراء",
+      "description": "5 أيام من مغامرات الدفع الرباعي عبر كثبان الصحراء الذهبية.",
+      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80",
+      "price": 4500,
+      "duration": "5 أيام",
+      "places": 12,
+      "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20رحلة%20الصحراء",
+      "accentColor": "#d4a373"
+    },
+    {
+      "id": 3,
+      "name": "جولة غروب الشمس في تغازوت",
+      "description": "ركوب الخيل على طول المحيط الأطلسي في الساعة الذهبية – مناظر لا تنسى.",
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      "price": 1200,
+      "duration": "نصف يوم",
+      "places": 6,
+      "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20جولة%20غروب%20تغازوت",
+      "accentColor": "#7fb5d0"
+    },
+    {
+      "id": 4,
+      "name": "رحلة وادي الأطلس",
+      "description": "رحلة عبر القرى البربرية القديمة والوديان الخضراء.",
+      "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80",
+      "price": 3500,
+      "duration": "4 أيام",
+      "places": 10,
+      "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20وادي%20الأطلس",
+      "accentColor": "#6b8c7c"
+    }
+  ]
+}

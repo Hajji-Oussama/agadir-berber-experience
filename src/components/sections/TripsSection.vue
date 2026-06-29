@@ -3,20 +3,20 @@
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <span class="eyebrow">{{ $t('trips.eyebrow') }}</span>
-        <h2 class="section-title">{{ $t('trips.title') }}</h2>
-        <p class="section-subtitle">{{ $t('trips.subtitle') }}</p>
+        <h2 class="section-title">{{ data.title }}</h2>
+        <p class="section-subtitle">{{ data.subtitle }}</p>
       </div>
 
       <div class="trips-grid">
         <div
-          v-for="(trip, index) in trips"
+          v-for="(trip, index) in data.trips"
           :key="trip.id"
           class="trip-card-wrapper"
           data-aos="zoom-in-up"
           :data-aos-delay="index * 150"
         >
           <div
-            class="trip-card glass-effect"
+            class="trip-card"
             :style="{ '--accent-color': trip.accentColor || 'var(--accent)' }"
           >
             <div class="trip-image" :style="{ backgroundImage: `url(${trip.image})` }">
@@ -28,14 +28,14 @@
             </div>
 
             <div class="trip-info">
-              <h3>{{ $t(`trips_data.${trip.titleKey}`) }}</h3>
-              <p>{{ $t(`trips_data.${trip.descriptionKey}`) }}</p>
+              <h3>{{ trip.name }}</h3>
+              <p>{{ trip.description }}</p>
               <div class="trip-meta">
                 <span class="price">{{ $t('trips.price', { price: trip.price }) }}</span>
                 <span class="rating">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               </div>
               <a
-                :href="`https://wa.me/+212667858620?text=Hello!%20I%20want%20to%20book%20${$t(`trips_data.${trip.titleKey}`)}`"
+                :href="trip.bookLink"
                 target="_blank"
                 class="btn-book"
                 rel="noopener"
@@ -52,7 +52,12 @@
 </template>
 
 <script setup>
-import { trips } from '@/data/trips.js'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { getTrips } from '@/data'
+
+const { locale } = useI18n()
+const data = computed(() => getTrips(locale.value))
 </script>
 
 <style scoped lang="scss">
@@ -141,9 +146,7 @@ import { trips } from '@/data/trips.js'
     }
 
     @media (hover: none) {
-      &:active {
-        transform: scale(0.98);
-      }
+      &:active { transform: scale(0.98); }
     }
 
     .trip-image {
@@ -154,9 +157,7 @@ import { trips } from '@/data/trips.js'
       overflow: hidden;
       flex-shrink: 0;
 
-      @media (min-width: 768px) {
-        height: 260px;
-      }
+      @media (min-width: 768px) { height: 260px; }
 
       &::after {
         content: '';
@@ -215,9 +216,7 @@ import { trips } from '@/data/trips.js'
       display: flex;
       flex-direction: column;
 
-      @media (min-width: 768px) {
-        padding: 2rem;
-      }
+      @media (min-width: 768px) { padding: 2rem; }
 
       h3 {
         font-family: var(--font-heading);
@@ -274,37 +273,22 @@ import { trips } from '@/data/trips.js'
         cursor: pointer;
         text-decoration: none;
 
-        .arrow {
-          display: inline-block;
-          transition: transform 0.3s ease;
-        }
+        .arrow { display: inline-block; transition: transform 0.3s ease; }
 
         &:hover {
           background: #d4b88a;
           transform: scale(1.03);
           box-shadow: 0 8px 25px rgba(201, 168, 124, 0.3);
 
-          .arrow {
-            transform: translateX(6px);
-          }
+          .arrow { transform: translateX(6px); }
         }
       }
     }
 
     &:hover {
-      .trip-image::after {
-        opacity: 0.3;
-      }
-      .trip-overlay-gradient {
-        opacity: 1;
-      }
+      .trip-image::after { opacity: 0.3; }
+      .trip-overlay-gradient { opacity: 1; }
     }
-  }
-
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
   }
 }
 </style>

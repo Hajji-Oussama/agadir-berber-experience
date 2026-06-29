@@ -1,0 +1,50 @@
+{
+  "title": "Choose Your Experience",
+  "subtitle": "From adrenaline-pumping dunes to peaceful sunset rides — find your perfect adventure.",
+  "services": [
+    {
+      "id": "quad",
+      "name": "Quad Biking",
+      "description": "Feel the adrenaline across the golden dunes.",
+      "image": "https://images.unsplash.com/photo-1539786747937-59bf46e47b08?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Quad%20Biking",
+      "price": 450,
+      "duration": "2 hours",
+      "category": "desert"
+    },
+    {
+      "id": "buggy",
+      "name": "Buggy Off-Road",
+      "description": "Conquer the rugged terrain in style.",
+      "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Buggy",
+      "price": 550,
+      "duration": "3 hours",
+      "category": "desert"
+    },
+    {
+      "id": "horse",
+      "name": "Horse Riding",
+      "description": "A peaceful sunset ride along the coast.",
+      "image": "https://images.unsplash.com/photo-1546195643-70f48f9c5b83?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Horse%20Riding",
+      "price": 350,
+      "duration": "2 hours",
+      "category": "beach"
+    },
+    {
+      "id": "camel",
+      "name": "Camel Trekking",
+      "description": "Experience the traditional way of desert travel.",
+      "image": "https://images.unsplash.com/photo-1577538928304-4f5f4a9ae289?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Camel%20Trekking",
+      "price": 250,
+      "duration": "1.5 hours",
+      "category": "desert"
+    }
+  ]
+}

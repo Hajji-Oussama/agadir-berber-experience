@@ -1,0 +1,50 @@
+{
+  "title": "Discover Your Next Adventure",
+  "subtitle": "Handpicked experiences designed to inspire. From desert dunes to ocean horizons.",
+  "trips": [
+    {
+      "id": 1,
+      "name": "Grand Circuit du Nord",
+      "description": "Explore the Rif mountains and pristine Mediterranean beaches.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+      "price": 2990,
+      "duration": "3 Days",
+      "places": 8,
+      "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Grand%20Circuit",
+      "accentColor": "#c9a87c"
+    },
+    {
+      "id": 2,
+      "name": "Desert Expedition",
+      "description": "5 days of 4x4 adventures across the golden Sahara dunes.",
+      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80",
+      "price": 4500,
+      "duration": "5 Days",
+      "places": 12,
+      "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Desert%20Expedition",
+      "accentColor": "#d4a373"
+    },
+    {
+      "id": 3,
+      "name": "Taghazout Sunset Ride",
+      "description": "Horse ride along the Atlantic at golden hour — unforgettable views.",
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      "price": 1200,
+      "duration": "Half Day",
+      "places": 6,
+      "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Sunset%20Ride",
+      "accentColor": "#7fb5d0"
+    },
+    {
+      "id": 4,
+      "name": "Atlas Valley Trek",
+      "description": "Journey through ancient Berber villages and lush valleys.",
+      "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80",
+      "price": 3500,
+      "duration": "4 Days",
+      "places": 10,
+      "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Atlas%20Valley%20Trek",
+      "accentColor": "#6b8c7c"
+    }
+  ]
+}

@@ -16,13 +16,13 @@
       <div class="filters" v-if="categories.length > 1" data-aos="fade-up">
         <button
           v-for="cat in categories"
-          :key="cat.key"
-          :class="['filter-btn', { active: activeFilter === cat.key }]"
-          @click="activeFilter = cat.key"
-          :aria-label="cat.labelKey"
+          :key="cat.id"
+          :class="['filter-btn', { active: activeFilter === cat.id }]"
+          @click="activeFilter = cat.id"
+          :aria-label="cat.label"
         >
           <i v-if="cat.icon" :class="cat.icon"></i>
-          {{ $t(cat.labelKey) }}
+          {{ cat.label }}
         </button>
       </div>
 
@@ -36,21 +36,21 @@
           :data-aos-delay="(index % 12) * 80"
           @click="openLightbox(index)"
           role="button"
-          :aria-label="$t(img.labelKey)"
+          :aria-label="img.label"
           tabindex="0"
           @keydown.enter="openLightbox(index)"
         >
           <div class="gallery-card">
             <img
               :src="img.url"
-              :alt="$t(img.labelKey)"
+              :alt="img.label"
               loading="lazy"
               class="gallery-img"
             />
             <div class="gallery-overlay">
               <div class="overlay-content">
                 <i class="fas fa-search-plus"></i>
-                <span>{{ $t(img.labelKey) }}</span>
+                <span>{{ img.label }}</span>
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@
           <div class="lightbox-image-wrapper" :key="lightbox.currentIndex">
             <img
               :src="filteredImages[lightbox.currentIndex].urlLg"
-              :alt="$t(filteredImages[lightbox.currentIndex].labelKey)"
+              :alt="filteredImages[lightbox.currentIndex].label"
               class="lightbox-image"
             />
           </div>
@@ -111,7 +111,7 @@
 
           <div class="lightbox-bottom">
             <span class="lightbox-label">
-              {{ $t(filteredImages[lightbox.currentIndex].labelKey) }}
+              {{ filteredImages[lightbox.currentIndex].label }}
             </span>
             <span class="lightbox-counter">
               {{ lightbox.currentIndex + 1 }} / {{ filteredImages.length }}
@@ -126,46 +126,19 @@
 <script setup>
 import { ref, computed, watch, onBeforeUnmount, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
-import galleryImages from '@/data/gallery.js'
+import { getGallery } from '@/data'
 
-const { t } = useI18n()
+const { locale } = useI18n()
+const data = computed(() => getGallery(locale.value))
 
-const images = galleryImages
 const activeFilter = ref('all')
 const lightboxEl = ref(null)
 
-const categories = computed(() => {
-  const seen = new Set()
-  const cats = []
-  images.forEach(img => {
-    if (!seen.has(img.category)) {
-      seen.add(img.category)
-      cats.push({
-        key: img.category,
-        labelKey: `gallery.filter_${img.category}`,
-        icon: getCategoryIcon(img.category)
-      })
-    }
-  })
-  return [
-    { key: 'all', labelKey: 'gallery.filter_all', icon: 'fas fa-th' },
-    ...cats
-  ]
-})
-
-function getCategoryIcon(cat) {
-  const icons = {
-    desert: 'fas fa-sun',
-    beach: 'fas fa-umbrella-beach',
-    mountains: 'fas fa-mountain',
-    culture: 'fas fa-landmark'
-  }
-  return icons[cat] || 'fas fa-image'
-}
+const categories = computed(() => data.value.categories || [])
 
 const filteredImages = computed(() => {
-  if (activeFilter.value === 'all') return images
-  return images.filter(img => img.category === activeFilter.value)
+  if (activeFilter.value === 'all') return data.value.images || []
+  return (data.value.images || []).filter(img => img.category === activeFilter.value)
 })
 
 const lightbox = ref({

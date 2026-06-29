@@ -24,10 +24,10 @@
     <Transition name="slide">
       <div v-if="mobileOpen" class="mobile-menu-overlay" @click="mobileOpen = false">
         <div class="mobile-menu glass-card" @click.stop>
-          <router-link @click="mobileOpen = false" to="/">{{ $t('nav.home') }}</router-link>
-          <router-link @click="mobileOpen = false" to="/services">{{ $t('nav.services') }}</router-link>
-          <router-link @click="mobileOpen = false" to="/trips">{{ $t('nav.trips') }}</router-link>
-          <router-link @click="mobileOpen = false" to="/contact">{{ $t('nav.contact') }}</router-link>
+          <a href="#" @click.prevent="scrollToSection('hero')">{{ $t('nav.home') }}</a>
+          <a href="#services" @click.prevent="scrollToSection('services')">{{ $t('nav.services') }}</a>
+          <a href="#trips" @click.prevent="scrollToSection('trips')">{{ $t('nav.trips') }}</a>
+          <a href="#contact" @click.prevent="scrollToSection('contact')">{{ $t('nav.contact') }}</a>
           <div class="mobile-lang">
             <LanguageSwitcher />
           </div>
@@ -50,6 +50,14 @@ const toggleMobileMenu = () => {
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
+}
+
+const scrollToSection = (id) => {
+  mobileOpen.value = false
+  const el = document.getElementById(id)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 }
 
 onMounted(() => {

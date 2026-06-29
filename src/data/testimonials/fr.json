@@ -1,0 +1,30 @@
+{
+  "title": "Ce que disent nos clients",
+  "subtitle": "Des histoires vraies de vrais aventuriers",
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Aymen Akki",
+      "location": "France",
+      "rating": 5,
+      "text": "Je tiens à adresser mes sincères remerciements à l'agence pour la qualité exceptionnelle de ce voyage, l'organisation impeccable et l'accueil chaleureux.",
+      "avatar": "https://i.pravatar.cc/150?img=32"
+    },
+    {
+      "id": 2,
+      "name": "Ibtissam sh",
+      "location": "Maroc",
+      "rating": 5,
+      "text": "C'était ma première expérience, et franchement je suis très satisfaite. L'organisation était au top du début à la fin. Je recommande vivement !",
+      "avatar": "https://i.pravatar.cc/150?img=44"
+    },
+    {
+      "id": 3,
+      "name": "Rachida Elbaz",
+      "location": "Canada",
+      "rating": 5,
+      "text": "Excellente organisation, notre accompagnateur est juste exceptionnel, très professionnel et très aimable. Une expérience inoubliable !",
+      "avatar": "https://i.pravatar.cc/150?img=47"
+    }
+  ]
+}

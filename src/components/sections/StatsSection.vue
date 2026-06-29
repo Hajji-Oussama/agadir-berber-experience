@@ -1,5 +1,5 @@
 <template>
-  <section class="stats-section section-padding" ref="sectionRef">
+  <section class="stats-section section-padding" id="stats" ref="sectionRef">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <span class="eyebrow">{{ $t('stats.eyebrow') }}</span>
@@ -59,7 +59,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { getStats } from '@/data'
+
+const { locale } = useI18n()
+const data = computed(() => getStats(locale.value))
 
 const sectionRef = ref(null)
 const counterRefs = ref([])
@@ -67,44 +72,7 @@ const hoveredIndex = ref(-1)
 const videoErrors = ref([])
 let observer = null
 
-const stats = [
-  {
-    id: 1,
-    key: 'trips',
-    value: 500,
-    suffix: '+',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80',
-    color: '#c9a87c',
-    overlay: 'linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)'
-  },
-  {
-    id: 2,
-    key: 'clients',
-    value: 3000,
-    suffix: '+',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80',
-    color: '#7fb5d0',
-    overlay: 'linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)'
-  },
-  {
-    id: 3,
-    key: 'years',
-    value: 10,
-    suffix: '+',
-    image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80',
-    color: '#d4a373',
-    overlay: 'linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)'
-  },
-  {
-    id: 4,
-    key: 'destinations',
-    value: 5,
-    suffix: '',
-    image: 'https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1200&q=80',
-    color: '#6b8c7c',
-    overlay: 'linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)'
-  }
-]
+const stats = computed(() => data.value.stats || [])
 
 function handleVideoError(index) {
   videoErrors.value[index] = true
@@ -136,7 +104,7 @@ onMounted(() => {
       if (entry.isIntersecting) {
         counterRefs.value.forEach((el, index) => {
           if (el) {
-            animateCounter(el, stats[index].value)
+            animateCounter(el, stats.value[index].value)
           }
         })
         if (observer) observer.disconnect()

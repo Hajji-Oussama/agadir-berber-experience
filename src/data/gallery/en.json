@@ -1,0 +1,25 @@
+{
+  "title": "Our Gallery",
+  "subtitle": "A visual journey through our most memorable adventures",
+  "images": [
+    { "id": 1, "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80", "label": "Taghazout Sunset", "size": "wide", "category": "desert" },
+    { "id": 2, "url": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=1600&q=80", "label": "Golden Dunes", "size": "tall", "category": "desert" },
+    { "id": 3, "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80", "label": "Paradise Beach", "size": "square", "category": "beach" },
+    { "id": 4, "url": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1600&q=80", "label": "Desert Horizon", "size": "tall", "category": "desert" },
+    { "id": 5, "url": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80", "label": "Atlas Peaks", "size": "wide", "category": "mountains" },
+    { "id": 6, "url": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1600&q=80", "label": "Berber Village", "size": "square", "category": "culture" },
+    { "id": 7, "url": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80", "label": "Mountain Valley", "size": "large", "category": "mountains" },
+    { "id": 8, "url": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=1600&q=80", "label": "Coastal Escape", "size": "square", "category": "beach" },
+    { "id": 9, "url": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80", "label": "Summit View", "size": "tall", "category": "mountains" },
+    { "id": 10, "url": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=80", "label": "Cultural Journey", "size": "wide", "category": "culture" },
+    { "id": 11, "url": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=1600&q=80", "label": "Sahara Nights", "size": "square", "category": "desert" },
+    { "id": 12, "url": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=1600&q=80", "label": "Ocean Bliss", "size": "large", "category": "beach" }
+  ],
+  "categories": [
+    { "id": "all", "label": "All" },
+    { "id": "desert", "label": "Desert" },
+    { "id": "beach", "label": "Beach" },
+    { "id": "mountains", "label": "Mountains" },
+    { "id": "culture", "label": "Culture" }
+  ]
+}

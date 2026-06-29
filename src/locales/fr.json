@@ -15,6 +15,7 @@
     "title": "Choisissez Votre Exp\u00e9rience",
     "subtitle": "Des dunes pleines d'adr\u00e9naline aux balades paisibles au coucher du soleil \u2014 trouvez votre aventure parfaite.",
     "learn_more": "Explorer",
+    "book_now": "Réserver",
     "quad": "Quad",
     "buggy": "Buggy",
     "horse": "Équitation",
@@ -39,24 +40,7 @@
     "prev": "Témoignage précédent",
     "next": "Témoignage suivant",
     "goto": "Aller au témoignage",
-    "empty": "Aucun avis pour le moment",
-    "reviews": [
-      {
-        "name": "Aymen Akki",
-        "location": "France",
-        "text": "Je tiens à adresser mes sincères remerciements à l'agence pour la qualité exceptionnelle de ce voyage, l'organisation impeccable et l'accueil chaleureux."
-      },
-      {
-        "name": "Ibtissam sh",
-        "location": "Maroc",
-        "text": "C'était ma première expérience, et franchement je suis très satisfaite. L'organisation était au top du début à la fin. Je recommande vivement !"
-      },
-      {
-        "name": "Rachida Elbaz",
-        "location": "Canada",
-        "text": "Excellente organisation, notre accompagnateur est juste exceptionnel, très professionnel et très aimable. Une expérience inoubliable !"
-      }
-    ]
+    "empty": "Aucun avis pour le moment"
   },
   "stats": {
     "eyebrow": "En Chiffres",
@@ -92,35 +76,11 @@
     "filter_beach": "Plage",
     "filter_mountains": "Montagnes",
     "filter_culture": "Culture",
-    "images": [
-      { "label": "Coucher de soleil à Taghazout" },
-      { "label": "Dunes Dorées" },
-      { "label": "Plage Paradisiaque" },
-      { "label": "Horizon Désertique" },
-      { "label": "Sommets de l'Atlas" },
-      { "label": "Village Berbère" },
-      { "label": "Vallée Montagneuse" },
-      { "label": "Évasion Côtière" },
-      { "label": "Vue du Sommet" },
-      { "label": "Voyage Culturel" },
-      { "label": "Nuits du Sahara" },
-      { "label": "Bonheur Océan" }
-    ],
     "lightbox": {
       "close": "Fermer",
       "previous": "Précédent",
       "next": "Suivant"
     }
-  },
-  "trips_data": {
-    "trip1_title": "Grand Circuit du Nord",
-    "trip1_desc": "Explorez les montagnes du Rif et les plages méditerranéennes préservées.",
-    "trip2_title": "Expédition Désertique",
-    "trip2_desc": "5 jours d'aventures en 4x4 à travers les dunes dorées du Sahara.",
-    "trip3_title": "Balade au Coucher du Soleil à Taghazout",
-    "trip3_desc": "Promenade à cheval le long de l'Atlantique à l'heure dorée \u2014 vues inoubliables.",
-    "trip4_title": "Trek dans la Vallée de l'Atlas",
-    "trip4_desc": "Voyage à travers les anciens villages berbères et les vallées verdoyantes."
   },
   "footer": {
     "brand": "Bourmi Trip",

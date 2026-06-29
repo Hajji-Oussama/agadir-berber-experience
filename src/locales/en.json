@@ -15,6 +15,7 @@
     "title": "Choose Your Experience",
     "subtitle": "From adrenaline-pumping dunes to peaceful sunset rides \u2014 find your perfect adventure.",
     "learn_more": "Explore",
+    "book_now": "Book Now",
     "quad": "Quad Biking",
     "buggy": "Buggy Off-Road",
     "horse": "Horse Riding",
@@ -39,24 +40,7 @@
     "prev": "Previous testimonial",
     "next": "Next testimonial",
     "goto": "Go to testimonial",
-    "empty": "No reviews yet",
-    "reviews": [
-      {
-        "name": "Aymen Akki",
-        "location": "France",
-        "text": "Je tiens à adresser mes sincères remerciements à l'agence pour la qualité exceptionnelle de ce voyage, l'organisation impeccable et l'accueil chaleureux."
-      },
-      {
-        "name": "Ibtissam sh",
-        "location": "Morocco",
-        "text": "C'était ma première expérience, et franchement je suis très satisfaite. L'organisation était au top du début à la fin. Je recommande vivement !"
-      },
-      {
-        "name": "Rachida Elbaz",
-        "location": "Canada",
-        "text": "Excellente organisation, notre accompagnateur est juste exceptionnel, très professionnel et très aimable. Une expérience inoubliable !"
-      }
-    ]
+    "empty": "No reviews yet"
   },
   "stats": {
     "eyebrow": "By the Numbers",
@@ -92,35 +76,11 @@
     "filter_beach": "Beach",
     "filter_mountains": "Mountains",
     "filter_culture": "Culture",
-    "images": [
-      { "label": "Taghazout Sunset" },
-      { "label": "Golden Dunes" },
-      { "label": "Paradise Beach" },
-      { "label": "Desert Horizon" },
-      { "label": "Atlas Peaks" },
-      { "label": "Berber Village" },
-      { "label": "Mountain Valley" },
-      { "label": "Coastal Escape" },
-      { "label": "Summit View" },
-      { "label": "Cultural Journey" },
-      { "label": "Sahara Nights" },
-      { "label": "Ocean Bliss" }
-    ],
     "lightbox": {
       "close": "Close",
       "previous": "Previous",
       "next": "Next"
     }
-  },
-  "trips_data": {
-    "trip1_title": "Grand Circuit du Nord",
-    "trip1_desc": "Explore the Rif mountains and pristine Mediterranean beaches.",
-    "trip2_title": "Desert Expedition",
-    "trip2_desc": "5 days of 4x4 adventures across the golden Sahara dunes.",
-    "trip3_title": "Taghazout Sunset Ride",
-    "trip3_desc": "Horse ride along the Atlantic at golden hour \u2014 unforgettable views.",
-    "trip4_title": "Atlas Valley Trek",
-    "trip4_desc": "Journey through ancient Berber villages and lush valleys."
   },
   "footer": {
     "brand": "Bourmi Trip",

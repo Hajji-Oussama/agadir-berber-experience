@@ -45,7 +45,7 @@
                     <div class="avatar-ring"></div>
                     <img
                       :src="reviews[current].avatar"
-                      :alt="t(reviews[current].nameKey)"
+                      :alt="reviews[current].name"
                       class="avatar"
                       loading="lazy"
                     />
@@ -65,11 +65,11 @@
                     ></i>
                   </div>
 
-                  <p class="quote">&ldquo;{{ t(reviews[current].textKey) }}&rdquo;</p>
+                  <p class="quote">&ldquo;{{ reviews[current].text }}&rdquo;</p>
 
                   <div class="author">
-                    <strong>{{ t(reviews[current].nameKey) }}</strong>
-                    <span>{{ t(reviews[current].locationKey) }}</span>
+                    <strong>{{ reviews[current].name }}</strong>
+                    <span>{{ reviews[current].location }}</span>
                   </div>
                 </div>
               </div>
@@ -106,8 +106,11 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { getTestimonials } from '@/data'
 
-const { t, locale } = useI18n()
+const { locale } = useI18n()
+
+const data = computed(() => getTestimonials(locale.value))
 
 const sliderWrapper = ref(null)
 const current = ref(0)
@@ -122,17 +125,13 @@ const isRTL = computed(() => locale.value === 'ar')
 
 const transitionName = computed(() => (isRTL.value ? 'slide-fade-rtl' : 'slide-fade'))
 
-const reviews = [
-  { id: 0, nameKey: 'testimonials.reviews.0.name', locationKey: 'testimonials.reviews.0.location', textKey: 'testimonials.reviews.0.text', rating: 5, avatar: 'https://i.pravatar.cc/150?img=32' },
-  { id: 1, nameKey: 'testimonials.reviews.1.name', locationKey: 'testimonials.reviews.1.location', textKey: 'testimonials.reviews.1.text', rating: 5, avatar: 'https://i.pravatar.cc/150?img=44' },
-  { id: 2, nameKey: 'testimonials.reviews.2.name', locationKey: 'testimonials.reviews.2.location', textKey: 'testimonials.reviews.2.text', rating: 5, avatar: 'https://i.pravatar.cc/150?img=47' }
-]
+const reviews = computed(() => data.value.reviews || [])
 
 function startAutoplay() {
   stopAutoplay()
   intervalId = setInterval(() => {
     if (!isPaused.value) {
-      current.value = (current.value + 1) % reviews.length
+      current.value = (current.value + 1) % reviews.value.length
     }
   }, 6000)
 }
@@ -197,12 +196,12 @@ function goTo(index) {
 }
 
 function next() {
-  current.value = (current.value + 1) % reviews.length
+  current.value = (current.value + 1) % reviews.value.length
   resetAutoplay()
 }
 
 function prev() {
-  current.value = (current.value - 1 + reviews.length) % reviews.length
+  current.value = (current.value - 1 + reviews.value.length) % reviews.value.length
   resetAutoplay()
 }
 

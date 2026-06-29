@@ -1,0 +1,50 @@
+{
+  "title": "اختر تجربتك",
+  "subtitle": "من الكثبان المليئة بالأدرينالين إلى جولات الغروب الهادئة — اكتشف مغامرتك المثالية.",
+  "services": [
+    {
+      "id": "quad",
+      "name": "ركوب الكواد",
+      "description": "عش الإثارة عبر الكثبان الذهبية.",
+      "image": "https://images.unsplash.com/photo-1539786747937-59bf46e47b08?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20كواد",
+      "price": 450,
+      "duration": "ساعتان",
+      "category": "desert"
+    },
+    {
+      "id": "buggy",
+      "name": "بوجي",
+      "description": "غزو التضاريس الوعرة بأناقة.",
+      "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20بوجي",
+      "price": 550,
+      "duration": "3 ساعات",
+      "category": "desert"
+    },
+    {
+      "id": "horse",
+      "name": "ركوب الخيل",
+      "description": "رحلة هادئة عند غروب الشمس على طول الساحل.",
+      "image": "https://images.unsplash.com/photo-1546195643-70f48f9c5b83?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20ركوب%20الخيل",
+      "price": 350,
+      "duration": "ساعتان",
+      "category": "beach"
+    },
+    {
+      "id": "camel",
+      "name": "ركوب الجمل",
+      "description": "تجربة طريقة السفر التقليدية في الصحراء.",
+      "image": "https://images.unsplash.com/photo-1577538928304-4f5f4a9ae289?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20جمل",
+      "price": 250,
+      "duration": "1.5 ساعة",
+      "category": "desert"
+    }
+  ]
+}

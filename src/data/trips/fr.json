@@ -1,0 +1,50 @@
+{
+  "title": "Découvrez Votre Prochaine Aventure",
+  "subtitle": "Des expériences soigneusement choisies pour vous inspirer. Des dunes du désert aux horizons océaniques.",
+  "trips": [
+    {
+      "id": 1,
+      "name": "Grand Circuit du Nord",
+      "description": "Explorez les montagnes du Rif et les plages méditerranéennes préservées.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+      "price": 2990,
+      "duration": "3 Jours",
+      "places": 8,
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Grand%20Circuit",
+      "accentColor": "#c9a87c"
+    },
+    {
+      "id": 2,
+      "name": "Expédition Désertique",
+      "description": "5 jours d'aventures en 4x4 à travers les dunes dorées du Sahara.",
+      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80",
+      "price": 4500,
+      "duration": "5 Jours",
+      "places": 12,
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Expédition%20Désert",
+      "accentColor": "#d4a373"
+    },
+    {
+      "id": 3,
+      "name": "Balade au Coucher du Soleil à Taghazout",
+      "description": "Promenade à cheval le long de l'Atlantique à l'heure dorée — vues inoubliables.",
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      "price": 1200,
+      "duration": "Demi-journée",
+      "places": 6,
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Balade%20Taghazout",
+      "accentColor": "#7fb5d0"
+    },
+    {
+      "id": 4,
+      "name": "Trek dans la Vallée de l'Atlas",
+      "description": "Voyage à travers les anciens villages berbères et les vallées verdoyantes.",
+      "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80",
+      "price": 3500,
+      "duration": "4 Jours",
+      "places": 10,
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Trek%20Atlas",
+      "accentColor": "#6b8c7c"
+    }
+  ]
+}
