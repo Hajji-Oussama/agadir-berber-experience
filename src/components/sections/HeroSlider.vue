@@ -1,5 +1,5 @@
 <template>
-  <section class="hero-slider" id="hero" ref="sliderRef">
+  <section class="hero-slider section-anchor" id="home" ref="sliderRef">
     <div class="slides-track" ref="trackRef" @touchstart.prevent="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
       <article
         v-for="(slide, index) in slides"

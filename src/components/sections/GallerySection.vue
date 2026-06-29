@@ -1,5 +1,5 @@
 <template>
-  <section class="gallery-section section-padding" id="gallery">
+  <section class="gallery-section section-padding section-anchor" id="gallery">
     <div class="gallery-bg" aria-hidden="true">
       <div class="blob blob-1"></div>
       <div class="blob blob-2"></div>

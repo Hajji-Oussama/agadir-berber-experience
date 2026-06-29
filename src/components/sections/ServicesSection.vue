@@ -1,5 +1,5 @@
 <template>
-  <section class="services-section section-padding" id="services">
+  <section class="services-section section-padding section-anchor" id="services">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <span class="eyebrow">{{ $t('services.eyebrow') }}</span>

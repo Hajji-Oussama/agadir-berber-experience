@@ -1,5 +1,5 @@
 <template>
-  <section class="testimonials-section section-padding" id="testimonials">
+  <section class="testimonials-section section-padding section-anchor" id="testimonials">
     <div class="testimonials-bg" aria-hidden="true">
       <div class="blob blob-gold"></div>
       <div class="blob blob-blue"></div>
