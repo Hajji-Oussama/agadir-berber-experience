@@ -1,0 +1,122 @@
+@use './variables';
+@use './glass';
+@use './animations';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+
+  @media (min-width: 640px) {
+    padding: 0 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 4rem;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 0 5rem;
+  }
+}
+
+.section-padding {
+  padding: 4rem 0;
+
+  @media (min-width: 768px) {
+    padding: 6rem 0;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 8rem 0;
+  }
+}
+
+[dir="rtl"] {
+  font-family: var(--font-arabic);
+}
+
+.ambient-blobs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  transition: background 1s ease;
+
+  &--gold {
+    width: 400px;
+    height: 400px;
+    background: var(--blob-gold, #c9a87c);
+    top: -100px;
+    right: -100px;
+    animation: blob-drift 20s ease-in-out infinite;
+  }
+
+  &--teal {
+    width: 350px;
+    height: 350px;
+    background: var(--blob-teal, #2dd4bf);
+    bottom: -150px;
+    left: -100px;
+    animation: blob-drift2 25s ease-in-out infinite;
+  }
+
+  &--white {
+    width: 200px;
+    height: 200px;
+    background: var(--blob-white, rgba(255, 255, 255, 0.3));
+    top: 50%;
+    left: 50%;
+    animation: blob-drift 30s ease-in-out infinite reverse;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}

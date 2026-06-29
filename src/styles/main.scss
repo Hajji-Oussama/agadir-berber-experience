@@ -1,0 +1,33 @@
+// FILE: src/assets/styles/main.scss
+@import './variables';
+@import './glass';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// دعم اللغة العربية
+[dir="rtl"] {
+  font-family: 'Tajawal', 'Inter', sans-serif;
+}

@@ -1,0 +1,19 @@
+// FILE: src/assets/styles/glass.scss
+@mixin glass($blur: 20px, $opacity: 0.1) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card {
+  @include glass(25px, 0.08);
+  padding: 1.5rem;
+  transition: all 0.4s ease;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "trips": "Trips",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Where the desert meets the ocean",
+    "subtitle": "Experience the best Quad, Buggy, and Horse riding in Agadir & Taghazout Bay.",
+    "cta": "Explore Now"
+  },
+  "services": {
+    "eyebrow": "Our Adventures",
+    "title": "Choose Your Experience",
+    "subtitle": "From adrenaline-pumping dunes to peaceful sunset rides \u2014 find your perfect adventure.",
+    "learn_more": "Explore",
+    "quad": "Quad Biking",
+    "buggy": "Buggy Off-Road",
+    "horse": "Horse Riding",
+    "camel": "Camel Trekking",
+    "quad_desc": "Feel the adrenaline across the golden dunes.",
+    "buggy_desc": "Conquer the rugged terrain in style.",
+    "horse_desc": "A peaceful sunset ride along the coast.",
+    "camel_desc": "Experience the traditional way of desert travel."
+  },
+  "trips": {
+    "eyebrow": "Curated Journeys",
+    "title": "Discover Your Next Adventure",
+    "subtitle": "Handpicked experiences designed to inspire. From desert dunes to ocean horizons.",
+    "places": "places left",
+    "price": "From {price} Dhs",
+    "book": "Book Now"
+  },
+  "testimonials": {
+    "eyebrow": "Testimonials",
+    "title": "What Our Clients Say",
+    "subtitle": "Real stories from real adventurers",
+    "prev": "Previous testimonial",
+    "next": "Next testimonial",
+    "goto": "Go to testimonial",
+    "empty": "No reviews yet",
+    "reviews": [
+      {
+        "name": "Aymen Akki",
+        "location": "France",
+        "text": "Je tiens à adresser mes sincères remerciements à l'agence pour la qualité exceptionnelle de ce voyage, l'organisation impeccable et l'accueil chaleureux."
+      },
+      {
+        "name": "Ibtissam sh",
+        "location": "Morocco",
+        "text": "C'était ma première expérience, et franchement je suis très satisfaite. L'organisation était au top du début à la fin. Je recommande vivement !"
+      },
+      {
+        "name": "Rachida Elbaz",
+        "location": "Canada",
+        "text": "Excellente organisation, notre accompagnateur est juste exceptionnel, très professionnel et très aimable. Une expérience inoubliable !"
+      }
+    ]
+  },
+  "stats": {
+    "eyebrow": "By the Numbers",
+    "title": "Our Impact in Numbers",
+    "subtitle": "Building memories, one adventure at a time",
+    "trips": "Trips & Adventures",
+    "clients": "Happy Travelers",
+    "years": "Years of Excellence",
+    "destinations": "Destinations"
+  },
+  "timeline": {
+    "eyebrow": "Your Journey",
+    "title": "The Road to Adventure",
+    "subtitle": "Each step brings you closer to the experience of a lifetime.",
+    "step1": "Arrival & Welcome",
+    "step1_desc": "Land in Agadir. Meet your guide and fellow adventurers. Settle into your accommodation and prepare for the journey ahead.",
+    "step2": "Acclimatization",
+    "step2_desc": "Explore the local culture. Short hikes to adjust to the terrain. Enjoy traditional Moroccan cuisine and hospitality.",
+    "step3": "The Expedition Begins",
+    "step3_desc": "Depart into the wilderness. Cross stunning landscapes, visit hidden oases, and experience the thrill of off-road adventure.",
+    "step4": "Summit & Celebration",
+    "step4_desc": "Reach the pinnacle of your journey. Celebrate with your team, share stories, and capture unforgettable memories.",
+    "step5": "Return & Reflection",
+    "step5_desc": "Journey back with a heart full of experiences. A farewell dinner and the promise of returning for more adventures."
+  },
+  "gallery": {
+    "eyebrow": "Visual Stories",
+    "title": "Our Gallery",
+    "subtitle": "A visual journey through our most memorable adventures",
+    "empty": "No images found",
+    "filter_all": "All",
+    "filter_desert": "Desert",
+    "filter_beach": "Beach",
+    "filter_mountains": "Mountains",
+    "filter_culture": "Culture",
+    "images": [
+      { "label": "Taghazout Sunset" },
+      { "label": "Golden Dunes" },
+      { "label": "Paradise Beach" },
+      { "label": "Desert Horizon" },
+      { "label": "Atlas Peaks" },
+      { "label": "Berber Village" },
+      { "label": "Mountain Valley" },
+      { "label": "Coastal Escape" },
+      { "label": "Summit View" },
+      { "label": "Cultural Journey" },
+      { "label": "Sahara Nights" },
+      { "label": "Ocean Bliss" }
+    ],
+    "lightbox": {
+      "close": "Close",
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "trips_data": {
+    "trip1_title": "Grand Circuit du Nord",
+    "trip1_desc": "Explore the Rif mountains and pristine Mediterranean beaches.",
+    "trip2_title": "Desert Expedition",
+    "trip2_desc": "5 days of 4x4 adventures across the golden Sahara dunes.",
+    "trip3_title": "Taghazout Sunset Ride",
+    "trip3_desc": "Horse ride along the Atlantic at golden hour \u2014 unforgettable views.",
+    "trip4_title": "Atlas Valley Trek",
+    "trip4_desc": "Journey through ancient Berber villages and lush valleys."
+  },
+  "footer": {
+    "brand": "Bourmi Trip",
+    "description": "Best adventures in Agadir with professional guides. Quad, Buggy, Horse & Camel rides.",
+    "rights": "All rights reserved.",
+    "quick_links": "Quick Links",
+    "contact_us": "Contact",
+    "phone": "+212 667 858 620",
+    "email": "info@bourmitrip.ma",
+    "location": "Agadir, Taghazout Bay, Morocco"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "find_us": "Find Us"
+  },
+  "home": {
+    "title": "Home"
+  }
+}

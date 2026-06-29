@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "eyebrow": "Agadir Dunes",
+    "title": "Ride the Desert",
+    "subtitle": "Experience the thrill of Quad biking across the golden sands of Morocco.",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80",
+    "video": null,
+    "accentColor": "#c9a87c",
+    "blobColors": ["#c9a87c", "#2dd4bf", "rgba(255,255,255,0.3)"],
+    "ctaExplore": "/trips",
+    "ctaBook": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Quad!"
+  },
+  {
+    "id": 2,
+    "eyebrow": "Taghazout Bay",
+    "title": "Ocean & Horse",
+    "subtitle": "Ride along the pristine Atlantic beaches at golden hour.",
+    "image": "https://images.unsplash.com/photo-1599320010497-f6bdff962340?w=1600&q=80",
+    "video": null,
+    "accentColor": "#7fb5d0",
+    "blobColors": ["#7fb5d0", "#2dd4bf", "rgba(255,255,255,0.3)"],
+    "ctaExplore": "/services",
+    "ctaBook": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Horse!"
+  },
+  {
+    "id": 3,
+    "eyebrow": "Sunset Safari",
+    "title": "Dunes & Beyond",
+    "subtitle": "Conquer the rugged terrain with our premium Buggy off-road experience.",
+    "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1600&q=80",
+    "video": null,
+    "accentColor": "#e8915a",
+    "blobColors": ["#e8915a", "#c9a87c", "rgba(255,255,255,0.3)"],
+    "ctaExplore": "/trips",
+    "ctaBook": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Buggy!"
+  },
+  {
+    "id": 4,
+    "eyebrow": "Atlas Trek",
+    "title": "Mountain Escape",
+    "subtitle": "Discover the hidden valleys and Berber villages of the High Atlas.",
+    "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80",
+    "video": null,
+    "accentColor": "#6abf69",
+    "blobColors": ["#6abf69", "#7fb5d0", "rgba(255,255,255,0.3)"],
+    "ctaExplore": "/trips",
+    "ctaBook": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Atlas!"
+  }
+]
