@@ -12,46 +12,51 @@
           v-for="(service, index) in data.services"
           :key="service.id"
           :data-id="service.id"
-          class="service-card"
-          :class="{
-            'card-highlight': false,
-            'service-card--loaded': loadedImages.has(service.id)
-          }"
+          class="service-card-wrapper"
           data-aos="zoom-in-up"
           :data-aos-delay="index * 120"
-          :style="{ backgroundImage: `url(${service.image})` }"
           @click="handleBooking(service)"
           role="button"
           tabindex="0"
           @keydown.enter="handleBooking(service)"
         >
-          <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(service.id) }"></div>
+          <div class="service-card" :class="{ 'service-card--loaded': loadedImages.has(service.id) }">
 
-          <div class="service-tags" v-if="service.tags?.length">
-            <span
-              v-for="tag in service.tags"
-              :key="tag"
-              class="service-tag"
-              :class="tagClass(tag)"
-            >{{ tag }}</span>
-          </div>
+            <div class="service-image" :style="{ backgroundImage: `url(${service.image})` }">
+              <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(service.id) }"></div>
+              <div class="service-tags" v-if="service.tags?.length">
+                <span
+                  v-for="tag in service.tags"
+                  :key="tag"
+                  class="service-tag"
+                  :class="tagClass(tag)"
+                >{{ tag }}</span>
+              </div>
+              <div class="service-image-gradient"></div>
+            </div>
 
-          <div class="service-overlay" :class="{ expanded: expandedService === service.id }" @click.stop>
-            <h3>{{ service.name }}</h3>
-            <p :class="{ clamped: expandedService !== service.id }">{{ service.description }}</p>
-            <div class="service-meta">
-              <span class="price">{{ service.price }} <small>{{ $t('services.currency') }}</small></span>
-              <span class="duration"><i class="far fa-clock"></i> {{ service.duration }}</span>
+            <div class="service-info" @click.stop>
+              <h3>{{ service.name }}</h3>
+              <div class="service-desc-wrap">
+                <p :class="{ clamped: expandedService !== service.id }">{{ service.description }}</p>
+                <button class="service-link" @click.stop="toggleExpand(service.id)">
+                  {{ expandedService === service.id ? $t('services.less') : $t('services.more') }}
+                  <i class="fas fa-chevron-down" :class="{ rotated: expandedService === service.id }"></i>
+                </button>
+              </div>
+              <div class="service-footer-container">
+                <div class="service-meta">
+                  <span class="price">{{ service.price }} <small>{{ $t('services.currency') }}</small></span>
+                  <span class="duration"><i class="far fa-clock"></i> {{ service.duration }}</span>
+                </div>
+                <div class="service-actions">
+                  <button class="btn-book" @click.stop="handleBooking(service)">
+                    {{ $t('services.book_now') }}
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class="service-actions">
-              <button class="service-link" @click.stop="toggleExpand(service.id)">
-                {{ expandedService === service.id ? $t('services.less') : $t('services.more') }}
-                <i class="fas fa-chevron-down" :class="{ rotated: expandedService === service.id }"></i>
-              </button>
-              <button class="btn-book" @click.stop="handleBooking(service)">
-                {{ $t('services.book_now') }}
-              </button>
-            </div>
+
           </div>
         </div>
       </div>
@@ -138,58 +143,42 @@ watch(data, (val) => {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-
     @media (min-width: 640px) { gap: 2.5rem; }
     @media (min-width: 1024px) { gap: 3rem; }
   }
 
-  .service-card {
-    position: relative;
-    min-height: 380px;
-    border-radius: 24px;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  .service-card-wrapper {
     cursor: pointer;
     outline: none;
-    background-color: rgba(255, 255, 255, 0.03);
-
-    &.card-highlight {
-      animation: cardHighlight 1.5s ease;
-    }
-
+    perspective: 1000px;
     &:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 4px;
+      border-radius: 24px;
     }
-
-    @media (min-width: 768px) { min-height: 450px; }
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
-      transition: opacity 0.5s ease;
-      z-index: 1;
+    &.card-highlight .service-card {
+      animation: cardHighlight 1.5s ease;
     }
+  }
 
-    &:hover {
-      transform: translateY(-10px);
-      border-color: var(--accent);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    background: rgba(10, 14, 26, 0.95);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    height: 100%;
 
-      &::before { opacity: 0.7; }
-
-      .service-overlay {
-        background: rgba(10, 14, 26, 0.75);
-        backdrop-filter: blur(16px);
+    @media (hover: hover) {
+      &:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        .service-image { filter: brightness(1.1); }
       }
-
-      .arrow { transform: translateX(6px); }
     }
   }
 
@@ -200,14 +189,35 @@ watch(data, (val) => {
     75% { box-shadow: 0 0 40px rgba(201, 168, 124, 0.6); border-color: var(--accent); transform: translateY(-3px); }
   }
 
+  .service-image {
+    position: relative;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+    transition: filter 0.4s ease;
+
+    @media (min-width: 768px) { height: 260px; }
+  }
+
+  .service-image-gradient {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 70px;
+    background: linear-gradient(transparent, rgba(10, 14, 26, 0.8));
+    z-index: 1;
+  }
+
   .service-tags {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0.75rem;
+    right: 0.75rem;
     z-index: 3;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.35rem;
   }
 
   .service-tag {
@@ -252,48 +262,39 @@ watch(data, (val) => {
     }
   }
 
-  .service-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 2rem 1.8rem 2.2rem;
-    background: rgba(10, 14, 26, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: all 0.5s ease;
-    z-index: 2;
-    max-height: 200px;
-    overflow: hidden;
+  .service-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem 1.6rem 1.6rem;
+    background: rgba(10, 14, 26, 0.95);
+
+    h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      flex-shrink: 0;
+    }
+  }
+
+  .service-desc-wrap {
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
+    margin-bottom: 0.75rem;
 
     &::-webkit-scrollbar { width: 3px; }
     &::-webkit-scrollbar-track { background: transparent; }
     &::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
 
-    &.expanded {
-      max-height: 400px;
-      background: rgba(10, 14, 26, 0.75);
-      backdrop-filter: blur(16px);
-    }
-
-    @media (min-width: 768px) { padding: 2.5rem 2.5rem 3rem; }
-
-    h3 {
-      font-family: var(--font-heading);
-      font-size: 1.6rem;
-      font-weight: 400;
-      color: var(--text-primary);
-      margin-bottom: 0.4rem;
-    }
-
     p {
       color: var(--text-secondary);
+      font-size: 0.9rem;
       font-weight: 300;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-bottom: 0.75rem;
-      max-width: 90%;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
 
       &.clamped {
         display: -webkit-box;
@@ -303,11 +304,38 @@ watch(data, (val) => {
       }
     }
 
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0.25rem 0;
+
+      i {
+        font-size: 0.65rem;
+        transition: transform 0.3s ease;
+        &.rotated { transform: rotate(180deg); }
+      }
+    }
+  }
+
+  .service-footer-container {
+    flex-shrink: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    padding-top: 0.75rem;
+    margin-top: auto;
+
     .service-meta {
       display: flex;
       align-items: baseline;
       gap: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
 
       .price {
         font-family: var(--font-heading);
@@ -315,75 +343,34 @@ watch(data, (val) => {
         font-size: 2rem;
         font-weight: 600;
         line-height: 1.1;
-
-        small {
-          font-size: 1rem;
-          font-weight: 300;
-          opacity: 0.8;
-        }
+        small { font-size: 1rem; font-weight: 300; opacity: 0.8; }
       }
 
       .duration {
         color: var(--text-secondary);
         font-size: 0.8rem;
         font-weight: 300;
-
         i { margin-right: 0.3rem; }
       }
     }
 
-    .service-actions {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      flex-wrap: wrap;
+    .service-actions .btn-book {
+      width: 100%;
+      padding: 0.7rem 1.2rem;
+      background: var(--accent);
+      color: #000;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      outline: none;
 
-      .service-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--accent);
-        font-size: 0.85rem;
-        font-weight: 500;
-        letter-spacing: 0.05em;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: inherit;
-
-        i {
-          font-size: 0.7rem;
-          transition: transform 0.3s ease;
-
-          &.rotated {
-            transform: rotate(180deg);
-          }
-        }
-      }
-
-      .btn-book {
-        padding: 0.5rem 1.2rem;
-        background: var(--accent);
-        color: #000;
-        border-radius: 60px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        border: none;
-        cursor: pointer;
-        outline: none;
-
-        &:focus-visible {
-          outline: 2px solid var(--accent);
-          outline-offset: 4px;
-        }
-
-        &:hover {
-          background: #d4b88a;
-          transform: scale(1.05);
-        }
+      &:hover { background: #d4b88a; transform: scale(1.02); }
+      &:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 4px;
       }
     }
   }
