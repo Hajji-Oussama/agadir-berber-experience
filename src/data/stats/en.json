@@ -7,7 +7,7 @@
       "key": "trips",
       "value": 500,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg",
       "color": "#c9a87c",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -16,7 +16,7 @@
       "key": "clients",
       "value": 3000,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg",
       "color": "#7fb5d0",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -25,7 +25,7 @@
       "key": "years",
       "value": 10,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839043/WhatsApp_Image_2026-06-29_at_3.27.53_PM_1_uoptxv.jpg",
       "color": "#d4a373",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -34,7 +34,7 @@
       "key": "destinations",
       "value": 5,
       "suffix": "",
-      "image": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782845437/40f1c7d1-7c38-4087-b2d1-e59322322d92_ntrzfd.png",
       "color": "#6b8c7c",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     }

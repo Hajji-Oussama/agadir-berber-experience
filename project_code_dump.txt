@@ -5595,50 +5595,51 @@ FILE: src\components\sections\ServicesSection.vue
           v-for="(service, index) in data.services"
           :key="service.id"
           :data-id="service.id"
-          class="service-card"
-          :class="{
-            'card-highlight': false,
-            'service-card--loaded': loadedImages.has(service.id)
-          }"
+          class="service-card-wrapper"
           data-aos="zoom-in-up"
           :data-aos-delay="index * 120"
-          :style="{ backgroundImage: `url(${service.image})` }"
           @click="handleBooking(service)"
           role="button"
           tabindex="0"
           @keydown.enter="handleBooking(service)"
         >
-          <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(service.id) }"></div>
+          <div class="service-card" :class="{ 'service-card--loaded': loadedImages.has(service.id) }">
 
-          <div class="service-tags" v-if="service.tags?.length">
-            <span
-              v-for="tag in service.tags"
-              :key="tag"
-              class="service-tag"
-              :class="tagClass(tag)"
-            >{{ tag }}</span>
-          </div>
-
-          <div class="service-overlay" @click.stop>
-            <h3>{{ service.name }}</h3>
-            <div class="service-desc-wrap" :class="{ expanded: expandedService === service.id }">
-              <p :class="{ clamped: expandedService !== service.id }">{{ service.description }}</p>
-              <button class="service-link" @click.stop="toggleExpand(service.id)">
-                {{ expandedService === service.id ? $t('services.less') : $t('services.more') }}
-                <i class="fas fa-chevron-down" :class="{ rotated: expandedService === service.id }"></i>
-              </button>
-            </div>
-            <div class="service-footer-container">
-              <div class="service-meta">
-                <span class="price">{{ service.price }} <small>{{ $t('services.currency') }}</small></span>
-                <span class="duration"><i class="far fa-clock"></i> {{ service.duration }}</span>
+            <div class="service-image" :style="{ backgroundImage: `url(${service.image})` }">
+              <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(service.id) }"></div>
+              <div class="service-tags" v-if="service.tags?.length">
+                <span
+                  v-for="tag in service.tags"
+                  :key="tag"
+                  class="service-tag"
+                  :class="tagClass(tag)"
+                >{{ tag }}</span>
               </div>
-              <div class="service-actions">
-                <button class="btn-book" @click.stop="handleBooking(service)">
-                  {{ $t('services.book_now') }}
+              <div class="service-image-gradient"></div>
+            </div>
+
+            <div class="service-info" @click.stop>
+              <h3>{{ service.name }}</h3>
+              <div class="service-desc-wrap">
+                <p :class="{ clamped: expandedService !== service.id }">{{ service.description }}</p>
+                <button class="service-link" @click.stop="toggleExpand(service.id)">
+                  {{ expandedService === service.id ? $t('services.less') : $t('services.more') }}
+                  <i class="fas fa-chevron-down" :class="{ rotated: expandedService === service.id }"></i>
                 </button>
               </div>
+              <div class="service-footer-container">
+                <div class="service-meta">
+                  <span class="price">{{ service.price }} <small>{{ $t('services.currency') }}</small></span>
+                  <span class="duration"><i class="far fa-clock"></i> {{ service.duration }}</span>
+                </div>
+                <div class="service-actions">
+                  <button class="btn-book" @click.stop="handleBooking(service)">
+                    {{ $t('services.book_now') }}
+                  </button>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -5725,55 +5726,41 @@ watch(data, (val) => {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-
     @media (min-width: 640px) { gap: 2.5rem; }
     @media (min-width: 1024px) { gap: 3rem; }
   }
 
-  .service-card {
-    position: relative;
-    min-height: 380px;
-    border-radius: 24px;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  .service-card-wrapper {
     cursor: pointer;
     outline: none;
-    background-color: rgba(255, 255, 255, 0.03);
-
-    &.card-highlight {
-      animation: cardHighlight 1.5s ease;
-    }
-
+    perspective: 1000px;
     &:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 4px;
+      border-radius: 24px;
     }
-
-    @media (min-width: 768px) { min-height: 450px; }
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
-      transition: opacity 0.5s ease;
-      z-index: 1;
+    &.card-highlight .service-card {
+      animation: cardHighlight 1.5s ease;
     }
+  }
 
-    &:hover {
-      transform: translateY(-10px);
-      border-color: var(--accent);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    background: rgba(10, 14, 26, 0.95);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    height: 100%;
 
-      &::before { opacity: 0.7; }
-
-      .service-overlay {
-        background: rgba(10, 14, 26, 0.75);
-        backdrop-filter: blur(16px);
+    @media (hover: hover) {
+      &:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        .service-image { filter: brightness(1.1); }
       }
     }
   }
@@ -5785,14 +5772,35 @@ watch(data, (val) => {
     75% { box-shadow: 0 0 40px rgba(201, 168, 124, 0.6); border-color: var(--accent); transform: translateY(-3px); }
   }
 
+  .service-image {
+    position: relative;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+    transition: filter 0.4s ease;
+
+    @media (min-width: 768px) { height: 260px; }
+  }
+
+  .service-image-gradient {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 70px;
+    background: linear-gradient(transparent, rgba(10, 14, 26, 0.8));
+    z-index: 1;
+  }
+
   .service-tags {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0.75rem;
+    right: 0.75rem;
     z-index: 3;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.35rem;
   }
 
   .service-tag {
@@ -5837,149 +5845,115 @@ watch(data, (val) => {
     }
   }
 
-  .service-overlay {
-    position: absolute;
-    inset: 0;
+  .service-info {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    padding: 2rem 1.8rem 1.2rem;
-    background: rgba(10, 14, 26, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: all 0.5s ease;
-    z-index: 2;
-
-    @media (min-width: 768px) { padding: 2.5rem 2.5rem 1.5rem; }
+    padding: 1.4rem 1.6rem 1.6rem;
+    background: rgba(10, 14, 26, 0.95);
 
     h3 {
       font-family: var(--font-heading);
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 400;
       color: var(--text-primary);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
       flex-shrink: 0;
     }
+  }
 
-    .service-desc-wrap {
-      flex-grow: 1;
-      overflow-y: auto;
-      min-height: 0;
+  .service-desc-wrap {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    margin-bottom: 0.75rem;
+
+    &::-webkit-scrollbar { width: 3px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.6;
       margin-bottom: 0.5rem;
 
-      &::-webkit-scrollbar { width: 3px; }
-      &::-webkit-scrollbar-track { background: transparent; }
-      &::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
-
-      &.expanded {
-        background: rgba(10, 14, 26, 0.75);
-        backdrop-filter: blur(16px);
-        border-radius: 12px;
-        margin: 0.25rem 0;
-        padding: 0.5rem 0.75rem;
-      }
-
-      p {
-        color: var(--text-secondary);
-        font-weight: 300;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        margin-bottom: 0.5rem;
-        max-width: 90%;
-
-        &.clamped {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      }
-
-      .service-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        color: var(--accent);
-        font-size: 0.8rem;
-        font-weight: 500;
-        letter-spacing: 0.05em;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: inherit;
-        padding: 0.3rem 0;
-
-        i {
-          font-size: 0.65rem;
-          transition: transform 0.3s ease;
-
-          &.rotated {
-            transform: rotate(180deg);
-          }
-        }
+      &.clamped {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
     }
 
-    .service-footer-container {
-      flex-shrink: 0;
-      padding-top: 0.75rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0.25rem 0;
 
-      .service-meta {
-        display: flex;
-        align-items: baseline;
-        gap: 1rem;
-        margin-bottom: 0.8rem;
+      i {
+        font-size: 0.65rem;
+        transition: transform 0.3s ease;
+        &.rotated { transform: rotate(180deg); }
+      }
+    }
+  }
 
-        .price {
-          font-family: var(--font-heading);
-          color: var(--accent);
-          font-size: 2rem;
-          font-weight: 600;
-          line-height: 1.1;
+  .service-footer-container {
+    flex-shrink: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    padding-top: 0.75rem;
+    margin-top: auto;
 
-          small {
-            font-size: 1rem;
-            font-weight: 300;
-            opacity: 0.8;
-          }
-        }
+    .service-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
 
-        .duration {
-          color: var(--text-secondary);
-          font-size: 0.8rem;
-          font-weight: 300;
-
-          i { margin-right: 0.3rem; }
-        }
+      .price {
+        font-family: var(--font-heading);
+        color: var(--accent);
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1.1;
+        small { font-size: 1rem; font-weight: 300; opacity: 0.8; }
       }
 
-      .service-actions {
-        .btn-book {
-          width: 100%;
-          padding: 0.7rem 1.2rem;
-          background: var(--accent);
-          color: #000;
-          border-radius: 60px;
-          font-size: 0.85rem;
-          font-weight: 600;
-          transition: all 0.3s ease;
-          text-decoration: none;
-          border: none;
-          cursor: pointer;
-          outline: none;
+      .duration {
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        font-weight: 300;
+        i { margin-right: 0.3rem; }
+      }
+    }
 
-          &:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 4px;
-          }
+    .service-actions .btn-book {
+      width: 100%;
+      padding: 0.7rem 1.2rem;
+      background: var(--accent);
+      color: #000;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      outline: none;
 
-          &:hover {
-            background: #d4b88a;
-            transform: scale(1.02);
-          }
-        }
+      &:hover { background: #d4b88a; transform: scale(1.02); }
+      &:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 4px;
       }
     }
   }
@@ -7063,27 +7037,27 @@ const timelineItems = ref([])
 
 const steps = [
   {
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg',
     color: '#c9a87c',
     meta: { duration: '2 Days', elevation: '1,200m' }
   },
   {
-    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_5_ihself.jpg',
     color: '#7fb5d0',
     meta: { duration: '3 Days', elevation: '2,500m' }
   },
   {
-    image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1782846362/0e3be529-7629-4fcc-ab05-303f5fd381e2.png',
     color: '#d4a373',
     meta: { duration: '4 Days', elevation: '3,800m' }
   },
   {
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&q=80',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg',
     color: '#6b8c7c',
     meta: { duration: '5 Days', elevation: '5,200m' }
   },
   {
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1782839037/WhatsApp_Image_2026-06-29_at_3.27.59_PM_1_dmcdyq.jpg',
     color: '#e8a060',
     meta: { duration: '3 Days', elevation: '1,800m' }
   }
@@ -8032,7 +8006,7 @@ FILE: src\data\slides.json
     "eyebrow": "Agadir Dunes",
     "title": "Ride the Desert",
     "subtitle": "Experience the thrill of Quad biking across the golden sands of Morocco.",
-    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80",
+    "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839436/WhatsApp_Image_2026-06-29_at_3.27.53_PM_3_evngol.jpg",
     "video": null,
     "accentColor": "#c9a87c",
     "blobColors": ["#c9a87c", "#2dd4bf", "rgba(255,255,255,0.3)"],
@@ -8044,8 +8018,8 @@ FILE: src\data\slides.json
     "eyebrow": "Taghazout Bay",
     "title": "Ocean & Horse",
     "subtitle": "Ride along the pristine Atlantic beaches at golden hour.",
-    "image": "https://images.unsplash.com/photo-1599320010497-f6bdff962340?w=1600&q=80",
-    "video": null,
+    "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839029/WhatsApp_Image_2026-06-29_at_3.27.59_PM_2_xbs5qd.jpg",
+    "video": "https://res.cloudinary.com/nczftcee/video/upload/v1782839122/WhatsApp_Video_2026-06-29_at_3.27.58_PM_ona9gk.mp4",
     "accentColor": "#7fb5d0",
     "blobColors": ["#7fb5d0", "#2dd4bf", "rgba(255,255,255,0.3)"],
     "ctaExplore": "/services",
@@ -8056,19 +8030,31 @@ FILE: src\data\slides.json
     "eyebrow": "Sunset Safari",
     "title": "Dunes & Beyond",
     "subtitle": "Conquer the rugged terrain with our premium Buggy off-road experience.",
-    "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1600&q=80",
+    "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg",
     "video": null,
     "accentColor": "#e8915a",
     "blobColors": ["#e8915a", "#c9a87c", "rgba(255,255,255,0.3)"],
     "ctaExplore": "/trips",
     "ctaBook": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Buggy!"
   },
-  {
+{
     "id": 4,
     "eyebrow": "Atlas Trek",
     "title": "Mountain Escape",
     "subtitle": "Discover the hidden valleys and Berber villages of the High Atlas.",
-    "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80",
+    "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839089/WhatsApp_Image_2026-06-29_at_3.27.58_PM_1_tjbkkq.jpg",
+    "video": "https://res.cloudinary.com/nczftcee/video/upload/v1782844720/0630_2_sbezrb.mp4",
+    "accentColor": "#6abf69",
+    "blobColors": ["#6abf69", "#7fb5d0", "rgba(255,255,255,0.3)"],
+    "ctaExplore": "/trips",
+    "ctaBook": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Atlas!"
+  },
+  {
+    "id": 5,
+    "eyebrow": "Atlas Trek",
+    "title": "Mountain Escape",
+    "subtitle": "Discover the hidden valleys and Berber villages of the High Atlas.",
+    "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg",
     "video": null,
     "accentColor": "#6abf69",
     "blobColors": ["#6abf69", "#7fb5d0", "rgba(255,255,255,0.3)"],
@@ -8168,18 +8154,18 @@ FILE: src\data\gallery\en.json
   "title": "Our Gallery",
   "subtitle": "A visual journey through our most memorable adventures",
   "images": [
-    { "id": 1, "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80", "label": "Taghazout Sunset", "size": "wide", "category": "desert" },
-    { "id": 2, "url": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=1600&q=80", "label": "Golden Dunes", "size": "tall", "category": "desert" },
-    { "id": 3, "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80", "label": "Paradise Beach", "size": "square", "category": "beach" },
-    { "id": 4, "url": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1600&q=80", "label": "Desert Horizon", "size": "tall", "category": "desert" },
-    { "id": 5, "url": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80", "label": "Atlas Peaks", "size": "wide", "category": "mountains" },
-    { "id": 6, "url": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1600&q=80", "label": "Berber Village", "size": "square", "category": "culture" },
-    { "id": 7, "url": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80", "label": "Mountain Valley", "size": "large", "category": "mountains" },
-    { "id": 8, "url": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=1600&q=80", "label": "Coastal Escape", "size": "square", "category": "beach" },
-    { "id": 9, "url": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80", "label": "Summit View", "size": "tall", "category": "mountains" },
-    { "id": 10, "url": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=80", "label": "Cultural Journey", "size": "wide", "category": "culture" },
-    { "id": 11, "url": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=1600&q=80", "label": "Sahara Nights", "size": "square", "category": "desert" },
-    { "id": 12, "url": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=1600&q=80", "label": "Ocean Bliss", "size": "large", "category": "beach" }
+    { "id": 1, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", "urlLg": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80", "label": "Taghazout Sunset", "size": "wide", "category": "desert" },
+    { "id": 2, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", "urlLg": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=1600&q=80", "label": "Golden Dunes", "size": "tall", "category": "desert" },
+    { "id": 3, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", "urlLg": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80", "label": "Paradise Beach", "size": "square", "category": "beach" },
+    { "id": 4, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", "urlLg": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1600&q=80", "label": "Desert Horizon", "size": "tall", "category": "desert" },
+    { "id": 5, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", "urlLg": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80", "label": "Atlas Peaks", "size": "wide", "category": "mountains" },
+    { "id": 6, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", "urlLg": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1600&q=80", "label": "Berber Village", "size": "square", "category": "culture" },
+    { "id": 7, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", "urlLg": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80", "label": "Mountain Valley", "size": "large", "category": "mountains" },
+    { "id": 8, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", "urlLg": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=1600&q=80", "label": "Coastal Escape", "size": "square", "category": "beach" },
+    { "id": 9, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "urlLg": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80", "label": "Summit View", "size": "tall", "category": "mountains" },
+    { "id": 10, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", "urlLg": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=80", "label": "Cultural Journey", "size": "wide", "category": "culture" },
+    { "id": 11, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", "urlLg": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=1600&q=80", "label": "Sahara Nights", "size": "square", "category": "desert" },
+    { "id": 12, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", "urlLg": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=1600&q=80", "label": "Ocean Bliss", "size": "large", "category": "beach" }
   ],
   "categories": [
     { "id": "all", "label": "All" },
@@ -8309,7 +8295,7 @@ FILE: src\data\services\en.json
       "id": "cooking",
       "name": "Cooking Masterclass",
       "description": "An exclusive culinary journey through the flavours of Morocco. Visit the vibrant Souk to handpick fresh vegetables and spices, then learn the ancestral art of Tagine and Couscous alongside a traditional chef. Savour your creations with dessert and mint tea at the Kasbat Souss artisan complex â€” surrounded by 100% handmade Amazigh crafts.",
-      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839028/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_jkbvqv.jpg",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20the%20Cooking%20Masterclass",
       "price": 350,
@@ -8321,7 +8307,7 @@ FILE: src\data\services\en.json
       "id": "quad",
       "name": "Quad Biking",
       "description": "Feel the raw adrenaline as you tear across the golden desert dunes. This 2-hour off-road expedition puts you in control â€” wind in your face, sun on your back, and endless horizons ahead. Transport included.",
-      "image": "https://images.unsplash.com/photo-1539786747937-59bf46e47b08?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838994/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_xvxsrf.jpg",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Quad%20Biking",
       "price": 350,
@@ -8333,7 +8319,7 @@ FILE: src\data\services\en.json
       "id": "buggy",
       "name": "Buggy Off-Road",
       "description": "Conquer the desert in a brand-new, powerful buggy. 2 hours of pure off-road exhilaration across majestic sand dunes and spectacular desert trails. Adrenaline meets breathtaking scenery. Transport included.",
-      "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20the%20Buggy%20Off-Road",
       "price": 600,
@@ -8345,7 +8331,7 @@ FILE: src\data\services\en.json
       "id": "horse",
       "name": "Horse Riding",
       "description": "Ride like the free Amazigh souls through the mystical Aghroud forests and across the legendary Souss River. Capture golden-hour photos, then savour mint tea and traditional sweets at the Kasbat Souss. Perfect for beginners and experienced riders alike.",
-      "image": "https://images.unsplash.com/photo-1546195643-70f48f9c5b83?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Horse%20Riding",
       "price": 180,
@@ -8357,7 +8343,7 @@ FILE: src\data\services\en.json
       "id": "camel",
       "name": "Camel Trekking",
       "description": "A magical desert journey at a gentle pace. Traverse the ancient Aghroud forest trails, photograph the shimmering Souss River, and arrive at Kasbat Souss for mint tea and traditional sweets. Comfortable, unforgettable, and steeped in Amazigh heritage.",
-      "image": "https://images.unsplash.com/photo-1577538928304-4f5f4a9ae289?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Camel%20Trekking",
       "price": 180,
@@ -8505,7 +8491,7 @@ FILE: src\data\stats\en.json
       "key": "trips",
       "value": 500,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg",
       "color": "#c9a87c",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -8514,7 +8500,7 @@ FILE: src\data\stats\en.json
       "key": "clients",
       "value": 3000,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg",
       "color": "#7fb5d0",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -8523,7 +8509,7 @@ FILE: src\data\stats\en.json
       "key": "years",
       "value": 10,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839043/WhatsApp_Image_2026-06-29_at_3.27.53_PM_1_uoptxv.jpg",
       "color": "#d4a373",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -8532,7 +8518,7 @@ FILE: src\data\stats\en.json
       "key": "destinations",
       "value": 5,
       "suffix": "",
-      "image": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782845437/40f1c7d1-7c38-4087-b2d1-e59322322d92_ntrzfd.png",
       "color": "#6b8c7c",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     }
@@ -8774,7 +8760,7 @@ FILE: src\data\trips\en.json
       "id": 1,
       "name": "Grand Circuit du Nord",
       "description": "Explore the Rif mountains and pristine Mediterranean beaches.",
-      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838964/WhatsApp_Image_2026-06-29_at_3.27.52_PM_1_uhytq1.jpg",
       "price": 2990,
       "duration": "3 Days",
       "places": 8,
@@ -8786,7 +8772,7 @@ FILE: src\data\trips\en.json
       "id": 2,
       "name": "Desert Expedition",
       "description": "5 days of 4x4 adventures across the golden Sahara dunes.",
-      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg",
       "price": 4500,
       "duration": "5 Days",
       "places": 12,
@@ -8798,7 +8784,7 @@ FILE: src\data\trips\en.json
       "id": 3,
       "name": "Taghazout Sunset Ride",
       "description": "Horse ride along the Atlantic at golden hour â€” unforgettable views.",
-      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782845437/40f1c7d1-7c38-4087-b2d1-e59322322d92_ntrzfd.png",
       "price": 1200,
       "duration": "Half Day",
       "places": 6,
@@ -8810,7 +8796,7 @@ FILE: src\data\trips\en.json
       "id": 4,
       "name": "Atlas Valley Trek",
       "description": "Journey through ancient Berber villages and lush valleys.",
-      "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg",
       "price": 3500,
       "duration": "4 Days",
       "places": 10,
