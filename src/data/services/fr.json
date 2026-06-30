@@ -11,7 +11,8 @@
       "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Quad",
       "price": 450,
       "duration": "2 heures",
-      "category": "desert"
+      "category": "desert",
+      "tags": ["Meilleure Vente", "Adrénaline"]
     },
     {
       "id": "buggy",
@@ -22,7 +23,8 @@
       "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Buggy",
       "price": 550,
       "duration": "3 heures",
-      "category": "desert"
+      "category": "desert",
+      "tags": ["Limité", "Premium"]
     },
     {
       "id": "horse",
@@ -33,7 +35,8 @@
       "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Équitation",
       "price": 350,
       "duration": "2 heures",
-      "category": "beach"
+      "category": "beach",
+      "tags": ["Couples", "Romantique"]
     },
     {
       "id": "camel",
@@ -44,7 +47,8 @@
       "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Chameau",
       "price": 250,
       "duration": "1.5 heures",
-      "category": "desert"
+      "category": "desert",
+      "tags": ["Famille", "Culturel"]
     }
   ]
 }

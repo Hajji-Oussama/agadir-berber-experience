@@ -3,46 +3,58 @@
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <span class="eyebrow">{{ $t('trips.eyebrow') }}</span>
-        <h2 class="section-title">{{ data.title }}</h2>
-        <p class="section-subtitle">{{ data.subtitle }}</p>
+        <h2 class="section-title">{{ data?.title }}</h2>
+        <p class="section-subtitle">{{ data?.subtitle }}</p>
       </div>
 
-      <div class="trips-grid">
+      <div class="trips-grid" v-if="data?.trips?.length">
         <div
           v-for="(trip, index) in data.trips"
           :key="trip.id"
+          :data-id="trip.id"
           class="trip-card-wrapper"
           data-aos="zoom-in-up"
           :data-aos-delay="index * 150"
+          @click="handleBooking(trip)"
+          role="button"
+          tabindex="0"
+          @keydown.enter="handleBooking(trip)"
         >
           <div
             class="trip-card"
+            :class="{ 'trip-card--loaded': loadedImages.has(trip.id) }"
             :style="{ '--accent-color': trip.accentColor || 'var(--accent)' }"
           >
             <div class="trip-image" :style="{ backgroundImage: `url(${trip.image})` }">
+              <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(trip.id) }"></div>
+
+              <div class="trip-tags" v-if="trip.tags?.length">
+                <span
+                  v-for="tag in trip.tags"
+                  :key="tag"
+                  class="trip-tag"
+                  :class="tagClass(tag)"
+                >{{ tag }}</span>
+              </div>
+
               <div class="trip-badge">
-                <span class="places">{{ trip.places }} {{ $t('trips.places') }}</span>
+                <span class="places"><i class="fas fa-users"></i> {{ trip.places }} {{ $t('trips.places') }}</span>
                 <span class="duration"><i class="far fa-clock"></i> {{ trip.duration }}</span>
               </div>
               <div class="trip-overlay-gradient"></div>
             </div>
 
-            <div class="trip-info">
+            <div class="trip-info" @click.stop>
               <h3>{{ trip.name }}</h3>
               <p>{{ trip.description }}</p>
               <div class="trip-meta">
                 <span class="price">{{ $t('trips.price', { price: trip.price }) }}</span>
                 <span class="rating">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               </div>
-              <a
-                :href="trip.bookLink"
-                target="_blank"
-                class="btn-book"
-                rel="noopener"
-              >
+              <button class="btn-book" @click.stop="handleBooking(trip)">
                 {{ $t('trips.book') }}
                 <span class="arrow">&rarr;</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -52,12 +64,39 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, watch, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getTrips } from '@/data'
+import { fetchTrips } from '@/services/api'
+import { useBooking } from '@/composables/useBooking'
 
 const { locale } = useI18n()
-const data = computed(() => getTrips(locale.value))
+const data = ref(null)
+const loadedImages = reactive(new Set())
+const { handleBooking } = useBooking()
+
+watch(locale, async (newLocale) => {
+  data.value = await fetchTrips(newLocale)
+}, { immediate: true })
+
+function tagClass(tag) {
+  const lower = tag.toLowerCase()
+  if (lower.includes('best') || lower.includes('vente') || lower.includes('مبيع')) return 'tag--best-seller'
+  if (lower.includes('limit') || lower.includes('limited') || lower.includes('محدود')) return 'tag--limited'
+  if (lower.includes('couple') || lower.includes('romantic') || lower.includes('رومانسي') || lower.includes('أزواج')) return 'tag--couples'
+  if (lower.includes('premium') || lower.includes('ممتاز')) return 'tag--premium'
+  if (lower.includes('cultural') || lower.includes('culturel') || lower.includes('ثقافي')) return 'tag--cultural'
+  return ''
+}
+
+watch(data, (val) => {
+  if (!val?.trips) return
+  val.trips.forEach(item => {
+    const img = new Image()
+    img.onload = () => { loadedImages.add(item.id) }
+    img.onerror = () => { loadedImages.add(item.id) }
+    img.src = item.image
+  })
+})
 </script>
 
 <style scoped lang="scss">
@@ -118,6 +157,25 @@ const data = computed(() => getTrips(locale.value))
 
   .trip-card-wrapper {
     perspective: 1000px;
+    cursor: pointer;
+    outline: none;
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 24px;
+    }
+
+    &.card-highlight .trip-card {
+      animation: cardHighlight 1.5s ease;
+    }
+  }
+
+  @keyframes cardHighlight {
+    0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); border-color: rgba(255, 255, 255, 0.08); }
+    25% { box-shadow: 0 0 40px rgba(201, 168, 124, 0.6); border-color: var(--accent-color, var(--accent)); transform: translateY(-5px); }
+    50% { box-shadow: 0 0 30px rgba(201, 168, 124, 0.4); border-color: var(--accent-color, var(--accent)); }
+    75% { box-shadow: 0 0 40px rgba(201, 168, 124, 0.6); border-color: var(--accent-color, var(--accent)); transform: translateY(-3px); }
   }
 
   .trip-card {
@@ -132,6 +190,10 @@ const data = computed(() => getTrips(locale.value))
     height: 100%;
     display: flex;
     flex-direction: column;
+
+    &.card-highlight {
+      animation: cardHighlight 1.5s ease;
+    }
 
     @media (hover: hover) {
       transition: transform 0.3s ease, box-shadow 0.5s ease;
@@ -156,6 +218,7 @@ const data = computed(() => getTrips(locale.value))
       background-position: center;
       overflow: hidden;
       flex-shrink: 0;
+      background-color: rgba(255, 255, 255, 0.03);
 
       @media (min-width: 768px) { height: 260px; }
 
@@ -166,6 +229,65 @@ const data = computed(() => getTrips(locale.value))
         background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
         opacity: 0.6;
         transition: opacity 0.4s ease;
+        z-index: 1;
+      }
+
+      .trip-tags {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+
+      .trip-tag {
+        padding: 0.2rem 0.7rem;
+        border-radius: 30px;
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+        &.tag--best-seller {
+          background: rgba(201, 168, 124, 0.85);
+          color: #000;
+          border-color: var(--accent);
+        }
+
+        &.tag--limited {
+          background: rgba(231, 76, 60, 0.8);
+          color: #fff;
+          border-color: rgba(231, 76, 60, 0.3);
+        }
+
+        &.tag--couples {
+          background: rgba(232, 126, 174, 0.75);
+          color: #fff;
+          border-color: rgba(232, 126, 174, 0.3);
+        }
+
+        &.tag--premium {
+          background: rgba(255, 215, 0, 0.75);
+          color: #000;
+          border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        &.tag--cultural {
+          background: rgba(52, 152, 219, 0.75);
+          color: #fff;
+          border-color: rgba(52, 152, 219, 0.3);
+        }
+
+        &:not(.tag--best-seller):not(.tag--limited):not(.tag--couples):not(.tag--premium):not(.tag--cultural) {
+          background: rgba(255, 255, 255, 0.12);
+          color: var(--text-primary);
+        }
       }
 
       .trip-badge {
@@ -182,10 +304,12 @@ const data = computed(() => getTrips(locale.value))
           color: #000;
           padding: 0.3rem 1rem;
           border-radius: 30px;
-          font-size: 0.75rem;
+          font-size: 0.7rem;
           font-weight: 600;
           backdrop-filter: blur(4px);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+          i { margin-right: 0.3rem; font-size: 0.65rem; }
         }
 
         .duration {
@@ -239,14 +363,15 @@ const data = computed(() => getTrips(locale.value))
       .trip-meta {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: baseline;
         margin-bottom: 1.2rem;
 
         .price {
           font-family: var(--font-heading);
-          font-size: 1.4rem;
+          font-size: 1.8rem;
           color: var(--accent-color, var(--accent));
-          font-weight: 400;
+          font-weight: 600;
+          line-height: 1.1;
         }
 
         .rating {

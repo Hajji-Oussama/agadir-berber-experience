@@ -18,7 +18,8 @@
         :class="{ 'slider-wrapper--active': isHovering }"
         @mouseenter="onHover(true)"
         @mouseleave="onHover(false)"
-        @touchstart.prevent="onTouchStart"
+        @touchstart="onTouchStart"
+        @touchmove="onTouchMove"
         @touchend="onTouchEnd"
         ref="sliderWrapper"
         tabindex="0"
@@ -106,11 +107,15 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getTestimonials } from '@/data'
+import { fetchTestimonials } from '@/services/api'
 
 const { locale } = useI18n()
 
-const data = computed(() => getTestimonials(locale.value))
+const data = ref(null)
+
+watch(locale, async (newLocale) => {
+  data.value = await fetchTestimonials(newLocale)
+}, { immediate: true })
 
 const sliderWrapper = ref(null)
 const current = ref(0)
@@ -118,6 +123,9 @@ const isPaused = ref(false)
 const isHovering = ref(false)
 const wrapperHeight = ref(400)
 const touchStartX = ref(0)
+const touchStartY = ref(0)
+const touchDeltaX = ref(0)
+const isHorizontalSwipe = ref(false)
 let intervalId = null
 let resumeTimeoutId = null
 
@@ -125,7 +133,7 @@ const isRTL = computed(() => locale.value === 'ar')
 
 const transitionName = computed(() => (isRTL.value ? 'slide-fade-rtl' : 'slide-fade'))
 
-const reviews = computed(() => data.value.reviews || [])
+const reviews = computed(() => data.value?.reviews || [])
 
 function startAutoplay() {
   stopAutoplay()
@@ -168,18 +176,41 @@ function onHover(active) {
 function onTouchStart(e) {
   isPaused.value = true
   touchStartX.value = e.touches[0].clientX
+  touchStartY.value = e.touches[0].clientY
+  touchDeltaX.value = 0
+  isHorizontalSwipe.value = false
+}
+
+function onTouchMove(e) {
+  const touch = e.touches[0]
+  const dx = touch.clientX - touchStartX.value
+  const dy = touch.clientY - touchStartY.value
+
+  if (!isHorizontalSwipe.value) {
+    if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+      isHorizontalSwipe.value = true
+    }
+  }
+
+  if (isHorizontalSwipe.value) {
+    e.preventDefault()
+  }
+
+  touchDeltaX.value = dx
 }
 
 function onTouchEnd(e) {
   const diff = e.changedTouches[0].clientX - touchStartX.value
   const threshold = 50
 
-  if (isRTL.value) {
-    if (diff > threshold) next()
-    else if (diff < -threshold) prev()
-  } else {
-    if (diff > threshold) prev()
-    else if (diff < -threshold) next()
+  if (isHorizontalSwipe.value && Math.abs(diff) > threshold) {
+    if (isRTL.value) {
+      if (diff > threshold) next()
+      else if (diff < -threshold) prev()
+    } else {
+      if (diff > threshold) prev()
+      else if (diff < -threshold) next()
+    }
   }
 
   if (resumeTimeoutId) clearTimeout(resumeTimeoutId)

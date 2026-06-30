@@ -13,9 +13,9 @@
         <p class="section-subtitle">{{ $t('gallery.subtitle') }}</p>
       </div>
 
-      <div class="filters" v-if="categories.length > 1" data-aos="fade-up">
+      <div class="filters" v-if="availableCategories.length > 1" data-aos="fade-up">
         <button
-          v-for="cat in categories"
+          v-for="cat in availableCategories"
           :key="cat.id"
           :class="['filter-btn', { active: activeFilter === cat.id }]"
           @click="activeFilter = cat.id"
@@ -41,11 +41,14 @@
           @keydown.enter="openLightbox(index)"
         >
           <div class="gallery-card">
+            <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(img.id) }"></div>
             <img
               :src="img.url"
               :alt="img.label"
               loading="lazy"
               class="gallery-img"
+              @load="onImageLoad(img.id)"
+              @error="onImageLoad(img.id)"
             />
             <div class="gallery-overlay">
               <div class="overlay-content">
@@ -92,12 +95,22 @@
             <i class="fas fa-chevron-left"></i>
           </button>
 
-          <div class="lightbox-image-wrapper" :key="lightbox.currentIndex">
-            <img
-              :src="filteredImages[lightbox.currentIndex].urlLg"
-              :alt="filteredImages[lightbox.currentIndex].label"
-              class="lightbox-image"
-            />
+          <div
+            class="lightbox-image-wrapper"
+            :key="lightbox.currentIndex"
+            ref="imageWrapperRef"
+            @touchstart="onPinchStart"
+            @touchmove="onPinchMove"
+            @touchend="onPinchEnd"
+          >
+            <div class="lightbox-image-container" :style="pinchStyle">
+              <img
+                :src="filteredImages[lightbox.currentIndex].urlLg"
+                :alt="filteredImages[lightbox.currentIndex].label"
+                class="lightbox-image"
+                draggable="false"
+              />
+            </div>
           </div>
 
           <button
@@ -124,21 +137,59 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onBeforeUnmount, nextTick } from 'vue'
+import { ref, computed, watch, onBeforeUnmount, nextTick, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getGallery } from '@/data'
+import { fetchGallery } from '@/services/api'
+import { pushGuard, popGuard } from '@/composables/useBackGuard'
 
 const { locale } = useI18n()
-const data = computed(() => getGallery(locale.value))
+const data = ref(null)
+
+watch(locale, async (newLocale) => {
+  data.value = await fetchGallery(newLocale)
+}, { immediate: true })
 
 const activeFilter = ref('all')
 const lightboxEl = ref(null)
+const imageWrapperRef = ref(null)
+const loadedImages = reactive(new Set())
 
-const categories = computed(() => data.value.categories || [])
+const pinch = ref({
+  scale: 1,
+  baseScale: 1,
+  lastDist: 0
+})
+
+const pinchStyle = computed(() => ({
+  transform: `scale(${pinch.value.scale})`,
+  transition: pinch.value.lastDist === 0 ? 'transform 0.2s ease' : 'none'
+}))
+
+let pinchStartDist = 0
+let pinchBaseScale = 1
+
+const categories = computed(() => data.value?.categories || [])
+
+const categoryImageCount = computed(() => {
+  const counts = {}
+  const images = data.value?.images || []
+  images.forEach(img => {
+    counts[img.category] = (counts[img.category] || 0) + 1
+  })
+  return counts
+})
+
+const availableCategories = computed(() => {
+  return categories.value.filter(cat => {
+    if (cat.id === 'all') return true
+    return (categoryImageCount.value[cat.id] || 0) > 0
+  })
+})
 
 const filteredImages = computed(() => {
-  if (activeFilter.value === 'all') return data.value.images || []
-  return (data.value.images || []).filter(img => img.category === activeFilter.value)
+  const images = data.value?.images || []
+  if (activeFilter.value === 'all') return images
+  return images.filter(img => img.category === activeFilter.value)
 })
 
 const lightbox = ref({
@@ -146,18 +197,62 @@ const lightbox = ref({
   currentIndex: 0
 })
 
+function onImageLoad(id) {
+  loadedImages.add(id)
+}
+
+function getDistance(touches) {
+  const dx = touches[0].clientX - touches[1].clientX
+  const dy = touches[0].clientY - touches[1].clientY
+  return Math.sqrt(dx * dx + dy * dy)
+}
+
+function onPinchStart(e) {
+  if (e.touches.length === 2) {
+    pinchStartDist = getDistance(e.touches)
+    pinchBaseScale = pinch.value.scale
+  }
+}
+
+function onPinchMove(e) {
+  if (e.touches.length === 2) {
+    e.preventDefault()
+    const dist = getDistance(e.touches)
+    const ratio = dist / pinchStartDist
+    let newScale = pinchBaseScale * ratio
+    newScale = Math.max(0.5, Math.min(6, newScale))
+    pinch.value.scale = newScale
+    pinch.value.lastDist = dist
+  }
+}
+
+function onPinchEnd() {
+  pinchStartDist = 0
+  pinchBaseScale = 1
+  if (pinch.value.scale < 1) {
+    pinch.value.scale = 1
+  } else if (pinch.value.scale > 5) {
+    pinch.value.scale = 5
+  }
+  pinch.value.lastDist = 0
+}
+
 function openLightbox(index) {
   if (!filteredImages.value.length) return
+  pinch.value.scale = 1
   lightbox.value.isOpen = true
   lightbox.value.currentIndex = index
   document.body.style.overflow = 'hidden'
   document.addEventListener('keydown', onKeydown)
+  pushGuard(closeLightbox)
   nextTick(() => {
     lightboxEl.value?.focus()
   })
 }
 
 function closeLightbox() {
+  popGuard(closeLightbox)
+  pinch.value.scale = 1
   lightbox.value.isOpen = false
   document.body.style.overflow = ''
   document.removeEventListener('keydown', onKeydown)
@@ -386,18 +481,9 @@ onBeforeUnmount(() => {
       }
 
       @media (max-width: 480px) {
-        &--wide {
-          grid-column: span 2;
-        }
-
-        &--tall {
-          grid-row: span 2;
-        }
-
-        &--large {
-          grid-column: span 2;
-          grid-row: span 2;
-        }
+        &--wide { grid-column: span 2; }
+        &--tall { grid-row: span 2; }
+        &--large { grid-column: span 2; grid-row: span 2; }
       }
 
       .gallery-card {
@@ -406,7 +492,7 @@ onBeforeUnmount(() => {
         position: relative;
         overflow: hidden;
         border-radius: 20px;
-        background: rgba(255, 255, 255, 0.04);
+        background: rgba(255, 255, 255, 0.03);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         border: 1px solid rgba(255, 255, 255, 0.06);
@@ -418,6 +504,8 @@ onBeforeUnmount(() => {
           object-fit: cover;
           transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
           will-change: transform;
+          position: relative;
+          z-index: 1;
         }
 
         .gallery-overlay {
@@ -432,6 +520,7 @@ onBeforeUnmount(() => {
           opacity: 0;
           transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
           transform: translateY(8px);
+          z-index: 2;
 
           .overlay-content {
             display: flex;
@@ -442,11 +531,7 @@ onBeforeUnmount(() => {
             transform: translateY(10px);
             transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 
-            i {
-              font-size: 1.3rem;
-              opacity: 0.8;
-            }
-
+            i { font-size: 1.3rem; opacity: 0.8; }
             span {
               font-family: var(--font-heading);
               font-size: 0.9rem;
@@ -459,18 +544,9 @@ onBeforeUnmount(() => {
 
         @media (hover: hover) {
           &:hover {
-            .gallery-img {
-              transform: scale(1.1);
-            }
-
-            .gallery-overlay {
-              opacity: 1;
-              transform: translateY(0);
-
-              .overlay-content {
-                transform: translateY(0);
-              }
-            }
+            .gallery-img { transform: scale(1.1); }
+            .gallery-overlay { opacity: 1; transform: translateY(0); }
+            .overlay-content { transform: translateY(0); }
           }
         }
       }
@@ -565,28 +641,19 @@ onBeforeUnmount(() => {
       transform: translateY(-50%) scale(1.1);
     }
 
-    &:disabled {
-      opacity: 0.2;
-      cursor: default;
-    }
+    &:disabled { opacity: 0.2; cursor: default; }
 
     &--prev { left: 1.5rem; }
     &--next { right: 1.5rem; }
 
     @media (max-width: 768px) {
-      width: 42px;
-      height: 42px;
-      font-size: 1rem;
-
+      width: 42px; height: 42px; font-size: 1rem;
       &--prev { left: 0.75rem; }
       &--next { right: 0.75rem; }
     }
 
     @media (max-width: 480px) {
-      width: 36px;
-      height: 36px;
-      font-size: 0.85rem;
-
+      width: 36px; height: 36px; font-size: 0.85rem;
       &--prev { left: 0.5rem; }
       &--next { right: 0.5rem; }
     }
@@ -600,27 +667,32 @@ onBeforeUnmount(() => {
     justify-content: center;
     max-width: 90vw;
     max-height: 85vh;
+    overflow: hidden;
     animation: lightboxEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    touch-action: pan-y pinch-zoom;
 
     @keyframes lightboxEnter {
-      from {
-        opacity: 0;
-        transform: scale(0.92);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
     }
 
-    .lightbox-image {
-      max-width: 90vw;
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
-      user-select: none;
-      -webkit-user-drag: none;
+    .lightbox-image-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      will-change: transform;
+      transform-origin: center center;
+
+      .lightbox-image {
+        max-width: 90vw;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+        user-select: none;
+        -webkit-user-drag: none;
+        pointer-events: none;
+      }
     }
   }
 
@@ -655,48 +727,26 @@ onBeforeUnmount(() => {
     }
 
     @media (max-width: 768px) {
-      bottom: 1rem;
-      padding: 0.5rem 1rem;
-      gap: 1rem;
-
-      .lightbox-label {
-        font-size: 0.75rem;
-      }
-
-      .lightbox-counter {
-        font-size: 0.7rem;
-      }
+      bottom: 1rem; padding: 0.5rem 1rem; gap: 1rem;
+      .lightbox-label { font-size: 0.75rem; }
+      .lightbox-counter { font-size: 0.7rem; }
     }
 
     @media (max-width: 480px) {
-      flex-direction: column;
-      gap: 0.3rem;
-      bottom: 0.75rem;
-      padding: 0.4rem 0.8rem;
+      flex-direction: column; gap: 0.3rem; bottom: 0.75rem; padding: 0.4rem 0.8rem;
     }
   }
 }
 
 .lightbox-enter-active {
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-
-  .lightbox-bg {
-    transition: opacity 0.4s ease;
-  }
+  .lightbox-bg { transition: opacity 0.4s ease; }
 }
 
 .lightbox-enter-from {
   opacity: 0;
-
-  .lightbox-bg {
-    opacity: 0;
-  }
-
-  .lightbox-image-wrapper {
-    animation: none;
-    opacity: 0;
-    transform: scale(0.9);
-  }
+  .lightbox-bg { opacity: 0; }
+  .lightbox-image-wrapper { animation: none; opacity: 0; transform: scale(0.9); }
 }
 
 .lightbox-leave-active {
@@ -705,41 +755,23 @@ onBeforeUnmount(() => {
 
 .lightbox-leave-to {
   opacity: 0;
-
-  .lightbox-image-wrapper {
-    opacity: 0;
-    transform: scale(0.92);
-  }
+  .lightbox-image-wrapper { opacity: 0; transform: scale(0.92); }
 }
 
 [dir="rtl"] {
   .lightbox-nav {
-    &--prev {
-      left: auto;
-      right: 1.5rem;
-
+    &--prev { left: auto; right: 1.5rem;
       @media (max-width: 768px) { right: 0.75rem; }
       @media (max-width: 480px) { right: 0.5rem; }
     }
-
-    &--next {
-      right: auto;
-      left: 1.5rem;
-
+    &--next { right: auto; left: 1.5rem;
       @media (max-width: 768px) { left: 0.75rem; }
       @media (max-width: 480px) { left: 0.5rem; }
     }
   }
-
-  .lightbox-close {
-    right: auto;
-    left: 1.5rem;
-
+  .lightbox-close { right: auto; left: 1.5rem;
     @media (max-width: 768px) { left: 1rem; }
   }
-
-  .lightbox-bottom {
-    flex-direction: row-reverse;
-  }
+  .lightbox-bottom { flex-direction: row-reverse; }
 }
 </style>

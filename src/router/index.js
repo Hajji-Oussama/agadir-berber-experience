@@ -1,5 +1,5 @@
-// FILE: src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
+import { popLastGuard, hasGuards } from '@/composables/useBackGuard'
 
 const routes = [
   {
@@ -16,11 +16,6 @@ const routes = [
     path: '/trips',
     name: 'Trips',
     component: () => import('@/views/TripsPage.vue')
-  },
-  {
-    path: '/contact',
-    name: 'Contact',
-    component: () => import('@/views/ContactPage.vue')
   }
 ]
 
@@ -34,6 +29,14 @@ const router = createRouter({
       return { top: 0 }
     }
   }
+})
+
+router.beforeEach((to, from) => {
+  if (hasGuards()) {
+    popLastGuard()
+    return false
+  }
+  return true
 })
 
 export default router

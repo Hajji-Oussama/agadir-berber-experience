@@ -7,30 +7,33 @@
   },
   "hero": {
     "title": "Where the desert meets the ocean",
-    "subtitle": "Experience the best Quad, Buggy, and Horse riding in Agadir & Taghazout Bay.",
+    "subtitle": "Experience authentic Amazigh adventures: Cooking classes, Quad, Buggy, Horse & Camel riding in Agadir.",
     "cta": "Explore Now"
   },
   "services": {
     "eyebrow": "Our Adventures",
     "title": "Choose Your Experience",
-    "subtitle": "From adrenaline-pumping dunes to peaceful sunset rides \u2014 find your perfect adventure.",
+    "subtitle": "From cooking classes to thrilling dune adventures — find your perfect Amazigh experience.",
+    "currency": "Dhs",
     "learn_more": "Explore",
     "book_now": "Book Now",
+    "cooking": "Cooking Class",
     "quad": "Quad Biking",
     "buggy": "Buggy Off-Road",
     "horse": "Horse Riding",
     "camel": "Camel Trekking",
-    "quad_desc": "Feel the adrenaline across the golden dunes.",
-    "buggy_desc": "Conquer the rugged terrain in style.",
-    "horse_desc": "A peaceful sunset ride along the coast.",
-    "camel_desc": "Experience the traditional way of desert travel."
+    "cooking_desc": "From market to table: Learn to prepare authentic Tagine or Couscous with our expert chef.",
+    "quad_desc": "2 hours of pure adrenaline across the golden desert dunes. Transport included.",
+    "buggy_desc": "2-hour thrilling adventure in modern buggys through spectacular desert trails.",
+    "horse_desc": "Magical 2-hour journey through Aghroud forests and Souss River with mint tea.",
+    "camel_desc": "Traditional 2-hour desert experience through breathtaking dunes and forests."
   },
   "trips": {
     "eyebrow": "Curated Journeys",
     "title": "Discover Your Next Adventure",
-    "subtitle": "Handpicked experiences designed to inspire. From desert dunes to ocean horizons.",
+    "subtitle": "Handpicked experiences designed to inspire. From desert dunes to cultural immersion.",
     "places": "places left",
-    "price": "From {price} Dhs",
+    "price": "From {price} MAD",
     "book": "Book Now"
   },
   "testimonials": {
@@ -56,15 +59,15 @@
     "title": "The Road to Adventure",
     "subtitle": "Each step brings you closer to the experience of a lifetime.",
     "step1": "Arrival & Welcome",
-    "step1_desc": "Land in Agadir. Meet your guide and fellow adventurers. Settle into your accommodation and prepare for the journey ahead.",
-    "step2": "Acclimatization",
-    "step2_desc": "Explore the local culture. Short hikes to adjust to the terrain. Enjoy traditional Moroccan cuisine and hospitality.",
-    "step3": "The Expedition Begins",
-    "step3_desc": "Depart into the wilderness. Cross stunning landscapes, visit hidden oases, and experience the thrill of off-road adventure.",
-    "step4": "Summit & Celebration",
-    "step4_desc": "Reach the pinnacle of your journey. Celebrate with your team, share stories, and capture unforgettable memories.",
-    "step5": "Return & Reflection",
-    "step5_desc": "Journey back with a heart full of experiences. A farewell dinner and the promise of returning for more adventures."
+    "step1_desc": "Meet us at Agadir Berbère Expérience. Meet your guide and prepare for the adventure ahead.",
+    "step2": "Choose Your Activity",
+    "step2_desc": "Select from our range of authentic experiences: cooking classes, quad biking, buggy rides, horse or camel trekking.",
+    "step3": "The Adventure Begins",
+    "step3_desc": "Explore the stunning landscapes of Agadir, from golden dunes to the scenic Aghroud forests and Souss River.",
+    "step4": "Cultural Immersion",
+    "step4_desc": "Experience authentic Amazigh hospitality with traditional mint tea and sweets at Kasbat Souss Artisan Complex.",
+    "step5": "Return with Memories",
+    "step5_desc": "Journey back with unforgettable memories and the promise of returning for more adventures."
   },
   "gallery": {
     "eyebrow": "Visual Stories",
@@ -83,21 +86,30 @@
     }
   },
   "footer": {
-    "brand": "Bourmi Trip",
-    "description": "Best adventures in Agadir with professional guides. Quad, Buggy, Horse & Camel rides.",
+    "brand": "Agadir Berbère Expérience",
+    "description": "Authentic Amazigh adventures in Agadir with professional guides. Cooking classes, Quad, Buggy, Horse & Camel rides.",
     "rights": "All rights reserved.",
     "quick_links": "Quick Links",
     "contact_us": "Contact",
-    "phone": "+212 667 858 620",
-    "email": "info@bourmitrip.ma",
-    "location": "Agadir, Taghazout Bay, Morocco"
+    "phone": "+212 615-884469",
+    "email": "info@agadirberbereexperience.com",
+    "location": "Centre, Agadir 80000, Morocco",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "terms_body": "These Terms of Service govern your use of the Agadir Berbère Expérience website and services. By accessing or using our platform, you agree to be bound by these terms. All content, including images, text, and branding, is the property of Agadir Berbère Expérience. You may not reproduce, distribute, or modify any content without prior written consent. We reserve the right to update these terms at any time. Continued use of the site after changes constitutes acceptance of the new terms.",
+    "privacy_body": "Agadir Berbère Expérience respects your privacy. We collect only the personal information you voluntarily provide, such as your name, email address, and phone number, for the purpose of responding to inquiries and booking requests. We do not sell, trade, or share your personal data with third parties except as required by law. We implement reasonable security measures to protect your information. By using our website, you consent to the collection and use of your information as described in this policy."
   },
   "contact": {
+    "eyebrow": "Get in Touch",
     "title": "Contact Us",
+    "subtitle": "We'd love to hear from you. Reach out and let's plan your next Amazigh adventure.",
     "phone": "Phone",
     "email": "Email",
     "location": "Location",
     "find_us": "Find Us"
+  },
+  "whatsapp": {
+    "tooltip": "Need help booking?"
   },
   "home": {
     "title": "Home"

@@ -7,6 +7,7 @@
     <TimelineSection />
     <TestimonialsSection />
     <GallerySection />
+    <ContactSection />
   </main>
 </template>
 
@@ -18,4 +19,5 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection.vue'
 import StatsSection from '@/components/sections/StatsSection.vue'
 import TimelineSection from '@/components/sections/TimelineSection.vue'
 import GallerySection from '@/components/sections/GallerySection.vue'
+import ContactSection from '@/components/sections/ContactSection.vue'
 </script>

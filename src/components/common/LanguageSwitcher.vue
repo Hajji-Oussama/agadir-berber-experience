@@ -4,7 +4,7 @@
       v-for="lang in languages"
       :key="lang.code"
       :class="['lang-btn', { active: locale === lang.code }]"
-      @click="switchLang(lang.code)"
+      @click="switchLanguage(lang.code)"
       :aria-label="lang.label"
     >
       {{ lang.flag }}
@@ -13,23 +13,15 @@
 </template>
 
 <script setup>
-import { useI18n } from 'vue-i18n'
+import { useLanguage } from '@/composables/useLanguage'
 
-const { locale } = useI18n()
+const { locale, switchLanguage } = useLanguage()
 
 const languages = [
   { code: 'en', flag: '🇬🇧', label: 'English' },
   { code: 'fr', flag: '🇫🇷', label: 'Français' },
   { code: 'ar', flag: '🇸🇦', label: 'العربية' }
 ]
-
-function switchLang(code) {
-  locale.value = code
-  localStorage.setItem('locale', code)
-  document.documentElement.dir = code === 'ar' ? 'rtl' : 'ltr'
-  document.documentElement.lang = code
-  window.dispatchEvent(new Event('resize'))
-}
 </script>
 
 <style scoped lang="scss">

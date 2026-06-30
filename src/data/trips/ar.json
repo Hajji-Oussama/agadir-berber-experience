@@ -11,7 +11,8 @@
       "duration": "3 أيام",
       "places": 8,
       "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20الجولة%20الكبرى",
-      "accentColor": "#c9a87c"
+      "accentColor": "#c9a87c",
+      "tags": ["الأكثر مبيعاً", "متعدد الأيام"]
     },
     {
       "id": 2,
@@ -22,7 +23,8 @@
       "duration": "5 أيام",
       "places": 12,
       "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20رحلة%20الصحراء",
-      "accentColor": "#d4a373"
+      "accentColor": "#d4a373",
+      "tags": ["ممتاز", "محدود"]
     },
     {
       "id": 3,
@@ -33,7 +35,8 @@
       "duration": "نصف يوم",
       "places": 6,
       "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20جولة%20غروب%20تغازوت",
-      "accentColor": "#7fb5d0"
+      "accentColor": "#7fb5d0",
+      "tags": ["للأزواج", "رومانسي"]
     },
     {
       "id": 4,
@@ -44,7 +47,8 @@
       "duration": "4 أيام",
       "places": 10,
       "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20وادي%20الأطلس",
-      "accentColor": "#6b8c7c"
+      "accentColor": "#6b8c7c",
+      "tags": ["ثقافي", "مشي"]
     }
   ]
 }

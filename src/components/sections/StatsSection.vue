@@ -59,12 +59,16 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getStats } from '@/data'
+import { fetchStats } from '@/services/api'
 
 const { locale } = useI18n()
-const data = computed(() => getStats(locale.value))
+const data = ref(null)
+
+watch(locale, async (newLocale) => {
+  data.value = await fetchStats(newLocale)
+}, { immediate: true })
 
 const sectionRef = ref(null)
 const counterRefs = ref([])
@@ -72,7 +76,7 @@ const hoveredIndex = ref(-1)
 const videoErrors = ref([])
 let observer = null
 
-const stats = computed(() => data.value.stats || [])
+const stats = computed(() => data.value?.stats || [])
 
 function handleVideoError(index) {
   videoErrors.value[index] = true

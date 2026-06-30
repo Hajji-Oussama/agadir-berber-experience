@@ -11,7 +11,8 @@
       "duration": "3 Days",
       "places": 8,
       "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Grand%20Circuit",
-      "accentColor": "#c9a87c"
+      "accentColor": "#c9a87c",
+      "tags": ["Best Seller", "Multi-Day"]
     },
     {
       "id": 2,
@@ -22,7 +23,8 @@
       "duration": "5 Days",
       "places": 12,
       "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Desert%20Expedition",
-      "accentColor": "#d4a373"
+      "accentColor": "#d4a373",
+      "tags": ["Premium", "Limited"]
     },
     {
       "id": 3,
@@ -33,7 +35,8 @@
       "duration": "Half Day",
       "places": 6,
       "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Sunset%20Ride",
-      "accentColor": "#7fb5d0"
+      "accentColor": "#7fb5d0",
+      "tags": ["Couples", "Romantic"]
     },
     {
       "id": 4,
@@ -44,7 +47,8 @@
       "duration": "4 Days",
       "places": 10,
       "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Atlas%20Valley%20Trek",
-      "accentColor": "#6b8c7c"
+      "accentColor": "#6b8c7c",
+      "tags": ["Cultural", "Hiking"]
     }
   ]
 }

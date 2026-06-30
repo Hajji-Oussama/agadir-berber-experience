@@ -11,7 +11,8 @@
       "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20كواد",
       "price": 450,
       "duration": "ساعتان",
-      "category": "desert"
+      "category": "desert",
+      "tags": ["الأكثر مبيعاً", "إثارة"]
     },
     {
       "id": "buggy",
@@ -22,7 +23,8 @@
       "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20بوجي",
       "price": 550,
       "duration": "3 ساعات",
-      "category": "desert"
+      "category": "desert",
+      "tags": ["محدود", "ممتاز"]
     },
     {
       "id": "horse",
@@ -33,7 +35,8 @@
       "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20ركوب%20الخيل",
       "price": 350,
       "duration": "ساعتان",
-      "category": "beach"
+      "category": "beach",
+      "tags": ["للأزواج", "رومانسي"]
     },
     {
       "id": "camel",
@@ -44,7 +47,8 @@
       "bookLink": "https://wa.me/+212667858620?text=أريد%20حجز%20جمل",
       "price": 250,
       "duration": "1.5 ساعة",
-      "category": "desert"
+      "category": "desert",
+      "tags": ["عائلي", "ثقافي"]
     }
   ]
 }

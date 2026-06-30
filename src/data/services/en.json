@@ -11,7 +11,8 @@
       "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Quad%20Biking",
       "price": 450,
       "duration": "2 hours",
-      "category": "desert"
+      "category": "desert",
+      "tags": ["Best Seller", "Adrenaline"]
     },
     {
       "id": "buggy",
@@ -22,7 +23,8 @@
       "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Buggy",
       "price": 550,
       "duration": "3 hours",
-      "category": "desert"
+      "category": "desert",
+      "tags": ["Limited", "Premium"]
     },
     {
       "id": "horse",
@@ -33,7 +35,8 @@
       "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Horse%20Riding",
       "price": 350,
       "duration": "2 hours",
-      "category": "beach"
+      "category": "beach",
+      "tags": ["Couples", "Romantic"]
     },
     {
       "id": "camel",
@@ -44,7 +47,8 @@
       "bookLink": "https://wa.me/+212667858620?text=I%20want%20to%20book%20Camel%20Trekking",
       "price": 250,
       "duration": "1.5 hours",
-      "category": "desert"
+      "category": "desert",
+      "tags": ["Family", "Cultural"]
     }
   ]
 }

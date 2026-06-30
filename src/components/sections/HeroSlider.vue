@@ -1,6 +1,6 @@
 <template>
   <section class="hero-slider section-anchor" id="home" ref="sliderRef">
-    <div class="slides-track" ref="trackRef" @touchstart.prevent="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
+      <div class="slides-track" ref="trackRef" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
       <article
         v-for="(slide, index) in slides"
         :key="slide.id"
@@ -27,8 +27,8 @@
           <h1 class="slide-title">{{ slide.title }}</h1>
           <p class="slide-subtitle">{{ slide.subtitle }}</p>
           <div class="slide-actions">
-            <router-link :to="slide.ctaExplore" class="btn btn--primary">Explore</router-link>
-            <a :href="slide.ctaBook" target="_blank" rel="noopener" class="btn btn--ghost">Book Now</a>
+            <a href="#trips" class="btn btn--primary" @click.prevent="scrollToSection('trips')">Explore</a>
+            <button class="btn btn--ghost" @click="handleBooking(slide)">Book Now</button>
           </div>
         </div>
       </article>
@@ -74,6 +74,8 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import slidesData from '@/data/slides.json'
+import { useBooking } from '@/composables/useBooking'
+const { handleBooking } = useBooking()
 
 const slides = slidesData
 
@@ -91,7 +93,10 @@ const mediaRefs = ref([])
 let progressTimer = null
 let autoPlayTimer = null
 let touchStartX = 0
+let touchStartY = 0
 let touchDeltaX = 0
+let touchDeltaY = 0
+let isHorizontalSwipe = false
 
 const currentSlide = computed(() => slides[currentIndex.value])
 
@@ -115,6 +120,17 @@ function applyAccentColor(slide) {
 function hexToRgb(hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '201, 168, 124'
+}
+
+function scrollToSection(id) {
+  if (id === 'home') {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    return
+  }
+  const el = document.getElementById(id)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 }
 
 function goTo(index) {
@@ -167,18 +183,34 @@ function scrollThumbHorizontally(index) {
 
 function onTouchStart(e) {
   isTouchDevice.value = true
-  touchStartX = e.touches[0].clientX
+  const touch = e.touches[0]
+  touchStartX = touch.clientX
+  touchStartY = touch.clientY
   touchDeltaX = 0
+  touchDeltaY = 0
+  isHorizontalSwipe = false
   clearInterval(autoPlayTimer)
   clearInterval(progressTimer)
 }
 
 function onTouchMove(e) {
-  touchDeltaX = e.touches[0].clientX - touchStartX
+  const touch = e.touches[0]
+  touchDeltaX = touch.clientX - touchStartX
+  touchDeltaY = touch.clientY - touchStartY
+
+  if (!isHorizontalSwipe) {
+    if (Math.abs(touchDeltaX) > 10 && Math.abs(touchDeltaX) > Math.abs(touchDeltaY)) {
+      isHorizontalSwipe = true
+    }
+  }
+
+  if (isHorizontalSwipe) {
+    e.preventDefault()
+  }
 }
 
 function onTouchEnd() {
-  if (Math.abs(touchDeltaX) > 50) {
+  if (isHorizontalSwipe && Math.abs(touchDeltaX) > 50) {
     if (touchDeltaX < 0) next()
     else prev()
   }
@@ -456,7 +488,7 @@ onBeforeUnmount(() => {
   }
 
   @media (max-width: 768px) {
-    justify-content: flex-start;
+    justify-content: center;
     padding: 0 1rem 0.5rem;
     scroll-snap-type: x mandatory;
 

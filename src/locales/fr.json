@@ -14,6 +14,7 @@
     "eyebrow": "Nos Aventures",
     "title": "Choisissez Votre Exp\u00e9rience",
     "subtitle": "Des dunes pleines d'adr\u00e9naline aux balades paisibles au coucher du soleil \u2014 trouvez votre aventure parfaite.",
+    "currency": "Dhs",
     "learn_more": "Explorer",
     "book_now": "Réserver",
     "quad": "Quad",
@@ -90,14 +91,23 @@
     "contact_us": "Contact",
     "phone": "+212 667 858 620",
     "email": "info@bourmitrip.ma",
-    "location": "Agadir, Taghazout Bay, Maroc"
+    "location": "Agadir, Taghazout Bay, Maroc",
+    "terms": "Conditions d'Utilisation",
+    "privacy": "Politique de Confidentialité",
+    "terms_body": "Ces conditions d'utilisation régissent votre utilisation du site Web et des services de Bourmi Trip. En accédant ou en utilisant notre plateforme, vous acceptez d'être lié par ces conditions. Tout le contenu, y compris les images, le texte et la marque, est la propriété de Bourmi Trip. Vous ne pouvez pas reproduire, distribuer ou modifier tout contenu sans consentement écrit préalable. Nous nous réservons le droit de mettre à jour ces conditions à tout moment. L'utilisation continue du site après les modifications constitue une acceptation des nouvelles conditions.",
+    "privacy_body": "Bourmi Trip respecte votre vie privée. Nous collectons uniquement les informations personnelles que vous fournissez volontairement, telles que votre nom, votre adresse e-mail et votre numéro de téléphone, dans le but de répondre aux demandes de renseignements et de réservation. Nous ne vendons, n'échangeons ni ne partageons vos données personnelles avec des tiers, sauf si la loi l'exige. Nous mettons en œuvre des mesures de sécurité raisonnables pour protéger vos informations. En utilisant notre site Web, vous consentez à la collecte et à l'utilisation de vos informations telles que décrites dans cette politique."
   },
   "contact": {
+    "eyebrow": "Prenez Contact",
     "title": "Contactez-nous",
+    "subtitle": "Nous serions ravis de vous entendre. Contactez-nous pour planifier votre prochaine aventure.",
     "phone": "Téléphone",
     "email": "Email",
     "location": "Adresse",
     "find_us": "Nous trouver"
+  },
+  "whatsapp": {
+    "tooltip": "Besoin d'aide pour réserver ?"
   },
   "home": {
     "title": "Accueil"
