@@ -1,15 +1,27 @@
 {
   "title": "Choisissez Votre Expérience",
-  "subtitle": "Des dunes pleines d'adrénaline aux balades paisibles au coucher du soleil — trouvez votre aventure parfaite.",
+  "subtitle": "D'un cours de cuisine d'exception aux dunes vibrantes d'adrénaline — découvrez l'âme d'Agadir.",
   "services": [
+    {
+      "id": "cooking",
+      "name": "Cours de Cuisine",
+      "description": "Un voyage culinaire exclusif au cœur des saveurs du Maroc. Parcourez le Souk animé pour choisir vous-même légumes et épices fraîches, puis apprenez l'art ancestral du Tagine et du Couscous aux côtés d'un chef traditionnel. Dégustez vos créations avec un dessert et un thé à la menthe au complexe artisanal Kasbat Souss — entouré d'objets 100% faits main par les artisans Amazighs.",
+      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20le%20Cours%20de%20Cuisine",
+      "price": 350,
+      "duration": "4-5 heures",
+      "category": "cultural",
+      "tags": ["Meilleure Vente", "Culturel"]
+    },
     {
       "id": "quad",
       "name": "Quad Biking",
-      "description": "Ressentez l'adrénaline à travers les dunes dorées.",
+      "description": "Ressentez l'adrénaline brute en traversant les dunes dorées du désert. Cette expédition de 2 heures vous met aux commandes — le vent dans les cheveux, le soleil sur la peau et des horizons infinis devant vous. Transport inclus.",
       "image": "https://images.unsplash.com/photo-1539786747937-59bf46e47b08?w=1200&q=80",
       "link": "/services",
-      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Quad",
-      "price": 450,
+      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20Quad%20Biking",
+      "price": 350,
       "duration": "2 heures",
       "category": "desert",
       "tags": ["Meilleure Vente", "Adrénaline"]
@@ -17,36 +29,36 @@
     {
       "id": "buggy",
       "name": "Buggy Off-Road",
-      "description": "Conquérez le terrain accidenté avec style.",
+      "description": "Dominez le désert à bord d'un buggy neuf et puissant. 2 heures de pur off-road à travers les majestueuses dunes de sable et les pistes spectaculaires du désert. L'adrénaline rencontre des paysages à couper le souffle. Transport inclus.",
       "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80",
       "link": "/services",
-      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Buggy",
-      "price": 550,
-      "duration": "3 heures",
+      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20Buggy%20Off-Road",
+      "price": 600,
+      "duration": "2 heures",
       "category": "desert",
-      "tags": ["Limité", "Premium"]
+      "tags": ["Premium", "Limité"]
     },
     {
       "id": "horse",
-      "name": "Équitation",
-      "description": "Une balade paisible au coucher du soleil le long de la côte.",
+      "name": "Balade à Cheval",
+      "description": "Chevauchez comme les âmes libres Amazighs à travers les mystérieuses forêts d'Aghroud et l'emblématique rivière Souss. Immortalisez l'heure dorée en photos, puis savourez un thé à la menthe et des pâtisseries traditionnelles à Kasbat Souss. Convient aux débutants comme aux cavaliers expérimentés.",
       "image": "https://images.unsplash.com/photo-1546195643-70f48f9c5b83?w=1200&q=80",
       "link": "/services",
-      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Équitation",
-      "price": 350,
+      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20une%20Balade%20%C3%A0%20Cheval",
+      "price": 180,
       "duration": "2 heures",
       "category": "beach",
       "tags": ["Couples", "Romantique"]
     },
     {
       "id": "camel",
-      "name": "Balade à dos de chameau",
-      "description": "Vivez la façon traditionnelle de voyager dans le désert.",
+      "name": "Balade à dos de Chameau",
+      "description": "Un voyage magique dans le désert à un rythme doux. Parcourez les anciennes pistes de la forêt d'Aghroud, photographiez la rivière Souss scintillante, et terminez par un thé à la menthe et des douceurs traditionnelles à Kasbat Souss. Confortable, inoubliable, imprégné de l'héritage Amazigh.",
       "image": "https://images.unsplash.com/photo-1577538928304-4f5f4a9ae289?w=1200&q=80",
       "link": "/services",
-      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20réserver%20Chameau",
-      "price": 250,
-      "duration": "1.5 heures",
+      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20Balade%20%C3%A0%20dos%20de%20Chameau",
+      "price": 180,
+      "duration": "2 heures",
       "category": "desert",
       "tags": ["Famille", "Culturel"]
     }

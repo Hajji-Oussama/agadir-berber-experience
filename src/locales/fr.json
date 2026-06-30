@@ -7,24 +7,26 @@
   },
   "hero": {
     "title": "Où le désert rencontre l'océan",
-    "subtitle": "Découvrez les meilleures expériences Quad, Buggy et Équitation à Agadir et Taghazout.",
+    "subtitle": "Cours de Cuisine, Quad, Buggy, Balade à Cheval et à dos de Chameau. Des aventures Amazighs authentiques et haut de gamme à Agadir — guidées par des locaux qui vivent le désert.",
     "cta": "Explorer"
   },
   "services": {
     "eyebrow": "Nos Aventures",
-    "title": "Choisissez Votre Exp\u00e9rience",
-    "subtitle": "Des dunes pleines d'adr\u00e9naline aux balades paisibles au coucher du soleil \u2014 trouvez votre aventure parfaite.",
+    "title": "Choisissez Votre Expérience",
+    "subtitle": "D'un cours de cuisine d'exception aux dunes vibrantes d'adrénaline — découvrez l'âme d'Agadir.",
     "currency": "Dhs",
     "learn_more": "Explorer",
     "book_now": "Réserver",
+    "cooking": "Cours de Cuisine",
     "quad": "Quad",
     "buggy": "Buggy",
-    "horse": "Équitation",
-    "camel": "Balade à dos de chameau",
-    "quad_desc": "Ressentez l'adrénaline à travers les dunes dorées.",
-    "buggy_desc": "Conquérez le terrain accidenté avec style.",
-    "horse_desc": "Une balade paisible au coucher du soleil le long de la côte.",
-    "camel_desc": "Vivez la façon traditionnelle de voyager dans le désert."
+    "horse": "Balade à Cheval",
+    "camel": "Balade à dos de Chameau",
+    "cooking_desc": "Choisissez vos ingrédients au Souk, puis maîtrisez le Tagine et le Couscous avec un chef traditionnel. Dessert & thé à la menthe à Kasbat Souss.",
+    "quad_desc": "2 heures d'adrénaline pure à travers les dunes dorées du désert. Transport inclus.",
+    "buggy_desc": "2 heures à conquérir les dunes majestueuses en buggy neuf et puissant. Transport inclus.",
+    "horse_desc": "Chevauchez à travers les forêts d'Aghroud et la rivière Souss à l'heure dorée. Thé à la menthe & douceurs inclus.",
+    "camel_desc": "Un voyage doux de 2 heures sur les anciennes pistes forestières avec thé à la menthe à Kasbat Souss."
   },
   "trips": {
     "eyebrow": "Voyages Sélectionnés",
@@ -84,18 +86,18 @@
     }
   },
   "footer": {
-    "brand": "Bourmi Trip",
-    "description": "Meilleures aventures à Agadir avec des guides professionnels. Quad, Buggy, Cheval & Chameau.",
+    "brand": "Agadir Berbère Expérience",
+    "description": "Des aventures Amazighs authentiques à Agadir avec des guides professionnels. Cours de Cuisine, Quad, Buggy, Balade à Cheval et à dos de Chameau — une sélection signée par des locaux qui vivent le désert.",
     "rights": "Tous droits réservés.",
     "quick_links": "Liens rapides",
     "contact_us": "Contact",
-    "phone": "+212 667 858 620",
-    "email": "info@bourmitrip.ma",
-    "location": "Agadir, Taghazout Bay, Maroc",
+    "phone": "+212 615-884469",
+    "email": "info@agadirberbereexperience.com",
+    "location": "Agadir 80000, Maroc",
     "terms": "Conditions d'Utilisation",
     "privacy": "Politique de Confidentialité",
-    "terms_body": "Ces conditions d'utilisation régissent votre utilisation du site Web et des services de Bourmi Trip. En accédant ou en utilisant notre plateforme, vous acceptez d'être lié par ces conditions. Tout le contenu, y compris les images, le texte et la marque, est la propriété de Bourmi Trip. Vous ne pouvez pas reproduire, distribuer ou modifier tout contenu sans consentement écrit préalable. Nous nous réservons le droit de mettre à jour ces conditions à tout moment. L'utilisation continue du site après les modifications constitue une acceptation des nouvelles conditions.",
-    "privacy_body": "Bourmi Trip respecte votre vie privée. Nous collectons uniquement les informations personnelles que vous fournissez volontairement, telles que votre nom, votre adresse e-mail et votre numéro de téléphone, dans le but de répondre aux demandes de renseignements et de réservation. Nous ne vendons, n'échangeons ni ne partageons vos données personnelles avec des tiers, sauf si la loi l'exige. Nous mettons en œuvre des mesures de sécurité raisonnables pour protéger vos informations. En utilisant notre site Web, vous consentez à la collecte et à l'utilisation de vos informations telles que décrites dans cette politique."
+    "terms_body": "Ces conditions d'utilisation régissent votre utilisation du site Web et des services d'Agadir Berbère Expérience. En accédant ou en utilisant notre plateforme, vous acceptez d'être lié par ces conditions. Tout le contenu, y compris les images, le texte et la marque, est la propriété d'Agadir Berbère Expérience. Vous ne pouvez pas reproduire, distribuer ou modifier tout contenu sans consentement écrit préalable. Nous nous réservons le droit de mettre à jour ces conditions à tout moment. L'utilisation continue du site après les modifications constitue une acceptation des nouvelles conditions.",
+    "privacy_body": "Agadir Berbère Expérience respecte votre vie privée. Nous collectons uniquement les informations personnelles que vous fournissez volontairement, telles que votre nom, votre adresse e-mail et votre numéro de téléphone, dans le but de répondre aux demandes de renseignements et de réservation. Nous ne vendons, n'échangeons ni ne partageons vos données personnelles avec des tiers, sauf si la loi l'exige. Nous mettons en œuvre des mesures de sécurité raisonnables pour protéger vos informations. En utilisant notre site Web, vous consentez à la collecte et à l'utilisation de vos informations telles que décrites dans cette politique."
   },
   "contact": {
     "eyebrow": "Prenez Contact",

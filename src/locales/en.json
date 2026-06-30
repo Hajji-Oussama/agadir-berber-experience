@@ -7,26 +7,26 @@
   },
   "hero": {
     "title": "Where the desert meets the ocean",
-    "subtitle": "Experience authentic Amazigh adventures: Cooking classes, Quad, Buggy, Horse & Camel riding in Agadir.",
+    "subtitle": "Cooking Masterclass, Quad, Buggy, Horse & Camel rides. Premium authentic Amazigh adventures in Agadir — guided by locals who live the desert.",
     "cta": "Explore Now"
   },
   "services": {
     "eyebrow": "Our Adventures",
     "title": "Choose Your Experience",
-    "subtitle": "From cooking classes to thrilling dune adventures — find your perfect Amazigh experience.",
+    "subtitle": "From an authentic culinary masterclass to adrenaline-fueled dunes — discover the soul of Agadir.",
     "currency": "Dhs",
     "learn_more": "Explore",
     "book_now": "Book Now",
-    "cooking": "Cooking Class",
+    "cooking": "Cooking Masterclass",
     "quad": "Quad Biking",
     "buggy": "Buggy Off-Road",
     "horse": "Horse Riding",
     "camel": "Camel Trekking",
-    "cooking_desc": "From market to table: Learn to prepare authentic Tagine or Couscous with our expert chef.",
-    "quad_desc": "2 hours of pure adrenaline across the golden desert dunes. Transport included.",
-    "buggy_desc": "2-hour thrilling adventure in modern buggys through spectacular desert trails.",
-    "horse_desc": "Magical 2-hour journey through Aghroud forests and Souss River with mint tea.",
-    "camel_desc": "Traditional 2-hour desert experience through breathtaking dunes and forests."
+    "cooking_desc": "Handpick fresh ingredients at the Souk, then master Tagine and Couscous with a traditional chef. Dessert & mint tea included at Kasbat Souss.",
+    "quad_desc": "2 hours of raw adrenaline across the golden desert dunes. Transport included.",
+    "buggy_desc": "2 hours conquering majestic dunes in a brand-new powerful buggy. Transport included.",
+    "horse_desc": "Ride through Aghroud forests and the Souss River at golden hour. Mint tea & sweets included.",
+    "camel_desc": "A gentle 2-hour journey through ancient forest trails with mint tea at Kasbat Souss."
   },
   "trips": {
     "eyebrow": "Curated Journeys",
@@ -87,7 +87,7 @@
   },
   "footer": {
     "brand": "Agadir Berbère Expérience",
-    "description": "Authentic Amazigh adventures in Agadir with professional guides. Cooking classes, Quad, Buggy, Horse & Camel rides.",
+    "description": "Authentic Amazigh adventures in Agadir with professional guides. Cooking Masterclass, Quad, Buggy, Horse & Camel rides — curated by locals who live the desert.",
     "rights": "All rights reserved.",
     "quick_links": "Quick Links",
     "contact_us": "Contact",
