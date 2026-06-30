@@ -36,18 +36,18 @@
             >{{ tag }}</span>
           </div>
 
-          <div class="service-overlay" @click.stop>
+          <div class="service-overlay" :class="{ expanded: expandedService === service.id }" @click.stop>
             <h3>{{ service.name }}</h3>
-            <p>{{ service.description }}</p>
+            <p :class="{ clamped: expandedService !== service.id }">{{ service.description }}</p>
             <div class="service-meta">
               <span class="price">{{ service.price }} <small>{{ $t('services.currency') }}</small></span>
               <span class="duration"><i class="far fa-clock"></i> {{ service.duration }}</span>
             </div>
             <div class="service-actions">
-              <router-link :to="service.link" class="service-link" @click.stop>
-                {{ $t('services.learn_more') }}
-                <span class="arrow">&rarr;</span>
-              </router-link>
+              <button class="service-link" @click.stop="toggleExpand(service.id)">
+                {{ expandedService === service.id ? $t('services.less') : $t('services.more') }}
+                <i class="fas fa-chevron-down" :class="{ rotated: expandedService === service.id }"></i>
+              </button>
               <button class="btn-book" @click.stop="handleBooking(service)">
                 {{ $t('services.book_now') }}
               </button>
@@ -69,6 +69,11 @@ const { locale } = useI18n()
 const data = ref(null)
 const loadedImages = reactive(new Set())
 const { handleBooking } = useBooking()
+const expandedService = ref(null)
+
+function toggleExpand(id) {
+  expandedService.value = expandedService.value === id ? null : id
+}
 
 watch(locale, async (newLocale) => {
   data.value = await fetchServices(newLocale)
@@ -258,6 +263,19 @@ watch(data, (val) => {
     -webkit-backdrop-filter: blur(8px);
     transition: all 0.5s ease;
     z-index: 2;
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar { width: 3px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    &.expanded {
+      max-height: 400px;
+      background: rgba(10, 14, 26, 0.75);
+      backdrop-filter: blur(16px);
+    }
 
     @media (min-width: 768px) { padding: 2.5rem 2.5rem 3rem; }
 
@@ -276,6 +294,13 @@ watch(data, (val) => {
       line-height: 1.5;
       margin-bottom: 0.75rem;
       max-width: 90%;
+
+      &.clamped {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
     }
 
     .service-meta {
@@ -321,10 +346,20 @@ watch(data, (val) => {
         font-size: 0.85rem;
         font-weight: 500;
         letter-spacing: 0.05em;
-        text-decoration: none;
+        background: transparent;
+        border: none;
+        cursor: pointer;
         transition: all 0.3s ease;
+        font-family: inherit;
 
-        .arrow { display: inline-block; transition: transform 0.3s ease; }
+        i {
+          font-size: 0.7rem;
+          transition: transform 0.3s ease;
+
+          &.rotated {
+            transform: rotate(180deg);
+          }
+        }
       }
 
       .btn-book {
