@@ -25,7 +25,7 @@
         >
           <a
             href="#services"
-            @click.prevent="scrollToSection('services')"
+            @click.prevent="toggleDropdown('services')"
             :class="{ active: activeSection === 'services' }"
           >
             {{ $t('nav.services') }}
@@ -63,7 +63,7 @@
         >
           <a
             href="#trips"
-            @click.prevent="scrollToSection('trips')"
+            @click.prevent="toggleDropdown('trips')"
             :class="{ active: activeSection === 'trips' }"
           >
             {{ $t('nav.trips') }}
@@ -272,6 +272,9 @@ const scrollToSection = (id) => {
 
 const scrollToCard = (sectionId, cardId) => {
   activeDropdown.value = null
+  mobileOpen.value = false
+  mobileDropdown.value = null
+  popGuard(closeMobileMenuFn)
 
   const scrollToCardInner = () => {
     const selector = `[data-id="${cardId}"]`
@@ -340,6 +343,15 @@ const closeDropdown = (name) => {
       activeDropdown.value = null
     }
   }, 200)
+}
+
+const toggleDropdown = (name) => {
+  if (activeDropdown.value === name) {
+    activeDropdown.value = null
+  } else {
+    Object.values(dropdownTimers).forEach(clearTimeout)
+    activeDropdown.value = name
+  }
 }
 
 const handleKeydown = (e) => {
@@ -615,7 +627,7 @@ onBeforeUnmount(() => {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
+    z-index: 0;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
   }
@@ -625,6 +637,7 @@ onBeforeUnmount(() => {
     top: calc(100% + 1rem);
     right: 1rem;
     left: 1rem;
+    z-index: 1;
     padding: 2rem;
     display: flex;
     flex-direction: column;

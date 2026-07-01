@@ -2947,14 +2947,13 @@ FILE: src\components\layout\Header.vue
 <template>
   <header class="header glass-nav" :class="{ scrolled: isScrolled }" ref="headerRef">
     <div class="container header-inner">
-      <router-link to="/" class="logo" @click="scrollToTop">
-        <span class="logo-full">Agadir <span>BerbÃ¨re</span></span>
-        <span class="logo-short">A.B.E</span>
-        <svg class="logo-svg" viewBox="0 0 40 40" aria-hidden="true">
-          <path d="M20 2L4 12v16l16 10 16-10V12L20 2z" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
-          <path d="M12 20l5 5 11-11" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      
+
+        <router-link to="/" class="logo" @click="scrollToTop">
+        <img src="https://res.cloudinary.com/nczftcee/image/upload/v1782908638/Design_sans_titre_1_1_b82llb.png" alt="Agadir Berbere Experience" class="logo-image" />
+        <span class="logo-text">Agadir <span>BerbÃ¨re</span></span>
       </router-link>
+     
 
       <nav class="nav-links">
         <a
@@ -3360,55 +3359,7 @@ onBeforeUnmount(() => {
     overflow: hidden;
   }
 
-  .logo {
-    font-family: var(--font-heading);
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    color: var(--text-primary);
-    text-decoration: none;
-    white-space: nowrap;
-    transition: font-size 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    .logo-svg {
-      display: none;
-      width: 28px;
-      height: auto;
-      max-width: 100%;
-      flex-shrink: 1;
-    }
-
-    span {
-      color: var(--accent);
-    }
-
-    .logo-short {
-      display: none;
-    }
-
-    @media (max-width: 500px) {
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-
-      .logo-full, span:not(.logo-svg) {
-        display: none;
-      }
-      .logo-svg {
-        display: block;
-      }
-      .logo-short {
-        display: none;
-      }
-    }
-
-    @media (max-width: 400px) {
-      font-size: 0.8rem;
-    }
-  }
-
+ 
   .nav-links {
     display: flex;
     gap: 1.2rem;
@@ -3806,6 +3757,52 @@ onBeforeUnmount(() => {
     display: block;
   }
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    .logo-image {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0; /* ÙŠÙ…Ù†Ø¹ Ø§Ù†ÙƒÙ…Ø§Ø´ Ø§Ù„ØµÙˆØ±Ø© ÙˆØ®Ø±ÙˆØ¬Ù‡Ø§ Ø¹Ù† Ø§Ù„Ø³ÙŠØ·Ø±Ø© */
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+    }
+
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--text-primary);
+      white-space: nowrap;
+
+      span {
+        color: var(--accent);
+      }
+    }
+
+    /* Ø§Ù„ØªØ¬Ø§ÙˆØ¨ Ù…Ø¹ Ø´Ø§Ø´Ø§Øª Ø§Ù„ØªØ§Ø¨Ù„Øª */
+    @media (max-width: 768px) {
+      .logo-image { height: 36px; }
+      .logo-text { font-size: 1.1rem; }
+    }
+
+    /* Ø§Ù„ØªØ¬Ø§ÙˆØ¨ Ù…Ø¹ Ø´Ø§Ø´Ø§Øª Ø§Ù„Ù‡Ø§ØªÙ Ø§Ù„ØµØºÙŠØ±Ø© */
+    @media (max-width: 480px) {
+      gap: 0.4rem;
+      .logo-image { height: 30px; }
+      .logo-text { font-size: 0.95rem; }
+    }
+  }
 </style>
 
 
@@ -8122,18 +8119,102 @@ FILE: src\data\gallery\ar.json
   "title": "Ù…Ø¹Ø±Ø¶ Ø§Ù„ØµÙˆØ±",
   "subtitle": "Ø±Ø­Ù„Ø© Ø¨ØµØ±ÙŠØ© Ø¹Ø¨Ø± Ù…ØºØ§Ù…Ø±Ø§ØªÙ†Ø§ Ø§Ù„Ø£ÙƒØ«Ø± Ø¥Ø«Ø§Ø±Ø©",
   "images": [
-    { "id": 1, "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80", "label": "ØºØ±ÙˆØ¨ Ø§Ù„Ø´Ù…Ø³ ÙÙŠ ØªØºØ§Ø²ÙˆØª", "size": "wide", "category": "desert" },
-    { "id": 2, "url": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=1600&q=80", "label": "Ø§Ù„ÙƒØ«Ø¨Ø§Ù† Ø§Ù„Ø°Ù‡Ø¨ÙŠØ©", "size": "tall", "category": "desert" },
-    { "id": 3, "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80", "label": "Ø´Ø§Ø·Ø¦ Ø§Ù„Ø¬Ù†Ø©", "size": "square", "category": "beach" },
-    { "id": 4, "url": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1600&q=80", "label": "Ø£ÙÙ‚ Ø§Ù„ØµØ­Ø±Ø§Ø¡", "size": "tall", "category": "desert" },
-    { "id": 5, "url": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80", "label": "Ù‚Ù…Ù… Ø§Ù„Ø£Ø·Ù„Ø³", "size": "wide", "category": "mountains" },
-    { "id": 6, "url": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1600&q=80", "label": "Ù‚Ø±ÙŠØ© Ø¨Ø±Ø¨Ø±ÙŠØ©", "size": "square", "category": "culture" },
-    { "id": 7, "url": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80", "label": "ÙˆØ§Ø¯ÙŠ Ø§Ù„Ø¬Ø¨Ø§Ù„", "size": "large", "category": "mountains" },
-    { "id": 8, "url": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=1600&q=80", "label": "Ø§Ù„Ù‡Ø±ÙˆØ¨ Ø§Ù„Ø³Ø§Ø­Ù„ÙŠ", "size": "square", "category": "beach" },
-    { "id": 9, "url": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80", "label": "Ù…Ù†Ø¸Ø± Ø§Ù„Ù‚Ù…Ø©", "size": "tall", "category": "mountains" },
-    { "id": 10, "url": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=80", "label": "Ø±Ø­Ù„Ø© Ø«Ù‚Ø§ÙÙŠØ©", "size": "wide", "category": "culture" },
-    { "id": 11, "url": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=1600&q=80", "label": "Ù„ÙŠØ§Ù„ÙŠ Ø§Ù„ØµØ­Ø±Ø§Ø¡", "size": "square", "category": "desert" },
-    { "id": 12, "url": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=1600&q=80", "label": "Ø³Ø¹Ø§Ø¯Ø© Ø§Ù„Ù…Ø­ÙŠØ·", "size": "large", "category": "beach" }
+    { 
+      "id": 1, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", 
+      "label": "ØªØ¬Ø±Ø¨Ø© Ø§Ù„Ù…Ø®ÙŠÙ… Ø§Ù„Ø¨Ø±Ø¨Ø±ÙŠ", 
+      "size": "wide", 
+      "category": "culture" 
+    },
+    { 
+      "id": 2, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", 
+      "label": "Ø¯Ø±ÙˆØ³ Ø§Ù„Ø·Ù‡ÙŠ Ø§Ù„ØªÙ‚Ù„ÙŠØ¯ÙŠ", 
+      "size": "tall", 
+      "category": "culture" 
+    },
+    { 
+      "id": 3, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
+      "label": "ÙˆØ§Ø­Ø© ÙˆØ§Ø¯ÙŠ Ø§Ù„Ø¬Ù†Ø©", 
+      "size": "tall", 
+      "category": "beach" 
+    },
+    { 
+      "id": 4, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", 
+      "label": "Ø§Ù„Ø­Ø±Ù Ø§Ù„ÙØ®Ø§Ø±ÙŠØ© Ø§Ù„ØªÙ‚Ù„ÙŠØ¯ÙŠØ©", 
+      "size": "tall", 
+      "category": "culture" 
+    },
+    { 
+      "id": 5, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", 
+      "label": "Ø±Ø­Ù„Ø© Ø§Ù„Ø¬Ù…Ø§Ù„ ÙÙŠ Ø§Ù„ØµØ­Ø±Ø§Ø¡", 
+      "size": "wide", 
+      "category": "desert" 
+    },
+    { 
+      "id": 6, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", 
+      "label": "Ù…ØºØ§Ù…Ø±Ø© Ø§Ù„Ø¬Ù…Ø§Ù„ ÙÙŠ Ø§Ù„ØµØ­Ø±Ø§Ø¡", 
+      "size": "tall", 
+      "category": "desert" 
+    },
+    { 
+      "id": 7, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", 
+      "label": "Ø³ÙØ§Ø±ÙŠ Ø§Ù„Ø¯Ø±Ø§Ø¬Ø§Øª Ø§Ù„Ø±Ø¨Ø§Ø¹ÙŠØ©", 
+      "size": "large", 
+      "category": "desert" 
+    },
+    { 
+      "id": 8, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
+      "label": "Ø±Ø­Ù„Ø§Øª Ø¬Ø¨Ø§Ù„ Ø§Ù„Ø£Ø·Ù„Ø³", 
+      "size": "square", 
+      "category": "mountains" 
+    },
+    { 
+      "id": 9, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
+      "label": "Ù…ØºØ§Ù…Ø±Ø© Ø§Ù„ÙƒØ«Ø¨Ø§Ù† Ø§Ù„Ø±Ø¨Ø§Ø¹ÙŠØ©", 
+      "size": "large", 
+      "category": "desert" 
+    },
+    { 
+      "id": 10, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", 
+      "label": "Ø±ÙƒÙˆØ¨ Ø§Ù„Ø¬Ù…Ø§Ù„ Ø§Ù„Ø¨Ø±Ø¨Ø±ÙŠ Ø§Ù„ØªÙ‚Ù„ÙŠØ¯ÙŠ", 
+      "size": "tall", 
+      "category": "mountains" 
+    },
+    { 
+      "id": 11, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
+      "label": "Ø±ÙƒÙˆØ¨ Ø§Ù„Ø®ÙŠÙ„ Ø¹Ù„Ù‰ Ø§Ù„Ø´Ø§Ø·Ø¦", 
+      "size": "square", 
+      "category": "beach" 
+    },
+    { 
+      "id": 12, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", 
+      "label": "ØªØ¬Ø±Ø¨Ø© Ø§Ù„Ø·Ø§Ø¬ÙŠÙ† Ø§Ù„Ù…ØºØ±Ø¨ÙŠ", 
+      "size": "tall", 
+      "category": "culture" 
+    }
   ],
   "categories": [
     { "id": "all", "label": "Ø§Ù„ÙƒÙ„" },
@@ -8145,7 +8226,6 @@ FILE: src\data\gallery\ar.json
 }
 
 
-
 ========================================
 FILE: src\data\gallery\en.json
 ========================================
@@ -8154,18 +8234,102 @@ FILE: src\data\gallery\en.json
   "title": "Our Gallery",
   "subtitle": "A visual journey through our most memorable adventures",
   "images": [
-    { "id": 1, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", "urlLg": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80", "label": "Taghazout Sunset", "size": "wide", "category": "desert" },
-    { "id": 2, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", "urlLg": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=1600&q=80", "label": "Golden Dunes", "size": "tall", "category": "desert" },
-    { "id": 3, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", "urlLg": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80", "label": "Paradise Beach", "size": "square", "category": "beach" },
-    { "id": 4, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", "urlLg": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1600&q=80", "label": "Desert Horizon", "size": "tall", "category": "desert" },
-    { "id": 5, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", "urlLg": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80", "label": "Atlas Peaks", "size": "wide", "category": "mountains" },
-    { "id": 6, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", "urlLg": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1600&q=80", "label": "Berber Village", "size": "square", "category": "culture" },
-    { "id": 7, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", "urlLg": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80", "label": "Mountain Valley", "size": "large", "category": "mountains" },
-    { "id": 8, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", "urlLg": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=1600&q=80", "label": "Coastal Escape", "size": "square", "category": "beach" },
-    { "id": 9, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "urlLg": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80", "label": "Summit View", "size": "tall", "category": "mountains" },
-    { "id": 10, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", "urlLg": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=80", "label": "Cultural Journey", "size": "wide", "category": "culture" },
-    { "id": 11, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", "urlLg": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=1600&q=80", "label": "Sahara Nights", "size": "square", "category": "desert" },
-    { "id": 12, "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", "urlLg": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=1600&q=80", "label": "Ocean Bliss", "size": "large", "category": "beach" }
+    { 
+      "id": 1, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", 
+      "label": "Berber Camp Experience", 
+      "size": "wide", 
+      "category": "culture" 
+    },
+    { 
+      "id": 2, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", 
+      "label": "Traditional Cooking Class", 
+      "size": "tall", 
+      "category": "culture" 
+    },
+    { 
+      "id": 3, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
+      "label": "Paradise Valley Oasis", 
+      "size": "tall", 
+      "category": "beach" 
+    },
+    { 
+      "id": 4, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", 
+      "label": "Traditional Pottery Crafts", 
+      "size": "tall", 
+      "category": "culture" 
+    },
+    { 
+      "id": 5, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", 
+      "label": "Sahara Camel Trek", 
+      "size": "wide", 
+      "category": "desert" 
+    },
+    { 
+      "id": 6, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", 
+      "label": "Desert Camel Adventure", 
+      "size": "tall", 
+      "category": "desert" 
+    },
+    { 
+      "id": 7, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", 
+      "label": "Quad Bike Desert Safari", 
+      "size": "large", 
+      "category": "desert" 
+    },
+    { 
+      "id": 8, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
+      "label": "Atlas Mountain Trek", 
+      "size": "square", 
+      "category": "mountains" 
+    },
+    { 
+      "id": 9, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
+      "label": "Dunes Quad Adventure", 
+      "size": "large", 
+      "category": "desert" 
+    },
+    { 
+      "id": 10, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", 
+      "label": "Traditional Berber Camel Ride", 
+      "size": "tall", 
+      "category": "mountains" 
+    },
+    { 
+      "id": 11, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
+      "label": "Beach Horseback Riding", 
+      "size": "square", 
+      "category": "beach" 
+    },
+    { 
+      "id": 12, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", 
+      "label": "Moroccan Tagine Experience", 
+      "size": "tall", 
+      "category": "culture" 
+    }
   ],
   "categories": [
     { "id": "all", "label": "All" },
@@ -8177,7 +8341,6 @@ FILE: src\data\gallery\en.json
 }
 
 
-
 ========================================
 FILE: src\data\gallery\fr.json
 ========================================
@@ -8186,18 +8349,102 @@ FILE: src\data\gallery\fr.json
   "title": "Notre Galerie",
   "subtitle": "Un voyage visuel Ã  travers nos aventures les plus mÃ©morables",
   "images": [
-    { "id": 1, "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80", "label": "Coucher de soleil Ã  Taghazout", "size": "wide", "category": "desert" },
-    { "id": 2, "url": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=1600&q=80", "label": "Dunes DorÃ©es", "size": "tall", "category": "desert" },
-    { "id": 3, "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80", "label": "Plage Paradisiaque", "size": "square", "category": "beach" },
-    { "id": 4, "url": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1600&q=80", "label": "Horizon DÃ©sertique", "size": "tall", "category": "desert" },
-    { "id": 5, "url": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80", "label": "Sommets de l'Atlas", "size": "wide", "category": "mountains" },
-    { "id": 6, "url": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1600&q=80", "label": "Village BerbÃ¨re", "size": "square", "category": "culture" },
-    { "id": 7, "url": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80", "label": "VallÃ©e Montagneuse", "size": "large", "category": "mountains" },
-    { "id": 8, "url": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=1600&q=80", "label": "Ã‰vasion CÃ´tiÃ¨re", "size": "square", "category": "beach" },
-    { "id": 9, "url": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80", "label": "Vue du Sommet", "size": "tall", "category": "mountains" },
-    { "id": 10, "url": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=80", "label": "Voyage Culturel", "size": "wide", "category": "culture" },
-    { "id": 11, "url": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=1600&q=80", "label": "Nuits du Sahara", "size": "square", "category": "desert" },
-    { "id": 12, "url": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=1600&q=80", "label": "Bonheur OcÃ©an", "size": "large", "category": "beach" }
+    { 
+      "id": 1, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", 
+      "label": "ExpÃ©rience du Camp BerbÃ¨re", 
+      "size": "wide", 
+      "category": "culture" 
+    },
+    { 
+      "id": 2, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", 
+      "label": "Cours de Cuisine Traditionnelle", 
+      "size": "tall", 
+      "category": "culture" 
+    },
+    { 
+      "id": 3, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
+      "label": "Oasis de la VallÃ©e du Paradis", 
+      "size": "tall", 
+      "category": "beach" 
+    },
+    { 
+      "id": 4, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", 
+      "label": "Artisanat de Poterie Traditionnelle", 
+      "size": "tall", 
+      "category": "culture" 
+    },
+    { 
+      "id": 5, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", 
+      "label": "RandonnÃ©e ChameliÃ¨re au Sahara", 
+      "size": "wide", 
+      "category": "desert" 
+    },
+    { 
+      "id": 6, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", 
+      "label": "Aventure ChameliÃ¨re dans le DÃ©sert", 
+      "size": "tall", 
+      "category": "desert" 
+    },
+    { 
+      "id": 7, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", 
+      "label": "Safari en Quad dans le DÃ©sert", 
+      "size": "large", 
+      "category": "desert" 
+    },
+    { 
+      "id": 8, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
+      "label": "RandonnÃ©e dans l'Atlas", 
+      "size": "square", 
+      "category": "mountains" 
+    },
+    { 
+      "id": 9, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
+      "label": "Aventure en Quad dans les Dunes", 
+      "size": "large", 
+      "category": "desert" 
+    },
+    { 
+      "id": 10, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", 
+      "label": "Balade Ã  Chameau BerbÃ¨re Traditionnelle", 
+      "size": "tall", 
+      "category": "mountains" 
+    },
+    { 
+      "id": 11, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
+      "label": "Ã‰quitation sur la Plage", 
+      "size": "square", 
+      "category": "beach" 
+    },
+    { 
+      "id": 12, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", 
+      "label": "ExpÃ©rience du Tajine Marocain", 
+      "size": "tall", 
+      "category": "culture" 
+    }
   ],
   "categories": [
     { "id": "all", "label": "Tout" },
@@ -8207,7 +8454,6 @@ FILE: src\data\gallery\fr.json
     { "id": "culture", "label": "Culture" }
   ]
 }
-
 
 
 ========================================
@@ -8220,11 +8466,11 @@ FILE: src\data\services\ar.json
   "services": [
     {
       "id": "cooking",
-      "name": "ÙˆØ±Ø´Ø© Ø§Ù„Ø·Ø¨Ø®",
-      "description": "Ø±Ø­Ù„Ø© Ø·Ù‡ÙŠ Ø­ØµØ±ÙŠØ© ÙÙŠ Ø£Ø¹Ù…Ø§Ù‚ Ø§Ù„Ù†ÙƒÙ‡Ø§Øª Ø§Ù„Ù…ØºØ±Ø¨ÙŠØ©. ØªØ¬ÙˆÙ„ ÙÙŠ Ø§Ù„Ø³ÙˆÙ‚ Ø§Ù„Ù†Ø§Ø¨Ø¶ Ø¨Ø§Ù„Ø­ÙŠØ§Ø© Ù„Ø§Ø®ØªÙŠØ§Ø± Ø§Ù„Ø®Ø¶Ø±ÙˆØ§Øª ÙˆØ§Ù„ØªÙˆØ§Ø¨Ù„ Ø§Ù„Ø·Ø§Ø²Ø¬Ø© Ø¨Ù†ÙØ³ÙƒØŒ Ø«Ù… ØªØ¹Ù„Ù… ÙÙ† ØªØ­Ø¶ÙŠØ± Ø§Ù„Ø·Ø§Ø¬ÙŠÙ† ÙˆØ§Ù„ÙƒØ³ÙƒØ³ Ø§Ù„Ø£ØµÙŠÙ„ Ù…Ø¹ Ø·Ø¨Ø§Ø® ØªÙ‚Ù„ÙŠØ¯ÙŠ. Ø§Ø³ØªÙ…ØªØ¹ Ø¨Ø¥Ø¨Ø¯Ø§Ø¹Ø§ØªÙƒ Ù…Ø¹ Ø§Ù„Ø­Ù„ÙˆÙ‰ ÙˆØ§Ù„Ø´Ø§ÙŠ Ø¨Ø§Ù„Ù†Ø¹Ù†Ø§Ø¹ ÙÙŠ Ù…Ø¬Ù…Ø¹ Ù‚ØµØ¨Ø© Ø³ÙˆØ³ Ø§Ù„Ø­Ø±ÙÙŠ â€” ÙˆØ³Ø· Ù…Ù†ØªØ¬Ø§Øª 100% Ù…ØµÙ†ÙˆØ¹Ø© ÙŠØ¯ÙˆÙŠØ§Ù‹ Ø¨Ø§Ù„Ø­Ø±Ù Ø§Ù„Ø£Ù…Ø§Ø²ÙŠØºÙŠØ©.",
-      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80",
+      "name": "ÙˆØ±Ø´Ø© Ø§Ù„Ø·Ø¨Ø® Ø§Ù„Ø§Ø­ØªØ±Ø§ÙÙŠØ©",
+      "description": "Ø±Ø­Ù„Ø© Ø·Ù‡ÙŠ Ø­ØµØ±ÙŠØ© Ø¹Ø¨Ø± Ù†ÙƒÙ‡Ø§Øª Ø§Ù„Ù…ØºØ±Ø¨. Ø²Ø± Ø§Ù„Ø³ÙˆÙ‚ Ø§Ù„Ù†Ø§Ø¨Ø¶ Ø¨Ø§Ù„Ø­ÙŠØ§Ø© Ù„Ø§Ø®ØªÙŠØ§Ø± Ø§Ù„Ø®Ø¶Ø±ÙˆØ§Øª ÙˆØ§Ù„ØªÙˆØ§Ø¨Ù„ Ø§Ù„Ø·Ø§Ø²Ø¬Ø© Ø¨Ù†ÙØ³ÙƒØŒ Ø«Ù… ØªØ¹Ù„Ù… Ø§Ù„ÙÙ† Ø§Ù„Ø£ØµÙŠÙ„ Ù„ØªØ­Ø¶ÙŠØ± Ø§Ù„Ø·Ø§Ø¬ÙŠÙ† ÙˆØ§Ù„ÙƒØ³ÙƒØ³ Ø¨Ø¬Ø§Ù†Ø¨ Ø·Ø¨Ø§Ø® ØªÙ‚Ù„ÙŠØ¯ÙŠ. Ø§Ø³ØªÙ…ØªØ¹ Ø¨Ø¥Ø¨Ø¯Ø§Ø¹Ø§ØªÙƒ Ù…Ø¹ Ø§Ù„Ø­Ù„ÙˆÙ‰ ÙˆØ§Ù„Ø´Ø§ÙŠ Ø¨Ø§Ù„Ù†Ø¹Ù†Ø§Ø¹ ÙÙŠ Ù…Ø¬Ù…Ø¹ Ù‚ØµØ¨Ø© Ø³ÙˆØ³ Ø§Ù„Ø­Ø±ÙÙŠ â€” Ù…Ø­Ø§Ø·Ø§Ù‹ Ø¨Ù…Ù†ØªØ¬Ø§Øª 100% Ù…ØµÙ†ÙˆØ¹Ø© ÙŠØ¯ÙˆÙŠØ§Ù‹ Ø¨Ø§Ù„Ø­Ø±Ù Ø§Ù„Ø£Ù…Ø§Ø²ÙŠØºÙŠØ©.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839028/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_jkbvqv.jpg",
       "link": "/services",
-      "bookLink": "https://wa.me/+212615884469?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D9%88%D8%B1%D8%B4%D8%A9%20%D8%A7%D9%84%D8%B7%D8%A8%D8%AE",
+      "bookLink": "https://wa.me/+212615884469?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D9%88%D8%B1%D8%B4%D8%A9%20%D8%A7%D9%84%D8%B7%D8%A8%D8%AE%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9",
       "price": 350,
       "duration": "4-5 Ø³Ø§Ø¹Ø§Øª",
       "category": "cultural",
@@ -8233,10 +8479,10 @@ FILE: src\data\services\ar.json
     {
       "id": "quad",
       "name": "Ø±ÙƒÙˆØ¨ Ø§Ù„ÙƒÙˆØ§Ø¯",
-      "description": "Ø¹Ø´ Ø§Ù„Ø£Ø¯Ø±ÙŠÙ†Ø§Ù„ÙŠÙ† Ø§Ù„Ø®Ø§Ù… ÙˆØ£Ù†Øª ØªÙ‚ØªØ­Ù… ÙƒØ«Ø¨Ø§Ù† Ø§Ù„ØµØ­Ø±Ø§Ø¡ Ø§Ù„Ø°Ù‡Ø¨ÙŠØ©. Ù‡Ø°Ù‡ Ø§Ù„Ø±Ø­Ù„Ø© Ù„Ù…Ø¯Ø© Ø³Ø§Ø¹ØªÙŠÙ† ØªØ¶Ø¹Ùƒ ÙÙŠ Ø§Ù„Ù…Ù‚ÙˆØ¯ â€” Ø§Ù„Ø±ÙŠØ§Ø­ ÙÙŠ ÙˆØ¬Ù‡ÙƒØŒ ÙˆØ§Ù„Ø´Ù…Ø³ Ø¹Ù„Ù‰ Ø¸Ù‡Ø±ÙƒØŒ ÙˆØ¢ÙØ§Ù‚ Ù„Ø§ Ù†Ù‡Ø§ÙŠØ© Ù„Ù‡Ø§ Ø£Ù…Ø§Ù…Ùƒ. Ø§Ù„Ù†Ù‚Ù„ Ù…Ø´Ù…ÙˆÙ„.",
-      "image": "https://images.unsplash.com/photo-1539786747937-59bf46e47b08?w=1200&q=80",
+      "description": "Ø§Ø´Ø¹Ø± Ø¨Ø§Ù„Ø£Ø¯Ø±ÙŠÙ†Ø§Ù„ÙŠÙ† Ø§Ù„Ø®Ø§Ù… ÙˆØ£Ù†Øª ØªØ¬ÙˆØ¨ ÙƒØ«Ø¨Ø§Ù† Ø§Ù„ØµØ­Ø±Ø§Ø¡ Ø§Ù„Ø°Ù‡Ø¨ÙŠØ©. Ù‡Ø°Ù‡ Ø§Ù„Ø±Ø­Ù„Ø© Ø®Ø§Ø±Ø¬ Ø§Ù„Ø·Ø±ÙŠÙ‚ Ù„Ù…Ø¯Ø© Ø³Ø§Ø¹ØªÙŠÙ† ØªØ¶Ø¹Ùƒ ÙÙŠ Ø§Ù„Ø³ÙŠØ·Ø±Ø© â€” Ø§Ù„Ø±ÙŠØ§Ø­ ÙÙŠ ÙˆØ¬Ù‡ÙƒØŒ ÙˆØ§Ù„Ø´Ù…Ø³ Ø¹Ù„Ù‰ Ø¸Ù‡Ø±ÙƒØŒ ÙˆØ¢ÙØ§Ù‚ Ù„Ø§ Ù†Ù‡Ø§ÙŠØ© Ù„Ù‡Ø§ Ø£Ù…Ø§Ù…Ùƒ. Ø§Ù„Ù†Ù‚Ù„ Ù…Ø´Ù…ÙˆÙ„.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838994/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_xvxsrf.jpg",
       "link": "/services",
-      "bookLink": "https://wa.me/+212615884469?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D9%83%D9%88%D8%A7%D8%AF",
+      "bookLink": "https://wa.me/+212615884469?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%B1%D9%83%D9%88%D8%A8%20%D8%A7%D9%84%D9%83%D9%88%D8%A7%D8%AF",
       "price": 350,
       "duration": "Ø³Ø§Ø¹ØªØ§Ù†",
       "category": "desert",
@@ -8244,11 +8490,11 @@ FILE: src\data\services\ar.json
     },
     {
       "id": "buggy",
-      "name": "Ø¨ÙˆØ¬ÙŠ",
-      "description": "Ø³ÙŠØ·Ø± Ø¹Ù„Ù‰ Ø§Ù„ØµØ­Ø±Ø§Ø¡ Ø¨Ù…Ø±ÙƒØ¨Ø© Ø¨ÙˆØ¬ÙŠ Ø¬Ø¯ÙŠØ¯Ø© ÙˆÙ‚ÙˆÙŠØ©. Ø³Ø§Ø¹ØªØ§Ù† Ù…Ù† Ø§Ù„Ù…ØºØ§Ù…Ø±Ø© Ø§Ù„Ù…Ø«ÙŠØ±Ø© Ø¹Ø¨Ø± Ø§Ù„ÙƒØ«Ø¨Ø§Ù† Ø§Ù„Ø±Ù…Ù„ÙŠØ© Ø§Ù„Ù…Ù‡ÙŠØ¨Ø© ÙˆØ§Ù„Ù…Ø³Ø§Ø±Ø§Øª Ø§Ù„ØµØ­Ø±Ø§ÙˆÙŠØ© Ø§Ù„Ø®Ù„Ø§Ø¨Ø©. Ø§Ù„Ø£Ø¯Ø±ÙŠÙ†Ø§Ù„ÙŠÙ† ÙŠÙ„ØªÙ‚ÙŠ Ø¨Ø§Ù„Ù…Ù†Ø§Ø¸Ø± Ø§Ù„Ø®Ù„Ø§Ø¨Ø©. Ø§Ù„Ù†Ù‚Ù„ Ù…Ø´Ù…ÙˆÙ„.",
-      "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80",
+      "name": "Ø§Ù„Ø¨ÙˆØ¬ÙŠ Ø®Ø§Ø±Ø¬ Ø§Ù„Ø·Ø±ÙŠÙ‚",
+      "description": "ØªØºÙ„Ø¨ Ø¹Ù„Ù‰ Ø§Ù„ØµØ­Ø±Ø§Ø¡ ÙÙŠ Ù…Ø±ÙƒØ¨Ø© Ø¨ÙˆØ¬ÙŠ Ø¬Ø¯ÙŠØ¯Ø© ÙˆÙ‚ÙˆÙŠØ©. Ø³Ø§Ø¹ØªØ§Ù† Ù…Ù† Ø§Ù„Ø¥Ø«Ø§Ø±Ø© Ø§Ù„Ø®Ø§Ù„ØµØ© Ø®Ø§Ø±Ø¬ Ø§Ù„Ø·Ø±ÙŠÙ‚ Ø¹Ø¨Ø± Ø§Ù„ÙƒØ«Ø¨Ø§Ù† Ø§Ù„Ø±Ù…Ù„ÙŠØ© Ø§Ù„Ù…Ù‡ÙŠØ¨Ø© ÙˆØ§Ù„Ù…Ø³Ø§Ø±Ø§Øª Ø§Ù„ØµØ­Ø±Ø§ÙˆÙŠØ©spectacular. Ø§Ù„Ø£Ø¯Ø±ÙŠÙ†Ø§Ù„ÙŠÙ† ÙŠÙ„ØªÙ‚ÙŠ Ø¨Ø§Ù„Ù…Ù†Ø§Ø¸Ø± Ø§Ù„Ø®Ù„Ø§Ø¨Ø©. Ø§Ù„Ù†Ù‚Ù„ Ù…Ø´Ù…ÙˆÙ„.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg",
       "link": "/services",
-      "bookLink": "https://wa.me/+212615884469?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%A8%D9%88%D8%AC%D9%8A",
+      "bookLink": "https://wa.me/+212615884469?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%A7%D9%84%D8%A8%D9%88%D8%AC%D9%8A%20%D8%AE%D8%A7%D8%B1%D8%AC%20%D8%A7%D9%84%D8%B7%D8%B1%D9%8A%D9%82",
       "price": 600,
       "duration": "Ø³Ø§Ø¹ØªØ§Ù†",
       "category": "desert",
@@ -8257,8 +8503,8 @@ FILE: src\data\services\ar.json
     {
       "id": "horse",
       "name": "Ø±ÙƒÙˆØ¨ Ø§Ù„Ø®ÙŠÙ„",
-      "description": "Ø§Ù…ØªØ· ØµÙ‡ÙˆØ© Ø¬ÙˆØ§Ø¯Ùƒ Ù…Ø«Ù„ Ø§Ù„Ø£Ø±ÙˆØ§Ø­ Ø§Ù„Ø£Ù…Ø§Ø²ÙŠØºÙŠØ© Ø§Ù„Ø­Ø±Ø© Ø¹Ø¨Ø± ØºØ§Ø¨Ø§Øª Ø£ØºØ±ÙˆØ¶ Ø§Ù„Ø£Ø³Ø·ÙˆØ±ÙŠØ© ÙˆÙ†Ù‡Ø± Ø³ÙˆØ³ Ø§Ù„Ø®Ù„Ø§Ø¨. Ø§Ù„ØªÙ‚Ø· ØµÙˆØ± Ø§Ù„Ø³Ø§Ø¹Ø© Ø§Ù„Ø°Ù‡Ø¨ÙŠØ©ØŒ Ø«Ù… Ø§Ø³ØªÙ…ØªØ¹ Ø¨Ø§Ù„Ø´Ø§ÙŠ Ø¨Ø§Ù„Ù†Ø¹Ù†Ø§Ø¹ ÙˆØ§Ù„Ø­Ù„ÙˆÙŠØ§Øª Ø§Ù„ØªÙ‚Ù„ÙŠØ¯ÙŠØ© ÙÙŠ Ù‚ØµØ¨Ø© Ø³ÙˆØ³. Ù…Ù†Ø§Ø³Ø¨Ø© Ù„Ù„Ù…Ø¨ØªØ¯Ø¦ÙŠÙ† ÙˆØ§Ù„ÙØ±Ø³Ø§Ù† Ø§Ù„Ù…Ø®Ø¶Ø±Ù…ÙŠÙ† Ø¹Ù„Ù‰ Ø­Ø¯ Ø³ÙˆØ§Ø¡.",
-      "image": "https://images.unsplash.com/photo-1546195643-70f48f9c5b83?w=1200&q=80",
+      "description": "Ø§Ù…ØªØ·Ù Ø§Ù„Ø®ÙŠÙ„ Ù…Ø«Ù„ Ø§Ù„Ø£Ø±ÙˆØ§Ø­ Ø§Ù„Ø£Ù…Ø§Ø²ÙŠØºÙŠØ© Ø§Ù„Ø­Ø±Ø© Ø¹Ø¨Ø± ØºØ§Ø¨Ø§Øª Ø£ØºØ±ÙˆØ¶ Ø§Ù„ØºØ§Ù…Ø¶Ø© ÙˆØ¹Ø¨Ø± Ù†Ù‡Ø± Ø³ÙˆØ³ Ø§Ù„Ø£Ø³Ø·ÙˆØ±ÙŠ. Ø§Ù„ØªÙ‚Ø· ØµÙˆØ± Ø§Ù„Ø³Ø§Ø¹Ø© Ø§Ù„Ø°Ù‡Ø¨ÙŠØ©ØŒ Ø«Ù… Ø§Ø³ØªÙ…ØªØ¹ Ø¨Ø§Ù„Ø´Ø§ÙŠ Ø¨Ø§Ù„Ù†Ø¹Ù†Ø§Ø¹ ÙˆØ§Ù„Ø­Ù„ÙˆÙŠØ§Øª Ø§Ù„ØªÙ‚Ù„ÙŠØ¯ÙŠØ© ÙÙŠ Ù‚ØµØ¨Ø© Ø³ÙˆØ³. Ù…Ø«Ø§Ù„ÙŠ Ù„Ù„Ù…Ø¨ØªØ¯Ø¦ÙŠÙ† ÙˆØ§Ù„ÙØ±Ø³Ø§Ù† Ø°ÙˆÙŠ Ø§Ù„Ø®Ø¨Ø±Ø© Ø¹Ù„Ù‰ Ø­Ø¯ Ø³ÙˆØ§Ø¡.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%B1%D9%83%D9%88%D8%A8%20%D8%A7%D9%84%D8%AE%D9%8A%D9%84",
       "price": 180,
@@ -8268,11 +8514,11 @@ FILE: src\data\services\ar.json
     },
     {
       "id": "camel",
-      "name": "Ø±ÙƒÙˆØ¨ Ø§Ù„Ø¬Ù…Ù„",
-      "description": "Ø±Ø­Ù„Ø© ØµØ­Ø±Ø§ÙˆÙŠØ© Ø³Ø§Ø­Ø±Ø© Ø¨ÙˆØªÙŠØ±Ø© Ù‡Ø§Ø¯Ø¦Ø©. Ø§Ø¹Ø¨Ø± Ù…Ø³Ø§Ø±Ø§Øª ØºØ§Ø¨Ø© Ø£ØºØ±ÙˆØ¶ Ø§Ù„Ù‚Ø¯ÙŠÙ…Ø©ØŒ ØµÙˆØ± Ù†Ù‡Ø± Ø³ÙˆØ³ Ø§Ù„Ù…ØªÙ„Ø£Ù„Ø¦ØŒ ÙˆØ§Ø®ØªØªÙ…Ù‡Ø§ Ø¨Ø§Ù„Ø´Ø§ÙŠ Ø¨Ø§Ù„Ù†Ø¹Ù†Ø§Ø¹ ÙˆØ§Ù„Ø­Ù„ÙˆÙŠØ§Øª Ø§Ù„ØªÙ‚Ù„ÙŠØ¯ÙŠØ© ÙÙŠ Ù‚ØµØ¨Ø© Ø³ÙˆØ³. Ù…Ø±ÙŠØ­Ø©ØŒ Ù„Ø§ ØªÙÙ†Ø³Ù‰ØŒ ÙˆØªÙÙŠØ¶ Ø¨Ø§Ù„ØªØ±Ø§Ø« Ø§Ù„Ø£Ù…Ø§Ø²ÙŠØºÙŠ Ø§Ù„Ø£ØµÙŠÙ„.",
-      "image": "https://images.unsplash.com/photo-1577538928304-4f5f4a9ae289?w=1200&q=80",
+      "name": "Ø±ÙƒÙˆØ¨ Ø§Ù„Ø¬Ù…Ø§Ù„",
+      "description": "Ø±Ø­Ù„Ø© ØµØ­Ø±Ø§ÙˆÙŠØ© Ø³Ø§Ø­Ø±Ø© Ø¨ÙˆØªÙŠØ±Ø© Ù‡Ø§Ø¯Ø¦Ø©. Ø§Ø¹Ø¨Ø± Ù…Ø³Ø§Ø±Ø§Øª ØºØ§Ø¨Ø© Ø£ØºØ±ÙˆØ¶ Ø§Ù„Ù‚Ø¯ÙŠÙ…Ø©ØŒ ØµÙˆØ± Ù†Ù‡Ø± Ø³ÙˆØ³ Ø§Ù„Ù…ØªÙ„Ø£Ù„Ø¦ØŒ ÙˆØ§ØµÙ„Ø§Ù‹ Ø¥Ù„Ù‰ Ù‚ØµØ¨Ø© Ø³ÙˆØ³ Ù„Ù„Ø´Ø§ÙŠ Ø¨Ø§Ù„Ù†Ø¹Ù†Ø§Ø¹ ÙˆØ§Ù„Ø­Ù„ÙˆÙŠØ§Øª Ø§Ù„ØªÙ‚Ù„ÙŠØ¯ÙŠØ©. Ù…Ø±ÙŠØ­Ø©ØŒ Ù„Ø§ ØªÙÙ†Ø³Ù‰ØŒ ÙˆÙ…ØªØ¬Ø°Ø±Ø© ÙÙŠ Ø§Ù„ØªØ±Ø§Ø« Ø§Ù„Ø£Ù…Ø§Ø²ÙŠØºÙŠ.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png",
       "link": "/services",
-      "bookLink": "https://wa.me/+212615884469?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%B1%D9%83%D9%88%D8%A8%20%D8%A7%D9%84%D8%AC%D9%85%D9%84",
+      "bookLink": "https://wa.me/+212615884469?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%B1%D9%83%D9%88%D8%A8%20%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D9%84",
       "price": 180,
       "duration": "Ø³Ø§Ø¹ØªØ§Ù†",
       "category": "desert",
@@ -8280,7 +8526,6 @@ FILE: src\data\services\ar.json
     }
   ]
 }
-
 
 
 ========================================
@@ -8362,15 +8607,15 @@ FILE: src\data\services\fr.json
 
 {
   "title": "Choisissez Votre ExpÃ©rience",
-  "subtitle": "D'un cours de cuisine d'exception aux dunes vibrantes d'adrÃ©naline â€” dÃ©couvrez l'Ã¢me d'Agadir.",
+  "subtitle": "D'un cours de cuisine authentique aux dunes pleines d'adrÃ©naline â€” dÃ©couvrez l'Ã¢me d'Agadir.",
   "services": [
     {
       "id": "cooking",
-      "name": "Cours de Cuisine",
-      "description": "Un voyage culinaire exclusif au cÅ“ur des saveurs du Maroc. Parcourez le Souk animÃ© pour choisir vous-mÃªme lÃ©gumes et Ã©pices fraÃ®ches, puis apprenez l'art ancestral du Tagine et du Couscous aux cÃ´tÃ©s d'un chef traditionnel. DÃ©gustez vos crÃ©ations avec un dessert et un thÃ© Ã  la menthe au complexe artisanal Kasbat Souss â€” entourÃ© d'objets 100% faits main par les artisans Amazighs.",
-      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80",
+      "name": "Cours de Cuisine Masterclass",
+      "description": "Un voyage culinaire exclusif Ã  travers les saveurs du Maroc. Visitez le Souk animÃ© pour choisir vous-mÃªme lÃ©gumes et Ã©pices fraÃ®ches, puis apprenez l'art ancestral du Tagine et du Couscous aux cÃ´tÃ©s d'un chef traditionnel. DÃ©gustez vos crÃ©ations avec dessert et thÃ© Ã  la menthe au complexe artisanal Kasbat Souss â€” entourÃ© d'artisanat 100% fait main par les artisans Amazighs.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839028/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_jkbvqv.jpg",
       "link": "/services",
-      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20le%20Cours%20de%20Cuisine",
+      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20le%20Cours%20de%20Cuisine%20Masterclass",
       "price": 350,
       "duration": "4-5 heures",
       "category": "cultural",
@@ -8379,8 +8624,8 @@ FILE: src\data\services\fr.json
     {
       "id": "quad",
       "name": "Quad Biking",
-      "description": "Ressentez l'adrÃ©naline brute en traversant les dunes dorÃ©es du dÃ©sert. Cette expÃ©dition de 2 heures vous met aux commandes â€” le vent dans les cheveux, le soleil sur la peau et des horizons infinis devant vous. Transport inclus.",
-      "image": "https://images.unsplash.com/photo-1539786747937-59bf46e47b08?w=1200&q=80",
+      "description": "Ressentez l'adrÃ©naline pure en parcourant les dunes dorÃ©es du dÃ©sert. Cette expÃ©dition hors-piste de 2 heures vous met aux commandes â€” le vent sur votre visage, le soleil dans le dos et des horizons infinis devant vous. Transport inclus.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838994/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_xvxsrf.jpg",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20Quad%20Biking",
       "price": 350,
@@ -8390,11 +8635,11 @@ FILE: src\data\services\fr.json
     },
     {
       "id": "buggy",
-      "name": "Buggy Off-Road",
-      "description": "Dominez le dÃ©sert Ã  bord d'un buggy neuf et puissant. 2 heures de pur off-road Ã  travers les majestueuses dunes de sable et les pistes spectaculaires du dÃ©sert. L'adrÃ©naline rencontre des paysages Ã  couper le souffle. Transport inclus.",
-      "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80",
+      "name": "Buggy Hors-Piste",
+      "description": "ConquÃ©rez le dÃ©sert dans un buggy neuf et puissant. 2 heures de pure exaltation hors-piste Ã  travers les majestueuses dunes de sable et les pistes spectaculaires du dÃ©sert. L'adrÃ©naline rencontre des paysages Ã  couper le souffle. Transport inclus.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg",
       "link": "/services",
-      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20Buggy%20Off-Road",
+      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20le%20Buggy%20Hors-Piste",
       "price": 600,
       "duration": "2 heures",
       "category": "desert",
@@ -8402,11 +8647,11 @@ FILE: src\data\services\fr.json
     },
     {
       "id": "horse",
-      "name": "Balade Ã  Cheval",
-      "description": "Chevauchez comme les Ã¢mes libres Amazighs Ã  travers les mystÃ©rieuses forÃªts d'Aghroud et l'emblÃ©matique riviÃ¨re Souss. Immortalisez l'heure dorÃ©e en photos, puis savourez un thÃ© Ã  la menthe et des pÃ¢tisseries traditionnelles Ã  Kasbat Souss. Convient aux dÃ©butants comme aux cavaliers expÃ©rimentÃ©s.",
-      "image": "https://images.unsplash.com/photo-1546195643-70f48f9c5b83?w=1200&q=80",
+      "name": "Ã‰quitation",
+      "description": "Chevauchez comme les Ã¢mes libres Amazighs Ã  travers les forÃªts mystiques d'Aghroud et l'emblÃ©matique riviÃ¨re Souss. Capturez des photos Ã  l'heure dorÃ©e, puis savourez le thÃ© Ã  la menthe et les douceurs traditionnelles Ã  Kasbat Souss. Parfait pour les dÃ©butants et les cavaliers expÃ©rimentÃ©s.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg",
       "link": "/services",
-      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20une%20Balade%20%C3%A0%20Cheval",
+      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20l%27%C3%89quitation",
       "price": 180,
       "duration": "2 heures",
       "category": "beach",
@@ -8414,11 +8659,11 @@ FILE: src\data\services\fr.json
     },
     {
       "id": "camel",
-      "name": "Balade Ã  dos de Chameau",
-      "description": "Un voyage magique dans le dÃ©sert Ã  un rythme doux. Parcourez les anciennes pistes de la forÃªt d'Aghroud, photographiez la riviÃ¨re Souss scintillante, et terminez par un thÃ© Ã  la menthe et des douceurs traditionnelles Ã  Kasbat Souss. Confortable, inoubliable, imprÃ©gnÃ© de l'hÃ©ritage Amazigh.",
-      "image": "https://images.unsplash.com/photo-1577538928304-4f5f4a9ae289?w=1200&q=80",
+      "name": "RandonnÃ©e Ã  Chameau",
+      "description": "Un voyage magique dans le dÃ©sert Ã  un rythme doux. Parcourez les anciens sentiers de la forÃªt d'Aghroud, photographiez la riviÃ¨re Souss scintillante, et arrivez Ã  Kasbat Souss pour le thÃ© Ã  la menthe et les douceurs traditionnelles. Confortable, inoubliable, et imprÃ©gnÃ© du patrimoine Amazigh.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png",
       "link": "/services",
-      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20Balade%20%C3%A0%20dos%20de%20Chameau",
+      "bookLink": "https://wa.me/+212615884469?text=Je%20veux%20r%C3%A9server%20la%20Randonn%C3%A9e%20%C3%A0%20Chameau",
       "price": 180,
       "duration": "2 heures",
       "category": "desert",
@@ -8426,7 +8671,6 @@ FILE: src\data\services\fr.json
     }
   ]
 }
-
 
 
 ========================================
@@ -8442,7 +8686,7 @@ FILE: src\data\stats\ar.json
       "key": "trips",
       "value": 500,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg",
       "color": "#c9a87c",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -8451,7 +8695,7 @@ FILE: src\data\stats\ar.json
       "key": "clients",
       "value": 3000,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg",
       "color": "#7fb5d0",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -8460,7 +8704,7 @@ FILE: src\data\stats\ar.json
       "key": "years",
       "value": 10,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839043/WhatsApp_Image_2026-06-29_at_3.27.53_PM_1_uoptxv.jpg",
       "color": "#d4a373",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -8469,13 +8713,12 @@ FILE: src\data\stats\ar.json
       "key": "destinations",
       "value": 5,
       "suffix": "",
-      "image": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782845437/40f1c7d1-7c38-4087-b2d1-e59322322d92_ntrzfd.png",
       "color": "#6b8c7c",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     }
   ]
 }
-
 
 
 ========================================
@@ -8540,7 +8783,7 @@ FILE: src\data\stats\fr.json
       "key": "trips",
       "value": 500,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg",
       "color": "#c9a87c",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -8549,7 +8792,7 @@ FILE: src\data\stats\fr.json
       "key": "clients",
       "value": 3000,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg",
       "color": "#7fb5d0",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -8558,7 +8801,7 @@ FILE: src\data\stats\fr.json
       "key": "years",
       "value": 10,
       "suffix": "+",
-      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839043/WhatsApp_Image_2026-06-29_at_3.27.53_PM_1_uoptxv.jpg",
       "color": "#d4a373",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     },
@@ -8567,13 +8810,12 @@ FILE: src\data\stats\fr.json
       "key": "destinations",
       "value": 5,
       "suffix": "",
-      "image": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782845437/40f1c7d1-7c38-4087-b2d1-e59322322d92_ntrzfd.png",
       "color": "#6b8c7c",
       "overlay": "linear-gradient(135deg, rgba(10,14,26,0.8) 0%, rgba(0,0,0,0.2) 100%)"
     }
   ]
 }
-
 
 
 ========================================
@@ -8699,11 +8941,11 @@ FILE: src\data\trips\ar.json
       "id": 1,
       "name": "Ø§Ù„Ø¬ÙˆÙ„Ø© Ø§Ù„ÙƒØ¨Ø±Ù‰ Ù„Ù„Ø´Ù…Ø§Ù„",
       "description": "Ø§Ø³ØªÙƒØ´Ù Ø¬Ø¨Ø§Ù„ Ø§Ù„Ø±ÙŠÙ ÙˆØ§Ù„Ø´ÙˆØ§Ø·Ø¦ Ø§Ù„Ù…ØªÙˆØ³Ø·ÙŠØ© Ø§Ù„Ø¨ÙƒØ±.",
-      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838964/WhatsApp_Image_2026-06-29_at_3.27.52_PM_1_uhytq1.jpg",
       "price": 2990,
       "duration": "3 Ø£ÙŠØ§Ù…",
       "places": 8,
-      "bookLink": "https://wa.me/+212667858620?text=Ø£Ø±ÙŠØ¯%20Ø­Ø¬Ø²%20Ø§Ù„Ø¬ÙˆÙ„Ø©%20Ø§Ù„ÙƒØ¨Ø±Ù‰",
+      "bookLink": "https://wa.me/+212667858620?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%A7%D9%84%D8%AC%D9%88%D9%84%D8%A9%20%D8%A7%D9%84%D9%83%D8%A8%D8%B1%D9%89%20%D9%84%D9%84%D8%B4%D9%85%D8%A7%D9%84",
       "accentColor": "#c9a87c",
       "tags": ["Ø§Ù„Ø£ÙƒØ«Ø± Ù…Ø¨ÙŠØ¹Ø§Ù‹", "Ù…ØªØ¹Ø¯Ø¯ Ø§Ù„Ø£ÙŠØ§Ù…"]
     },
@@ -8711,11 +8953,11 @@ FILE: src\data\trips\ar.json
       "id": 2,
       "name": "Ø±Ø­Ù„Ø© Ø§Ù„ØµØ­Ø±Ø§Ø¡",
       "description": "5 Ø£ÙŠØ§Ù… Ù…Ù† Ù…ØºØ§Ù…Ø±Ø§Øª Ø§Ù„Ø¯ÙØ¹ Ø§Ù„Ø±Ø¨Ø§Ø¹ÙŠ Ø¹Ø¨Ø± ÙƒØ«Ø¨Ø§Ù† Ø§Ù„ØµØ­Ø±Ø§Ø¡ Ø§Ù„Ø°Ù‡Ø¨ÙŠØ©.",
-      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg",
       "price": 4500,
       "duration": "5 Ø£ÙŠØ§Ù…",
       "places": 12,
-      "bookLink": "https://wa.me/+212667858620?text=Ø£Ø±ÙŠØ¯%20Ø­Ø¬Ø²%20Ø±Ø­Ù„Ø©%20Ø§Ù„ØµØ­Ø±Ø§Ø¡",
+      "bookLink": "https://wa.me/+212667858620?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D8%B5%D8%AD%D8%B1%D8%A7%D8%A1",
       "accentColor": "#d4a373",
       "tags": ["Ù…Ù…ØªØ§Ø²", "Ù…Ø­Ø¯ÙˆØ¯"]
     },
@@ -8723,11 +8965,11 @@ FILE: src\data\trips\ar.json
       "id": 3,
       "name": "Ø¬ÙˆÙ„Ø© ØºØ±ÙˆØ¨ Ø§Ù„Ø´Ù…Ø³ ÙÙŠ ØªØºØ§Ø²ÙˆØª",
       "description": "Ø±ÙƒÙˆØ¨ Ø§Ù„Ø®ÙŠÙ„ Ø¹Ù„Ù‰ Ø·ÙˆÙ„ Ø§Ù„Ù…Ø­ÙŠØ· Ø§Ù„Ø£Ø·Ù„Ø³ÙŠ ÙÙŠ Ø§Ù„Ø³Ø§Ø¹Ø© Ø§Ù„Ø°Ù‡Ø¨ÙŠØ© â€“ Ù…Ù†Ø§Ø¸Ø± Ù„Ø§ ØªÙ†Ø³Ù‰.",
-      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782845437/40f1c7d1-7c38-4087-b2d1-e59322322d92_ntrzfd.png",
       "price": 1200,
       "duration": "Ù†ØµÙ ÙŠÙˆÙ…",
       "places": 6,
-      "bookLink": "https://wa.me/+212667858620?text=Ø£Ø±ÙŠØ¯%20Ø­Ø¬Ø²%20Ø¬ÙˆÙ„Ø©%20ØºØ±ÙˆØ¨%20ØªØºØ§Ø²ÙˆØª",
+      "bookLink": "https://wa.me/+212667858620?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%88%D9%84%D8%A9%20%D8%BA%D8%B1%D9%88%D8%A8%20%D8%A7%D9%84%D8%B4%D9%85%D8%B3%20%D9%81%D9%8A%20%D8%AA%D8%BA%D8%A7%D8%B2%D9%88%D8%AA",
       "accentColor": "#7fb5d0",
       "tags": ["Ù„Ù„Ø£Ø²ÙˆØ§Ø¬", "Ø±ÙˆÙ…Ø§Ù†Ø³ÙŠ"]
     },
@@ -8735,17 +8977,16 @@ FILE: src\data\trips\ar.json
       "id": 4,
       "name": "Ø±Ø­Ù„Ø© ÙˆØ§Ø¯ÙŠ Ø§Ù„Ø£Ø·Ù„Ø³",
       "description": "Ø±Ø­Ù„Ø© Ø¹Ø¨Ø± Ø§Ù„Ù‚Ø±Ù‰ Ø§Ù„Ø¨Ø±Ø¨Ø±ÙŠØ© Ø§Ù„Ù‚Ø¯ÙŠÙ…Ø© ÙˆØ§Ù„ÙˆØ¯ÙŠØ§Ù† Ø§Ù„Ø®Ø¶Ø±Ø§Ø¡.",
-      "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg",
       "price": 3500,
       "duration": "4 Ø£ÙŠØ§Ù…",
       "places": 10,
-      "bookLink": "https://wa.me/+212667858620?text=Ø£Ø±ÙŠØ¯%20Ø­Ø¬Ø²%20ÙˆØ§Ø¯ÙŠ%20Ø§Ù„Ø£Ø·Ù„Ø³",
+      "bookLink": "https://wa.me/+212667858620?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D9%88%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D8%A3%D8%B7%D9%84%D8%B3",
       "accentColor": "#6b8c7c",
       "tags": ["Ø«Ù‚Ø§ÙÙŠ", "Ù…Ø´ÙŠ"]
     }
   ]
 }
-
 
 
 ========================================
@@ -8821,35 +9062,35 @@ FILE: src\data\trips\fr.json
       "id": 1,
       "name": "Grand Circuit du Nord",
       "description": "Explorez les montagnes du Rif et les plages mÃ©diterranÃ©ennes prÃ©servÃ©es.",
-      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838964/WhatsApp_Image_2026-06-29_at_3.27.52_PM_1_uhytq1.jpg",
       "price": 2990,
       "duration": "3 Jours",
       "places": 8,
-      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20rÃ©server%20Grand%20Circuit",
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20r%C3%A9server%20le%20Grand%20Circuit%20du%20Nord",
       "accentColor": "#c9a87c",
       "tags": ["Meilleure Vente", "Multi-Jours"]
     },
     {
       "id": 2,
-      "name": "ExpÃ©dition DÃ©sertique",
+      "name": "ExpÃ©dition DÃ©sert",
       "description": "5 jours d'aventures en 4x4 Ã  travers les dunes dorÃ©es du Sahara.",
-      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg",
       "price": 4500,
       "duration": "5 Jours",
       "places": 12,
-      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20rÃ©server%20ExpÃ©dition%20DÃ©sert",
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20r%C3%A9server%20l%27Exp%C3%A9dition%20D%C3%A9sert",
       "accentColor": "#d4a373",
       "tags": ["Premium", "LimitÃ©"]
     },
     {
       "id": 3,
-      "name": "Balade au Coucher du Soleil Ã  Taghazout",
+      "name": "Balade au Coucher de Soleil Ã  Taghazout",
       "description": "Promenade Ã  cheval le long de l'Atlantique Ã  l'heure dorÃ©e â€” vues inoubliables.",
-      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782845437/40f1c7d1-7c38-4087-b2d1-e59322322d92_ntrzfd.png",
       "price": 1200,
       "duration": "Demi-journÃ©e",
       "places": 6,
-      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20rÃ©server%20Balade%20Taghazout",
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20r%C3%A9server%20la%20Balade%20au%20Coucher%20de%20Soleil",
       "accentColor": "#7fb5d0",
       "tags": ["Couples", "Romantique"]
     },
@@ -8857,17 +9098,16 @@ FILE: src\data\trips\fr.json
       "id": 4,
       "name": "Trek dans la VallÃ©e de l'Atlas",
       "description": "Voyage Ã  travers les anciens villages berbÃ¨res et les vallÃ©es verdoyantes.",
-      "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg",
       "price": 3500,
       "duration": "4 Jours",
       "places": 10,
-      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20rÃ©server%20Trek%20Atlas",
+      "bookLink": "https://wa.me/+212667858620?text=Je%20veux%20r%C3%A9server%20le%20Trek%20dans%20la%20Vall%C3%A9e%20de%20l%27Atlas",
       "accentColor": "#6b8c7c",
       "tags": ["Culturel", "RandonnÃ©e"]
     }
   ]
 }
-
 
 
 ========================================
