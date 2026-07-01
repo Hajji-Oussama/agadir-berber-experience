@@ -49,6 +49,7 @@
                       :alt="reviews[current].name"
                       class="avatar"
                       loading="lazy"
+                      decoding="async"
                     />
                   </div>
 

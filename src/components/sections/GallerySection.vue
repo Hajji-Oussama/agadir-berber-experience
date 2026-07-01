@@ -46,6 +46,7 @@
               :src="img.url"
               :alt="img.label"
               loading="lazy"
+              decoding="async"
               class="gallery-img"
               @load="onImageLoad(img.id)"
               @error="onImageLoad(img.id)"
@@ -109,6 +110,7 @@
                 :alt="filteredImages[lightbox.currentIndex].label"
                 class="lightbox-image"
                 draggable="false"
+                decoding="async"
               />
             </div>
           </div>

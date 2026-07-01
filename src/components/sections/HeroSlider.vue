@@ -55,7 +55,7 @@
           @click="goTo(index)"
           :aria-label="`Go to slide ${index + 1}`"
         >
-          <img :src="slide.image" :alt="slide.title" />
+          <img :src="slide.image" :alt="slide.title" loading="lazy" decoding="async" />
         </button>
       </div>
 

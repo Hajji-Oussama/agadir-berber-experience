@@ -1,4 +1,8 @@
+import { ref } from 'vue'
+
 const WHATSAPP_NUMBER = '+212615884469'
+export const isBookingLoading = ref(false)
+let bookingTimer = null
 
 export function useBooking() {
   function firePixel(item) {
@@ -28,8 +32,14 @@ export function useBooking() {
   function handleBooking(item = null) {
     firePixel(item)
     const url = buildWhatsAppUrl(item)
-    window.open(url, '_blank', 'noopener,noreferrer')
+    if (bookingTimer) clearTimeout(bookingTimer)
+    isBookingLoading.value = true
+    bookingTimer = setTimeout(() => {
+      isBookingLoading.value = false
+      bookingTimer = null
+      window.open(url, '_blank', 'noopener,noreferrer')
+    }, 1500)
   }
 
-  return { handleBooking }
+  return { handleBooking, isBookingLoading }
 }

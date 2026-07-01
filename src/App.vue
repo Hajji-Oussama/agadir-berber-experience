@@ -19,17 +19,28 @@
     <Footer />
 
     <WhatsAppFloat />
+
+    <BookingLoader />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { useI18n } from 'vue-i18n'
 import Header from '@/components/layout/Header.vue'
 import Footer from '@/components/layout/Footer.vue'
 import WhatsAppFloat from '@/components/layout/WhatsAppFloat.vue'
+import BookingLoader from '@/components/common/BookingLoader.vue'
 import { popLastGuard } from '@/composables/useBackGuard'
+import { updateSEO } from '@/composables/useSEO'
 
 const progressBar = ref(null)
+
+const { locale, t } = useI18n()
+
+watch(locale, (newLocale) => {
+  updateSEO(newLocale, t)
+}, { immediate: true })
 
 const updateProgress = () => {
   if (!progressBar.value) return

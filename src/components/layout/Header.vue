@@ -44,7 +44,7 @@
                   @keydown.enter="scrollToCard('services', item.id)"
                 >
                   <div class="mega-thumb">
-                    <img :src="item.image" :alt="item.name" loading="lazy" />
+                    <img :src="item.image" :alt="item.name" loading="lazy" decoding="async" />
                   </div>
                   <div class="mega-info">
                     <span class="mega-name">{{ item.name }}</span>
@@ -82,7 +82,7 @@
                   @keydown.enter="scrollToCard('trips', item.id)"
                 >
                   <div class="mega-thumb">
-                    <img :src="item.image" :alt="item.name" loading="lazy" />
+                    <img :src="item.image" :alt="item.name" loading="lazy" decoding="async" />
                   </div>
                   <div class="mega-info">
                     <span class="mega-name">{{ item.name }}</span>

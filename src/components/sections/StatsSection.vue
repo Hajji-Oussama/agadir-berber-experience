@@ -25,6 +25,7 @@
               alt=""
               class="stat-img"
               loading="lazy"
+              decoding="async"
             />
             <video
               v-if="stat.video"
