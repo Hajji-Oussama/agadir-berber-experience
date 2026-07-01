@@ -21,6 +21,7 @@
     <WhatsAppFloat />
 
     <BookingLoader />
+    <CookieBanner />
   </div>
 </template>
 
@@ -31,6 +32,7 @@ import Header from '@/components/layout/Header.vue'
 import Footer from '@/components/layout/Footer.vue'
 import WhatsAppFloat from '@/components/layout/WhatsAppFloat.vue'
 import BookingLoader from '@/components/common/BookingLoader.vue'
+import CookieBanner from '@/components/common/CookieBanner.vue'
 import { popLastGuard } from '@/composables/useBackGuard'
 import { updateSEO } from '@/composables/useSEO'
 
