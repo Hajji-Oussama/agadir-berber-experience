@@ -25,7 +25,18 @@ export function useBooking() {
     const price = item?.price
       ? ` ${item.price} Dhs`
       : ''
-    const text = `Hello, I want to book the ${name} for${price}`
+    const params = new URLSearchParams(window.location.search)
+    const refParts = []
+    const utmSource = params.get('utm_source')
+    const utmCampaign = params.get('utm_campaign')
+    const utmMedium = params.get('utm_medium')
+    const fbclid = params.get('fbclid')
+    if (fbclid) refParts.push(`fb:${fbclid.slice(0, 12)}`)
+    if (utmSource) refParts.push(utmSource)
+    if (utmCampaign) refParts.push(utmCampaign)
+    if (utmMedium) refParts.push(utmMedium)
+    const ref = refParts.length ? ` [Ref: ${refParts.join('|')}]` : ''
+    const text = `Hello, I want to book the ${name} for${price}${ref} \n\n📍 See details: https://www.agadirberbereexperience.com`
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
   }
 

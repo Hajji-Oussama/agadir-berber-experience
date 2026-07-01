@@ -93,16 +93,16 @@ export function updateSEO(locale, t) {
         },
         aggregateRating: {
           '@type': 'AggregateRating',
-          ratingValue: '5.0',
-          bestRating: '5.0',
-          ratingCount: '187',
-          reviewCount: '187'
+          ratingValue: '4.9',
+          bestRating: '5',
+          ratingCount: '342',
+          reviewCount: '342'
         },
         priceRange: '180-1200 MAD',
         image: `${baseUrl}/og-image.jpg`,
         sameAs: [
-          'https://www.instagram.com/agadir_berbere_experience',
-          'https://www.facebook.com/people/Agadir-Berb%C3%A8re-Exp%C3%A9rience/61573915849899/'
+          'https://instagram.com/agadirberbereexperience',
+          'https://facebook.com/agadirberbereexperience'
         ],
         knowsLanguage: ['en', 'fr', 'ar'],
         openingHoursSpecification: [

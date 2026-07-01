@@ -22,6 +22,8 @@
 
     <BookingLoader />
     <CookieBanner />
+    <ExitIntentModal />
+    <PhantomSocialProof />
   </div>
 </template>
 
@@ -33,6 +35,8 @@ import Footer from '@/components/layout/Footer.vue'
 import WhatsAppFloat from '@/components/layout/WhatsAppFloat.vue'
 import BookingLoader from '@/components/common/BookingLoader.vue'
 import CookieBanner from '@/components/common/CookieBanner.vue'
+import ExitIntentModal from '@/components/common/ExitIntentModal.vue'
+import PhantomSocialProof from '@/components/common/PhantomSocialProof.vue'
 import { popLastGuard } from '@/composables/useBackGuard'
 import { updateSEO } from '@/composables/useSEO'
 

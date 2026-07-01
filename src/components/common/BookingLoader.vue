@@ -7,17 +7,26 @@
           <div class="spinner-ring spinner-ring--inner"></div>
         </div>
         <p class="loader-text">{{ text }}</p>
+        <button class="share-btn" @click="share">
+          <i class="fas fa-share-alt"></i>
+          <span>{{ shareLabel }}</span>
+        </button>
+        <Transition name="toast-fade">
+          <span v-if="copied" class="share-toast">Copied!</span>
+        </Transition>
       </div>
     </div>
   </Transition>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { isBookingLoading } from '@/composables/useBooking'
 
 const { locale } = useI18n()
+
+const copied = ref(false)
 
 const text = computed(() => {
   const messages = {
@@ -27,6 +36,41 @@ const text = computed(() => {
   }
   return messages[locale.value] || messages.en
 })
+
+const shareLabel = computed(() => {
+  const messages = {
+    en: 'Share with Friends',
+    fr: 'Partager avec des amis',
+    ar: 'مشاركة مع الأصدقاء'
+  }
+  return messages[locale.value] || messages.en
+})
+
+const shareUrl = 'https://www.agadirberbereexperience.com'
+const shareTitle = 'I just booked an amazing adventure in Agadir! Check it out:'
+
+async function share() {
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: 'Agadir Berbère Expérience',
+        text: shareTitle,
+        url: shareUrl
+      })
+    } catch {
+      // user cancelled or error — fallback to clipboard
+      copyFallback()
+    }
+  } else {
+    copyFallback()
+  }
+}
+
+function copyFallback() {
+  navigator.clipboard.writeText(`${shareTitle} ${shareUrl}`)
+  copied.value = true
+  setTimeout(() => { copied.value = false }, 2000)
+}
 </script>
 
 <style scoped lang="scss">
@@ -43,6 +87,7 @@ const text = computed(() => {
 }
 
 .booking-loader-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,6 +132,61 @@ const text = computed(() => {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+.share-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.4rem;
+  border-radius: 60px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  margin-top: -0.3rem;
+
+  i {
+    font-size: 0.85rem;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+    color: var(--text-primary);
+    transform: scale(1.03);
+  }
+}
+
+.share-toast {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.4rem 1rem;
+  border-radius: 60px;
+  background: var(--accent);
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.toast-fade-enter-active,
+.toast-fade-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.toast-fade-enter-from,
+.toast-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(6px);
 }
 
 .loader-fade-enter-active,

@@ -23,6 +23,7 @@
         <div class="slide-overlay"></div>
 
         <div class="slide-content container">
+          <span v-if="timeContextMsg" class="slide-time-context">{{ timeContextMsg }}</span>
           <span class="slide-eyebrow">{{ slide.eyebrow }}</span>
           <h1 class="slide-title">{{ slide.title }}</h1>
           <p class="slide-subtitle">{{ slide.subtitle }}</p>
@@ -99,6 +100,13 @@ let touchDeltaY = 0
 let isHorizontalSwipe = false
 
 const currentSlide = computed(() => slides[currentIndex.value])
+
+const timeContextMsg = computed(() => {
+  const h = new Date().getHours()
+  if (h >= 5 && h < 12) return 'Good Morning! Perfect weather for an Agadir adventure today.'
+  if (h >= 15 && h < 19) return 'Golden Hour is approaching. Book your sunset ride.'
+  return 'Plan tomorrow\u2019s unforgettable memory.'
+})
 
 function mediaStyle(slide) {
   if (slide.image && !slide.video) {
@@ -333,6 +341,17 @@ onBeforeUnmount(() => {
   @media (max-width: 768px) {
     padding: 6rem 2rem 10rem;
   }
+}
+
+.slide-time-context {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  animation: fadeInUp 0.6s ease forwards;
 }
 
 .slide-eyebrow {
