@@ -2,18 +2,102 @@
   "title": "Notre Galerie",
   "subtitle": "Un voyage visuel à travers nos aventures les plus mémorables",
   "images": [
-    { "id": 1, "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80", "label": "Coucher de soleil à Taghazout", "size": "wide", "category": "desert" },
-    { "id": 2, "url": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1523297314-9fdb1edb22e4?w=1600&q=80", "label": "Dunes Dorées", "size": "tall", "category": "desert" },
-    { "id": 3, "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80", "label": "Plage Paradisiaque", "size": "square", "category": "beach" },
-    { "id": 4, "url": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1600&q=80", "label": "Horizon Désertique", "size": "tall", "category": "desert" },
-    { "id": 5, "url": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80", "label": "Sommets de l'Atlas", "size": "wide", "category": "mountains" },
-    { "id": 6, "url": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1533690872170-2ae0b39482fa?w=1600&q=80", "label": "Village Berbère", "size": "square", "category": "culture" },
-    { "id": 7, "url": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600&q=80", "label": "Vallée Montagneuse", "size": "large", "category": "mountains" },
-    { "id": 8, "url": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1506499152100-3b7b2e30fb66?w=1600&q=80", "label": "Évasion Côtière", "size": "square", "category": "beach" },
-    { "id": 9, "url": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80", "label": "Vue du Sommet", "size": "tall", "category": "mountains" },
-    { "id": 10, "url": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=80", "label": "Voyage Culturel", "size": "wide", "category": "culture" },
-    { "id": 11, "url": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=1600&q=80", "label": "Nuits du Sahara", "size": "square", "category": "desert" },
-    { "id": 12, "url": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=800&q=80", "urlLg": "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=1600&q=80", "label": "Bonheur Océan", "size": "large", "category": "beach" }
+    { 
+      "id": 1, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", 
+      "label": "Expérience du Camp Berbère", 
+      "size": "wide", 
+      "category": "culture" 
+    },
+    { 
+      "id": 2, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", 
+      "label": "Cours de Cuisine Traditionnelle", 
+      "size": "tall", 
+      "category": "culture" 
+    },
+    { 
+      "id": 3, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
+      "label": "Oasis de la Vallée du Paradis", 
+      "size": "tall", 
+      "category": "beach" 
+    },
+    { 
+      "id": 4, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", 
+      "label": "Artisanat de Poterie Traditionnelle", 
+      "size": "tall", 
+      "category": "culture" 
+    },
+    { 
+      "id": 5, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", 
+      "label": "Randonnée Chamelière au Sahara", 
+      "size": "wide", 
+      "category": "desert" 
+    },
+    { 
+      "id": 6, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", 
+      "label": "Aventure Chamelière dans le Désert", 
+      "size": "tall", 
+      "category": "desert" 
+    },
+    { 
+      "id": 7, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", 
+      "label": "Safari en Quad dans le Désert", 
+      "size": "large", 
+      "category": "desert" 
+    },
+    { 
+      "id": 8, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
+      "label": "Randonnée dans l'Atlas", 
+      "size": "square", 
+      "category": "mountains" 
+    },
+    { 
+      "id": 9, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
+      "label": "Aventure en Quad dans les Dunes", 
+      "size": "large", 
+      "category": "desert" 
+    },
+    { 
+      "id": 10, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", 
+      "label": "Balade à Chameau Berbère Traditionnelle", 
+      "size": "tall", 
+      "category": "mountains" 
+    },
+    { 
+      "id": 11, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
+      "label": "Équitation sur la Plage", 
+      "size": "square", 
+      "category": "beach" 
+    },
+    { 
+      "id": 12, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", 
+      "label": "Expérience du Tajine Marocain", 
+      "size": "tall", 
+      "category": "culture" 
+    }
   ],
   "categories": [
     { "id": "all", "label": "Tout" },

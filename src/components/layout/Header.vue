@@ -1,14 +1,13 @@
 <template>
   <header class="header glass-nav" :class="{ scrolled: isScrolled }" ref="headerRef">
     <div class="container header-inner">
-      <router-link to="/" class="logo" @click="scrollToTop">
-        <span class="logo-full">Agadir <span>Berbère</span></span>
-        <span class="logo-short">A.B.E</span>
-        <svg class="logo-svg" viewBox="0 0 40 40" aria-hidden="true">
-          <path d="M20 2L4 12v16l16 10 16-10V12L20 2z" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
-          <path d="M12 20l5 5 11-11" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      
+
+        <router-link to="/" class="logo" @click="scrollToTop">
+        <img src="https://res.cloudinary.com/nczftcee/image/upload/v1782908638/Design_sans_titre_1_1_b82llb.png" alt="Agadir Berbere Experience" class="logo-image" />
+        <span class="logo-text">Agadir <span>Berbère</span></span>
       </router-link>
+     
 
       <nav class="nav-links">
         <a
@@ -414,55 +413,7 @@ onBeforeUnmount(() => {
     overflow: hidden;
   }
 
-  .logo {
-    font-family: var(--font-heading);
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    color: var(--text-primary);
-    text-decoration: none;
-    white-space: nowrap;
-    transition: font-size 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    .logo-svg {
-      display: none;
-      width: 28px;
-      height: auto;
-      max-width: 100%;
-      flex-shrink: 1;
-    }
-
-    span {
-      color: var(--accent);
-    }
-
-    .logo-short {
-      display: none;
-    }
-
-    @media (max-width: 500px) {
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-
-      .logo-full, span:not(.logo-svg) {
-        display: none;
-      }
-      .logo-svg {
-        display: block;
-      }
-      .logo-short {
-        display: none;
-      }
-    }
-
-    @media (max-width: 400px) {
-      font-size: 0.8rem;
-    }
-  }
-
+ 
   .nav-links {
     display: flex;
     gap: 1.2rem;
@@ -860,4 +811,50 @@ onBeforeUnmount(() => {
     display: block;
   }
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    .logo-image {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0; /* يمنع انكماش الصورة وخروجها عن السيطرة */
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+    }
+
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--text-primary);
+      white-space: nowrap;
+
+      span {
+        color: var(--accent);
+      }
+    }
+
+    /* التجاوب مع شاشات التابلت */
+    @media (max-width: 768px) {
+      .logo-image { height: 36px; }
+      .logo-text { font-size: 1.1rem; }
+    }
+
+    /* التجاوب مع شاشات الهاتف الصغيرة */
+    @media (max-width: 480px) {
+      gap: 0.4rem;
+      .logo-image { height: 30px; }
+      .logo-text { font-size: 0.95rem; }
+    }
+  }
 </style>
