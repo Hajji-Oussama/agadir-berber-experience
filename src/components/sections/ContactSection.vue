@@ -16,7 +16,7 @@
           <div class="contact-item">
             <i class="fas fa-envelope"></i>
             <h3>{{ $t('contact.email') }}</h3>
-            <p>{{ $t('footer.email') }}</p>
+            <p>info@agadirberbereexperience.com</p>
           </div>
           <div class="contact-item">
             <i class="fas fa-map-marker-alt"></i>

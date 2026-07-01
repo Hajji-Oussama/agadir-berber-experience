@@ -6,7 +6,7 @@
         :key="slide.id"
         class="slide"
         :class="{ active: currentIndex === index }"
-        :aria-hidden="currentIndex !== index"
+        :inert="currentIndex !== index"
       >
         <div class="slide-media" ref="mediaRefs" :style="mediaStyle(slide)">
           <video
