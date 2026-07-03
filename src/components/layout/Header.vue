@@ -212,6 +212,9 @@ async function loadNavData(localeCode) {
 
 watch(locale, (newLocale) => {
   loadNavData(newLocale)
+  if (mobileOpen.value) closeMobileMenuFn()
+  activeDropdown.value = null
+  mobileDropdown.value = null
 }, { immediate: true })
 
 const handleScroll = () => {
@@ -354,6 +357,15 @@ const toggleDropdown = (name) => {
   }
 }
 
+const handleClickOutside = (e) => {
+  if (headerRef.value && !headerRef.value.contains(e.target)) {
+    activeDropdown.value = null
+  }
+  if (mobileOpen.value && headerRef.value && !headerRef.value.contains(e.target)) {
+    mobileDropdown.value = null
+  }
+}
+
 const handleKeydown = (e) => {
   if (e.key === 'Escape' && mobileOpen.value) {
     mobileOpen.value = false
@@ -374,6 +386,7 @@ onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
   window.addEventListener('keydown', handleKeydown)
   window.addEventListener('resize', handleResize)
+  document.addEventListener('click', handleClickOutside)
 
   setTimeout(updateActiveSection, 100)
 })
@@ -382,6 +395,7 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll)
   window.removeEventListener('keydown', handleKeydown)
   window.removeEventListener('resize', handleResize)
+  document.removeEventListener('click', handleClickOutside)
   Object.values(dropdownTimers).forEach(clearTimeout)
 })
 </script>

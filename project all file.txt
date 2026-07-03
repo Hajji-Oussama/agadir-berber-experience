@@ -59,6 +59,7 @@
 @{FullName=C:\Users\Admin\bourmi-trip\src\data\stats}
 @{FullName=C:\Users\Admin\bourmi-trip\src\data\testimonials}
 @{FullName=C:\Users\Admin\bourmi-trip\src\data\trips}
+@{FullName=C:\Users\Admin\bourmi-trip\src\data\siteConfig.json}
 @{FullName=C:\Users\Admin\bourmi-trip\src\data\slides.json}
 @{FullName=C:\Users\Admin\bourmi-trip\src\data\trips.js}
 @{FullName=C:\Users\Admin\bourmi-trip\src\data\gallery\ar.json}
@@ -1367,8 +1368,9 @@ C:\Users\Admin\bourmi-trip\src\components\common\ExitIntentModal.vue
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import siteConfig from '@/data/siteConfig.json'
 
-const WHATSAPP_NUMBER = '+212615884469'
+const WHATSAPP_NUMBER = siteConfig.whatsapp.number
 const STORAGE_KEY = 'abe_exit_seen'
 const visible = ref(false)
 let fired = false
@@ -1880,9 +1882,9 @@ C:\Users\Admin\bourmi-trip\src\components\layout\Footer.vue
           <h3>{{ $t('footer.brand') }}</h3>
           <p>{{ $t('footer.description') }}</p>
           <div class="social-links">
-            <a href="https://instagram.com" target="_blank" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-            <a href="https://facebook.com" target="_blank" aria-label="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-            <a href="https://youtube.com" target="_blank" aria-label="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+            <a :href="siteConfig.social.instagram" target="_blank" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a :href="siteConfig.social.facebook" target="_blank" aria-label="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+            <a :href="siteConfig.social.youtube" target="_blank" aria-label="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
         <div class="footer-links">
@@ -1930,17 +1932,18 @@ C:\Users\Admin\bourmi-trip\src\components\layout\Footer.vue
 <script setup>
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import siteConfig from '@/data/siteConfig.json'
 
 const { locale } = useI18n()
 const showLegal = ref(null)
 
-const phone = '+212615884469'
-const mapUrl = 'https://www.google.com/maps?q=Agadir+80000+Morocco'
+const phone = siteConfig.whatsapp.number
+const mapUrl = siteConfig.map.url
 
 const email = computed(() => {
   return locale.value === 'fr' || locale.value === 'ar'
-    ? 'info@bourmitrip.ma'
-    : 'info@agadirberbereexperience.com'
+    ? siteConfig.email.alternate
+    : siteConfig.email.primary
 })
 
 function scrollToSection(id) {
@@ -2356,6 +2359,9 @@ async function loadNavData(localeCode) {
 
 watch(locale, (newLocale) => {
   loadNavData(newLocale)
+  if (mobileOpen.value) closeMobileMenuFn()
+  activeDropdown.value = null
+  mobileDropdown.value = null
 }, { immediate: true })
 
 const handleScroll = () => {
@@ -2498,6 +2504,15 @@ const toggleDropdown = (name) => {
   }
 }
 
+const handleClickOutside = (e) => {
+  if (headerRef.value && !headerRef.value.contains(e.target)) {
+    activeDropdown.value = null
+  }
+  if (mobileOpen.value && headerRef.value && !headerRef.value.contains(e.target)) {
+    mobileDropdown.value = null
+  }
+}
+
 const handleKeydown = (e) => {
   if (e.key === 'Escape' && mobileOpen.value) {
     mobileOpen.value = false
@@ -2518,6 +2533,7 @@ onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
   window.addEventListener('keydown', handleKeydown)
   window.addEventListener('resize', handleResize)
+  document.addEventListener('click', handleClickOutside)
 
   setTimeout(updateActiveSection, 100)
 })
@@ -2526,6 +2542,7 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll)
   window.removeEventListener('keydown', handleKeydown)
   window.removeEventListener('resize', handleResize)
+  document.removeEventListener('click', handleClickOutside)
   Object.values(dropdownTimers).forEach(clearTimeout)
 })
 </script>
@@ -3192,7 +3209,7 @@ C:\Users\Admin\bourmi-trip\src\components\sections\ContactSection.vue
           <div class="contact-item">
             <i class="fas fa-envelope"></i>
             <h3>{{ $t('contact.email') }}</h3>
-            <p>info@agadirberbereexperience.com</p>
+            <p>{{ siteConfig.email.primary }}</p>
           </div>
           <div class="contact-item">
             <i class="fas fa-map-marker-alt"></i>
@@ -3204,7 +3221,7 @@ C:\Users\Admin\bourmi-trip\src\components\sections\ContactSection.vue
           <h3>{{ $t('contact.find_us') }}</h3>
           <div class="map-container">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27499.57323271208!2d-9.763014!3d30.432144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDI1JzU1LjciTiA5wrA0NSc0Ni44Ilc!5e0!3m2!1sen!2sma!4v1650000000000"
+              :src="siteConfig.map.embedUrl"
               width="100%"
               height="250"
               style="border:0; border-radius: 12px;"
@@ -3221,6 +3238,7 @@ C:\Users\Admin\bourmi-trip\src\components\sections\ContactSection.vue
 
 <script setup>
 import GlassCard from '@/components/common/GlassCard.vue'
+import siteConfig from '@/data/siteConfig.json'
 </script>
 
 <style scoped lang="scss">
@@ -7139,8 +7157,9 @@ export function hasGuards() {
 C:\Users\Admin\bourmi-trip\src\composables\useBooking.js
 ---------------------------------------
 import { ref } from 'vue'
+import siteConfig from '@/data/siteConfig.json'
 
-const WHATSAPP_NUMBER = '+212615884469'
+const WHATSAPP_NUMBER = siteConfig.whatsapp.number
 export const isBookingLoading = ref(false)
 let bookingTimer = null
 
@@ -7176,7 +7195,7 @@ export function useBooking() {
     if (utmCampaign) refParts.push(utmCampaign)
     if (utmMedium) refParts.push(utmMedium)
     const ref = refParts.length ? ` [Ref: ${refParts.join('|')}]` : ''
-    const text = `Hello, I want to book the ${name} for${price}${ref} \n\n📍 See details: https://www.agadirberbereexperience.com`
+    const text = `Hello, I want to book the ${name} for${price}${ref} \n\n📍 See details: ${siteConfig.website}`
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
   }
 
@@ -7233,6 +7252,8 @@ export function useLanguage() {
 --- ????? ?????: useSEO.js ---
 C:\Users\Admin\bourmi-trip\src\composables\useSEO.js
 ---------------------------------------
+import siteConfig from '@/data/siteConfig.json'
+
 export function updateSEO(locale, t) {
   const siteName = 'Agadir Berbère Expérience'
   const baseUrl = 'https://agadirberbereexperience.com'
@@ -7292,8 +7313,8 @@ export function updateSEO(locale, t) {
         alternateName: 'Agadir Berbere Experience',
         description: current.description,
         url: baseUrl,
-        telephone: '+212615884469',
-        email: 'info@agadirberbereexperience.com',
+        telephone: siteConfig.whatsapp.number,
+        email: siteConfig.email.primary,
         foundingDate: '2018',
         founder: {
           '@type': 'Person',
@@ -7336,8 +7357,8 @@ export function updateSEO(locale, t) {
         priceRange: '180-1200 MAD',
         image: `${baseUrl}/og-image.jpg`,
         sameAs: [
-          'https://instagram.com/agadirberbereexperience',
-          'https://facebook.com/agadirberbereexperience'
+          siteConfig.social.instagram,
+          siteConfig.social.facebook
         ],
         knowsLanguage: ['en', 'fr', 'ar'],
         openingHoursSpecification: [
@@ -7437,6 +7458,30 @@ export function updateSEO(locale, t) {
     document.head.appendChild(existingJson)
   }
   existingJson.textContent = JSON.stringify(jsonLd)
+}
+
+
+--- ????? ?????: siteConfig.json ---
+C:\Users\Admin\bourmi-trip\src\data\siteConfig.json
+---------------------------------------
+{
+  "whatsapp": {
+    "number": "+212615884469"
+  },
+  "email": {
+    "primary": "info@agadirberbereexperience.com",
+    "alternate": "info@bourmitrip.ma"
+  },
+  "social": {
+    "instagram": "https://instagram.com",
+    "facebook": "https://facebook.com",
+    "youtube": "https://youtube.com"
+  },
+  "map": {
+    "url": "https://maps.app.goo.gl/bcfxmEokURkemu7c6",
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3441.70184605574!2d-9.568738800000002!3d30.3878232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b707cb0f0991%3A0x64f5767cbe32d430!2sAGADIR%20berb%C3%A8re%20exp%C3%A9rience!5e0!3m2!1sar!2sma!4v1783107750883!5m2!1sar!2sma"
+  },
+  "website": "https://www.agadirberbereexperience.com"
 }
 
 
@@ -8614,7 +8659,7 @@ C:\Users\Admin\bourmi-trip\src\locales\ar.json
   "nav": {
     "home": "الرئيسية",
     "services": "خدماتنا",
-    "trips": "الرحلات",
+    "trips": "عروض",
     "contact": "اتصل بنا"
   },
   "hero": {
@@ -8768,7 +8813,7 @@ C:\Users\Admin\bourmi-trip\src\locales\en.json
   "nav": {
     "home": "Home",
     "services": "Services",
-    "trips": "Trips",
+    "trips": "Offers",
     "contact": "Contact"
   },
   "hero": {
@@ -8922,7 +8967,7 @@ C:\Users\Admin\bourmi-trip\src\locales\fr.json
   "nav": {
     "home": "Accueil",
     "services": "Services",
-    "trips": "Voyages",
+    "trips": "Offres",
     "contact": "Contact"
   },
   "hero": {
@@ -9289,7 +9334,7 @@ C:\Users\Admin\bourmi-trip\src\views\ContactPage.vue
         <h3>{{ $t('contact.find_us') }}</h3>
         <div class="map-container">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27499.57323271208!2d-9.763014!3d30.432144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDI1JzU1LjciTiA5wrA0NSc0Ni44Ilc!5e0!3m2!1sen!2sma!4v1650000000000"
+            :src="siteConfig.map.embedUrl"
             width="100%"
             height="250"
             style="border:0; border-radius: 12px;"
@@ -9305,6 +9350,7 @@ C:\Users\Admin\bourmi-trip\src\views\ContactPage.vue
 
 <script setup>
 import GlassCard from '@/components/common/GlassCard.vue'
+import siteConfig from '@/data/siteConfig.json'
 </script>
 
 <style scoped lang="scss">
