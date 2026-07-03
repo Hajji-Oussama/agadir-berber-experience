@@ -8,7 +8,37 @@
   "hero": {
     "title": "Where the desert meets the ocean",
     "subtitle": "Cooking Masterclass, Quad, Buggy, Horse & Camel rides. Premium authentic Amazigh adventures in Agadir — guided by locals who live the desert.",
-    "cta": "Explore Now"
+    "cta": "Explore Now",
+    "morning": "Good Morning! Perfect weather for an Agadir adventure today.",
+    "afternoon": "Golden Hour is approaching. Book your sunset ride.",
+    "night": "Plan tomorrow's unforgettable memory.",
+    "slides": [
+      {
+        "eyebrow": "Agadir Dunes",
+        "title": "Ride the Desert",
+        "subtitle": "Experience the thrill of Quad biking across the golden sands of Morocco."
+      },
+      {
+        "eyebrow": "Taghazout Bay",
+        "title": "Ocean & Horse",
+        "subtitle": "Ride along the pristine Atlantic beaches at golden hour."
+      },
+      {
+        "eyebrow": "Sunset Safari",
+        "title": "Dunes & Beyond",
+        "subtitle": "Conquer the rugged terrain with our premium Buggy off-road experience."
+      },
+      {
+        "eyebrow": "Atlas Trek",
+        "title": "Mountain Escape",
+        "subtitle": "Discover the hidden valleys and Berber villages of the High Atlas."
+      },
+      {
+        "eyebrow": "Atlas Trek",
+        "title": "Mountain Escape",
+        "subtitle": "Discover the hidden valleys and Berber villages of the High Atlas."
+      }
+    ]
   },
   "services": {
     "eyebrow": "Our Adventures",

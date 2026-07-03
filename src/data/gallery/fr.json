@@ -4,16 +4,16 @@
   "images": [
     { 
       "id": 1, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838939/WhatsApp_Image_2026-06-29_at_3.27.50_PM_dcqgmc.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg", 
       "label": "Expérience du Camp Berbère", 
       "size": "wide", 
       "category": "culture" 
     },
     { 
       "id": 2, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838951/WhatsApp_Image_2026-06-29_at_3.27.52_PM_f8tdim.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783102855/WhatsApp_Image_2026-06-29_at_3.27.52_PM_flzd00.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783102855/WhatsApp_Image_2026-06-29_at_3.27.52_PM_flzd00.jpg", 
       "label": "Cours de Cuisine Traditionnelle", 
       "size": "tall", 
       "category": "culture" 
@@ -28,79 +28,74 @@
     },
     { 
       "id": 4, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838934/WhatsApp_Image_2026-06-29_at_3.26.45_PM_jlsvcy.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783101325/Design_sans_titre_27_w4jtjk.png", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783101325/Design_sans_titre_27_w4jtjk.png", 
       "label": "Artisanat de Poterie Traditionnelle", 
-      "size": "tall", 
+      "size": "wide", 
       "category": "culture" 
     },
     { 
       "id": 5, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", 
-      "label": "Randonnée Chamelière au Sahara", 
-      "size": "wide", 
-      "category": "desert" 
-    },
-    { 
-      "id": 6, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838950/WhatsApp_Image_2026-06-29_at_3.27.56_PM_xuwsrd.jpg", 
-      "label": "Aventure Chamelière dans le Désert", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783104090/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_shxcod.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783104090/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_shxcod.jpg", 
+      "label": "Randonnée à Chameau au Sahara", 
       "size": "tall", 
       "category": "desert" 
     },
     { 
-      "id": 7, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg", 
-      "label": "Safari en Quad dans le Désert", 
-      "size": "large", 
+      "id": 6, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783103965/WhatsApp_Image_2026-06-29_at_3.27.55_PM_1_hnordx.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783103965/WhatsApp_Image_2026-06-29_at_3.27.55_PM_1_hnordx.jpg", 
+      "label": "Aventure Désertique à Chameau", 
+      "size": "square", 
       "category": "desert" 
     },
     { 
-      "id": 8, 
+      "id": 7, 
       "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
       "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
       "label": "Randonnée dans l'Atlas", 
       "size": "square", 
       "category": "mountains" 
     },
+    
     { 
-      "id": 9, 
+      "id": 8, 
       "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
       "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
-      "label": "Aventure en Quad dans les Dunes", 
+      "label": "Safari Désert en Buggy", 
       "size": "large", 
       "category": "desert" 
     },
+    
+    { 
+      "id": 9, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783098984/WhatsApp_Image_2026-06-29_at_3.27.51_PM_vftada.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783098984/WhatsApp_Image_2026-06-29_at_3.27.51_PM_vftada.jpg", 
+      "label": "Aventure en Quad dans les Dunes", 
+      "size": "wide", 
+      "category": "desert" 
+    },
+  
     { 
       "id": 10, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782845799/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_f20mxo.jpg", 
-      "label": "Balade à Chameau Berbère Traditionnelle", 
-      "size": "tall", 
-      "category": "mountains" 
-    },
-    { 
-      "id": 11, 
       "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
       "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
-      "label": "Équitation sur la Plage", 
+      "label": "Balade à Cheval sur la Plage", 
       "size": "square", 
       "category": "beach" 
     },
     { 
-      "id": 12, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg", 
-      "label": "Expérience du Tajine Marocain", 
+      "id": 11, 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg", 
+      "label": "Expérience du Tagine Marocain", 
       "size": "tall", 
       "category": "culture" 
     }
   ],
   "categories": [
-    { "id": "all", "label": "Tout" },
+    { "id": "all", "label": "Tous" },
     { "id": "desert", "label": "Désert" },
     { "id": "beach", "label": "Plage" },
     { "id": "mountains", "label": "Montagnes" },

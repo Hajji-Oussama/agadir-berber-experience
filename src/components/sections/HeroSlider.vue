@@ -74,11 +74,20 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
+import { useI18n } from 'vue-i18n'
 import slidesData from '@/data/slides.json'
 import { useBooking } from '@/composables/useBooking'
 const { handleBooking } = useBooking()
+const { t } = useI18n()
 
-const slides = slidesData
+const slides = computed(() =>
+  slidesData.map((slide, i) => ({
+    ...slide,
+    eyebrow: t(`hero.slides[${i}].eyebrow`),
+    title: t(`hero.slides[${i}].title`),
+    subtitle: t(`hero.slides[${i}].subtitle`)
+  }))
+)
 
 const currentIndex = ref(0)
 const progressWidth = ref(0)
@@ -99,13 +108,13 @@ let touchDeltaX = 0
 let touchDeltaY = 0
 let isHorizontalSwipe = false
 
-const currentSlide = computed(() => slides[currentIndex.value])
+const currentSlide = computed(() => slides.value[currentIndex.value])
 
 const timeContextMsg = computed(() => {
   const h = new Date().getHours()
-  if (h >= 5 && h < 12) return 'Good Morning! Perfect weather for an Agadir adventure today.'
-  if (h >= 15 && h < 19) return 'Golden Hour is approaching. Book your sunset ride.'
-  return 'Plan tomorrow\u2019s unforgettable memory.'
+  if (h >= 5 && h < 12) return t('hero.morning')
+  if (h >= 15 && h < 19) return t('hero.afternoon')
+  return t('hero.night')
 })
 
 function mediaStyle(slide) {
@@ -142,10 +151,10 @@ function scrollToSection(id) {
 }
 
 function goTo(index) {
-  if (index < 0) index = slides.length - 1
-  if (index >= slides.length) index = 0
+  if (index < 0) index = slides.value.length - 1
+  if (index >= slides.value.length) index = 0
   currentIndex.value = index
-  applyAccentColor(slides[index])
+  applyAccentColor(slides.value[index])
   resetProgress()
   resetAutoPlay()
   scrollThumbHorizontally(index)
@@ -247,7 +256,7 @@ function onMouseLeaveSlider() {
 
 onMounted(() => {
   isTouchDevice.value = 'ontouchstart' in window || navigator.maxTouchPoints > 0
-  applyAccentColor(slides[0])
+  applyAccentColor(slides.value[0])
   resetProgress()
   resetAutoPlay()
 

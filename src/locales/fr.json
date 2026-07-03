@@ -8,7 +8,37 @@
   "hero": {
     "title": "Où le désert rencontre l'océan",
     "subtitle": "Cours de Cuisine, Quad, Buggy, Balade à Cheval et à dos de Chameau. Des aventures Amazighs authentiques et haut de gamme à Agadir — guidées par des locaux qui vivent le désert.",
-    "cta": "Explorer"
+    "cta": "Explorer",
+    "morning": "Bonjour ! Temps parfait pour une aventure à Agadir aujourd'hui.",
+    "afternoon": "L'heure dorée approche. Réservez votre balade au coucher du soleil.",
+    "night": "Planifiez votre souvenir inoubliable de demain.",
+    "slides": [
+      {
+        "eyebrow": "Dunes d'Agadir",
+        "title": "Conduisez le Désert",
+        "subtitle": "Vivez le frisson du Quad à travers les sables dorés du Maroc."
+      },
+      {
+        "eyebrow": "Baie de Taghazout",
+        "title": "Océan & Cheval",
+        "subtitle": "Chevauchez le long des plages atlantiques préservées à l'heure dorée."
+      },
+      {
+        "eyebrow": "Safari au Coucher du Soleil",
+        "title": "Dunes & Au-delà",
+        "subtitle": "Conquérez le terrain accidenté avec notre expérience Buggy hors route premium."
+      },
+      {
+        "eyebrow": "Randonnée dans l'Atlas",
+        "title": "Évasion Montagnarde",
+        "subtitle": "Découvrez les vallées cachées et les villages berbères du Haut Atlas."
+      },
+      {
+        "eyebrow": "Randonnée dans l'Atlas",
+        "title": "Évasion Montagnarde",
+        "subtitle": "Découvrez les vallées cachées et les villages berbères du Haut Atlas."
+      }
+    ]
   },
   "services": {
     "eyebrow": "Nos Aventures",

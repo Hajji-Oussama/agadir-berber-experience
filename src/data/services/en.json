@@ -6,7 +6,7 @@
       "id": "cooking",
       "name": "Cooking Masterclass",
       "description": "An exclusive culinary journey through the flavours of Morocco. Visit the vibrant Souk to handpick fresh vegetables and spices, then learn the ancestral art of Tagine and Couscous alongside a traditional chef. Savour your creations with dessert and mint tea at the Kasbat Souss artisan complex — surrounded by 100% handmade Amazigh crafts.",
-      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839028/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_jkbvqv.jpg",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20the%20Cooking%20Masterclass",
       "price": 350,
@@ -18,10 +18,10 @@
       "id": "quad",
       "name": "Quad Biking",
       "description": "Feel the raw adrenaline as you tear across the golden desert dunes. This 2-hour off-road expedition puts you in control — wind in your face, sun on your back, and endless horizons ahead. Transport included.",
-      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838994/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_xvxsrf.jpg",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1783098808/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_w3dnts.jpg",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Quad%20Biking",
-      "price": 350,
+      "price": 400,
       "duration": "2 hours",
       "category": "desert",
       "tags": ["Best Seller", "Adrenaline"]
@@ -30,7 +30,7 @@
       "id": "buggy",
       "name": "Buggy Off-Road",
       "description": "Conquer the desert in a brand-new, powerful buggy. 2 hours of pure off-road exhilaration across majestic sand dunes and spectacular desert trails. Adrenaline meets breathtaking scenery. Transport included.",
-      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782838962/WhatsApp_Image_2026-06-29_at_3.27.51_PM_n8cgge.jpg",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20the%20Buggy%20Off-Road",
       "price": 600,
@@ -41,11 +41,11 @@
     {
       "id": "horse",
       "name": "Horse Riding",
-      "description": "Ride like the free Amazigh souls through the mystical Aghroud forests and across the legendary Souss River. Capture golden-hour photos, then savour mint tea and traditional sweets at the Kasbat Souss. Perfect for beginners and experienced riders alike.",
+      "description": "Ride like the free Amazigh souls through the mystical Aghroud forests and across the legendary Souss River. Capture golden-hour photos, then gather for an authentic Moroccan experience with traditional mint tea, a delicious BBQ feast, laughter, and vibrant activities at Kasbat Souss. Perfect for beginners and experienced riders alike.",
       "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Horse%20Riding",
-      "price": 180,
+      "price": 300,
       "duration": "2 hours",
       "category": "beach",
       "tags": ["Couples", "Romantic"]
@@ -53,14 +53,27 @@
     {
       "id": "camel",
       "name": "Camel Trekking",
-      "description": "A magical desert journey at a gentle pace. Traverse the ancient Aghroud forest trails, photograph the shimmering Souss River, and arrive at Kasbat Souss for mint tea and traditional sweets. Comfortable, unforgettable, and steeped in Amazigh heritage.",
+      "description": "A magical desert journey at a gentle pace. Traverse the ancient Aghroud forest trails, photograph the shimmering Souss River, and arrive at Kasbat Souss for an unforgettable Moroccan gathering with traditional mint tea, a sizzling BBQ feast, laughter, and lively activities. Comfortable, authentic, and steeped in Amazigh heritage.",
       "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png",
       "link": "/services",
       "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Camel%20Trekking",
-      "price": 180,
+      "price": 300,
       "duration": "2 hours",
       "category": "desert",
       "tags": ["Family", "Cultural"]
+    },
+    {
+      "id": "pottery",
+      "name": "Pottery Workshop",
+      "description": "Immerse yourself in the ancient art of Moroccan pottery. Work alongside skilled local artisans in a traditional workshop, shaping clay with your hands and learning centuries-old techniques passed down through generations. Create your own unique piece to take home as a lasting memory. After your creative session, celebrate your masterpiece with traditional mint tea, a sizzling BBQ feast, and joyful Moroccan atmosphere filled with laughter and lively activities.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1783101325/Design_sans_titre_27_w4jtjk.png",
+      "link": "/services",
+      "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Pottery%20Workshop",
+      "price": 250,
+      "duration": "2 hours",
+      "category": "culture",
+      "tags": ["Cultural", "Creative"]
     }
+  
   ]
 }

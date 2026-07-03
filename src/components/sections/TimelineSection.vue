@@ -63,7 +63,7 @@ const timelineItems = ref([])
 
 const steps = [
   {
-    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1782838977/WhatsApp_Image_2026-06-29_at_3.27.55_PM_uc767s.jpg',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1783001620/Design_sans_titre_3_fdbrph.png',
     color: '#c9a87c',
     meta: { duration: '2 Days', elevation: '1,200m' }
   },
@@ -83,7 +83,7 @@ const steps = [
     meta: { duration: '5 Days', elevation: '5,200m' }
   },
   {
-    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1782839037/WhatsApp_Image_2026-06-29_at_3.27.59_PM_1_dmcdyq.jpg',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg',
     color: '#e8a060',
     meta: { duration: '3 Days', elevation: '1,800m' }
   }
