@@ -49,11 +49,20 @@ export function useBooking() {
     const url = buildWhatsAppUrl(item)
     if (bookingTimer) clearTimeout(bookingTimer)
     isBookingLoading.value = true
+
+    // 1. Fire the Pixel instantly
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('trackCustom', 'WhatsAppClick')
+    }
+
+    // 2. Redirect instantly using location.href to bypass iOS Safari Popup Blocker
+    window.location.href = url
+
+    // 3. Reset the loading state after a delay (in case the user navigates back to the page)
     bookingTimer = setTimeout(() => {
       isBookingLoading.value = false
       bookingTimer = null
-      window.open(url, '_blank', 'noopener,noreferrer')
-    }, 1500)
+    }, 1000)
   }
 
   return { handleBooking, isBookingLoading }
