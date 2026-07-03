@@ -27,8 +27,9 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import siteConfig from '@/data/siteConfig.json'
 
-const WHATSAPP_NUMBER = '+212615884469'
+const WHATSAPP_NUMBER = siteConfig.whatsapp.number
 const STORAGE_KEY = 'abe_exit_seen'
 const visible = ref(false)
 let fired = false

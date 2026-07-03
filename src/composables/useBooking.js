@@ -1,6 +1,7 @@
 import { ref } from 'vue'
+import siteConfig from '@/data/siteConfig.json'
 
-const WHATSAPP_NUMBER = '+212615884469'
+const WHATSAPP_NUMBER = siteConfig.whatsapp.number
 export const isBookingLoading = ref(false)
 let bookingTimer = null
 
@@ -36,7 +37,7 @@ export function useBooking() {
     if (utmCampaign) refParts.push(utmCampaign)
     if (utmMedium) refParts.push(utmMedium)
     const ref = refParts.length ? ` [Ref: ${refParts.join('|')}]` : ''
-    const text = `Hello, I want to book the ${name} for${price}${ref} \n\n📍 See details: https://www.agadirberbereexperience.com`
+    const text = `Hello, I want to book the ${name} for${price}${ref} \n\n📍 See details: ${siteConfig.website}`
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
   }
 

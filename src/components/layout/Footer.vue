@@ -6,9 +6,9 @@
           <h3>{{ $t('footer.brand') }}</h3>
           <p>{{ $t('footer.description') }}</p>
           <div class="social-links">
-            <a href="https://instagram.com" target="_blank" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-            <a href="https://facebook.com" target="_blank" aria-label="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-            <a href="https://youtube.com" target="_blank" aria-label="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+            <a :href="siteConfig.social.instagram" target="_blank" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a :href="siteConfig.social.facebook" target="_blank" aria-label="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+            <a :href="siteConfig.social.youtube" target="_blank" aria-label="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
         <div class="footer-links">
@@ -56,17 +56,18 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import siteConfig from '@/data/siteConfig.json'
 
 const { locale } = useI18n()
 const showLegal = ref(null)
 
-const phone = '+212615884469'
-const mapUrl = 'https://www.google.com/maps?q=Agadir+80000+Morocco'
+const phone = siteConfig.whatsapp.number
+const mapUrl = siteConfig.map.url
 
 const email = computed(() => {
   return locale.value === 'fr' || locale.value === 'ar'
-    ? 'info@bourmitrip.ma'
-    : 'info@agadirberbereexperience.com'
+    ? siteConfig.email.alternate
+    : siteConfig.email.primary
 })
 
 function scrollToSection(id) {

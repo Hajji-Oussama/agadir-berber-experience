@@ -1,3 +1,5 @@
+import siteConfig from '@/data/siteConfig.json'
+
 export function updateSEO(locale, t) {
   const siteName = 'Agadir Berbère Expérience'
   const baseUrl = 'https://agadirberbereexperience.com'
@@ -57,8 +59,8 @@ export function updateSEO(locale, t) {
         alternateName: 'Agadir Berbere Experience',
         description: current.description,
         url: baseUrl,
-        telephone: '+212615884469',
-        email: 'info@agadirberbereexperience.com',
+        telephone: siteConfig.whatsapp.number,
+        email: siteConfig.email.primary,
         foundingDate: '2018',
         founder: {
           '@type': 'Person',
@@ -101,8 +103,8 @@ export function updateSEO(locale, t) {
         priceRange: '180-1200 MAD',
         image: `${baseUrl}/og-image.jpg`,
         sameAs: [
-          'https://instagram.com/agadirberbereexperience',
-          'https://facebook.com/agadirberbereexperience'
+          siteConfig.social.instagram,
+          siteConfig.social.facebook
         ],
         knowsLanguage: ['en', 'fr', 'ar'],
         openingHoursSpecification: [
