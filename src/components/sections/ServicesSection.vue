@@ -46,7 +46,7 @@
               </div>
               <div class="service-footer-container">
                 <div class="service-meta">
-                  <span class="price">{{ service.price }} <small>{{ $t('services.currency') }}</small></span>
+                  <span class="price">{{ formatPrice(service.price) }}</span>
                   <span class="duration"><i class="far fa-clock"></i> {{ service.duration }}</span>
                 </div>
                 <div class="service-actions">
@@ -69,11 +69,13 @@ import { ref, watch, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { fetchServices } from '@/services/api'
 import { useBooking } from '@/composables/useBooking'
+import { useCurrency } from '@/composables/useCurrency'
 
 const { locale } = useI18n()
 const data = ref(null)
 const loadedImages = reactive(new Set())
 const { handleBooking } = useBooking()
+const { formatPrice } = useCurrency()
 const expandedService = ref(null)
 
 function toggleExpand(id) {

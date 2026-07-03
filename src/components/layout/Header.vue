@@ -48,7 +48,7 @@
                   </div>
                   <div class="mega-info">
                     <span class="mega-name">{{ item.name }}</span>
-                    <span class="mega-price">{{ item.price }} Dhs</span>
+                    <span class="mega-price">{{ formatPrice(item.price) }}</span>
                   </div>
                 </div>
               </div>
@@ -86,7 +86,7 @@
                   </div>
                   <div class="mega-info">
                     <span class="mega-name">{{ item.name }}</span>
-                    <span class="mega-price">{{ item.price }} Dhs</span>
+                    <span class="mega-price">{{ formatPrice(item.price) }}</span>
                   </div>
                 </div>
               </div>
@@ -104,6 +104,10 @@
       </nav>
 
       <div class="header-actions">
+        <div class="header-currency-wrapper">
+          <CurrencySwitcher />
+        </div>
+        <span class="header-divider"></span>
         <LanguageSwitcher />
       </div>
 
@@ -132,8 +136,8 @@
                   href="#services"
                   @click.prevent="scrollToCard('services', item.id)"
                 >
-                  {{ item.name }}
-                  <span class="mobile-dropdown-price">{{ item.price }} Dhs</span>
+                    {{ item.name }}
+                  <span class="mobile-dropdown-price">{{ formatPrice(item.price) }}</span>
                 </a>
               </div>
             </Transition>
@@ -153,7 +157,7 @@
                   @click.prevent="scrollToCard('trips', item.id)"
                 >
                   {{ item.name }}
-                  <span class="mobile-dropdown-price">{{ item.price }} Dhs</span>
+                  <span class="mobile-dropdown-price">{{ formatPrice(item.price) }}</span>
                 </a>
               </div>
             </Transition>
@@ -162,6 +166,10 @@
           <a href="#contact" @click.prevent="scrollToSection('contact')">
             {{ $t('nav.contact') }}
           </a>
+
+          <div class="mobile-currency-section">
+            <CurrencySwitcher />
+          </div>
 
           <button class="mobile-whatsapp" @click="handleBooking()">
             <i class="fab fa-whatsapp"></i>
@@ -182,13 +190,16 @@ import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue'
+import CurrencySwitcher from '@/components/common/CurrencySwitcher.vue'
 import { pushGuard, popGuard } from '@/composables/useBackGuard'
 import { fetchServices, fetchTrips } from '@/services/api'
 import { useBooking } from '@/composables/useBooking'
+import { useCurrency } from '@/composables/useCurrency'
 
 const route = useRoute()
 const { locale } = useI18n()
 const { handleBooking } = useBooking()
+const { formatPrice, activeCurrency } = useCurrency()
 
 const headerRef = ref(null)
 const isScrolled = ref(false)
@@ -216,6 +227,12 @@ watch(locale, (newLocale) => {
   activeDropdown.value = null
   mobileDropdown.value = null
 }, { immediate: true })
+
+watch(activeCurrency, () => {
+  if (mobileOpen.value) closeMobileMenuFn()
+  activeDropdown.value = null
+  mobileDropdown.value = null
+})
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
@@ -609,6 +626,18 @@ onBeforeUnmount(() => {
     }
   }
 
+  .header-currency-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-divider {
+    width: 1px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+  }
+
   .mobile-toggle {
     display: none;
     flex-direction: column;
@@ -767,8 +796,13 @@ onBeforeUnmount(() => {
       }
     }
 
+    .mobile-currency-section {
+      margin: 1rem 0 0.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
     .mobile-lang {
-      margin-top: 0.5rem;
       display: flex;
       justify-content: center;
       padding-top: 1rem;

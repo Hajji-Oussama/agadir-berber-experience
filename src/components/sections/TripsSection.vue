@@ -48,7 +48,7 @@
               <h3>{{ trip.name }}</h3>
               <p>{{ trip.description }}</p>
               <div class="trip-meta">
-                <span class="price">{{ $t('trips.price', { price: trip.price }) }}</span>
+                <span class="price">{{ $t('trips.price', { price: formatPrice(trip.price) }) }}</span>
                 <span class="rating">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               </div>
               <button class="btn-book" @click.stop="handleBooking(trip)">
@@ -68,11 +68,13 @@ import { ref, watch, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { fetchTrips } from '@/services/api'
 import { useBooking } from '@/composables/useBooking'
+import { useCurrency } from '@/composables/useCurrency'
 
 const { locale } = useI18n()
 const data = ref(null)
 const loadedImages = reactive(new Set())
 const { handleBooking } = useBooking()
+const { formatPrice } = useCurrency()
 
 watch(locale, async (newLocale) => {
   data.value = await fetchTrips(newLocale)

@@ -44,7 +44,7 @@
     "eyebrow": "Our Adventures",
     "title": "Choose Your Experience",
     "subtitle": "From an authentic culinary masterclass to adrenaline-fueled dunes — discover the soul of Agadir.",
-    "currency": "Dhs",
+
     "more": "Read More",
     "less": "Show Less",
     "learn_more": "Explore",
@@ -65,7 +65,7 @@
     "title": "Discover Your Next Adventure",
     "subtitle": "Handpicked experiences designed to inspire. From desert dunes to cultural immersion.",
     "places": "places left",
-    "price": "From {price} MAD",
+    "price": "From {price}",
     "book": "Book Now"
   },
   "testimonials": {

@@ -44,7 +44,7 @@
     "eyebrow": "Nos Aventures",
     "title": "Choisissez Votre Expérience",
     "subtitle": "D'un cours de cuisine d'exception aux dunes vibrantes d'adrénaline — découvrez l'âme d'Agadir.",
-    "currency": "Dhs",
+
     "more": "Lire Plus",
     "less": "Voir Moins",
     "learn_more": "Explorer",
@@ -65,7 +65,7 @@
     "title": "Découvrez Votre Prochaine Aventure",
     "subtitle": "Des expériences soigneusement choisies pour vous inspirer. Des dunes du désert aux horizons océaniques.",
     "places": "places disponibles",
-    "price": "À partir de {price} Dhs",
+    "price": "À partir de {price}",
     "book": "Réserver"
   },
   "testimonials": {

@@ -1,15 +1,18 @@
 import { ref } from 'vue'
 import siteConfig from '@/data/siteConfig.json'
+import { useCurrency } from '@/composables/useCurrency'
 
 const WHATSAPP_NUMBER = siteConfig.whatsapp.number
 export const isBookingLoading = ref(false)
 let bookingTimer = null
 
 export function useBooking() {
+  const { formatPrice, activeCurrency } = useCurrency()
+
   function firePixel(item) {
     const pixelPayload = {
       content_name: item?.name || item?.title || 'Bourmi Trip',
-      currency: 'MAD'
+      currency: activeCurrency.value
     }
     if (item?.price) {
       pixelPayload.value = typeof item.price === 'string'
@@ -24,7 +27,7 @@ export function useBooking() {
   function buildWhatsAppUrl(item) {
     const name = item?.name || item?.title || 'an adventure'
     const price = item?.price
-      ? ` ${item.price} Dhs`
+      ? ` ${formatPrice(item.price)}`
       : ''
     const params = new URLSearchParams(window.location.search)
     const refParts = []
