@@ -38,7 +38,7 @@
               </div>
 
               <div class="trip-badge">
-                <span class="places"><i class="fas fa-users"></i> {{ trip.places }} {{ $t('trips.places') }}</span>
+                <span class="places"><i class="fas fa-users"></i> {{ trip.groupSize || trip.places }}</span>
                 <span class="duration"><i class="far fa-clock"></i> {{ trip.duration }}</span>
               </div>
               <div class="trip-overlay-gradient"></div>
@@ -236,7 +236,7 @@ watch(data, (val) => {
 
       .trip-tags {
         position: absolute;
-        top: 0.75rem;
+        bottom: 0.75rem;
         right: 0.75rem;
         z-index: 3;
         display: flex;
@@ -294,7 +294,7 @@ watch(data, (val) => {
 
       .trip-badge {
         position: absolute;
-        top: 1rem;
+        bottom: 1rem;
         left: 1rem;
         z-index: 2;
         display: flex;
