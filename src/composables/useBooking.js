@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import siteConfig from '@/data/siteConfig.json'
 import { useCurrency } from '@/composables/useCurrency'
+import promoConfig from '@/data/promoConfig.json'
 
 const WHATSAPP_NUMBER = siteConfig.whatsapp.number
 export const isBookingLoading = ref(false)
@@ -40,7 +41,8 @@ export function useBooking() {
     if (utmCampaign) refParts.push(utmCampaign)
     if (utmMedium) refParts.push(utmMedium)
     const ref = refParts.length ? ` [Ref: ${refParts.join('|')}]` : ''
-    const text = `Hello, I want to book the ${name} for${price}${ref} \n\n📍 See details: ${siteConfig.website}`
+    const promoFlag = promoConfig.isActive && item?.id === promoConfig.serviceId ? ' [Moroccan Promo Claimed]' : ''
+    const text = `Hello, I want to book the ${name} for${price}${ref}${promoFlag} \n\n📍 See details: ${siteConfig.website}`
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
   }
 

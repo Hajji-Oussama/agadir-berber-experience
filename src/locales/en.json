@@ -145,5 +145,11 @@
   },
   "home": {
     "title": "Home"
+  },
+  "promo": {
+    "badge": "Moroccans Offer",
+    "modal_title": "Special Offer for Moroccans! 🇲🇦",
+    "modal_desc": "Enjoy an unforgettable Horse Riding experience at a massive discount exclusively for locals.",
+    "view_offer": "View Offer"
   }
 }

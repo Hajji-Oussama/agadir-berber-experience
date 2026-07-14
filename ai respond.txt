@@ -1,0 +1,661 @@
+Act as an expert Vue 3 and Vite developer. I need to implement a "Special Promo for Moroccans" for the "Horse Riding" service. 
+Do not hallucinate. Follow these exact 6 steps to modify the existing architecture based on the provided files.
+
+### Step 1: Create the Promo Config File
+Create a new file `src/data/promoConfig.json`:
+```json
+{
+  "isActive": true,
+  "serviceId": "horse",
+  "basePriceMAD": 350,
+  "promoPriceMAD": 150
+}
+Step 2: Update Base Prices in Services Data
+In the files src/data/services/en.json, src/data/services/fr.json, and src/data/services/ar.json:
+Find the service with "id": "horse" and change its "price" to 350 (which corresponds to ~35 EUR/USD based on our useCurrency logic).
+
+Step 3: Add Translations
+Add these keys to src/locales/en.json, fr.json, and ar.json inside a new "promo": {} object:
+
+en.json:
+
+JSON
+"promo": {
+  "badge": "Moroccans Offer",
+  "modal_title": "Special Offer for Moroccans! 🇲🇦",
+  "modal_desc": "Enjoy an unforgettable Horse Riding experience at a massive discount exclusively for locals.",
+  "view_offer": "View Offer"
+}
+fr.json:
+
+JSON
+"promo": {
+  "badge": "Offre Marocains",
+  "modal_title": "Offre Spéciale Marocains ! 🇲🇦",
+  "modal_desc": "Profitez d'une balade à cheval inoubliable avec une réduction exceptionnelle pour les locaux.",
+  "view_offer": "Voir l'Offre"
+}
+ar.json:
+
+JSON
+"promo": {
+  "badge": "عرض للمغاربة",
+  "modal_title": "عرض خاص بالمغاربة! 🇲🇦",
+  "modal_desc": "استمتع بتجربة ركوب الخيل لا تُنسى بتخفيض حصري وخاص بالمغاربة.",
+  "view_offer": "شاهد العرض"
+}
+Step 4: Create the Promo Modal Component
+Create src/components/common/PromoModal.vue.
+
+Use the existing GlassCard styling (glass-card class).
+
+It should read promoConfig.json. If !isActive, don't render.
+
+Use localStorage to only show it once per session/day so it's not annoying.
+
+Include a button {{ $t('promo.view_offer') }} that, when clicked, closes the modal, uses document.getElementById('services').scrollIntoView(), and applies a brief CSS highlight to document.querySelector('[data-id="horse"]').
+
+Step 5: Register Modal in App.vue
+In src/App.vue:
+
+Import PromoModal from @/components/common/PromoModal.vue.
+
+Add <PromoModal /> inside the <div id="app"> right before <CookieBanner />.
+
+Step 6: Modify ServicesSection.vue
+Update src/components/sections/ServicesSection.vue:
+
+Import promoConfig from @/data/promoConfig.json.
+
+Inside the .service-card template, check: v-if="promoConfig.isActive && service.id === promoConfig.serviceId".
+
+If true:
+
+Add a special CSS class to the card (e.g., promo-active-card) to give it a glowing gold border (var(--accent)).
+
+Show a new tag in .service-tags: <span class="service-tag tag--best-seller pulse-anim">{{ $t('promo.badge') }}</span>.
+
+In .service-meta, show the old price crossed out (<s style="opacity:0.5; font-size:1rem">{{ formatPrice(promoConfig.basePriceMAD) }}</s>) and next to it the new promo price ({{ formatPrice(promoConfig.promoPriceMAD) }}).
+
+If false (or different service): render the normal price {{ formatPrice(service.price) }}.
+
+Step 7: Update useBooking.js (WhatsApp Message)
+In src/composables/useBooking.js:
+Import promoConfig. In buildWhatsAppUrl(item), if promoConfig.isActive && item.id === promoConfig.serviceId, append to the WhatsApp text: "[Moroccan Promo Claimed]".
+
+Write the code for PromoModal.vue, ServicesSection.vue modifications, and useBooking.js modifications. Ensure the SCSS matches the existing dark/glass aesthetic perfectly. 
++ Thought: 323ms
+# Todos
+[•] Read all existing files to understand architecture
+[ ] Step 1: Create promoConfig.json
+[ ] Step 2: Update base prices in services data files
+[ ] Step 3: Add translations to locale files
+[ ] Step 4: Create PromoModal.vue component
+[ ] Step 5: Register PromoModal in App.vue
+[ ] Step 6: Modify ServicesSection.vue
+[ ] Step 7: Update useBooking.js WhatsApp message
++ Thought: 583ms
+→Read src 
+→Read src\data 
+→Read src\locales 
+→Read src\components 
+→Read src\composables 
++ Thought: 300ms
+→Read src\data\services 
+→Read src\components\common 
+→Read src\components\sections 
+→Read src\data\currencyConfig.json 
++ Thought: 281ms
+→Read src\data\services\en.json 
+→Read src\data\services\fr.json 
+→Read src\data\services\ar.json 
+→Read src\App.vue 
+→Read src\components\sections\ServicesSection.vue 
+→Read src\composables\useBooking.js 
+→Read src\locales\en.json 
+→Read src\locales\fr.json 
+→Read src\locales\ar.json 
+→Read src\components\common\GlassCard.vue 
+→Read src\composables\useCurrency.js 
++ Thought: 479ms
+Let me also check the ExitIntentModal for the modal pattern used:
+→Read src\components\common\ExitIntentModal.vue 
+→Read src\styles 
++ Thought: 621ms
+→Read src\styles\main.scss 
+→Read src\styles\variables.scss 
++ Thought: 1.5s
+Now I have full context. Let
++ Thought: 1.1s
+# Todos
+[✓] Read all existing files to understand architecture
+[•] Step 1: Create promoConfig.json
+[ ] Step 2: Update base prices in services data files
+[ ] Step 3: Add translations to locale files
+[ ] Step 4: Create PromoModal.vue component
+[ ] Step 5: Register PromoModal in App.vue
+[ ] Step 6: Modify ServicesSection.vue
+[ ] Step 7: Update useBooking.js WhatsApp message
++ Thought: 443ms
+# Wrote src\data\promoConfig.json
+{
+  "isActive": true,
+  "serviceId": "horse",
+  "basePriceMAD": 350,
+  "promoPriceMAD": 150
+}
+
++ Thought: 354ms
+Now Step 2: Update horse price from 300 to 350 in all service files:
+# Todos
+[✓] Read all existing files to understand architecture
+[✓] Step 1: Create promoConfig.json
+[•] Step 2: Update base prices in services data files
+[ ] Step 3: Add translations to locale files
+[ ] Step 4: Create PromoModal.vue component
+[ ] Step 5: Register PromoModal in App.vue
+[ ] Step 6: Modify ServicesSection.vue
+[ ] Step 7: Update useBooking.js WhatsApp message
++ Thought: 806ms
+← Edit src\data\services\en.json
+  "description": "Ride like the free Amazigh souls through the mystical Aghroud forests and across the legendary Souss River. Capture golden-hour photos, then gather for an authentic Moroccan experience with traditional mint tea, a delicious BBQ feast, laughter, and vibrant activities at Kasbat Souss. Perfect for beginners and experienced riders alike.",
+  "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg",
+  "link": "/services",
+  "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Horse%20Riding",
+  "price": 300,
+  "price": 350,
+  "duration": "2 hours",
+  "category": "beach",
+  "tags": ["Couples", "Romantic"]
+},
+← Edit src\data\services\fr.json
+  "description": "Chevauchez comme les âmes libres amazighes à travers les forêts mystiques d'Aghroud et à travers la légendaire rivière Souss. Capturez des photos à l'heure dorée, puis rassemblez-vous pour une expérience marocaine authentique avec un thé à la menthe traditionnel, un délicieux festin BBQ, des rires et des activités vibrantes à Kasbat Souss. Parfait pour les débutants et les cavaliers expérimentés.",
+  "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg",
+  "link": "/services",
+  "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Horse%20Riding",
+  "price": 300,
+  "price": 350,
+  "duration": "2 hours",
+  "category": "beach",
+  "tags": ["Couples", "Romantic"]
+},
+← Edit src\data\services\ar.json
+  "description": "اركب مثل الأرواح الأمازيغية الحرة عبر غابات أغرود الغامضة وعبر نهر سوس الأسطوري. التقط صورًا في الساعة الذهبية، ثم اجتمع لتجربة مغربية أصيلة مع الشاي بالنعناع التقليدي، ووليمة شواء لذيذة، وضحك، وأنشطة نابضة بالحياة في قصبة سوس. مثالي للمبتدئين والفرسان ذوي الخبرة على حد سواء.",
+  "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg",
+  "link": "/services",
+  "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Horse%20Riding",
+  "price": 300,
+  "price": 350,
+  "duration": "2 hours",
+  "category": "beach",
+  "tags": ["Couples", "Romantic"]
+},
++ Thought: 587ms
+Step 3: Add translations to locale files:
+# Todos
+[✓] Read all existing files to understand architecture
+[✓] Step 1: Create promoConfig.json
+[✓] Step 2: Update base prices in services data files
+[•] Step 3: Add translations to locale files
+[ ] Step 4: Create PromoModal.vue component
+[ ] Step 5: Register PromoModal in App.vue
+[ ] Step 6: Modify ServicesSection.vue
+[ ] Step 7: Update useBooking.js WhatsApp message
++ Thought: 1.2s
+← Edit src\locales\en.json
+    "tooltip": "Need help booking?"
+  },
+  "home": {
+    "title": "Home"
+  },
+  "promo": {
+    "badge": "Moroccans Offer",
+    "modal_title": "Special Offer for Moroccans! 🇲🇦",
+    "modal_desc": "Enjoy an unforgettable Horse Riding experience at a massive discount exclusively for locals.",
+    "view_offer": "View Offer"
+  }
+}
+← Edit src\locales\fr.json
+    "tooltip": "Besoin d'aide pour réserver ?"
+  },
+  "home": {
+    "title": "Accueil"
+  },
+  "promo": {
+    "badge": "Offre Marocains",
+    "modal_title": "Offre Spéciale Marocains ! 🇲🇦",
+    "modal_desc": "Profitez d'une balade à cheval inoubliable avec une réduction exceptionnelle pour les locaux.",
+    "view_offer": "Voir l'Offre"
+  }
+}
+← Edit src\locales\ar.json
+    "tooltip": "هل تحتاج مساعدة في الحجز؟"
+  },
+  "home": {
+    "title": "الرئيسية"
+  },
+  "promo": {
+    "badge": "عرض للمغاربة",
+    "modal_title": "عرض خاص بالمغاربة! 🇲🇦",
+    "modal_desc": "استمتع بتجربة ركوب الخيل لا تُنسى بتخفيض حصري وخاص بالمغاربة.",
+    "view_offer": "شاهد العرض"
+  }
+}
++ Thought: 999ms
+Step 4: Create the PromoModal component:
+# Todos
+[✓] Read all existing files to understand architecture
+[✓] Step 1: Create promoConfig.json
+[✓] Step 2: Update base prices in services data files
+[✓] Step 3: Add translations to locale files
+[•] Step 4: Create PromoModal.vue component
+[ ] Step 5: Register PromoModal in App.vue
+[ ] Step 6: Modify ServicesSection.vue
+[ ] Step 7: Update useBooking.js WhatsApp message
++ Thought: 1.7s
+# Wrote src\components\common\PromoModal.vue
+<template>
+  <Transition name="promo-fade">
+    <div v-if="visible" class="promo-overlay" @click.self="dismiss">
+      <div class="promo-card glass-card">
+        <button class="promo-close" @click="dismiss" aria-label="Close">×</button>
+
+        <div class="promo-icon">
+          <i class="fas fa-tag"></i>
+        </div>
+
+        <h2 class="promo-title">{{ $t('promo.modal_title') }}</h2>
+        <p class="promo-body">{{ $t('promo.modal_desc') }}</p>
+
+        <button class="promo-cta" @click="claimOffer">
+          {{ $t('promo.view_offer') }}
+        </button>
+
+        <button class="promo-ghost" @click="dismiss">{{ $t('services.less') }}</button>
+      </div>
+    </div>
+  </Transition>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import promoConfig from '@/data/promoConfig.json'
+
+const STORAGE_KEY = 'abe_promo_seen'
+const visible = ref(false)
+
+function claimOffer() {
+  dismiss()
+  const el = document.getElementById('services')
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+  const card = document.querySelector('[data-id="horse"]')
+  if (card) {
+    card.classList.add('card-highlight')
+    setTimeout(() => card.classList.remove('card-highlight'), 1500)
+  }
+}
+
+function dismiss() {
+  visible.value = false
+}
+
+function trigger() {
+  localStorage.setItem(STORAGE_KEY, Date.now().toString())
+  visible.value = true
+}
+
+onMounted(() => {
+  if (!promoConfig.isActive) return
+  const stored = localStorage.getItem(STORAGE_KEY)
+  if (stored) {
+    const elapsed = Date.now() - parseInt(stored, 10)
+    if (elapsed < 86400000) return
+  }
+  setTimeout(trigger, 3000)
+})
+</script>
+
+<style scoped lang="scss">
+.promo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 14, 26, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 1.5rem;
+}
+
+.promo-card {
+  position: relative;
+  max-width: 460px;
+  width: 100%;
+  padding: 2.5rem 2rem 2rem;
+  border-radius: 24px;
+  background: rgba(10, 14, 26, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.promo-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.3s;
+  line-height: 1;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.promo-icon {
+  font-size: 2.4rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.promo-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+}
+
+.promo-body {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+
+.promo-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2rem;
+  border-radius: 60px;
+  background: var(--accent);
+  color: #000;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+  font-family: inherit;
+  animation: pulse-cta 2s ease-in-out infinite;
+
+  &:hover {
+    background: #d4b88a;
+    transform: scale(1.04);
+    box-shadow: 0 8px 30px rgba(201, 168, 124, 0.4);
+    animation: none;
+  }
+}
+
+.promo-ghost {
+  display: block;
+  margin: 1rem auto 0;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: var(--text-secondary);
+  }
+}
+
+@keyframes pulse-cta {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 124, 0.5); }
+  50% { box-shadow: 0 0 0 14px rgba(201, 168, 124, 0); }
+}
+
+.promo-fade-enter-active,
+.promo-fade-leave-active {
+  transition: opacity 0.35s ease;
+}
+
+.promo-fade-enter-from,
+.promo-fade-leave-to {
+  opacity: 0;
+}
+</style>
+
++ Thought: 532ms
+Step 5: Register PromoModal in App.vue:
+# Todos
+[✓] Read all existing files to understand architecture
+[✓] Step 1: Create promoConfig.json
+[✓] Step 2: Update base prices in services data files
+[✓] Step 3: Add translations to locale files
+[✓] Step 4: Create PromoModal.vue component
+[•] Step 5: Register PromoModal in App.vue
+[ ] Step 6: Modify ServicesSection.vue
+[ ] Step 7: Update useBooking.js WhatsApp message
++ Thought: 221ms
+← Edit src\App.vue
+
+  <WhatsAppFloat />
+
+  <BookingLoader />
+  <PromoModal />
+  <CookieBanner />
+  <ExitIntentModal />
+  <PhantomSocialProof />
+</div>
++ Thought: 309ms
+← Edit src\App.vue
+import Header from '@/components/layout/Header.vue'
+import Footer from '@/components/layout/Footer.vue'
+import WhatsAppFloat from '@/components/layout/WhatsAppFloat.vue'
+import BookingLoader from '@/components/common/BookingLoader.vue'
+import PromoModal from '@/components/common/PromoModal.vue'
+import CookieBanner from '@/components/common/CookieBanner.vue'
+import ExitIntentModal from '@/components/common/ExitIntentModal.vue'
+import PhantomSocialProof from '@/components/common/PhantomSocialProof.vue'
+import { popLastGuard } from '@/composables/useBackGuard'
++ Thought: 4.7s
+Step 6: Modify ServicesSection.vue:
+# Todos
+[✓] Read all existing files to understand architecture
+[✓] Step 1: Create promoConfig.json
+[✓] Step 2: Update base prices in services data files
+[✓] Step 3: Add translations to locale files
+[✓] Step 4: Create PromoModal.vue component
+[✓] Step 5: Register PromoModal in App.vue
+[•] Step 6: Modify ServicesSection.vue
+[ ] Step 7: Update useBooking.js WhatsApp message
++ Thought: 887ms
+← Edit src\components\sections\ServicesSection.vue
+import { useI18n } from 'vue-i18n'
+import { fetchServices } from '@/services/api'
+import { useBooking } from '@/composables/useBooking'
+import { useCurrency } from '@/composables/useCurrency'
+import promoConfig from '@/data/promoConfig.json'
+
+const { locale } = useI18n()
+const data = ref(null)
+const loadedImages = reactive(new Set())
++ Thought: 355ms
+← Edit src\components\sections\ServicesSection.vue
+  role="button"
+  tabindex="0"
+  @keydown.enter="handleBooking(service)"
+>
+  <div class="service-card" :class="{ 'service-card--loaded': loadedImages.has(service.id) }">
+  <div class="service-card" :class="{ 'service-card--loaded': loadedImages.has(service.id), 'promo-active-card': promoConfig.isActive && service.id === promoConfig.serviceId }">
+
+    <div class="service-image" :style="{ backgroundImage: `url(${service.image})` }">
+      <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(service.id) }"></div>
+      <div class="service-tags" v-if="service.tags?.length">
++ Thought: 420ms
+Now add the promo badge tag after the existing tags loop:
+← Edit src\components\sections\ServicesSection.vue
+      :key="tag"
+      class="service-tag"
+      :class="tagClass(tag)"
+    >{{ tag }}</span>
+    <span v-if="promoConfig.isActive && service.id === promoConfig.serviceId" class="service-tag tag--best-seller pulse-anim">{{ $t('promo.badge') }}</span>
+  </div>
+  <div class="service-image-gradient"></div>
+</div>
+
++ Thought: 1.9s
+I need to fix the v-if so the promo badge shows even if the service has no tags:
+← Edit src\components\sections\ServicesSection.vue
+<div class="service-card" :class="{ 'service-card--loaded': loadedImages.has(service.id), 'promo-active-card': promoConfig.isActive && service.id === promoConfig.serviceId }">
+
+  <div class="service-image" :style="{ backgroundImage: `url(${service.image})` }">
+    <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(service.id) }"></div>
+    <div class="service-tags" v-if="service.tags?.length">
+    <div class="service-tags" v-if="service.tags?.length || (promoConfig.isActive && service.id === promoConfig.serviceId)">
+      <span
+        v-for="tag in service.tags"
+        :key="tag"
+        class="service-tag"
++ Thought: 1.0s
+Now replace the price display with conditional promo pricing:
+← Edit src\components\sections\ServicesSection.vue
+  </button>
+</div>
+<div class="service-footer-container">
+  <div class="service-meta">
+    <span class="price">{{ formatPrice(service.price) }}</span>
+    <span v-if="promoConfig.isActive && service.id === promoConfig.serviceId" class="price">
+      <s style="opacity:0.5; font-size:1rem">{{ formatPrice(promoConfig.basePriceMAD) }}</s>
+      {{ formatPrice(promoConfig.promoPriceMAD) }}
+    </span>
+    <span v-else class="price">{{ formatPrice(service.price) }}</span>
+    <span class="duration"><i class="far fa-clock"></i> {{ service.duration }}</span>
+  </div>
+  <div class="service-actions">
+    <button class="btn-book" @click.stop="handleBooking(service)">
++ Thought: 484ms
+Now add the CSS for promo-active-card and pulse-anim:
+← Edit src\components\sections\ServicesSection.vue
+  &:not(.tag--best-seller):not(.tag--limited):not(.tag--couples):not(.tag--premium) {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+  }
+
+  &.pulse-anim {
+    animation: pulseBadge 2s ease-in-out infinite;
+  }
+}
+
+@keyframes pulseBadge {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 124, 0.6); }
+  50% { box-shadow: 0 0 12px 6px rgba(201, 168, 124, 0); }
+}
+
+.promo-active-card {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 30px rgba(201, 168, 124, 0.25), 0 8px 32px rgba(0, 0, 0, 0.25) !important;
+}
+
+.service-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
++ Thought: 682ms
+Step 7: Update useBooking.js:
+# Todos
+[✓] Read all existing files to understand architecture
+[✓] Step 1: Create promoConfig.json
+[✓] Step 2: Update base prices in services data files
+[✓] Step 3: Add translations to locale files
+[✓] Step 4: Create PromoModal.vue component
+[✓] Step 5: Register PromoModal in App.vue
+[✓] Step 6: Modify ServicesSection.vue
+[•] Step 7: Update useBooking.js WhatsApp message
++ Thought: 697ms
+← Edit src\composables\useBooking.js
+import { ref } from 'vue'
+import siteConfig from '@/data/siteConfig.json'
+import { useCurrency } from '@/composables/useCurrency'
+import promoConfig from '@/data/promoConfig.json'
+
+const WHATSAPP_NUMBER = siteConfig.whatsapp.number
+export const isBookingLoading = ref(false)
+let bookingTimer = null
++ Thought: 615ms
+← Edit src\composables\useBooking.js
+  if (utmSource) refParts.push(utmSource)
+  if (utmCampaign) refParts.push(utmCampaign)
+  if (utmMedium) refParts.push(utmMedium)
+  const ref = refParts.length ? ` [Ref: ${refParts.join('|')}]` : ''
+  const text = `Hello, I want to book the ${name} for${price}${ref} \n\n📍 See details: ${siteConfig.website}`
+  const promoFlag = promoConfig.isActive && item?.id === promoConfig.serviceId ? ' [Moroccan Promo Claimed]' : ''
+  const text = `Hello, I want to book the ${name} for${price}${ref}${promoFlag} \n\n📍 See details: ${siteConfig.website}`
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
+}
+
+function handleBooking(item = null) {
++ Thought: 383ms
+All steps are complete. Let me verify the changes:
+→Read src\data\promoConfig.json 
+→Read src\App.vue 
+→Read src\components\common\PromoModal.vue 
+→Read src\components\sections\ServicesSection.vue 
+→Read src\composables\useBooking.js 
++ Thought: 391ms
+→Read src\locales\en.json [offset=145]
+→Read src\locales\fr.json [offset=145]
+→Read src\locales\ar.json [offset=145]
+→Read src\data\services\en.json [offset=41, limit=12]
+→Read src\data\services\fr.json [offset=41, limit=12]
+→Read src\data\services\ar.json [offset=41, limit=12]
++ Thought: 289ms
+All 7 steps verified. Here's a summary of what was done:
+Step 1 - Created src/data/promoConfig.json with isActive: true, serviceId: "horse", basePriceMAD: 350, promoPriceMAD: 150
+Step 2 - Updated Horse Riding price from 300 → 350 in all 3 locale service files (en.json, fr.json, ar.json)
+Step 3 - Added promo translation keys to all 3 locale files (en/fr/ar) with badge, modal title, modal desc, and view_offer
+Step 4 - Created src/components/common/PromoModal.vue:
+- Uses glass-card styling matching the exit modal pattern
+- Reads promoConfig.json — skips rendering if !isActive
+- Uses localStorage with a 24-hour cooldown (abe_promo_seen)
+- Shows after 3s delay on mount
+- "View Offer" button closes modal, smooth-scrolls to #services, and applies card-highlight CSS animation to [data-id="horse"]
+Step 5 - Registered <PromoModal /> in App.vue right before <CookieBanner />
+Step 6 - Modified ServicesSection.vue:
+- Imports promoConfig
+- Adds promo-active-card class (glowing gold border via var(--accent)) to the horse card
+- Shows pulse-anim badge in tags area using tag--best-seller styling
+- Shows crossed-out base price + promo price for horse; normal price for others
+- Added SCSS for .promo-active-card, .pulse-anim, and @keyframes pulseBadge
+Step 7 - Updated useBooking.js: imports promoConfig, appends [Moroccan Promo Claimed] to WhatsApp message text when the booked item is the horse promo service
+# Todos
+[✓] Read all existing files to understand architecture
+[✓] Step 1: Create promoConfig.json
+[✓] Step 2: Update base prices in services data files
+[✓] Step 3: Add translations to locale files
+[✓] Step 4: Create PromoModal.vue component
+[✓] Step 5: Register PromoModal in App.vue
+[✓] Step 6: Modify ServicesSection.vue
+[✓] Step 7: Update useBooking.js WhatsApp message
+All done. The promo system is fully wired:
+- Config-driven via promoConfig.json (toggle with isActive)
+- Modal appears once per day, scrolls to services section and highlights the horse card
+- Horse card shows gold glow border, pulsing "Moroccans Offer" badge, and crossed-out 350 MAD / promo 150 MAD pricing
+- WhatsApp booking appends [Moroccan Promo Claimed] for attribution
+▣  Build · DeepSeek V4 Flash Free · 3m 45s

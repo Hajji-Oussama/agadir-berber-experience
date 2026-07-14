@@ -145,5 +145,11 @@
   },
   "home": {
     "title": "Accueil"
+  },
+  "promo": {
+    "badge": "Offre Marocains",
+    "modal_title": "Offre Spéciale Marocains ! 🇲🇦",
+    "modal_desc": "Profitez d'une balade à cheval inoubliable avec une réduction exceptionnelle pour les locaux.",
+    "view_offer": "Voir l'Offre"
   }
 }

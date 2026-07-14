@@ -20,18 +20,26 @@
           tabindex="0"
           @keydown.enter="handleBooking(service)"
         >
-          <div class="service-card" :class="{ 'service-card--loaded': loadedImages.has(service.id) }">
+          <div class="service-card" :class="{ 'service-card--loaded': loadedImages.has(service.id), 'promo-vip-card': promoConfig.isActive && service.id === promoConfig.serviceId }">
 
-            <div class="service-image" :style="{ backgroundImage: `url(${service.image})` }">
+            <div class="service-image-wrapper">
+              <div class="service-image" :style="{ backgroundImage: `url(${service.image})` }"></div>
               <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(service.id) }"></div>
-              <div class="service-tags" v-if="service.tags?.length">
-                <span
-                  v-for="tag in service.tags"
-                  :key="tag"
-                  class="service-tag"
-                  :class="tagClass(tag)"
-                >{{ tag }}</span>
+
+              <div class="service-tags" v-if="service.tags?.length && !(promoConfig.isActive && service.id === promoConfig.serviceId)">
+                <span v-for="tag in service.tags" :key="tag" class="service-tag" :class="tagClass(tag)">{{ tag }}</span>
               </div>
+
+              <template v-if="promoConfig.isActive && service.id === promoConfig.serviceId">
+                <div class="vip-ribbon">
+                  <span>{{ $t('promo.badge') }}</span>
+                </div>
+                <div class="vip-price-badge">
+                  <span class="old-price">{{ formatPrice(promoConfig.basePriceMAD) }}</span>
+                  <span class="new-price">{{ formatPrice(promoConfig.promoPriceMAD) }}</span>
+                </div>
+              </template>
+
               <div class="service-image-gradient"></div>
             </div>
 
@@ -44,13 +52,22 @@
                   <i class="fas fa-chevron-down" :class="{ rotated: expandedService === service.id }"></i>
                 </button>
               </div>
+
               <div class="service-footer-container">
-                <div class="service-meta">
-                  <span class="price">{{ formatPrice(service.price) }}</span>
+                <div class="service-meta" :class="{ 'is-promo': promoConfig.isActive && service.id === promoConfig.serviceId }">
+                  <template v-if="promoConfig.isActive && service.id === promoConfig.serviceId">
+                    <div class="promo-meta-text">
+                      <i class="fas fa-gift"></i> {{ $t('promo.badge') }}
+                    </div>
+                  </template>
+                  <template v-else>
+                    <span class="price">{{ formatPrice(service.price) }}</span>
+                  </template>
                   <span class="duration"><i class="far fa-clock"></i> {{ service.duration }}</span>
                 </div>
+
                 <div class="service-actions">
-                  <button class="btn-book" @click.stop="handleBooking(service)">
+                  <button class="btn-book" :class="{ 'btn-vip': promoConfig.isActive && service.id === promoConfig.serviceId }" @click.stop="handleBooking(service)">
                     {{ $t('services.book_now') }}
                   </button>
                 </div>
@@ -70,6 +87,7 @@ import { useI18n } from 'vue-i18n'
 import { fetchServices } from '@/services/api'
 import { useBooking } from '@/composables/useBooking'
 import { useCurrency } from '@/composables/useCurrency'
+import promoConfig from '@/data/promoConfig.json'
 
 const { locale } = useI18n()
 const data = ref(null)
@@ -191,17 +209,25 @@ watch(data, (val) => {
     75% { box-shadow: 0 0 40px rgba(201, 168, 124, 0.6); border-color: var(--accent); transform: translateY(-3px); }
   }
 
-  .service-image {
+  .service-image-wrapper {
     position: relative;
     height: 220px;
-    background-size: cover;
-    background-position: center;
-    flex-shrink: 0;
-    background-color: rgba(255, 255, 255, 0.03);
     overflow: hidden;
-    transition: filter 0.4s ease;
+    border-radius: 24px 24px 0 0;
 
     @media (min-width: 768px) { height: 260px; }
+
+    .service-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s ease;
+    }
+
+    .promo-vip-card:hover & .service-image {
+      transform: scale(1.08);
+    }
   }
 
   .service-image-gradient {
@@ -262,6 +288,95 @@ watch(data, (val) => {
       background: rgba(255, 255, 255, 0.12);
       color: var(--text-primary);
     }
+
+  }
+
+  .promo-vip-card {
+    border: 1px solid rgba(212, 175, 55, 0.4) !important;
+    background: linear-gradient(180deg, rgba(10, 14, 26, 0.98) 0%, rgba(30, 10, 15, 0.95) 100%) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.05) !important;
+    position: relative;
+    transition: all 0.4s ease;
+
+    &:hover {
+      border-color: rgba(212, 175, 55, 0.8) !important;
+      box-shadow: 0 15px 50px rgba(212, 175, 55, 0.15), 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    }
+  }
+
+  .vip-ribbon {
+    position: absolute;
+    top: 20px;
+    left: -40px;
+    background: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
+    color: #F8E5A5;
+    padding: 8px 45px;
+    transform: rotate(-45deg);
+    z-index: 15;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    border-top: 1px solid rgba(248, 229, 165, 0.5);
+    border-bottom: 1px solid rgba(248, 229, 165, 0.5);
+    text-align: center;
+    width: 170px;
+    pointer-events: none;
+
+    [dir="rtl"] & {
+      left: auto;
+      right: -40px;
+      transform: rotate(45deg);
+    }
+  }
+
+  .vip-price-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(20, 5, 8, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    border-radius: 16px;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    transform: translateZ(0);
+    animation: subtleFloat 4s ease-in-out infinite;
+
+    [dir="rtl"] & {
+      right: auto;
+      left: 15px;
+    }
+
+    .old-price {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: line-through;
+      text-decoration-color: #e74c3c;
+      margin-bottom: 2px;
+    }
+
+    .new-price {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-family: var(--font-heading);
+      color: #F8E5A5;
+      font-weight: 700;
+      line-height: 1;
+      text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+    }
+  }
+
+  @keyframes subtleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
   }
 
   .service-info {
@@ -338,6 +453,29 @@ watch(data, (val) => {
       align-items: baseline;
       gap: 1rem;
       margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+
+      &.is-promo {
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .promo-meta-text {
+        color: #D4AF37;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+
+        i {
+          font-size: 1rem;
+          animation: subtlePulse 2.5s infinite;
+        }
+      }
 
       .price {
         font-family: var(--font-heading);
@@ -356,24 +494,43 @@ watch(data, (val) => {
       }
     }
 
-    .service-actions .btn-book {
-      width: 100%;
-      padding: 0.7rem 1.2rem;
-      background: var(--accent);
-      color: #000;
-      border-radius: 60px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      outline: none;
+    .service-actions {
+      .btn-book {
+        width: 100%;
+        padding: 0.7rem 1.2rem;
+        background: var(--accent);
+        color: #000;
+        border-radius: 60px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        outline: none;
 
-      &:hover { background: #d4b88a; transform: scale(1.02); }
-      &:focus-visible {
-        outline: 2px solid var(--accent);
-        outline-offset: 4px;
+        &:hover { background: #d4b88a; transform: scale(1.02); }
+        &:focus-visible {
+          outline: 2px solid var(--accent);
+          outline-offset: 4px;
+        }
       }
+
+      .btn-vip {
+        background: linear-gradient(135deg, #D4AF37 0%, #AA8111 100%) !important;
+        color: #0A0E1A !important;
+        box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3) !important;
+
+        &:hover {
+          background: linear-gradient(135deg, #F8E5A5 0%, #D4AF37 100%) !important;
+          box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5) !important;
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+    @keyframes subtlePulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
     }
   }
 }
