@@ -1,0 +1,155 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "trips": "Offers",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Where the desert meets the ocean",
+    "subtitle": "Cooking Masterclass, Quad, Buggy, Horse & Camel rides. Premium authentic Amazigh adventures in Agadir — guided by locals who live the desert.",
+    "cta": "Explore Now",
+    "morning": "Good Morning! Perfect weather for an Agadir adventure today.",
+    "afternoon": "Golden Hour is approaching. Book your sunset ride.",
+    "night": "Plan tomorrow's unforgettable memory.",
+    "slides": [
+      {
+        "eyebrow": "Agadir Dunes",
+        "title": "Ride the Desert",
+        "subtitle": "Experience the thrill of Quad biking across the golden sands of Morocco."
+      },
+      {
+        "eyebrow": "Taghazout Bay",
+        "title": "Ocean & Horse",
+        "subtitle": "Ride along the pristine Atlantic beaches at golden hour."
+      },
+      {
+        "eyebrow": "Sunset Safari",
+        "title": "Dunes & Beyond",
+        "subtitle": "Conquer the rugged terrain with our premium Buggy off-road experience."
+      },
+      {
+        "eyebrow": "Atlas Trek",
+        "title": "Mountain Escape",
+        "subtitle": "Discover the hidden valleys and Berber villages of the High Atlas."
+      },
+      {
+        "eyebrow": "Atlas Trek",
+        "title": "Mountain Escape",
+        "subtitle": "Discover the hidden valleys and Berber villages of the High Atlas."
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Our Adventures",
+    "title": "Choose Your Experience",
+    "subtitle": "From an authentic culinary masterclass to adrenaline-fueled dunes — discover the soul of Agadir.",
+
+    "more": "Read More",
+    "less": "Show Less",
+    "learn_more": "Explore",
+    "book_now": "Book Now",
+    "cooking": "Cooking Masterclass",
+    "quad": "Quad Biking",
+    "buggy": "Buggy Off-Road",
+    "horse": "Horse Riding",
+    "camel": "Camel Trekking",
+    "cooking_desc": "Handpick fresh ingredients at the Souk, then master Tagine and Couscous with a traditional chef. Dessert & mint tea included at Kasbat Souss.",
+    "quad_desc": "2 hours of raw adrenaline across the golden desert dunes. Transport included.",
+    "buggy_desc": "2 hours conquering majestic dunes in a brand-new powerful buggy. Transport included.",
+    "horse_desc": "Ride through Aghroud forests and the Souss River at golden hour. Mint tea & sweets included.",
+    "camel_desc": "A gentle 2-hour journey through ancient forest trails with mint tea at Kasbat Souss."
+  },
+  "trips": {
+    "eyebrow": "Curated Journeys",
+    "title": "Discover Your Next Adventure",
+    "subtitle": "Handpicked experiences designed to inspire. From desert dunes to cultural immersion.",
+    "places": "places left",
+    "price": "From {price}",
+    "book": "Book Now"
+  },
+  "testimonials": {
+    "eyebrow": "Testimonials",
+    "title": "What Our Clients Say",
+    "subtitle": "Real stories from real adventurers",
+    "prev": "Previous testimonial",
+    "next": "Next testimonial",
+    "goto": "Go to testimonial",
+    "empty": "No reviews yet"
+  },
+  "stats": {
+    "eyebrow": "By the Numbers",
+    "title": "Our Impact in Numbers",
+    "subtitle": "Every number tells a story of adventure",
+    "trips": "Trips & Adventures",
+    "clients": "Happy Travelers",
+    "years": "Years of Excellence",
+    "destinations": "Destinations"
+  },
+  "timeline": {
+    "eyebrow": "Your Journey",
+    "title": "The Road to Adventure",
+    "subtitle": "Each step brings you closer to the experience of a lifetime.",
+    "step1": "Arrival & Welcome",
+    "step1_desc": "Meet us at Agadir Berbère Expérience. Meet your guide and prepare for the adventure ahead.",
+    "step2": "Choose Your Activity",
+    "step2_desc": "Select from our range of authentic experiences: cooking classes, quad biking, buggy rides, horse or camel trekking.",
+    "step3": "The Adventure Begins",
+    "step3_desc": "Explore the stunning landscapes of Agadir, from golden dunes to the scenic Aghroud forests and Souss River.",
+    "step4": "Cultural Immersion",
+    "step4_desc": "Experience authentic Amazigh hospitality with traditional mint tea and sweets at Kasbat Souss Artisan Complex.",
+    "step5": "Return with Memories",
+    "step5_desc": "Journey back with unforgettable memories and the promise of returning for more adventures."
+  },
+  "gallery": {
+    "eyebrow": "Visual Stories",
+    "title": "Our Gallery",
+    "subtitle": "A visual journey through our most memorable adventures",
+    "empty": "No images found",
+    "filter_all": "All",
+    "filter_desert": "Desert",
+    "filter_beach": "Beach",
+    "filter_mountains": "Mountains",
+    "filter_culture": "Culture",
+    "lightbox": {
+      "close": "Close",
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "footer": {
+    "brand": "Agadir Berbère Expérience",
+    "description": "Authentic Amazigh adventures in Agadir with professional guides. Cooking Masterclass, Quad, Buggy, Horse & Camel rides — curated by locals who live the desert.",
+    "rights": "All rights reserved.",
+    "quick_links": "Quick Links",
+    "contact_us": "Contact",
+    "phone": "+212 615-884469",
+    "email": "info{'@'}agadirberbereexperience.com",
+    "location": "Centre, Agadir 80000, Morocco",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "terms_body": "These Terms of Service govern your use of the Agadir Berbère Expérience website and services. By accessing or using our platform, you agree to be bound by these terms. All content, including images, text, and branding, is the property of Agadir Berbère Expérience. You may not reproduce, distribute, or modify any content without prior written consent. We reserve the right to update these terms at any time. Continued use of the site after changes constitutes acceptance of the new terms.",
+    "privacy_body": "Agadir Berbère Expérience respects your privacy. We collect only the personal information you voluntarily provide, such as your name, email address, and phone number, for the purpose of responding to inquiries and booking requests. We do not sell, trade, or share your personal data with third parties except as required by law. We implement reasonable security measures to protect your information. By using our website, you consent to the collection and use of your information as described in this policy."
+  },
+  "contact": {
+    "eyebrow": "Get in Touch",
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you. Reach out and let's plan your next Amazigh adventure.",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "find_us": "Find Us"
+  },
+  "whatsapp": {
+    "tooltip": "Need help booking?"
+  },
+  "home": {
+    "title": "Home"
+  },
+  "promo": {
+    "badge": "Moroccans Offer",
+    "modal_title": "Special Offer for Moroccans! 🇲🇦",
+    "modal_desc": "Enjoy an unforgettable Horse Riding experience at a massive discount exclusively for locals.",
+    "view_offer": "View Offer"
+  }
+}

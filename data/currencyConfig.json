@@ -1,0 +1,14 @@
+{
+  "baseCurrency": "MAD",
+  "defaultDisplay": "EUR",
+  "rates": {
+    "MAD": 1,
+    "EUR": 0.1,
+    "USD": 0.1
+  },
+  "symbols": {
+    "MAD": "MAD",
+    "EUR": "\u20AC",
+    "USD": "$"
+  }
+}

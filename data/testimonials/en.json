@@ -1,0 +1,30 @@
+{
+  "title": "What Our Clients Say",
+  "subtitle": "Real stories from real adventurers",
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Aymen Akki",
+      "location": "France",
+      "rating": 5,
+      "text": "I want to express my sincere thanks to the agency for the exceptional quality of this trip, the impeccable organization. A big thank you to our guide Soufiane for his availability and kindness.",
+      "avatar": "https://i.pravatar.cc/150?img=32"
+    },
+    {
+      "id": 2,
+      "name": "Ibtissam sh",
+      "location": "Morocco",
+      "rating": 5,
+      "text": "This was my first experience, and honestly I am very satisfied. The organization was top-notch from start to finish. An unforgettable experience I will definitely repeat.",
+      "avatar": "https://i.pravatar.cc/150?img=44"
+    },
+    {
+      "id": 3,
+      "name": "Rachida Elbaz",
+      "location": "Canada",
+      "rating": 5,
+      "text": "Excellent organization, our guide is simply exceptional, very professional and very friendly. An unforgettable experience!",
+      "avatar": "https://i.pravatar.cc/150?img=47"
+    }
+  ]
+}

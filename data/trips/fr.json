@@ -1,0 +1,71 @@
+{
+  "title": "Offres Familles & Groupes",
+  "subtitle": "Offres exclusives pour les groupes et les familles. Réservez ensemble, économisez plus — avec transport gratuit inclus !",
+  "trips": [
+    {
+      "id": 1,
+      "name": "Pack Famille Cours de Cuisine Masterclass",
+      "description": "Un voyage culinaire exclusif pour toute la famille. Visitez ensemble le Souk animé, puis apprenez l'art ancestral du Tagine et du Couscous avec notre chef traditionnel. Savourez vos créations avec un dessert et un thé à la menthe au complexe artisanal de Kasbat Souss. 📍 Lieu : Complexe Artisanal de Kasbat Souss. 🚐 Transport gratuit inclus pour votre groupe.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782846124/e5c7404f-38aa-4925-9285-31548523e248.png",
+      "originalPrice": 1750,
+      "price": 1500,
+      "duration": "4-5 heures",
+      "groupSize": "5 personnes",
+      "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Cooking%20Masterclass%20Family%20Package",
+      "accentColor": "#c9a87c",
+      "tags": ["Famille", "Meilleur Prix"]
+    },
+    {
+      "id": 2,
+      "name": "Pack Famille Quad",
+      "description": "Ressentez l'adrénaline pure ensemble en famille ! Expédition tout-terrain de 2 heures à travers les dunes dorées du désert avec le vent dans le visage et des horizons infinis devant vous. 📍 Lieu : Plage et dunes côtières. 🚐 Transport gratuit inclus pour votre groupe.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1783098808/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_w3dnts.jpg",
+      "originalPrice": 1750,
+      "price": 1700,
+      "duration": "2 heures",
+      "groupSize": "5 personnes",
+      "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Quad%20Biking%20Family%20Package",
+      "accentColor": "#d4a373",
+      "tags": ["Famille", "Adrénaline"]
+    },
+    {
+      "id": 3,
+      "name": "Pack Famille Buggy Tout-Terrain",
+      "description": "Conquérez le désert ensemble dans des buggys neufs et puissants ! 2 heures d'exaltation tout-terrain pure à travers des dunes de sable majestueuses et des sentiers désertiques spectaculaires. L'adrénaline rencontre des paysages à couper le souffle. 📍 Lieu : Désert d'Agadir et dunes de sable. 🚐 Transport gratuit inclus pour votre groupe.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg",
+      "originalPrice": 3600,
+      "price": 3100,
+      "duration": "2 heures",
+      "groupSize": "6 personnes",
+      "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Buggy%20Off-Road%20Family%20Package",
+      "accentColor": "#7fb5d0",
+      "tags": ["Premium", "Meilleur Prix"]
+    },
+    {
+      "id": 4,
+      "name": "Pack Famille Randonnée à Chameau",
+      "description": "Un voyage magique dans le désert à un rythme doux pour toute la famille. Traversez les anciens sentiers de la forêt d'Aghroud, photographiez la rivière Souss scintillante, et arrivez à Kasbat Souss pour un rassemblement marocain inoubliable avec un thé à la menthe traditionnel, un festin BBQ grésillant, des rires et des activités animées. 📍 Lieu : Kasbat Souss et forêt d'Aghroud. 🚐 Transport gratuit inclus pour votre groupe.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png",
+      "originalPrice": 1500,
+      "price": 1200,
+      "duration": "2 heures",
+      "groupSize": "5 personnes",
+      "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Camel%20Trekking%20Family%20Package",
+      "accentColor": "#6b8c7c",
+      "tags": ["Famille", "Culturel"]
+    },
+    {
+      "id": 5,
+      "name": "Pack Famille Atelier de Poterie",
+      "description": "Immergez votre famille dans l'art ancien de la poterie marocaine. Travaillez aux côtés d'artisans locaux qualifiés, façonnant l'argile avec vos mains et apprenant des techniques séculaires. Créez vos propres pièces uniques à ramener chez vous. Après votre session créative, célébrez avec un thé à la menthe traditionnel, un festin BBQ grésillant et une atmosphère marocaine joyeuse. 📍 Lieu : Complexe Artisanal de Kasbat Souss. 🚐 Transport gratuit inclus pour votre groupe.",
+      "image": "https://res.cloudinary.com/nczftcee/image/upload/v1783101325/Design_sans_titre_27_w4jtjk.png",
+      "originalPrice": 1250,
+      "price": 1000,
+      "duration": "2 heures",
+      "groupSize": "5 personnes",
+      "bookLink": "https://wa.me/+212615884469?text=I%20want%20to%20book%20Pottery%20Workshop%20Family%20Package",
+      "accentColor": "#c9a87c",
+      "tags": ["Famille", "Créatif"]
+    }
+  ]
+}
