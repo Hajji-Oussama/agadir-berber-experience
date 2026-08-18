@@ -57,17 +57,12 @@
 <script setup lang="ts">
 import siteConfig from '~/data/siteConfig.json'
 
-const { locale } = useI18n()
 const showLegal = ref<string | null>(null)
 
 const phone = siteConfig.whatsapp.number
 const mapUrl = siteConfig.map.url
 
-const email = computed(() =>
-  locale.value === 'fr' || locale.value === 'ar'
-    ? siteConfig.email.alternate
-    : siteConfig.email.primary
-)
+const email = computed(() => siteConfig.email.primary)
 </script>
 
 <style scoped lang="scss">

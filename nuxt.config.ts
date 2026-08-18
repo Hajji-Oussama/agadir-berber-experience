@@ -52,10 +52,10 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'preconnect', href: 'https://api.whatsapp.com' },
         { rel: 'preconnect', href: 'https://connect.facebook.net' },
-        // Google Fonts: Inter + Playfair Display + Tajawal (Arabic)
+        // Google Fonts: Cairo (Arabic) + Playfair Display + Inter
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;700&display=swap',
+          href: 'https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300..700&display=swap',
         },
       ],
     },
