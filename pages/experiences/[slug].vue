@@ -1,8 +1,28 @@
 <script setup lang="ts">
+import ContentTrustBadges from '~/components/content/TrustBadges.vue'
+import ContentGroupPromo from '~/components/content/GroupPromo.vue'
+import ContentSocialEmbed from '~/components/content/SocialEmbed.vue'
+import ContentShareButtons from '~/components/content/ShareButtons.vue'
+import ContentBookingCard from '~/components/content/BookingCard.vue'
+import ContentImageGallery from '~/components/content/ImageGallery.vue'
+import ContentInfoAlert from '~/components/content/InfoAlert.vue'
+
 const route = useRoute()
 const { locale } = useI18n()
 const { handleBooking } = useBooking()
 const { formatPrice } = useCurrency()
+
+// Map MDC content components so they render server-side too
+// (the content module only resolves these client-side by default)
+const mdcComponents = {
+  'trust-badges': ContentTrustBadges,
+  'group-promo': ContentGroupPromo,
+  'social-embed': ContentSocialEmbed,
+  'share-buttons': ContentShareButtons,
+  'booking-card': ContentBookingCard,
+  'image-gallery': ContentImageGallery,
+  'info-alert': ContentInfoAlert,
+}
 
 const slug = computed(() => {
   const raw = route.params.slug
@@ -53,9 +73,20 @@ useSeoMeta({
 
     <!-- Body -->
     <section class="container experience-body">
-      <article class="glass-card experience-content">
-        <ContentRenderer :value="experience" />
-      </article>
+      <div class="article-layout">
+        <aside v-if="experience.body?.toc?.links?.length" class="article-toc glass-card">
+          <h3>On this page</h3>
+          <ul>
+            <li v-for="link in experience.body.toc.links" :key="link.id">
+              <a :href="`#${link.id}`">{{ link.text }}</a>
+            </li>
+          </ul>
+        </aside>
+
+        <article class="glass-card experience-content">
+          <ContentRenderer :value="experience" :components="mdcComponents" />
+        </article>
+      </div>
 
       <div class="glass-card experience-cta">
         <div class="experience-cta-info">
@@ -246,6 +277,63 @@ useSeoMeta({
   z-index: 3;
 }
 
+.article-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.article-toc {
+  position: sticky;
+  top: 6rem;
+  padding: 1.5rem;
+
+  @media (max-width: 900px) {
+    position: static;
+  }
+
+  h3 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  a {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.4;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+
+    &:hover {
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
+
 .experience-content {
   padding: 2.5rem 3rem;
   margin-bottom: 2.5rem;
@@ -268,6 +356,7 @@ useSeoMeta({
     font-weight: 400;
     color: var(--text-primary);
     margin: 2rem 0 1rem;
+    scroll-margin-top: 6rem;
   }
 
   :deep(h2) { font-size: 1.8rem; }

@@ -3,6 +3,7 @@
     "home": "Home",
     "services": "Services",
     "trips": "Offers",
+    "blog": "Journal",
     "contact": "Contact"
   },
   "hero": {
@@ -151,5 +152,13 @@
     "modal_title": "Special Offer for Moroccans! 🇲🇦",
     "modal_desc": "Enjoy an unforgettable Horse Riding experience at a massive discount exclusively for locals.",
     "view_offer": "View Offer"
+  },
+  "blog": {
+    "eyebrow": "Journal",
+    "title": "Insights & Guides",
+    "subtitle": "Stories, tips and local knowledge from Agadir.",
+    "read_more": "Read More",
+    "recent_articles": "Recent Articles",
+    "empty": "No articles yet"
   }
 }

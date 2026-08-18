@@ -16,6 +16,7 @@
           <NuxtLink :to="$localePath('/#home')">{{ $t('nav.home') }}</NuxtLink>
           <NuxtLink :to="$localePath('/#services')">{{ $t('nav.services') }}</NuxtLink>
           <NuxtLink :to="$localePath('/#trips')">{{ $t('nav.trips') }}</NuxtLink>
+          <NuxtLink :to="$localePath('/blog')">{{ $t('nav.blog') }}</NuxtLink>
           <NuxtLink :to="$localePath('/#contact')">{{ $t('nav.contact') }}</NuxtLink>
         </div>
         <div class="footer-contact">

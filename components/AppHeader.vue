@@ -45,7 +45,7 @@
           </Transition>
         </div>
 
-        <div class="nav-dropdown" @mouseenter="openDropdown('trips')" @mouseleave="closeDropdown('trips')">
+        <div class="nav-dropdown desktop-hidden" @mouseenter="openDropdown('trips')" @mouseleave="closeDropdown('trips')">
           <a
             href="#trips"
             class="nav-dropdown-link"
@@ -77,6 +77,8 @@
           </Transition>
         </div>
 
+        <NuxtLink :to="$localePath('/blog')">{{ $t('nav.blog') }}</NuxtLink>
+
         <NuxtLink :to="$localePath('/#contact')">{{ $t('nav.contact') }}</NuxtLink>
       </nav>
 
@@ -105,10 +107,11 @@
     <Transition name="slide">
       <div v-if="mobileOpen" class="mobile-menu-overlay" @click="mobileOpen = false">
         <div class="mobile-menu glass-card" @click.stop>
-          <a :href="$localePath('/')" @click.prevent="closeMenuAndScroll('home')">{{ $t('nav.home') }}</a>
-          <a :href="$localePath('/#services')" @click.prevent="closeMenuAndScroll('services')">{{ $t('nav.services') }}</a>
-          <a :href="$localePath('/#trips')" @click.prevent="closeMenuAndScroll('trips')">{{ $t('nav.trips') }}</a>
-          <a :href="$localePath('/#contact')" @click.prevent="closeMenuAndScroll('contact')">{{ $t('nav.contact') }}</a>
+          <NuxtLink :to="$localePath('/')" @click="mobileOpen = false">{{ $t('nav.home') }}</NuxtLink>
+          <NuxtLink :to="$localePath('/#services')" @click="mobileOpen = false">{{ $t('nav.services') }}</NuxtLink>
+          <NuxtLink :to="$localePath('/#trips')" @click="mobileOpen = false">{{ $t('nav.trips') }}</NuxtLink>
+          <NuxtLink :to="$localePath('/blog')" @click="mobileOpen = false">{{ $t('nav.blog') }}</NuxtLink>
+          <NuxtLink :to="$localePath('/#contact')" @click="mobileOpen = false">{{ $t('nav.contact') }}</NuxtLink>
 
           <div class="mobile-currency-section">
             <CommonCurrencySwitcher />
@@ -168,22 +171,6 @@ const handleScroll = () => {
 
 const toggleMobileMenu = () => {
   mobileOpen.value = !mobileOpen.value
-}
-
-const closeMenuAndScroll = (section: string) => {
-  mobileOpen.value = false
-  // Wait for the slide-out transition to finish before scrolling,
-  // so the overlay doesn't intercept or misposition the scroll.
-  setTimeout(() => {
-    if (section === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      return
-    }
-    const el = document.getElementById(section)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-  }, 300)
 }
 
 const handleResize = () => {
@@ -702,5 +689,9 @@ onBeforeUnmount(() => {
   .mobile-menu {
     transform: translateY(0) scale(1);
   }
+}
+
+.desktop-hidden {
+  display: none !important;
 }
 </style>
