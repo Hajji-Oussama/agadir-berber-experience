@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { useLocaleHead } from '#i18n'
 
+const { locale } = useI18n()
 const head = useLocaleHead()
 
 useHead({
   htmlAttrs: computed(() => ({
-    lang: head.value.htmlAttrs?.lang,
-    dir: head.value.htmlAttrs?.dir,
+    dir: locale.value === 'ar' ? 'rtl' : 'ltr',
+    lang: locale.value,
   })),
   link: computed(() => head.value.link),
   meta: computed(() => head.value.meta),

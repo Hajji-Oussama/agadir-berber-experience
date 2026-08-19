@@ -133,3 +133,21 @@ img {
   background: var(--accent);
   border-radius: 3px;
 }
+
+// Aggressive RTL font enforcement: force Cairo on every element in Arabic mode,
+// overriding scoped heading fonts (Playfair Display) and CSS variable fallbacks.
+html[dir="rtl"],
+[dir="rtl"],
+body[dir="rtl"] {
+  --font-body: 'Cairo', sans-serif !important;
+  --font-heading: 'Cairo', sans-serif !important;
+  --font-arabic: 'Cairo', sans-serif !important;
+  font-family: 'Cairo', sans-serif !important;
+
+  *,
+  h1, h2, h3, h4, h5, h6,
+  p, span, a, button, input, textarea, select,
+  .logo-text, .page-title, .experience-title, .article-title {
+    font-family: 'Cairo', sans-serif !important;
+  }
+}
