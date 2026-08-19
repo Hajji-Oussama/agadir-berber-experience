@@ -1,7 +1,7 @@
 ---
 title: "أفضل تجربة كواد في أكادير"
 description: "ماشي غير كواد عادي! عيش نهار استثنائي في أكادير: ساعتين ديال لادرينالين وسط الكثبان، شواء مغربي، أتاي منعنع، ونقل ذهاب وإياب فابور."
-image: "https://res.cloudinary.com/nczftcee/image/upload/v1783098808/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_w3dnts.jpg"
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783098808/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_w3dnts.jpg"
 price: 400
 duration: "2 hours"
 category: "desert"
@@ -11,7 +11,7 @@ sitemap:
 
 :trust-badges
 
-:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/v1783098808/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_w3dnts.jpg", "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg"]'}
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783098808/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_w3dnts.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg"]'}
 
 ## إلى جيتي لأكادير ودرتي غير البحر... راك ضيعتي نص التجربة 🏍️🌊
 

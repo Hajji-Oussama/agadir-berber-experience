@@ -1,7 +1,7 @@
 ---
 title: "Camel Trekking"
 description: "A magical desert journey at a gentle pace."
-image: "https://res.cloudinary.com/nczftcee/image/upload/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png"
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png"
 price: 300
 duration: "2 hours"
 category: "desert"

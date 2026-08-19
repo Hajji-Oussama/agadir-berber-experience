@@ -1,7 +1,7 @@
 ---
 title: "Horse Riding"
 description: "Ride like the free Amazigh souls through the mystical Aghroud forests."
-image: "https://res.cloudinary.com/nczftcee/image/upload/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg"
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg"
 price: 350
 duration: "2 hours"
 category: "beach"

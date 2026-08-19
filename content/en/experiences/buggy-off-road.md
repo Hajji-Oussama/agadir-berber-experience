@@ -1,7 +1,7 @@
 ---
 title: "Buggy Off-Road"
 description: "Conquer the desert in a brand-new, powerful buggy."
-image: "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg"
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg"
 price: 600
 duration: "2 hours"
 category: "desert"

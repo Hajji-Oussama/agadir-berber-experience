@@ -1,7 +1,7 @@
 ---
 title: "Cooking Masterclass"
 description: "An exclusive culinary journey through the flavours of Morocco."
-image: "https://res.cloudinary.com/nczftcee/image/upload/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg"
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg"
 price: 350
 duration: "4-5 hours"
 category: "cultural"

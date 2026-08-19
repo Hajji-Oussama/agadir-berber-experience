@@ -1,7 +1,7 @@
 ---
 title: "Pottery Workshop"
 description: "Immerse yourself in the ancient art of Moroccan pottery."
-image: "https://res.cloudinary.com/nczftcee/image/upload/v1783101325/Design_sans_titre_27_w4jtjk.png"
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783101325/Design_sans_titre_27_w4jtjk.png"
 price: 250
 duration: "2 hours"
 category: "culture"

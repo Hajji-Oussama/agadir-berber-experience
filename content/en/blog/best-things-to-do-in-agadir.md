@@ -1,7 +1,7 @@
 ---
 title: "The Ultimate Guide: 10 Best Things to Do in Agadir in 2026"
 description: "Discover the most authentic experiences in Agadir, from thrilling desert quad biking to hidden local beaches. An insider's guide by local guides."
-image: "https://res.cloudinary.com/nczftcee/image/upload/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg"
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg"
 author: "Agadir Berbère Team"
 date: "2026-08-18"
 sitemap:

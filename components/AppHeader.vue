@@ -3,7 +3,7 @@
     <div class="container header-inner">
       <NuxtLink :to="$localePath('/')" class="logo">
         <img
-          src="https://res.cloudinary.com/nczftcee/image/upload/v1782908638/Design_sans_titre_1_1_b82llb.png"
+          src="https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782908638/Design_sans_titre_1_1_b82llb.png"
           alt="Agadir Berbere Experience"
           class="logo-image"
         />

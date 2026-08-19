@@ -61,27 +61,27 @@ const timelineItems = ref<HTMLElement[]>([])
 
 const steps = [
   {
-    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1783001620/Design_sans_titre_3_fdbrph.png',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783001620/Design_sans_titre_3_fdbrph.png',
     color: '#c9a87c',
     meta: { duration: '2 Days', elevation: '1,200m' }
   },
   {
-    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_5_ihself.jpg',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_5_ihself.jpg',
     color: '#7fb5d0',
     meta: { duration: '3 Days', elevation: '2,500m' }
   },
   {
-    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1782846362/0e3be529-7629-4fcc-ab05-303f5fd381e2.png',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782846362/0e3be529-7629-4fcc-ab05-303f5fd381e2.png',
     color: '#d4a373',
     meta: { duration: '4 Days', elevation: '3,800m' }
   },
   {
-    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg',
     color: '#6b8c7c',
     meta: { duration: '5 Days', elevation: '5,200m' }
   },
   {
-    image: 'https://res.cloudinary.com/nczftcee/image/upload/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg',
+    image: 'https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg',
     color: '#e8a060',
     meta: { duration: '3 Days', elevation: '1,800m' }
   }

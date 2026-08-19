@@ -4,56 +4,56 @@
   "images": [
     { 
       "id": 1, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg", 
       "label": "تجربة المخيم الأمازيغي", 
       "size": "wide", 
       "category": "culture" 
     },
     { 
       "id": 2, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783102855/WhatsApp_Image_2026-06-29_at_3.27.52_PM_flzd00.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783102855/WhatsApp_Image_2026-06-29_at_3.27.52_PM_flzd00.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783102855/WhatsApp_Image_2026-06-29_at_3.27.52_PM_flzd00.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783102855/WhatsApp_Image_2026-06-29_at_3.27.52_PM_flzd00.jpg", 
       "label": "دروس الطهي التقليدي", 
       "size": "tall", 
       "category": "culture" 
     },
     { 
       "id": 3, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_4_agtshs.jpg", 
       "label": "واحة وادي الجنة", 
       "size": "tall", 
       "category": "beach" 
     },
     { 
       "id": 4, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783101325/Design_sans_titre_27_w4jtjk.png", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783101325/Design_sans_titre_27_w4jtjk.png", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783101325/Design_sans_titre_27_w4jtjk.png", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783101325/Design_sans_titre_27_w4jtjk.png", 
       "label": "الحرف اليدوية للفخار التقليدي", 
       "size": "wide", 
       "category": "culture" 
     },
     { 
       "id": 5, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783104090/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_shxcod.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783104090/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_shxcod.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783104090/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_shxcod.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783104090/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_shxcod.jpg", 
       "label": "رحلة الجمال في الصحراء", 
       "size": "tall", 
       "category": "desert" 
     },
     { 
       "id": 6, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783103965/WhatsApp_Image_2026-06-29_at_3.27.55_PM_1_hnordx.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783103965/WhatsApp_Image_2026-06-29_at_3.27.55_PM_1_hnordx.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783103965/WhatsApp_Image_2026-06-29_at_3.27.55_PM_1_hnordx.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783103965/WhatsApp_Image_2026-06-29_at_3.27.55_PM_1_hnordx.jpg", 
       "label": "مغامرة الصحراء على الجمال", 
       "size": "square", 
       "category": "desert" 
     },
     { 
       "id": 7, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839101/WhatsApp_Image_2026-06-29_at_3.27.57_PM_6_ii46cq.jpg", 
       "label": "رحلة في جبال الأطلس", 
       "size": "square", 
       "category": "mountains" 
@@ -61,8 +61,8 @@
     
     { 
       "id": 8, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", 
       "label": "سفاري الصحراء بالعربة", 
       "size": "large", 
       "category": "desert" 
@@ -70,8 +70,8 @@
     
     { 
       "id": 9, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783098984/WhatsApp_Image_2026-06-29_at_3.27.51_PM_vftada.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783098984/WhatsApp_Image_2026-06-29_at_3.27.51_PM_vftada.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783098984/WhatsApp_Image_2026-06-29_at_3.27.51_PM_vftada.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783098984/WhatsApp_Image_2026-06-29_at_3.27.51_PM_vftada.jpg", 
       "label": "مغامرة الدراجة الرباعية في الكثبان", 
       "size": "wide", 
       "category": "desert" 
@@ -79,16 +79,16 @@
   
     { 
       "id": 10, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", 
       "label": "ركوب الخيل على الشاطئ", 
       "size": "square", 
       "category": "beach" 
     },
     { 
       "id": 11, 
-      "url": "https://res.cloudinary.com/nczftcee/image/upload/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg", 
-      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg", 
+      "url": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg", 
+      "urlLg": "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg", 
       "label": "تجربة الطاجين المغربي", 
       "size": "tall", 
       "category": "culture" 

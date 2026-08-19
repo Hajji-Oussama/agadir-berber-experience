@@ -1,7 +1,7 @@
 ---
 title: "Quad Biking"
 description: "Feel the raw adrenaline as you tear across the golden desert dunes."
-image: "https://res.cloudinary.com/nczftcee/image/upload/v1783098808/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_w3dnts.jpg"
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783098808/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_w3dnts.jpg"
 price: 400
 duration: "2 hours"
 category: "desert"
@@ -9,7 +9,7 @@ sitemap:
   loc: /en/experiences/quad-biking
 ---
 
-:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg"]'}
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg"]'}
 
 ## Overview
 
