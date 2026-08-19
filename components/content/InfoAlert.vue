@@ -5,7 +5,7 @@
       <div class="info-alert-title" v-if="title">{{ title }}</div>
       <p class="info-alert-text" v-if="text">{{ text }}</p>
       <a v-if="link" :href="link" class="info-alert-link">
-        Learn more
+        {{ $t('common.learn_more') || (locale === 'ar' ? 'اكتشف المزيد' : locale === 'fr' ? 'En savoir plus' : 'Learn more') }}
         <i class="fas fa-arrow-right info-alert-arrow"></i>
       </a>
     </div>
@@ -13,6 +13,8 @@
 </template>
 
 <script setup lang="ts">
+const { locale } = useI18n()
+
 defineProps<{
   title?: string
   text?: string

@@ -120,6 +120,10 @@ The teachers are real home cooks, not actors in a kitchen set. The food at the e
 - You'll eat what you cook — come hungry
 - Great for couples and families alike; kids get to roll the couscous with their hands (this is a highlight, trust us)
 
+:booking-card{title="Cooking Masterclass" price="350 MAD" link="/en/experiences/cooking-class"}
+
+:booking-card{title="Pottery Workshop" price="250 MAD" link="/en/experiences/pottery-workshop"}
+
 ## 8. Surf and Unwind in Taghazout
 
 Taghazout is a twenty-minute drive north — a little surf town that went from fishing village to backpacker magnet without losing its soul. The beach is fine sand, the waves are consistent, and the cafés serve the best flat white you'll find in the whole region.

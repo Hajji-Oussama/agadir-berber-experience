@@ -1,16 +1,101 @@
 ---
-title: "Cooking Masterclass"
-description: "An exclusive culinary journey through the flavours of Morocco."
-image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg"
+title: "ورشة الطبخ المغربي"
+description: "تسوق من السوق كالمحلي، ثم أتقن فن الطاجين والكسكس مع طباخ مغربي تقليدي في قصبة سوس."
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg"
 price: 350
-duration: "4-5 hours"
+duration: "4-5 ساعات"
 category: "cultural"
 sitemap:
   loc: /ar/experiences/cooking-class
 ---
 
-Visit the vibrant Souk to handpick fresh vegetables and spices, then learn the ancestral art of Tagine and Couscous alongside a traditional chef. Savour your creations with dessert and mint tea at the Kasbat Souss artisan complex — surrounded by 100% handmade Amazigh crafts.
+:trust-badges
 
-<!--more-->
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783102855/WhatsApp_Image_2026-06-29_at_3.27.52_PM_flzd00.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg"]'}
 
-A truly immersive cultural experience for food lovers visiting Agadir.
+## Overview
+
+هذه ليست ورشة مشاهدة وتصفيق. إنها ورشة مغربية حقيقية، يدك في العجين: تجول في **السوق** النابض لتختار بنفسك خضرواتك وتوابعك، ثم تحضر **الطاجين والكسكس** كما تحضرهما طباخة منزلية حقيقية — بالحس، لا بوصفة من كتاب.
+
+طباخونا طباخون منزليون تقليديون، ليسوا ممثلين في مطبخ استوديو. في النهاية، تجلس أمام أفضل وجبة في رحلتك — الوجبة التي أعددتها بنفسك — محاطاً بإبداعات حرفيي **قصبة سوس**. وتغادر أيضاً بمهارة ستبهر بها أصدقاءك في الوطن.
+
+> « نحن نطبخ كثيراً في البيت، وكانت هذه أجمل لحظات الرحلة. التسوق في السوق، تعلم التقنية الحقيقية، ثم أكل طاجيننا في ساحة قصبة سوس — سحر خالص. » — **إيلينا وماركو، ميلانو، إيطاليا** ⭐⭐⭐⭐⭐
+
+## Key Details
+
+| التفصيل | المعلومة |
+| --- | --- |
+| **المدة** | 4–5 ساعات (السوق والوجبة مشمولان) |
+| **الموقع** | سوق الحد وقصبة سوس |
+| **الصعوبة** | سهلة — لا خبرة مطلوبة |
+| **الثمن** | 350 درهم للشخص |
+| **النقل** | نقطة لقاء في قصبة سوس (مساعدة سيارة أجرة متاحة) |
+| **الطعام والشراب** | وجبة كاملة تطبخها، حلوى وشاي بالنعناع |
+
+## The Experience (Itinerary)
+
+**1. التسوق في السوق.** نلتقي في قصبة سوس، ثم نتجول في السوق المجاور لاختيار الخضروات الطازجة والتوابل والأعشاب — وتتعلم ما تبحث عنه.
+
+**2. في المطبخ.** نلبس المآزر. نحضر أساس الطاجين التقليدي ونلف الكسكس باليد، مع نصائح لن تجدها في أي كتاب.
+
+**3. الطهي والمشاركة.** كل شيء يطهى معاً بينما تمتلئ المطبخ بروائح لا تُنسى، ثم نجلس للأكل كمجموعة.
+
+**4. الحلوى والشاي.** نختم بحلويات مغربية وشاي بالنعناع بلا حدود في ساحة الحرفيين — نهاية هادئة ومثالية.
+
+:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+
+## What's Included & Excluded
+
+**مشمول:**
+- ✅ زيارة السوق والتسوق مع طباخك
+- ✅ ورشة عملية (طاجين + كسكس)
+- ✅ وجبة كاملة مما تطبخه
+- ✅ حلوى مغربية وشاي بالنعناع
+- ✅ طباخ محلي ومجموعة صغيرة
+- ✅ وصفات للاحتفاظ بها
+
+**غير مشمول:**
+- ❌ نقل الفندق (نساعدك في ترتيب سيارة أجرة)
+- ❌ المشروبات الكحولية
+- ❌ الإكرامية (اختيارية)
+
+:group-promo{title="تخفيض المجموعات" :discountAmount="50" condition="للمجموعات من 5 أشخاص فأكثر"}
+
+## Cultural Connection
+
+المطبخ المغربي هو الضيافة القابلة للأكل — ولا أحد يتقنه مثل نساء ورجال أمازيغ سوس ماسة. ورشتنا تقام داخل المجمع الحرفي **قصبة سوس**، محاطة بورش حيث يُصنع الجلد والفخار والخشب والنسيج باليد. أنت لا تتعلم وصفة فحسب؛ بل تدخل تقاليد حية من الوجبات المشتركة والحكايات والشاي بالنعناع التي حددت الثقافة الأمازيغية لقرون.
+
+:info-alert{title="اكتشف قصبة سوس" text="قصبة سوس هي قلب الحرف الأمازيغية النابض في أكادير — كل شيء مصنوع يدوياً، شاي بالنعناع، وأفضل طاجين في المدينة." link="/ar/blog/kasbat-souss-agadir"}
+
+## What to Bring
+
+- 👕 **ملابس مريحة** (المآزر متوفرة)
+- 👟 **حذاء مغلق** (السلامة في المطبخ)
+- 📱 **كاميرا أو هاتف** (ستريد تصوير إبداعاتك)
+- 🍴 **شهية مفتوحة** (ستأكل كل ما تطبخه)
+
+## Basecamp Location
+
+مطبخنا يقع داخل المجمع الحرفي **قصبة سوس**، الحي التاريخي للحرف في أكادير — يسهل الوصول إليه بسيارة أجرة (حوالي 15 دقيقة من المرسى). نرسل لك نقطة اللقاء الدقيقة بعد الحجز.
+
+<div class="map-embed">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440537.8362951347!2d-8.991956573437495!3d30.387823200000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b707cb0f0991%3A0x64f5767cbe32d430!2sAGADIR%20berb%C3%A8re%20exp%C3%A9rience!5e0!3m2!1sar!2sma!4v1787156653124!5m2!1sar!2sma" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AGADIR berbère expérience Map"></iframe>
+</div>
+
+## Frequently Asked Questions
+
+**واش خاص نعرف نطبخ؟**
+إطلاقاً. نتكيف مع كل المستويات — من مبتدئ تماماً إلى طباخ واثق. الطباخون صبورون، مشجعون، ويمتلئون بالنصائح.
+
+**واش مناسبة للنباتيين؟**
+نعم. أخبرنا مسبقاً وسنحضر طاجين وكسكس بالخضروات — لذيذ تماماً.
+
+**شحال من شخص في الورشة؟**
+نحافظ على مجموعات صغيرة (8 كحد أقصى) ليشارك الجميع بيديه ويحصل على اهتمام شخصي. وهي أيضاً نشاط خاص رائع للعائلات والأزواج.
+
+**شنو نأخدو معنا؟**
+الوصفات، الثقة لإعادة تحضيرها، وبطناً ممتلئاً. وربما أصدقاء جدد حول المائدة — هذا هو الأسلوب المغربي.
+
+:booking-card{title="ورشة الطبخ المغربي" price="350 درهم" link="/ar/experiences/cooking-class"}
+
+:share-buttons

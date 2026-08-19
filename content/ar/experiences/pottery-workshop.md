@@ -1,16 +1,101 @@
 ---
-title: "Pottery Workshop"
-description: "Immerse yourself in the ancient art of Moroccan pottery."
-image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1783101325/Design_sans_titre_27_w4jtjk.png"
+title: "ورشة الفخار"
+description: "شكل تحفتك المغربية بيديك مع حرفيين محليين في قصبة سوس — طين، تقنيات عريقة، شاي بالنعناع ومشاوي."
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783101325/Design_sans_titre_27_w4jtjk.png"
 price: 250
-duration: "2 hours"
-category: "culture"
+duration: "ساعتان"
+category: "cultural"
 sitemap:
   loc: /ar/experiences/pottery-workshop
 ---
 
-Immerse yourself in the ancient art of Moroccan pottery. Work alongside skilled local artisans in a traditional workshop, shaping clay with your hands and learning centuries-old techniques passed down through generations. Create your own unique piece to take home as a lasting memory. After your creative session, celebrate your masterpiece with traditional mint tea, a sizzling BBQ feast, and joyful Moroccan atmosphere filled with laughter and lively activities.
+:trust-badges
 
-<!--more-->
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783101325/Design_sans_titre_27_w4jtjk.png", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782845437/40f1c7d1-7c38-4087-b2d1-e59322322d92_ntrzfd.png", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782846124/e5c7404f-38aa-4925-9285-31548523e248.png"]'}
 
-A hands-on creative adventure for the whole family.
+## Overview
+
+انغمس في فن الفخار المغربي العريق. في المجمع الحرفي **قصبة سوس**، نجلسك بجانب حرفيين محليين مهرة ونضع الطين بين يديك. سيعلمونك تقنيات تناقلها الأجيال — التشكيل، التنعيم، النقش — حتى تظهر قطعتك الفريدة.
+
+إنها أبطأ، وأهدأ، وأكثر شخصية من أي محطة سياحية. تصنع شيئاً حقيقياً، تأخذه ذكرى دائمة، ثم تحتفل حول **الشاي بالنعناع والمشاوي** في ساحة الحرفيين. مثالية للعائلات والأزواج ولكل من يفضل صنع ذكرى على شرائها.
+
+> « ابنتي ما تزال تتحدث عن هذه الورشة بعد شهور. الحرفيون كانوا لطفاء وصبورين جداً، ومشاهدة وجهها عندما اكتملت قطعتها... لا تقدر بثمن. والمشاوي بعدها كانت لذيذة أيضاً. » — **دانيال، برلين، ألمانيا** ⭐⭐⭐⭐⭐
+
+## Key Details
+
+| التفصيل | المعلومة |
+| --- | --- |
+| **المدة** | ساعتان (الوليمة مشمولة) |
+| **الموقع** | المجمع الحرفي قصبة سوس، أكادير |
+| **الصعوبة** | سهلة — مناسبة لجميع الأعمار |
+| **الثمن** | 250 درهم للشخص |
+| **النقل** | نقطة لقاء في قصبة سوس |
+| **الطعام والشراب** | شاي بالنعناع ومشاوي مشمولان |
+
+## The Experience (Itinerary)
+
+**1. الترحيب في قصبة سوس.** لقاء حرفيك والاستقرار في الورشة — محاطاً بقطع مكتملة تظهر ما هو ممكن.
+
+**2. الفخار العملي.** تعلم تمركز الطين، وتشكيل قطعتك، ونقش الزخارف الأمازيغية التقليدية. حرفيونا يوجهون كل حركة؛ لا موهبة مطلوبة.
+
+**3. قطعتك، ذكراك.** نحرق ونزجج إبداعك لتستلمه قبل مغادرتك — تذكار فريد من أكادير.
+
+**4. الشاي والمشاوي.** احتفل بتحفتك مع وليمة تقليدية، ضحك وحكايات في الساحة.
+
+:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+
+## What's Included & Excluded
+
+**مشمول:**
+- ✅ ورشة عملية مع حرفي محلي
+- ✅ جميع المواد والطين
+- ✅ حرق وزجاجة قطعتك
+- ✅ شاي بالنعناع ومشاوي
+- ✅ إشراف بالعربية/الفرنسية/الإنجليزية
+- ✅ مناسب لجميع الأعمار
+
+**غير مشمول:**
+- ❌ نقل الفندق (مساعدة سيارة أجرة متاحة)
+- ❌ تأمين السفر الشخصي
+- ❌ الإكرامية (اختيارية)
+
+:group-promo{title="تخفيض المجموعات" :discountAmount="50" condition="للمجموعات من 5 أشخاص فأكثر"}
+
+## Cultural Connection
+
+الفخار من أقدم حرف سوس ماسة — يشكل الحرفيون الأمازيغ طين المنطقة منذ أكثر من ألف سنة، مزينين إياه بالزخارف الهندسية التي تراها على كل سجادة وزليجة بربرية. وجد مجمع **قصبة سوس** للحفاظ على هذه التقاليد حية، وعندما تجلس أمام العجلة بجانب حرفيينا، تصبح جزءاً من هذه القصة — لا متفرجاً، بل صانعاً.
+
+:info-alert{title="اكتشف قصبة سوس" text="قصبة سوس هي حي الحرف الحي في أكادير — فخار، جلد، معدن ونسيج، كلها مصنوعة يدوياً على يد حرفيين أمازيغ." link="/ar/blog/kasbat-souss-agadir"}
+
+## What to Bring
+
+- 👕 **ملابس مريحة أو قديمة** (الطين يلتصق)
+- 👟 **حذاء مغلق**
+- 📱 **كاميرا أو هاتف** (صور تطور القطعة)
+- 🎁 **حقيبة خفيفة** لحمل قطعتك
+
+## Basecamp Location
+
+الورشة تقع داخل المجمع الحرفي **قصبة سوس** في أكادير — رحلة سيارة أجرة اقتصادية من أي مكان في المدينة. نرسل الاتجاهات الدقيقة بعد الحجز.
+
+<div class="map-embed">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440537.8362951347!2d-8.991956573437495!3d30.387823200000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b707cb0f0991%3A0x64f5767cbe32d430!2sAGADIR%20berb%C3%A8re%20exp%C3%A9rience!5e0!3m2!1sar!2sma!4v1787156653124!5m2!1sar!2sma" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AGADIR berbère expérience Map"></iframe>
+</div>
+
+## Frequently Asked Questions
+
+**واش خاص موهبة فنية؟**
+لا شيء. هذا هو جوهر الورشة: حرفيونا يوجهون يديك، والجميع يغادر بقطعة يفخر بها، مهما كان مستواه.
+
+**واش يقدر الأطفال يشاركو؟**
+بالتأكيد — من أكثر الأنشطة العائلية المحبوبة عندنا. الأطفال يستمتعون بتشكيل الطين، وحرفيونا صبورون بشكل رائع.
+
+**شنو يصير بقطعتي؟**
+نحرقها ونزججها لك؛ جاهزة للاستلام في نفس الزيارة. تذكار حقيقي وفريد من أكادير.
+
+**شحال من وقت تستغرق التجربة؟**
+حوالي ساعتين، بما في ذلك الشاي والمشاوي. عصرية مريحة، مثالية بعد صباح على الشاطئ.
+
+:booking-card{title="ورشة الفخار" price="250 درهم" link="/ar/experiences/pottery-workshop"}
+
+:share-buttons

@@ -1,16 +1,102 @@
 ---
-title: "Camel Trekking"
-description: "A magical desert journey at a gentle pace."
-image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png"
+title: "ركوب الجمال"
+description: "رحلة صحراوية سحرية بإيقاع هادئ — غابة أغرود، نهر سوس، شاي بالنعناع ومشاوي."
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png"
 price: 300
-duration: "2 hours"
+duration: "ساعتان"
 category: "desert"
 sitemap:
   loc: /ar/experiences/camel-trekking
 ---
 
-A magical desert journey at a gentle pace. Traverse the ancient Aghroud forest trails, photograph the shimmering Souss River, and arrive at Kasbat Souss for an unforgettable Moroccan gathering with traditional mint tea, a sizzling BBQ feast, laughter, and lively activities. Comfortable, authentic, and steeped in Amazigh heritage.
+:trust-badges
 
-<!--more-->
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782844426/Gemini_Generated_Image_7wt0qr7wt0qr7wt0_1_1_ux4vit.png", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783104090/b735f93a-f599-4e4a-8b07-3411b9fcb2c9_shxcod.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg"]'}
 
-Perfect for families and cultural travellers.
+## Overview
+
+ركوب الجمال له سمعة «نشاط سياحي». وأحياناً يكون كذلك. لكن جولة هادئة ولطيفة في **غابة أغرود** العريقة، على ضفاف **نهر سوس**، مع شاي بالنعناع ومشاوي في النهاية؟ هذا ليس مجرد نشاط — إنه عصرية ستحكي عنها عائلتك لسنوات.
+
+الجمال صبورة، لطيفة، ودائماً درامية قليلاً عند الوقوف أو الجلوس — ستفهم من أول مرة. الإيقاع بطيء، الظل بارد، والصور رائعة. وعلى عكس مخيمات الصحراء التي تبعد ساعتين، نحن على بعد **عشرين دقيقة من فندقك** — تقضي عطلتك في الركوب، لا في حافلة صغيرة.
+
+> « أخذنا أطفالنا وأجمل عصرية في الرحلة كانت هذه. الجمال لطيفة جداً، الغابة جميلة، والمشاوي في النهاية لا تصدق. النقل كان سلساً تماماً. » — **أحمد وليلى، باريس، فرنسا** ⭐⭐⭐⭐⭐
+
+## Key Details
+
+| التفصيل | المعلومة |
+| --- | --- |
+| **المدة** | ساعتان (النقل مشمول) |
+| **الموقع** | غابة أغرود ونهر سوس |
+| **الصعوبة** | سهلة — مناسبة لجميع الأعمار |
+| **الثمن** | 300 درهم للشخص |
+| **النقل** | استقبال مجاني من الفندق |
+| **الطعام والشراب** | شاي بالنعناع ومشاوي مشمولان |
+
+## The Experience (Itinerary)
+
+**1. الاستقبال من الفندق.** نقل مريح إلى غابة أغرود، جنوب أكادير.
+
+**2. لقاء الجمال.** تعارف لطيف مع جملك، ثم نساعدك على الصعود — «التمايل» الشهير عند وقوف الجمل جزء من المتعة.
+
+**3. الغابة والنهر.** عبر المسالك الغابية العريقة، اعبر نهر سوس، وتوقف للصور عند أجمل نقاط الماء.
+
+**4. المشاوي والشاي في قصبة سوس.** نختم بوليمة مغربية تقليدية — لحوم مشوية، سلطات، خبز، وشاي بالنعناع بلا حدود، برفقة الحرفيين المحليين.
+
+:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+
+## What's Included & Excluded
+
+**مشمول:**
+- ✅ استقبال وإرجاع من الفندق
+- ✅ جمل هادئ ومدرب جيداً
+- ✅ مرشد محلي محترف
+- ✅ شاي بالنعناع ومشاوي
+- ✅ توقفات تصوير على ضفاف النهر
+- ✅ مناسب للعائلات — جميع الأعمار
+
+**غير مشمول:**
+- ❌ تأمين السفر الشخصي
+- ❌ مشروبات إضافية
+- ❌ الإكرامية (اختيارية)
+
+:group-promo{title="تخفيض المجموعات" :discountAmount="50" condition="للمجموعات من 5 أشخاص فأكثر"}
+
+## Cultural Connection
+
+الجمل هو نبض الصحراء. لعائلات أمازيغ سوس ماسة، حملت هذه الحيوانات البضائع والرجال والحكايات عبر الكثبان لقرون. رحلتنا تسلك نفس المسالك الغابية التي سلكتها القوافل، وتنتهي في المجمع الحرفي **قصبة سوس**، حيث يواصل الحرفيون والحرفيات تقاليد الأمازيغ في الجلد والفخار والنسيج. هذا هو الوجه الهادئ والأصيل للصحراء.
+
+:info-alert{title="اكتشف قصبة سوس" text="بعد رحلتك، استكشف المجمع الحرفي قصبة سوس — متحف حي للحرف الأمازيغية، شاي بالنعناع، وكرم الضيافة." link="/ar/blog/kasbat-souss-agadir"}
+
+## What to Bring
+
+- 👖 **سروال طويل** (مريح)
+- 👟 **حذاء مغلق أو صندل بأشرطة**
+- 🧴 **واقي شمس** و**قبعة**
+- 📱 **كاميرا أو هاتف** (صور النهر مميزة)
+- 🧥 **سترة خفيفة في الشتاء**
+
+## Basecamp Location
+
+قاعدتنا تقع بين بلوط الفلين في غابة أغرود، على دقائق من أكادير. نتكفل بكل النقل — استرخ واستمتع بالرحلة.
+
+<div class="map-embed">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440537.8362951347!2d-8.991956573437495!3d30.387823200000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b707cb0f0991%3A0x64f5767cbe32d430!2sAGADIR%20berb%C3%A8re%20exp%C3%A9rience!5e0!3m2!1sar!2sma!4v1787156653124!5m2!1sar!2sma" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AGADIR berbère expérience Map"></iframe>
+</div>
+
+## Frequently Asked Questions
+
+**واش ركوب الجمال مناسب للأطفال وكبار السن؟**
+نعم — هذه أنعم تجاربنا. الإيقاع بطيء، الأرض مسطحة، والجمال هادئة. استقبلنا مشاركين من 3 إلى 80 سنة.
+
+**واش خاص نجيب حاجة خاصة؟**
+فقط ملابس مريحة وحذاء مغلق. نوفر كل شيء آخر، بما في ذلك الشاي والمشاوي في النهاية.
+
+**شحال من الوقت نبقاو على الجمل؟**
+حوالي 45 دقيقة إلى ساعة من الركوب، والتجربة الكاملة (نقل، شرح، ركوب، ولائم) حوالي ساعتين.
+
+**واش آمن؟**
+جداً. جمالنا لطيفة ويتعامل معها مرشدون خبراء، والمسالك الغابية محمية وسهلة. لحظة وقوف الجمل هي المفاجأة الوحيدة — وهي جزء من السحر.
+
+:booking-card{title="ركوب الجمال والمشاوي" price="300 درهم" link="/ar/experiences/camel-trekking"}
+
+:share-buttons

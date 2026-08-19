@@ -1,16 +1,102 @@
 ---
-title: "Horse Riding"
-description: "Ride like the free Amazigh souls through the mystical Aghroud forests."
-image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg"
+title: "ركوب الخيل"
+description: "امتط صهوة جوادك على شواطئ أكادير الأطلسية وقت الغروب — غابة أغرود، نهر سوس، شاي بالنعناع ومشاوي."
+image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg"
 price: 350
-duration: "2 hours"
+duration: "ساعتان"
 category: "beach"
 sitemap:
   loc: /ar/experiences/horse-riding
 ---
 
-Ride like the free Amazigh souls through the mystical Aghroud forests and across the legendary Souss River. Capture golden-hour photos, then gather for an authentic Moroccan experience with traditional mint tea, a delicious BBQ feast, laughter, and vibrant activities at Kasbat Souss. Perfect for beginners and experienced riders alike.
+:trust-badges
 
-<!--more-->
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095038/WhatsApp_Image_2026-06-29_at_3.27.59_PM_2_ieq5dq.jpg"]'}
 
-The most romantic way to explore Agadir's coastline.
+## Overview
+
+قلة من الأماكن في العالم يمكنك فيها ركوب الحصان على الرمل والشمس تغرب فوق المحيط. أكادير واحد منها — وبصراحة، هذا الشيء لا يملّنا أبداً. نعبر أولاً **غابة أغرود** الغامضة: بلوط الفلين، مسالك رملية، وسكون لا تجده إلا بعيداً عن المدينة. ثم ينفتح الشاطئ أمامك، والعالم كله لك.
+
+عمرك ركبت؟ خيولنا من النوع الهادئ، «عملت هذا ألف مرة». ركبت من قبل؟ ستتمكن من الانطلاق حقاً. بعد الجولة، نجتمع في قصبة سوس حول **الشاي بالنعناع والمشاوي** — ضحك، حكايات، وأفضل وجبة في رحلتك.
+
+> « أكثر شيء رومانسي فعلناه في المغرب. ركوب الشاطئ الفارغ عند الغروب كأنه مشهد من فيلم. الحصان هادئ، المرشدة رائعة، والمشاوي بعدها لا تُنسى. » — **كامي، ليون، فرنسا** ⭐⭐⭐⭐⭐
+
+## Key Details
+
+| التفصيل | المعلومة |
+| --- | --- |
+| **المدة** | ساعتان (النقل مشمول) |
+| **الموقع** | غابة أغرود وشاطئ أكادير |
+| **الصعوبة** | مبتدئ إلى متوسط — حصان مناسب |
+| **الثمن** | 350 درهم للشخص |
+| **النقل** | استقبال مجاني من الفندق |
+| **الطعام والشراب** | شاي بالنعناع ومشاوي مشمولان |
+
+## The Experience (Itinerary)
+
+**1. الاستقبال من الفندق.** نأخذك إلى مزرعتنا على حافة غابة أغرود.
+
+**2. لقاء حصانك.** نطابق كل فارس مع الحصان المناسب، ثم شرح أمني قصير وودود. المبتدئون الخجولون يحصلون على العمالقة اللطفاء؛ الفرسان الخبراء على النشيطين.
+
+**3. الغابة والشاطئ.** عبر غابة بلوط الفلين، ثم عبور نهر سوس، ثم الشاطئ الأطلسي المفتوح في الساعة الذهبية. هذه هي اللحظة.
+
+**4. الشاي والمشاوي في قصبة سوس.** نختم بوليمة مغربية تقليدية — شاي بالنعناع، لحوم مشوية، وحكايات حول المائدة.
+
+:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+
+## What's Included & Excluded
+
+**مشمول:**
+- ✅ استقبال وإرجاع من الفندق
+- ✅ حصان مناسب لمستواك
+- ✅ خوذة وتكوين أمني
+- ✅ مرشد محلي محترف
+- ✅ شاي بالنعناع ومشاوي تقليدية
+- ✅ توقفات تصوير على أجمل الشواطئ
+
+**غير مشمول:**
+- ❌ تأمين السفر الشخصي
+- ❌ مشروبات إضافية
+- ❌ الإكرامية (اختيارية)
+
+:group-promo{title="تخفيض المجموعات" :discountAmount="50" condition="للمجموعات من 5 أشخاص فأكثر"}
+
+## Cultural Connection
+
+ركب الأمازيغ هذه الأرض لقرون — الحصان جزء من هوية سوس ماسة. بعبور غابة أغرود والانتهاء في المجمع الحرفي **قصبة سوس**، تسير على خطى أجدادنا: نفس المسالك الغابية، نفس مخاضات النهر، ونفس كرم الضيافة الذي يستقبل المسافرين منذ أجيال.
+
+:info-alert{title="اكتشف قصبة سوس" text="أنهِ جولتك في المجمع الحرفي التاريخي قصبة سوس — حرفية أمازيغية، شاي بالنعناع، وقلب الضيافة المغربية." link="/ar/blog/kasbat-souss-agadir"}
+
+## What to Bring
+
+- 👖 **سروال طويل** (مريح)
+- 👟 **حذاء مغلق أو جزمة خفيفة**
+- 📱 **كاميرا أو هاتف** (صور الشاطئ وقت الغروب هي الأجمل)
+- 🧥 **سترة خفيفة في الشتاء** لنسيم المساء
+- 🧴 **واقي شمس**
+
+## Basecamp Location
+
+مزرعتنا تقع على حافة غابة أغرود، على دقائق جنوب أكادير. نتكفل بكل النقل من فندقك.
+
+<div class="map-embed">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440537.8362951347!2d-8.991956573437495!3d30.387823200000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b707cb0f0991%3A0x64f5767cbe32d430!2sAGADIR%20berb%C3%A8re%20exp%C3%A9rience!5e0!3m2!1sar!2sma!4v1787156653124!5m2!1sar!2sma" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AGADIR berbère expérience Map"></iframe>
+</div>
+
+## Frequently Asked Questions
+
+**واش خاص خبرة في ركوب الخيل؟**
+لا. نكيف الحصان مع مستواك — المبتدئون يحصلون على خيول هادئة وأرض سهلة؛ الفرسان الخبراء يجدون الإيقاع الذي يبحثون عنه. الخوذة والشرح دائماً مشمولان.
+
+**واش آمن؟**
+نعم. خيولنا مدربة جيداً وهادئة، والمرشد يبقى مع المجموعة طوال الوقت، ومسالك الشاطئ والغابة لطيفة ومفتوحة.
+
+**واش هو أفضل وقت؟**
+موعد الساعة الذهبية — نهاية العصر — مذهل ويحجز بسرعة. الضوء على الشاطئ والمحيط هو سبب كونها نشاطنا المفضل للزوجين.
+
+**واش يقدر الأطفال يشاركو؟**
+بالتأكيد. الأصغر يركبون مزدوجاً مع بالغ أو مرشد، والأكبر يركبون وحدهم على خيول هادئة.
+
+:booking-card{title="ركوب الخيل الرومانسي" price="350 درهم" link="/ar/experiences/horse-riding"}
+
+:share-buttons

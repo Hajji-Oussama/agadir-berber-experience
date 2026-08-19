@@ -1,4 +1,7 @@
 {
+  "common": {
+    "learn_more": "Learn more"
+  },
   "nav": {
     "home": "Home",
     "services": "Services",

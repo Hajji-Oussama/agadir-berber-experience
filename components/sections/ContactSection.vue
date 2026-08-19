@@ -34,7 +34,8 @@
               style="border:0; border-radius: 12px;"
               allowfullscreen=""
               loading="lazy"
-              title="Google Maps"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="AGADIR berbère expérience Map"
             ></iframe>
           </div>
         </CommonGlassCard>
