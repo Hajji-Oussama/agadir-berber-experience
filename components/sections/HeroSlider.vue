@@ -11,7 +11,7 @@
         <div class="slide-media" ref="mediaRefs">
           <img
             v-if="slide.image && !slide.video"
-            :src="slide.image"
+            :src="slide.heroImage"
             :alt="slide.title + ' in Agadir Morocco'"
             class="slide-image"
             :fetchpriority="index === 0 ? 'high' : 'auto'"
@@ -28,6 +28,7 @@
             muted
             loop
             playsinline
+            preload="none"
           ></video>
         </div>
 
@@ -67,7 +68,7 @@
           @click="goTo(index)"
           :aria-label="`Go to slide ${index + 1}`"
         >
-          <img :src="slide.image" :alt="slide.title + ' in Agadir Morocco'" loading="lazy" decoding="async" />
+          <img :src="cloudinaryImage(slide.image, 'w_120,h_120,c_thumb,g_auto')" :alt="slide.title + ' in Agadir Morocco'" loading="lazy" decoding="async" />
         </button>
       </div>
 
@@ -85,6 +86,7 @@
 
 <script setup lang="ts">
 import slidesData from '~/data/slides.json'
+import { cloudinaryImage } from '~/utils/cloudinary'
 
 const { t } = useI18n()
 const { handleBooking } = useBooking()
@@ -92,6 +94,7 @@ const { handleBooking } = useBooking()
 const slides = computed(() =>
   slidesData.map((slide, i) => ({
     ...slide,
+    heroImage: cloudinaryImage(slide.image, 'w_1200,c_limit'),
     eyebrow: t(`hero.slides[${i}].eyebrow`),
     title: t(`hero.slides[${i}].title`),
     subtitle: t(`hero.slides[${i}].subtitle`)

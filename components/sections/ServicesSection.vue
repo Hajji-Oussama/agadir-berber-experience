@@ -18,7 +18,7 @@
           <article class="service-card">
             <div class="service-image-wrapper">
               <img
-                :src="experience.image"
+                :src="cloudinaryImage(experience.image, 'w_600,c_limit')"
                 :alt="experience.title + ' experience in Agadir'"
                 class="service-image"
                 loading="lazy"
@@ -60,6 +60,8 @@
 </template>
 
 <script setup lang="ts">
+import { cloudinaryImage } from '~/utils/cloudinary'
+
 const { locale } = useI18n()
 const { formatPrice } = useCurrency()
 

@@ -33,7 +33,7 @@
                   class="mega-item"
                 >
                   <div class="mega-thumb">
-                    <img :src="item.image" :alt="item.title" loading="lazy" decoding="async" />
+                    <img :src="cloudinaryImage(item.image, 'w_100,h_100,c_thumb,g_auto')" :alt="item.title" loading="lazy" decoding="async" />
                   </div>
                   <div class="mega-info">
                     <span class="mega-name">{{ item.title }}</span>
@@ -65,7 +65,7 @@
                   class="mega-item"
                 >
                   <div class="mega-thumb">
-                    <img :src="item.image" :alt="item.name" loading="lazy" decoding="async" />
+                    <img :src="cloudinaryImage(item.image, 'w_100,h_100,c_thumb,g_auto')" :alt="item.name" loading="lazy" decoding="async" />
                   </div>
                   <div class="mega-info">
                     <span class="mega-name">{{ item.name }}</span>
@@ -144,6 +144,7 @@
 import tripsEN from '~/data/trips/en.json'
 import tripsFR from '~/data/trips/fr.json'
 import tripsAR from '~/data/trips/ar.json'
+import { cloudinaryImage } from '~/utils/cloudinary'
 
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
