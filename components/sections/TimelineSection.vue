@@ -41,7 +41,7 @@
           <div class="timeline-content glass-card">
             <div class="timeline-step">
               <span class="step-number">{{ String(index + 1).padStart(2, '0') }}</span>
-              <h4>{{ $t(`timeline.step${index + 1}`) }}</h4>
+              <h3>{{ $t(`timeline.step${index + 1}`) }}</h3>
             </div>
             <p>{{ $t(`timeline.step${index + 1}_desc`) }}</p>
             <div class="step-meta" v-if="step.meta">
@@ -423,7 +423,7 @@ function handleParallax() {
             line-height: 1;
           }
 
-          h4 {
+          h3 {
             font-family: var(--font-heading);
             font-size: 1.4rem;
             font-weight: 400;
@@ -433,7 +433,7 @@ function handleParallax() {
 
           @media (max-width: 768px) {
             .step-number { font-size: 1.4rem; }
-            h4 { font-size: 1.2rem; }
+            h3 { font-size: 1.2rem; }
           }
         }
 

@@ -48,6 +48,8 @@
               loading="lazy"
               decoding="async"
               class="gallery-img"
+              width="800"
+              height="800"
               @load="onImageLoad(img.id)"
               @error="onImageLoad(img.id)"
             />

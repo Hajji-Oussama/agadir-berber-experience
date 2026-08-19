@@ -23,6 +23,8 @@
                 class="service-image"
                 loading="lazy"
                 decoding="async"
+                width="600"
+                height="400"
               />
               <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(experience._path) }"></div>
               <div class="service-image-gradient"></div>

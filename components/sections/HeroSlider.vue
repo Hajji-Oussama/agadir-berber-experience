@@ -8,7 +8,18 @@
         :class="{ active: currentIndex === index }"
         :inert="currentIndex !== index"
       >
-        <div class="slide-media" ref="mediaRefs" :style="mediaStyle(slide)">
+        <div class="slide-media" ref="mediaRefs">
+          <img
+            v-if="slide.image && !slide.video"
+            :src="slide.image"
+            :alt="slide.title + ' in Agadir Morocco'"
+            class="slide-image"
+            :fetchpriority="index === 0 ? 'high' : 'auto'"
+            :loading="index === 0 ? 'eager' : 'lazy'"
+            width="1920"
+            height="1080"
+            decoding="async"
+          />
           <video
             v-if="slide.video"
             :src="slide.video"
@@ -115,10 +126,7 @@ const timeContextMsg = computed(() => {
   return t('hero.night')
 })
 
-function mediaStyle(slide) {
-  if (slide.image && !slide.video) {
-    return { backgroundImage: `url(${slide.image})` }
-  }
+function mediaStyle() {
   return {}
 }
 
@@ -316,6 +324,13 @@ onBeforeUnmount(() => {
   background-position: center;
   transition: transform 0.15s ease-out;
   will-change: transform;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .slide-video {
