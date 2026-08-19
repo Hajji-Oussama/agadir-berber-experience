@@ -28,7 +28,7 @@
           <h1 class="slide-title">{{ slide.title }}</h1>
           <p class="slide-subtitle">{{ slide.subtitle }}</p>
           <div class="slide-actions">
-            <a href="#trips" class="btn btn--primary" @click.prevent="scrollToSection('trips')">Explore</a>
+            <NuxtLink :to="$localePath('/blog')" class="btn btn--primary">Explore</NuxtLink>
             <button type="button" class="btn btn--ghost" @click="handleBooking()">Book Now</button>
           </div>
         </div>
@@ -56,7 +56,7 @@
           @click="goTo(index)"
           :aria-label="`Go to slide ${index + 1}`"
         >
-          <img :src="slide.image" :alt="slide.title" loading="lazy" decoding="async" />
+          <img :src="slide.image" :alt="slide.title + ' in Agadir Morocco'" loading="lazy" decoding="async" />
         </button>
       </div>
 

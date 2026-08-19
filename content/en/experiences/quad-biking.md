@@ -70,7 +70,7 @@ Everything else — the bike, the helmet, the fuel, the adventure — is on us.
 Our private basecamp sits at the edge of the Agadir dunes, just a short drive from the city centre — close enough to make the most of your holiday time, far enough to feel like a different world. We pick you up from your hotel, so you don't need to worry about directions, parking, or finding us on your own.
 
 <div class="map-embed">
-  <iframe src="https://www.google.com/maps?q=Agadir,Morocco&output=embed" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Agadir, Morocco Map"></iframe>
+  <iframe src="https://maps.google.com/maps?q=30.387823,-9.568739&z=15&output=embed" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Agadir, Morocco Map"></iframe>
 </div>
 
 ## Frequently Asked Questions

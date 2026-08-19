@@ -44,7 +44,7 @@
             <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(img.id) }"></div>
             <img
               :src="img.url"
-              :alt="img.label"
+              :alt="img.label + ' in Agadir Morocco'"
               loading="lazy"
               decoding="async"
               class="gallery-img"

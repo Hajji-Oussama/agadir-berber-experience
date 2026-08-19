@@ -17,7 +17,13 @@
         >
           <article class="service-card">
             <div class="service-image-wrapper">
-              <div class="service-image" :style="{ backgroundImage: `url(${experience.image})` }"></div>
+              <img
+                :src="experience.image"
+                :alt="experience.title + ' experience in Agadir'"
+                class="service-image"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="shimmer" :class="{ 'shimmer--loaded': loadedImages.has(experience._path) }"></div>
               <div class="service-image-gradient"></div>
             </div>
@@ -157,8 +163,7 @@ watch(experiences, (val) => {
     .service-image {
       width: 100%;
       height: 100%;
-      background-size: cover;
-      background-position: center;
+      object-fit: cover;
       transition: transform 0.6s ease;
     }
   }
