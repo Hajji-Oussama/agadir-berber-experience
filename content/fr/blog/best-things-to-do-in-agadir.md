@@ -8,6 +8,11 @@ sitemap:
   loc: /fr/blog/best-things-to-do-in-agadir
 ---
 
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095125/WhatsApp_Image_2026-06-29_at_3.27.56_PM_m7a9zv.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg"]'}
+
+
+:trust-badges
+
 Vous avez réservé vos vols, vérifié la météo (spoiler : il fera beau), et vous vous demandez maintenant quoi **faire** de votre semaine à Agadir. C'est exactement pour cela que nous écrivons ce guide.
 
 Nous guidons les voyageurs dans ce coin du Maroc depuis des années — à travers les dunes, les forêts, les souks et les plages cachées que les brochures ne montrent jamais. Alors voici, sans enrobage publicitaire : où aller, quoi éviter, et combien vous devez vraiment payer.
@@ -29,6 +34,9 @@ Si vous ne réservez qu'une seule chose à Agadir, c'est celle-ci. Nous venons v
 - Tenue : chaussures fermées, lunettes de soleil et un foulard (nous fournissons le casque)
 
 Note rapide : le créneau **coucher de soleil** se réserve très vite. Ne le laissez pas pour le dernier jour.
+
+
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 :booking-card{title="Aventure Quad au Coucher du Soleil" price="400 MAD" link="/fr/experiences/quad-biking"}
 

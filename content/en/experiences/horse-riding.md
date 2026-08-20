@@ -42,7 +42,7 @@ If you've never ridden, our horses are the calm, "I've done this a thousand time
 
 **4. Mint Tea & BBQ at Kasbat Souss.** We finish with a traditional Moroccan feast — mint tea, grilled meats, and stories around the table.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

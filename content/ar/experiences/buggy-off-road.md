@@ -42,7 +42,8 @@ sitemap:
 
 **4. المسالك والشاي.** بعد الأدرينالين، نهدأ عبر المسالك الغابية ونختم بالشاي بالنعناع في المخيم أمام الشمس تغرب.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DayNzqxMcss"}
+
 
 ## What's Included & Excluded
 

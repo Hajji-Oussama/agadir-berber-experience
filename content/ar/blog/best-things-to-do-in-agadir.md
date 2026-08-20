@@ -8,6 +8,12 @@ sitemap:
   loc: /ar/blog/best-things-to-do-in-agadir
 ---
 
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095125/WhatsApp_Image_2026-06-29_at_3.27.56_PM_m7a9zv.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg"]'}
+
+
+:trust-badges
+
+
 حجزت طيارة، شفت الحالة الجوية (خبر سار: الشمس غادية تكون هنا)، وواقف حيران شكونو تفعل بأسبوعك في أكادير. لهذا كتبنا هذا الدليل.
 
 نحن نرافق المسافرين في هذي المنطقة من المغرب منذ سنوات — عبر الكثبان والغابات والأسواق والشواطئ المخفية اللي ما كتبش البيروشور عليهم أبداً. لهذا، وبدون أي تلميع دعائي: فين تمشي، شنو تتجنب، وشحال خاصك تخلص بالضبط.

@@ -42,7 +42,7 @@ The camels are patient, gentle and frankly a little dramatic about standing up a
 
 **4. BBQ & Mint Tea at Kasbat Souss.** We finish with a traditional Moroccan feast — grilled meats, salads, bread and endless mint tea, in the company of local artisans.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

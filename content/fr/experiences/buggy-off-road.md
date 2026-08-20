@@ -42,7 +42,7 @@ Nous ne sortons qu'un petit nombre de buggys par jour — par sécurité, mais a
 
 **4. Pistes & Thé.** Après l'adrénaline, nous redescendons en douceur par les pistes forestières, puis thé à la menthe au camp de base face au soleil couchant.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

@@ -8,6 +8,12 @@ sitemap:
   loc: /fr/blog/kasbat-souss-agadir
 ---
 
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095125/WhatsApp_Image_2026-06-29_at_3.27.56_PM_m7a9zv.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg"]'}
+
+
+:trust-badges
+
+
 Chaque ville a un cœur qui bat. À Agadir, ce cœur, c'est **Kasbat Souss** — un vaste complexe artisanal où l'héritage amazigh (berbère) de la région du Souss-Massa vit, respire et travaille de ses mains.
 
 La plupart des visiteurs viennent à Agadir pour la plage et repartent sans jamais voir ce côté de la ville. C'est une erreur que nous voulons vous éviter. Kasbat Souss n'est pas un musée derrière une vitre — c'est un quartier d'ateliers vivant où boiseurs, potiers, artisans du cuir, bijoutiers et tisseurs de tapis travaillent encore exactement comme leurs familles le font depuis des générations. Et c'est là que se trouve notre propre base.

@@ -8,6 +8,12 @@ sitemap:
   loc: /ar/blog/kasbat-souss-agadir
 ---
 
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095125/WhatsApp_Image_2026-06-29_at_3.27.56_PM_m7a9zv.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg"]'}
+
+
+:trust-badges
+
+
 كل مدينة عندها قلب كينبض. وفي أكادير، هذا القلب هو **قصبة سوس** — مجمع حرفي شاسع حيث تراث أمازيغ سوس ماسة كيعيش، كيتنفس، وكيخدم بيديه.
 
 أغلب الزوار كيجيو لأكادير للشاطئ وكيمشيو بلا ما يشوفو هاد الجانب من المدينة. هادا خطأ بغينا نوفرولك عليه. قصبة سوس ماشي متحف وراء زجاج — إنها حي ورشات حي، فين الخشابين والخزافين والصياغين ونساجي الزرابي مازالين كيخدمو تماماً كيف كايدوز على أجيال من قبلهم. وهنا تحديداً كاينة قاعدتنا الخاصة.

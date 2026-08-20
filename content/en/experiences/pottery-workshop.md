@@ -42,7 +42,7 @@ It's slower, quieter and more personal than any sightseeing stop. You'll create 
 
 **4. Mint Tea & BBQ.** Celebrate your masterpiece with a traditional feast, laughter and stories in the courtyard.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

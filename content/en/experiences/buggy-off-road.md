@@ -42,7 +42,7 @@ We only take a small number of buggies out per day — partly for safety, partly
 
 **4. Desert Trails & Tea.** After the adrenaline, we cool down on the forest trails and finish with mint tea at basecamp, watching the sunset paint the dunes gold.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

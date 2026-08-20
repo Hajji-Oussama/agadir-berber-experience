@@ -42,7 +42,7 @@ sitemap:
 
 **4. الحلوى والشاي.** نختم بحلويات مغربية وشاي بالنعناع بلا حدود في ساحة الحرفيين — نهاية هادئة ومثالية.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

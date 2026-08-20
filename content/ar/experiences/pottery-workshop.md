@@ -42,7 +42,7 @@ sitemap:
 
 **4. الشاي والمشاوي.** احتفل بتحفتك مع وليمة تقليدية، ضحك وحكايات في الساحة.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

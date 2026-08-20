@@ -42,7 +42,7 @@ Our chefs are traditional home cooks, not actors in a studio kitchen. By the end
 
 **4. Dessert & Mint Tea.** We finish with Moroccan sweets and endless mint tea in the artisan courtyard — the perfect slow ending.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

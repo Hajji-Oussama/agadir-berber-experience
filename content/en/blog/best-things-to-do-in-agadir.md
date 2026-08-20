@@ -8,6 +8,12 @@ sitemap:
   loc: /en/blog/best-things-to-do-in-agadir
 ---
 
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095125/WhatsApp_Image_2026-06-29_at_3.27.56_PM_m7a9zv.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg"]'}
+
+
+:trust-badges
+
+
 You've booked the flights, checked the weather forecast (spoiler: it's going to be sunny), and now you're staring at your screen wondering what to actually **do** with your week in Agadir. That's exactly why we're writing this.
 
 We've been guiding travelers around this corner of Morocco for years — through the dunes, the forests, the souks, and the hidden beaches the brochures never show. So we're going to tell you, straight and without the tourist-marketing sugarcoat: where to go, what to skip, and what you should expect to pay.

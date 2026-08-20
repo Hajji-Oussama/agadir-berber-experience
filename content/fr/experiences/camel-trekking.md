@@ -42,7 +42,7 @@ Les chameaux sont patients, gentils et un brin dramatiques quand il s'agit de se
 
 **4. Barbecue & Thé à Kasbat Souss.** Pour finir, un festin marocain traditionnel — viandes grillées, salades, pain et thé à la menthe à volonté, en compagnie des artisans locaux.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

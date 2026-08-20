@@ -8,6 +8,12 @@ sitemap:
   loc: /en/blog/kasbat-souss-agadir
 ---
 
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095125/WhatsApp_Image_2026-06-29_at_3.27.56_PM_m7a9zv.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg"]'}
+
+
+:trust-badges
+
+
 Every city has a heartbeat. In Agadir, that heartbeat is **Kasbat Souss** — a sprawling artisan complex where the Amazigh (Berber) heritage of the Souss-Massa region lives, breathes, and works with its hands.
 
 Most visitors come to Agadir for the beach and leave without ever seeing this side of the city. That's a mistake we want to save you from. Kasbat Souss is not a museum behind glass — it's a living workshop quarter where woodworkers, potters, leather craftsmen, jewellers and carpet weavers still work exactly as their families have for generations. And it's where our own basecamp is situated.

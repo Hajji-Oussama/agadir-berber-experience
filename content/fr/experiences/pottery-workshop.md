@@ -42,7 +42,7 @@ C'est plus lent, plus calme et plus personnel que n'importe quel arrêt touristi
 
 **4. Thé & Barbecue.** Célébrez votre chef-d'œuvre avec un festin traditionnel, des rires et des histoires dans la cour.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

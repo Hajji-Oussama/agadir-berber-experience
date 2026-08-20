@@ -42,7 +42,7 @@ Jamais monté ? Nos chevaux sont du genre calme, « j'ai fait ça mille fois ».
 
 **4. Thé & Barbecue à Kasbat Souss.** Pour finir, un festin marocain traditionnel — thé à la menthe, viandes grillées, et histoires autour de la table.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

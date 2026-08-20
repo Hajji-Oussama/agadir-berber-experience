@@ -42,7 +42,7 @@ Nos chefs sont des cuisiniers de maison traditionnels, pas des acteurs dans une 
 
 **4. Dessert & Thé à la Menthe.** Finitions avec douceurs marocaines et thé à la menthe à volonté dans la cour des artisans — une fin lente et parfaite.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 

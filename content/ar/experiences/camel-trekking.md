@@ -42,7 +42,7 @@ sitemap:
 
 **4. المشاوي والشاي في قصبة سوس.** نختم بوليمة مغربية تقليدية — لحوم مشوية، سلطات، خبز، وشاي بالنعناع بلا حدود، برفقة الحرفيين المحليين.
 
-:social-embed{platform="youtube" id="M7lc1UVf-VE"}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## What's Included & Excluded
 
