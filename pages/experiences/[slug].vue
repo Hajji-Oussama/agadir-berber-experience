@@ -36,6 +36,14 @@ const { data: experience } = await useAsyncData(
   () => queryContent(contentPath.value).findOne().catch(() => null)
 )
 
+const { data: otherExperiences } = await useAsyncData(
+  `other-exp-${contentPath.value}`,
+  () => queryContent(`/${locale.value}/experiences`)
+    .where({ _path: { $ne: contentPath.value } })
+    .limit(3)
+    .find()
+)
+
 useSeoMeta({
   title: () => experience.value?.title ?? 'Experience',
   description: () => experience.value?.description ?? '',
@@ -100,6 +108,37 @@ useSeoMeta({
           <i class="fab fa-whatsapp"></i>
           Book Now via WhatsApp
         </button>
+      </div>
+    </section>
+
+    <!-- Other Experiences -->
+    <section v-if="otherExperiences?.length" class="other-experiences">
+      <div class="container">
+        <div class="other-header">
+          <span class="eyebrow">{{ locale === 'ar' ? 'واصل الاستكشاف' : locale === 'fr' ? 'Continuez l\u2019Aventure' : 'Keep Exploring' }}</span>
+          <h2>{{ locale === 'ar' ? 'تجارب أخرى' : locale === 'fr' ? 'Autres Expériences' : 'Other Adventures' }}</h2>
+        </div>
+        <div class="other-grid">
+          <NuxtLink
+            v-for="exp in otherExperiences"
+            :key="exp._path"
+            :to="exp._path"
+            class="other-card glass-card"
+          >
+            <div class="other-card-image" :style="{ backgroundImage: `url(${cloudinaryImage(exp.image, 'w_600,c_limit')})` }"></div>
+            <div class="other-card-body">
+              <h3>{{ exp.title }}</h3>
+              <div class="other-card-meta">
+                <span class="other-price">{{ formatPrice(exp.price) }}</span>
+                <span class="other-duration"><i class="far fa-clock"></i> {{ exp.duration }}</span>
+              </div>
+              <span class="other-card-link">
+                {{ locale === 'ar' ? 'عرض التفاصيل' : locale === 'fr' ? 'Voir les détails' : 'View Details' }}
+                <i class="fas fa-arrow-right other-card-arrow"></i>
+              </span>
+            </div>
+          </NuxtLink>
+        </div>
       </div>
     </section>
   </main>
@@ -446,6 +485,133 @@ useSeoMeta({
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+.other-experiences {
+  padding: 4rem 0 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  .other-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--text-primary);
+    }
+  }
+
+  .other-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .other-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+
+      .other-card-image {
+        transform: scale(1.06);
+      }
+
+      .other-card-arrow {
+        transform: translateX(4px);
+      }
+    }
+
+    .other-card-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .other-card-body {
+      padding: 1.5rem 1.75rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      h3 {
+        font-family: var(--font-heading);
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+      }
+
+      .other-card-meta {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.25rem;
+
+        .other-price {
+          font-family: var(--font-heading);
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: var(--accent);
+        }
+
+        .other-duration {
+          color: var(--text-secondary);
+          font-size: 0.85rem;
+          font-weight: 300;
+
+          i {
+            margin-right: 0.3rem;
+            color: var(--accent);
+          }
+        }
+      }
+
+      .other-card-link {
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--accent);
+        font-size: 0.85rem;
+        font-weight: 500;
+
+        .other-card-arrow {
+          transition: transform 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+[dir="rtl"] {
+  .other-card .other-card-arrow {
+    transform: scaleX(-1);
   }
 }
 </style>
