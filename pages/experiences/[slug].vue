@@ -185,6 +185,15 @@ useHead(() => ({
 </template>
 
 <style scoped>
+.experience-page,
+.experience-content,
+.experience-body {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
 .experience-page {
   padding-bottom: 4rem;
 }
