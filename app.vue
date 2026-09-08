@@ -6,6 +6,7 @@ const { locale } = useI18n()
 const head = useLocaleHead()
 
 useSeoMeta({
+  title: 'Agadir Berbère Expérience - Authentic Desert & Outdoor Adventures',
   titleTemplate: '%s - Agadir Berbère Expérience',
   description: 'Authentic desert quad biking, camel trekking, and Moroccan experiences in Agadir.',
 })

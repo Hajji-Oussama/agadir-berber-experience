@@ -1,10 +1,51 @@
 <script setup lang="ts">
+import siteConfig from '~/data/siteConfig.json'
+
 const { locale } = useI18n()
 
 const { data: articles } = await useAsyncData(
   `blog-${locale.value}`,
   () => queryContent(`/${locale.value}/blog`).find()
 )
+
+// Localized SEO meta (SSR-safe, reactive) — eliminates "Untitled" snippets.
+// Note: <link rel="canonical"> is already emitted globally via useLocaleHead()
+// in app.vue, so only ogUrl is set here to avoid duplicate canonical tags.
+const blogSeo = computed(() => {
+  if (locale.value === 'fr') {
+    return {
+      title: "Guide de Voyage Agadir & Conseils d'Initiés",
+      description:
+        'Conseils honnêtes, tarifs des excursions et savoir local pour Agadir, Taghazout et Kasbat Souss par des guides locaux.',
+    }
+  }
+  if (locale.value === 'ar') {
+    return {
+      title: 'دليل السفر إلى أكادير ونصائح محلية',
+      description:
+        'إرشادات صادقة، أسعار الجولات السياحية، وأسرار الاستكشاف في أكادير وتغازوت وقصبة سوس من مرشدين محليين.',
+    }
+  }
+  return {
+    title: 'Agadir Travel Guide & Insider Tips',
+    description:
+      'Honest travel advice, excursion prices, and local insights for Agadir, Taghazout, and Kasbat Souss from local guides.',
+  }
+})
+
+const blogCanonicalUrl = computed(() => {
+  const base: string = siteConfig.website ?? 'https://www.agadirberbereexperience.com'
+  return `${base}/${locale.value}/blog`
+})
+
+useSeoMeta({
+  title: () => blogSeo.value.title,
+  description: () => blogSeo.value.description,
+  ogTitle: () => blogSeo.value.title,
+  ogDescription: () => blogSeo.value.description,
+  ogType: 'website',
+  ogUrl: () => blogCanonicalUrl.value,
+})
 </script>
 
 <template>
