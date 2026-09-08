@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import ContentBookingCard from '~/components/content/BookingCard.vue'
 import ContentComparisonTable from '~/components/content/ComparisonTable.vue'
+import ContentMapEmbed from '~/components/content/MapEmbed.vue'
 
 const route = useRoute()
 const { locale } = useI18n()
 import siteConfig from '~/data/siteConfig.json'
-import { generateArticleSchema } from '~/composables/useJsonLd'
+import {
+  generateArticleSchema,
+  extractFaqItems,
+  generateFaqPageSchema,
+  type ContentBody,
+} from '~/composables/useJsonLd'
 
 // Map MDC content components so they render server-side too
 // (the content module only resolves these client-side by default)
 const mdcComponents = {
   'booking-card': ContentBookingCard,
   'comparison-table': ContentComparisonTable,
+  'map-embed': ContentMapEmbed,
 }
 
 const slug = computed(() => {
@@ -61,17 +68,28 @@ const articleSchema = computed(() => {
   })
 })
 
-useHead(() => ({
-  script:
-    articleSchema.value != null
-      ? [
-          {
-            type: 'application/ld+json' as const,
-            children: JSON.stringify(articleSchema.value),
-          },
-        ]
-      : [],
-}))
+// Auto-generated FAQPage schema whenever the markdown contains an FAQ section
+const articleFaqSchema = computed(() => {
+  const body = article.value?.body as ContentBody | null | undefined
+  return generateFaqPageSchema(extractFaqItems(body))
+})
+
+useHead(() => {
+  const scripts: { type: 'application/ld+json'; children: string }[] = []
+  if (articleSchema.value != null) {
+    scripts.push({
+      type: 'application/ld+json',
+      children: JSON.stringify(articleSchema.value),
+    })
+  }
+  if (articleFaqSchema.value != null) {
+    scripts.push({
+      type: 'application/ld+json',
+      children: JSON.stringify(articleFaqSchema.value),
+    })
+  }
+  return { script: scripts }
+})
 
 const formatDate = (date: string): string => {
   const d = new Date(date)

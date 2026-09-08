@@ -17,6 +17,23 @@ export interface ArticleJsonLdInput {
   canonicalUrl?: string | null
 }
 
+export interface ContentNode {
+  type?: string
+  tag?: string
+  value?: string
+  children?: ContentNode[]
+}
+
+export interface ContentBody {
+  type?: string
+  children?: ContentNode[]
+}
+
+export interface FaqItem {
+  question: string
+  answer: string
+}
+
 const SITE_URL: string =
   (siteConfig as { website?: string }).website ??
   'https://www.agadirberbereexperience.com'
@@ -132,5 +149,137 @@ export function generateArticleSchema(
           },
         }
       : {}),
+  }
+}
+
+const FAQ_HEADING_PATTERN = /faq|frequently asked|questions fréquentes|أسئلة/i
+
+function getTextContent(node: ContentNode | null | undefined): string {
+  if (!node) return ''
+  if (node.type === 'text') return node.value ?? ''
+  if (Array.isArray(node.children)) return node.children.map(getTextContent).join('')
+  return ''
+}
+
+function isFaqHeading(node: ContentNode | null | undefined): boolean {
+  return (
+    node?.type === 'element' &&
+    (node.tag === 'h2' || node.tag === 'h3') &&
+    FAQ_HEADING_PATTERN.test(getTextContent(node).trim())
+  )
+}
+
+function isParagraph(node: ContentNode | null | undefined): boolean {
+  return node?.type === 'element' && node.tag === 'p'
+}
+
+// Bold-paragraph questions: a <p> whose entire content is a single <strong>
+// ending with '?', e.g. the `**Is Agadir safe?**` pattern used in our guides.
+function asBoldQuestion(node: ContentNode | null | undefined): string | null {
+  if (!isParagraph(node)) return null
+  const meaningful = (node?.children ?? []).filter(
+    (c) => !(c.type === 'text' && (c.value ?? '').trim() === '')
+  )
+  if (meaningful.length !== 1) return null
+  const only = meaningful[0]
+  if (only.type !== 'element' || only.tag !== 'strong') return null
+  const text = getTextContent(only).trim()
+  if (!text || !text.endsWith('?')) return null
+  return text
+}
+
+export function extractFaqItems(
+  contentBody: ContentBody | null | undefined
+): FaqItem[] {
+  const items: FaqItem[] = []
+  const children = contentBody?.children
+  if (!Array.isArray(children)) return items
+
+  let inFaqSection = false
+  let i = 0
+  while (i < children.length) {
+    const node = children[i]
+    const isH2 = node?.type === 'element' && node.tag === 'h2'
+    const isH3 = node?.type === 'element' && node.tag === 'h3'
+
+    if (isH2) {
+      inFaqSection = isFaqHeading(node)
+      i += 1
+      continue
+    }
+
+    // An h3 that itself looks like an FAQ heading opens a section;
+    // any other h3 inside a section is handled as a question below.
+    if (isH3 && isFaqHeading(node)) {
+      inFaqSection = true
+      i += 1
+      continue
+    }
+
+    if (!inFaqSection) {
+      i += 1
+      continue
+    }
+
+    // Path A (spec): subsequent sibling h3 tags are questions,
+    // adjacent p tags are answers.
+    if (isH3) {
+      const question = getTextContent(node).trim()
+      const answers: string[] = []
+      i += 1
+      while (i < children.length && isParagraph(children[i])) {
+        const text = getTextContent(children[i]).trim()
+        if (text) answers.push(text)
+        i += 1
+      }
+      const answer = answers.join('\n\n')
+      if (question && answer) items.push({ question, answer })
+      continue
+    }
+
+    // Path B (house style): bold-paragraph questions followed by
+    // answer paragraphs, e.g. `**Is Agadir safe?**` + answer <p>.
+    const boldQuestion = asBoldQuestion(node)
+    if (boldQuestion) {
+      const answers: string[] = []
+      i += 1
+      while (
+        i < children.length &&
+        isParagraph(children[i]) &&
+        !asBoldQuestion(children[i])
+      ) {
+        const text = getTextContent(children[i]).trim()
+        if (text) answers.push(text)
+        i += 1
+      }
+      const answer = answers.join('\n\n')
+      if (answer) items.push({ question: boldQuestion, answer })
+      continue
+    }
+
+    i += 1
+  }
+
+  return items
+}
+
+export function generateFaqPageSchema(
+  items: FaqItem[] | null | undefined
+): Record<string, unknown> | null {
+  const valid = (Array.isArray(items) ? items : []).filter(
+    (item) => item?.question?.trim() && item?.answer?.trim()
+  )
+  if (!valid.length) return null
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: valid.map((item) => ({
+      '@type': 'Question',
+      name: item.question.trim(),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer.trim(),
+      },
+    })),
   }
 }

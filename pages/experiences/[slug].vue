@@ -7,13 +7,19 @@ import ContentShareButtons from '~/components/content/ShareButtons.vue'
 import ContentBookingCard from '~/components/content/BookingCard.vue'
 import ContentImageGallery from '~/components/content/ImageGallery.vue'
 import ContentInfoAlert from '~/components/content/InfoAlert.vue'
+import ContentMapEmbed from '~/components/content/MapEmbed.vue'
 
 const route = useRoute()
 const { locale } = useI18n()
 const { handleBooking } = useBooking()
 const { formatPrice } = useCurrency()
 import siteConfig from '~/data/siteConfig.json'
-import { generateExperienceSchema } from '~/composables/useJsonLd'
+import {
+  generateExperienceSchema,
+  extractFaqItems,
+  generateFaqPageSchema,
+  type ContentBody,
+} from '~/composables/useJsonLd'
 
 // Map MDC content components so they render server-side too
 // (the content module only resolves these client-side by default)
@@ -26,6 +32,7 @@ const mdcComponents = {
   'booking-card': ContentBookingCard,
   'image-gallery': ContentImageGallery,
   'info-alert': ContentInfoAlert,
+  'map-embed': ContentMapEmbed,
 }
 
 const slug = computed(() => {
@@ -73,17 +80,28 @@ const experienceSchema = computed(() => {
   })
 })
 
-useHead(() => ({
-  script:
-    experienceSchema.value != null
-      ? [
-          {
-            type: 'application/ld+json' as const,
-            children: JSON.stringify(experienceSchema.value),
-          },
-        ]
-      : [],
-}))
+// Auto-generated FAQPage schema whenever the markdown contains an FAQ section
+const experienceFaqSchema = computed(() => {
+  const body = experience.value?.body as ContentBody | null | undefined
+  return generateFaqPageSchema(extractFaqItems(body))
+})
+
+useHead(() => {
+  const scripts: { type: 'application/ld+json'; children: string }[] = []
+  if (experienceSchema.value != null) {
+    scripts.push({
+      type: 'application/ld+json',
+      children: JSON.stringify(experienceSchema.value),
+    })
+  }
+  if (experienceFaqSchema.value != null) {
+    scripts.push({
+      type: 'application/ld+json',
+      children: JSON.stringify(experienceFaqSchema.value),
+    })
+  }
+  return { script: scripts }
+})
 </script>
 
 <template>
