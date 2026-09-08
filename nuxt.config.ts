@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   // Step 1: Enable Server-Side Rendering for maximum SEO indexability
   ssr: true,
+  compatibilityDate: '2026-09-08',
 
   // Step 18: Canonical site URL used for sitemap.xml generation
   site: {
@@ -27,6 +28,9 @@ export default defineNuxtConfig({
     strategy: 'prefix',
     defaultLocale: 'en',
     baseUrl: 'https://www.agadirberbereexperience.com',
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
     // v9 defaults restructureDir to 'i18n' (resolves langDir under <root>/i18n/).
     // Disable it so langDir resolves from the project root: <root>/locales/
     restructureDir: false,

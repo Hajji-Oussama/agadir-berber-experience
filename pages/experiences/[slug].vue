@@ -11,6 +11,8 @@ const route = useRoute()
 const { locale } = useI18n()
 const { handleBooking } = useBooking()
 const { formatPrice } = useCurrency()
+import siteConfig from '~/data/siteConfig.json'
+import { generateExperienceSchema } from '~/composables/useJsonLd'
 
 // Map MDC content components so they render server-side too
 // (the content module only resolves these client-side by default)
@@ -51,6 +53,35 @@ useSeoMeta({
   ogDescription: () => experience.value?.description ?? '',
   ogImage: () => experience.value?.image ?? '',
 })
+
+// Dynamic TouristTrip + Product schema (SSR-safe, reactive, non-destructive)
+const experienceCanonicalUrl = computed(() => {
+  const base: string = siteConfig.website ?? 'https://www.agadirberbereexperience.com'
+  return `${base}/${locale.value}/experiences/${slug.value}`
+})
+
+const experienceSchema = computed(() => {
+  if (!experience.value) return null
+  return generateExperienceSchema({
+    title: experience.value.title as string | undefined,
+    description: experience.value.description as string | undefined,
+    image: experience.value.image as string | undefined,
+    price: experience.value.price as string | number | undefined,
+    canonicalUrl: experienceCanonicalUrl.value,
+  })
+})
+
+useHead(() => ({
+  script:
+    experienceSchema.value != null
+      ? [
+          {
+            type: 'application/ld+json' as const,
+            children: JSON.stringify(experienceSchema.value),
+          },
+        ]
+      : [],
+}))
 </script>
 
 <template>

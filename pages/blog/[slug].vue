@@ -3,6 +3,8 @@ import ContentBookingCard from '~/components/content/BookingCard.vue'
 
 const route = useRoute()
 const { locale } = useI18n()
+import siteConfig from '~/data/siteConfig.json'
+import { generateArticleSchema } from '~/composables/useJsonLd'
 
 // Map MDC content components so they render server-side too
 // (the content module only resolves these client-side by default)
@@ -38,6 +40,36 @@ useSeoMeta({
   ogDescription: () => article.value?.description ?? '',
   ogImage: () => article.value?.image ?? '',
 })
+
+// Dynamic Article schema (SSR-safe, reactive, non-destructive)
+const articleCanonicalUrl = computed(() => {
+  const base: string = siteConfig.website ?? 'https://www.agadirberbereexperience.com'
+  return `${base}/${locale.value}/blog/${slug.value}`
+})
+
+const articleSchema = computed(() => {
+  if (!article.value) return null
+  return generateArticleSchema({
+    title: article.value.title as string | undefined,
+    description: article.value.description as string | undefined,
+    image: article.value.image as string | undefined,
+    date: article.value.date as string | undefined,
+    author: article.value.author as string | undefined,
+    canonicalUrl: articleCanonicalUrl.value,
+  })
+})
+
+useHead(() => ({
+  script:
+    articleSchema.value != null
+      ? [
+          {
+            type: 'application/ld+json' as const,
+            children: JSON.stringify(articleSchema.value),
+          },
+        ]
+      : [],
+}))
 
 const formatDate = (date: string): string => {
   const d = new Date(date)

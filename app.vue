@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useLocaleHead } from '#i18n'
+import { generateOrganizationSchema } from '~/composables/useJsonLd'
 
 const { locale } = useI18n()
 const head = useLocaleHead()
@@ -16,6 +17,18 @@ useHead({
   })),
   link: computed(() => head.value.link),
   meta: computed(() => head.value.meta),
+})
+
+// Global Organization schema (SSR-safe, injected once, non-conflicting with useLocaleHead)
+const orgSchema = generateOrganizationSchema()
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(orgSchema),
+    },
+  ],
 })
 </script>
 
