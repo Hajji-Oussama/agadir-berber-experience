@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ContentBookingCard from '~/components/content/BookingCard.vue'
+import ContentComparisonTable from '~/components/content/ComparisonTable.vue'
 
 const route = useRoute()
 const { locale } = useI18n()
@@ -10,6 +11,7 @@ import { generateArticleSchema } from '~/composables/useJsonLd'
 // (the content module only resolves these client-side by default)
 const mdcComponents = {
   'booking-card': ContentBookingCard,
+  'comparison-table': ContentComparisonTable,
 }
 
 const slug = computed(() => {
@@ -338,6 +340,13 @@ const formatDate = (date: string): string => {
       background: rgba(255, 255, 255, 0.05);
     }
   }
+}
+
+.article-content,
+.content-body {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .article-content {

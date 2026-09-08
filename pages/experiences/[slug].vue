@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ContentTrustBadges from '~/components/content/TrustBadges.vue'
+import ContentComparisonTable from '~/components/content/ComparisonTable.vue'
 import ContentGroupPromo from '~/components/content/GroupPromo.vue'
 import ContentSocialEmbed from '~/components/content/SocialEmbed.vue'
 import ContentShareButtons from '~/components/content/ShareButtons.vue'
@@ -18,6 +19,7 @@ import { generateExperienceSchema } from '~/composables/useJsonLd'
 // (the content module only resolves these client-side by default)
 const mdcComponents = {
   'trust-badges': ContentTrustBadges,
+  'comparison-table': ContentComparisonTable,
   'group-promo': ContentGroupPromo,
   'social-embed': ContentSocialEmbed,
   'share-buttons': ContentShareButtons,
