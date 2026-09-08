@@ -40,8 +40,12 @@
           <h1 class="slide-title">{{ slide.title }}</h1>
           <p class="slide-subtitle">{{ slide.subtitle }}</p>
           <div class="slide-actions">
-            <NuxtLink :to="$localePath('/blog')" class="btn btn--primary">Explore</NuxtLink>
-            <button type="button" class="btn btn--ghost" @click="handleBooking()">Book Now</button>
+            <NuxtLink :to="$localePath('/blog')" class="btn btn--primary">
+              {{ $t('hero.explore') || (locale === 'ar' ? 'استكشف التجارب' : locale === 'fr' ? 'Explorer' : 'Explore') }}
+            </NuxtLink>
+            <button type="button" class="btn btn--ghost" @click="handleBooking()">
+              {{ $t('hero.book_now') || (locale === 'ar' ? 'احجز الآن' : locale === 'fr' ? 'Réserver' : 'Book Now') }}
+            </button>
           </div>
         </div>
       </article>
@@ -88,7 +92,7 @@
 import slidesData from '~/data/slides.json'
 import { cloudinaryImage } from '~/utils/cloudinary'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const { handleBooking } = useBooking()
 
 const slides = computed(() =>

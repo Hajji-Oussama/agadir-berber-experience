@@ -45,7 +45,7 @@
             </div>
             <p>{{ $t(`timeline.step${index + 1}_desc`) }}</p>
             <div class="step-meta" v-if="step.meta">
-              <span><i class="fas fa-clock"></i> {{ step.meta.duration }}</span>
+              <span><i class="fas fa-clock"></i> {{ formatDuration(step.meta.duration) }}</span>
               <span><i class="fas fa-mountain"></i> {{ step.meta.elevation }}</span>
             </div>
           </div>
@@ -56,8 +56,23 @@
 </template>
 
 <script setup lang="ts">
+const { locale } = useI18n()
+
 const timelineLine = ref<HTMLElement | null>(null)
 const timelineItems = ref<HTMLElement[]>([])
+
+// Localize step duration metadata ('2 Days' -> 'يومان' / '2 Jours').
+function formatDuration(duration: string): string {
+  const match = /^(\d+)\s*Days?$/.exec(duration.trim())
+  if (!match) return duration
+  const days = match[1]
+  if (locale.value === 'ar') {
+    if (days === '2') return 'يومان'
+    return `${days} أيام`
+  }
+  if (locale.value === 'fr') return `${days} Jours`
+  return duration
+}
 
 const steps = [
   {
@@ -227,6 +242,7 @@ function handleParallax() {
   }
 
   .timeline {
+    direction: ltr; // Keep central line, item-left, and item-right geometry identical in both LTR and RTL
     position: relative;
     max-width: 1000px;
     margin: 0 auto;
@@ -479,5 +495,18 @@ function handleParallax() {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[dir="rtl"] .timeline-content {
+  direction: rtl;
+  text-align: right;
+
+  .timeline-step {
+    flex-direction: row;
+  }
+
+  .step-meta {
+    direction: rtl;
+  }
 }
 </style>
