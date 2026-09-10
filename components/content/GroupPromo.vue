@@ -10,17 +10,35 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  title?: string
-  discountAmount?: number
-  condition?: string
-}>()
+const props = withDefaults(
+  defineProps<{
+    title?: string
+    discountAmount?: number | string
+    condition?: string
+  }>(),
+  {
+    title: '',
+    discountAmount: 50,
+    condition: '',
+  }
+)
 
 const { formatPrice } = useCurrency()
 
+// Coerce string amounts (e.g. discountAmount="50" without `:` binding)
+// to Number so prop validation never warns and formatting stays numeric.
+const discountValue = computed(() => {
+  if (props.discountAmount == null || props.discountAmount === '') return null
+  const coerced =
+    typeof props.discountAmount === 'string'
+      ? parseFloat(props.discountAmount)
+      : props.discountAmount
+  return Number.isNaN(coerced) ? null : coerced
+})
+
 const savingsText = computed(() => {
-  if (props.discountAmount == null) return ''
-  return `Save ${formatPrice(props.discountAmount)} per person!`
+  if (discountValue.value == null) return ''
+  return `Save ${formatPrice(discountValue.value)} per person!`
 })
 </script>
 
