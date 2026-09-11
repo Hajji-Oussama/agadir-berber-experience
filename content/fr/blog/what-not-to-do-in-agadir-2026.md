@@ -1,11 +1,11 @@
 ---
-title: "Que NE PAS Faire à Agadir (2026) : 10 Pièges à Touristes et Erreurs à Éviter"
+title: "Que NE PAS Faire à Agadir 2026: 10 Pièges Touristes, Erreurs"
 description: "Guide local sans filtre pour Agadir : arnaques de taxis, commissions d'hôtels, faux argan, et comment réserver vos activités au juste prix sans intermédiaire."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg"
 author: "Agadir Berbère Team"
 date: "2026-09-10"
 sitemap:
-  loc: /fr/blog/what-not-to-do-in-agadir-2026
+  loc: "/fr/blog/what-not-to-do-in-agadir-2026"
 ---
 
 :trust-badges
