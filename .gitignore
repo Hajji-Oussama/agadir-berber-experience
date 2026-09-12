@@ -12,6 +12,8 @@ dist
 dist-ssr
 .nuxt
 .output
+.backups
+.env
 *.local
 
 # Editor directories and files
