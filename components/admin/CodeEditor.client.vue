@@ -64,6 +64,7 @@ const props = withDefaults(
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
   (e: 'save'): void
+  (e: 'scroll', ratio: number): void
 }>()
 
 const containerRef = ref<HTMLElement | null>(null)
@@ -219,6 +220,13 @@ defineExpose({
   scrollToRatio,
 })
 
+function onScrollerScroll(): void {
+  if (!view) return
+  const el = view.scrollDOM
+  const max = el.scrollHeight - el.clientHeight
+  emit('scroll', max <= 0 ? 0 : el.scrollTop / max)
+}
+
 function handlePaste(event: ClipboardEvent, viewInstance: EditorView): boolean {
   const raw = event.clipboardData?.getData('text')
   if (raw == null || raw === '') return false
@@ -295,6 +303,9 @@ onMounted(() => {
       ],
     }),
   })
+  // Owned by the view lifecycle: attached after creation, so no
+  // ClientOnly mount race is possible here (unlike external attach).
+  view.scrollDOM.addEventListener('scroll', onScrollerScroll, { passive: true })
 })
 
 watch(
@@ -325,6 +336,11 @@ watch(
 
 onBeforeUnmount(() => {
   if (badgeTimer) clearTimeout(badgeTimer)
+  try {
+    view?.scrollDOM.removeEventListener('scroll', onScrollerScroll)
+  } catch {
+    // best effort; destroy() detaches the DOM regardless
+  }
   view?.destroy()
   view = null
 })

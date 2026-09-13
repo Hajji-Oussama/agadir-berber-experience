@@ -180,6 +180,13 @@ onBeforeUnmount(() => {
   }
 }
 
+@media (max-width: 767px) {
+  /* Guarantee a legible, tappable selector on small phones. */
+  .article-selector {
+    min-width: 130px;
+  }
+}
+
 .selector-button {
   display: flex;
   align-items: center;

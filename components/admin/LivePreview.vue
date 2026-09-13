@@ -4,7 +4,7 @@
     class="live-preview"
     :dir="locale === 'ar' ? 'rtl' : 'ltr'"
     @scroll="onScroll"
-    @click="onContainerClick"
+    @click.capture.stop.prevent="handlePreviewClick"
   >
     <div class="preview-status">
       <span v-if="isParsing" class="status-pill status-pill--parsing">
@@ -127,19 +127,24 @@ function scrollToRatio(ratio: number): void {
 }
 
 function showLinkToast(href: string): void {
-  const internal = href.startsWith('/') || href.includes('agadirberbereexperience.com')
-  linkToast.value = internal ? `رابط داخلي: ${href}` : `رابط خارجي: ${href}`
+  linkToast.value = `رابط للمعاينة فقط: ${href}`
   if (toastTimer) clearTimeout(toastTimer)
   toastTimer = setTimeout(() => {
     linkToast.value = null
   }, 2600)
 }
 
-function onContainerClick(event: MouseEvent): void {
-  const target = (event.target as HTMLElement | null)?.closest?.('a')
-  if (!target) return
+// Capture phase + stopPropagation: neutralizes both plain anchors AND
+// <NuxtLink>/<RouterLink> programmatic router.push() (which ignores
+// bubbled preventDefault), so preview clicks can never unmount the editor.
+function handlePreviewClick(event: MouseEvent): void {
+  const targetLink = (event.target as HTMLElement | null)?.closest?.('a')
+  if (!targetLink) return
   event.preventDefault()
-  showLinkToast(target.getAttribute('href') || '')
+  event.stopPropagation()
+  const href =
+    targetLink.getAttribute('href') || targetLink.getAttribute('to') || ''
+  showLinkToast(href)
 }
 
 defineExpose({ scrollToRatio })

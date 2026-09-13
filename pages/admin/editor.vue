@@ -77,6 +77,7 @@
                 :locale="activeLocale"
                 @update:model-value="onEditorInput"
                 @save="saveCurrentArticle"
+                @scroll="onEditorScroll"
               />
               <template #fallback>
                 <textarea
@@ -229,7 +230,6 @@ const codeEditorRef = ref<{
   cleanDocument: () => void
   getCursorPosition: () => { from: number; to: number }
   insertSnippet: (snippet: string, targetRange?: { from: number; to: number }) => void
-  getScrollerElement: () => HTMLElement | null
   scrollToRatio: (ratio: number) => void
 } | null>(null)
 
@@ -249,7 +249,6 @@ const { parsedAst, isParsing, parseError, renderMdc, flushNow } = renderer
 let isScrollingEditor = false
 let isScrollingPreview = false
 let scrollLockTimer: ReturnType<typeof setTimeout> | null = null
-let editorScrollListener: (() => void) | null = null
 
 function releaseScrollLocks(): void {
   if (scrollLockTimer) clearTimeout(scrollLockTimer)
@@ -259,33 +258,15 @@ function releaseScrollLocks(): void {
   }, 50)
 }
 
-function attachEditorScrollSync(): void {
-  detachEditorScrollSync()
-  const scroller = codeEditorRef.value?.getScrollerElement() ?? null
-  if (!scroller || typeof window === 'undefined') return
-  const onEditorScroll = () => {
-    if (isScrollingPreview) return
-    if (scroller.scrollHeight <= scroller.clientHeight) return
-    const ratio = scroller.scrollTop / (scroller.scrollHeight - scroller.clientHeight)
-    isScrollingEditor = true
-    try {
-      previewRef.value?.scrollToRatio(ratio)
-    } finally {
-      releaseScrollLocks()
-    }
-  }
-  scroller.addEventListener('scroll', onEditorScroll, { passive: true })
-  editorScrollListener = () => scroller.removeEventListener('scroll', onEditorScroll)
-}
-
-function detachEditorScrollSync(): void {
-  if (editorScrollListener) {
-    try {
-      editorScrollListener()
-    } catch {
-      // best effort
-    }
-    editorScrollListener = null
+// Driven by CodeEditor's own scroll listener (attached at view creation,
+// so no ClientOnly mount race is possible).
+function onEditorScroll(ratio: number): void {
+  if (isScrollingPreview) return
+  isScrollingEditor = true
+  try {
+    previewRef.value?.scrollToRatio(ratio)
+  } finally {
+    releaseScrollLocks()
   }
 }
 
@@ -309,11 +290,6 @@ watch(
 watch(viewMode, (mode) => {
   if (mode === 'preview') {
     flushNow(currentArticle.value?.rawContent ?? '')
-  }
-  if (typeof window !== 'undefined') {
-    window.requestAnimationFrame(() => {
-      attachEditorScrollSync()
-    })
   }
 })
 
@@ -419,7 +395,6 @@ function onSelectArticle(locale: StudioLocale, slug: string): void {
 function onCreateDraft(locale: StudioLocale, title: string, slug: string): void {
   void createNewDraft(locale, title, slug).then(() => {
     flushNow(currentArticle.value?.rawContent ?? '')
-    attachEditorScrollSync()
     checkExistingDraft(locale, slug, currentArticle.value?.rawContent ?? '')
   })
 }
@@ -572,7 +547,6 @@ async function initializeWorkspace(): Promise<void> {
         image: '/images/blog/default.webp',
       })
       flushNow(currentArticle.value?.rawContent ?? '')
-      attachEditorScrollSync()
       return
     }
     if (
@@ -587,7 +561,6 @@ async function initializeWorkspace(): Promise<void> {
       await loadArticle(first.locale, first.slug)
     }
     flushNow(currentArticle.value?.rawContent ?? '')
-    attachEditorScrollSync()
     checkExistingDraft(activeLocale.value, activeSlug.value, currentArticle.value?.rawContent ?? '')
   } finally {
     loading.value = false
@@ -614,7 +587,6 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', onGlobalKeydown)
-  detachEditorScrollSync()
   if (scrollLockTimer) clearTimeout(scrollLockTimer)
   if (publishToastTimer) clearTimeout(publishToastTimer)
 })

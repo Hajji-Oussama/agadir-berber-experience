@@ -73,7 +73,11 @@
       <span v-if="readingTime" class="reading-pill" title="Estimated reading time">
         {{ readingTime }}
       </span>
-      <AdminStatusBadge :status="saveStatus" :error-message="errorMessage" />
+      <AdminStatusBadge
+        class="header-status"
+        :status="saveStatus"
+        :error-message="errorMessage"
+      />
       <button
         type="button"
         class="save-btn"
@@ -408,7 +412,17 @@ const isNewArticleOpen = ref(false)
   color: #f87171;
 }
 
+.header-status {
+  flex-shrink: 0;
+}
+
 @media (max-width: 767px) {
+  /* Status lives in the mobile sticky bottom bar; hiding it here frees
+     ~120px so the article selector never collapses to 0px. */
+  .header-status {
+    display: none;
+  }
+
   .header-group--modes {
     display: none;
   }
