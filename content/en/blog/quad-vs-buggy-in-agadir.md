@@ -5,9 +5,8 @@ image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_
 author: "Agadir Berbère Team"
 date: "2026-09-08"
 sitemap:
-  loc: /en/blog/quad-vs-buggy-in-agadir
+  loc: "/en/blog/quad-vs-buggy-in-agadir"
 ---
-
 :trust-badges
 
 Let’s cut straight through the marketing fluff and third-party booking site nonsense. If you are scrolling through this, you’ve probably seen the sketchy ads promising "extreme desert safaris" for $20, and you’re wondering what the actual difference is between hopping on a quad or climbing into a buggy. 
@@ -80,6 +79,8 @@ There is one simple, non-negotiable rule here: Do not book a quad safari, show u
 
 ## Is 2 Hours Too Long?
 
+![WhatsApp_Image_2026-06-29_at_3.27.59_PM_2_ieq5dq.jpg](https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095038/WhatsApp_Image_2026-06-29_at_3.27.59_PM_2_ieq5dq.jpg)
+
 The answer depends entirely on your personal fitness and your relationship with physical activity.
 
 For someone who loves driving, thrives on adrenaline, and enjoys being physically engaged, two hours will fly by in what feels like twenty minutes. The constant micro-adjustments required to navigate the terrain keep you locked in and entertained.
@@ -105,7 +106,7 @@ This is an administrative detail you cannot afford to guess about based on outda
 
 For automatic tourist quads, a driving license is generally not required to operate the machine. However, the buggy is a different beast. Because it is classified as a motorized terrestrial vehicle requiring standard automotive driving skills, the person behind the wheel must possess a valid, standard car driving license.
 
-:info-alert{title="Important License Requirement" text="Buggy drivers must show a valid physical car driving license before departure. Passengers do not need one. Quads require no license." link="/en/ex it is not "risk-free". 
+:info-alert{title="Important License Requirement" text="Buggy drivers must show a valid physical car driving license before departure. Passengers do not need one. Quads require no license."}
 
 Objectively, the buggy features a robust roll cage and seats passengers lower to the ground inside a wider chassis, making it inherently more stable and less prone to tipping than a quad. The quad, being taller and narrower, requires the rider to actively manage their balance and weight distribution.
 
