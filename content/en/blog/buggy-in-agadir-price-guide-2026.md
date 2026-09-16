@@ -1,13 +1,12 @@
 ---
 title: "Buggy in Agadir Price Guide 2026: 600 MAD Tour"
 description: "Buggy in Agadir costs 600 MAD (~€56) per 2-seater for 2 hours, with free hotel pickup in Agadir and Taghazout. Full 2026 price, license and circuit guide."
-image: "/images/blog/Quad-Biking -agadir.webp"
+image: "/images/blog/quad-biking-agadir.webp"
 author: "Agadir Berbère Team"
 date: "2026-09-16"
 sitemap:
   loc: "/en/blog/buggy-in-agadir-price-guide-2026"
 ---
-
 :social-embed{platform="instagram" id="DaX04hIsX87"}
 
 :trust-badges
