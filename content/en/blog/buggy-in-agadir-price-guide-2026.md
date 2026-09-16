@@ -5,8 +5,9 @@ image: "/images/blog/quad-biking-agadir.webp"
 author: "Agadir Berbère Team"
 date: "2026-09-16"
 sitemap:
-  loc: "/en/blog/buggy-in-agadir-price-guide-2026"
+  loc: /en/blog/buggy-in-agadir-price-guide-2026
 ---
+
 :social-embed{platform="instagram" id="DaX04hIsX87"}
 
 :trust-badges
@@ -15,7 +16,7 @@ Looking for the real **buggy Agadir** price? A Buggy Safari in Agadir costs **60
 
 No prepayment, no hidden fees. Here is the complete 2026 price breakdown, license rules, circuit, and how to avoid overpaying on reseller platforms.
 
-:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783098984/WhatsApp_Image_2026-06-29_at_3.27.51_PM_vftada.jpg"]'}
+:image-gallery{:images='["/images/blog/quad-biking-agadir.webp"]'}
 
 ## How Much Does a Buggy Tour Cost in Agadir in 2026?
 
@@ -135,7 +136,7 @@ We keep it frictionless:
 
 Combine it to make a half-day: many guests add pottery or a [cooking class](/en/experiences/cooking-class) at Kasbat Souss after the ride. Ask when booking.
 
-:group-promo{title="Offer for Couple && famile" :discountAmount="50" condition="Agadir Berbère Team"}
+:group-promo{title="Offer for Couples & Families" discountAmount="50" condition="Direct booking via Agadir Berbère Team"}
 
 ## FAQ: Buggy in Agadir
 
