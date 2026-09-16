@@ -5,9 +5,8 @@ image: "/images/blog/quad-biking-agadir.webp"
 author: "Agadir Berbère Team"
 date: "2026-09-16"
 sitemap:
-  loc: /fr/blog/buggy-in-agadir-price-guide-2026
+  loc: "/fr/blog/buggy-in-agadir-price-guide-2026"
 ---
-
 :social-embed{platform="instagram" id="DaX04hIsX87"}
 
 :trust-badges
@@ -16,7 +15,7 @@ Vous cherchez le vrai prix d'un **buggy à Agadir** ? Le Buggy Safari coûte **6
 
 Sans prépaiement, sans frais cachés. Voici le détail complet des prix 2026, les règles de permis, le circuit, et comment éviter de payer trop cher sur les plateformes revendeuses.
 
-:image-gallery{:images='["/images/blog/quad-biking-agadir.webp"]'}
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783098984/WhatsApp_Image_2026-06-29_at_3.27.51_PM_vftada.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095038/WhatsApp_Image_2026-06-29_at_3.27.59_PM_2_ieq5dq.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783098808/WhatsApp_Image_2026-06-29_at_3.27.51_PM_1_w3dnts.jpg"]'}
 
 ## Combien coûte une excursion en buggy à Agadir en 2026 ?
 
