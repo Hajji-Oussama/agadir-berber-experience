@@ -1,14 +1,13 @@
 ---
-title: "Horse Riding"
-description: "Chevauchez les plages de l'Atlantique à l'heure dorée — forêt d'Aghroud, rivière Souss, thé à la menthe et barbecue."
+title: "Balade à Cheval à Agadir : Coucher de Soleil et Forêt"
+description: "Baladez-vous à cheval sur les plages d'Agadir et la forêt d'Aghroud au coucher du soleil. Circuit guidé de 2h avec transfert hôtel inclus. Réservez à 350 MAD."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg"
-price: 350
+price: "350"
 duration: "2 heures"
 category: "beach"
 sitemap:
-  loc: /fr/experiences/horse-riding
+  loc: "/fr/experiences/horse-riding"
 ---
-
 :trust-badges
 
 :image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095038/WhatsApp_Image_2026-06-29_at_3.27.59_PM_2_ieq5dq.jpg"]'}
