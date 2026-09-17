@@ -1,14 +1,13 @@
 ---
-title: "ركوب الخيل"
-description: "امتط صهوة جوادك على شواطئ أكادير الأطلسية وقت الغروب — غابة أغرود، نهر سوس، شاي بالنعناع ومشاوي."
+title: "ركوب الخيل في أكادير: جولة الشاطئ وغابة أغرود عند الغروب"
+description: "استمتع بجولة ركوب الخيل على شواطئ أكادير وغابة أغرود عند الغروب. رحلة مميزة لمدة ساعتين مع النقل المجاني من الفندق والشاي المغربي بسعر رسمي 350 درهم فقط."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg"
-price: 350
+price: "350"
 duration: "ساعتان"
 category: "beach"
 sitemap:
-  loc: /ar/experiences/horse-riding
+  loc: "/ar/experiences/horse-riding"
 ---
-
 :trust-badges
 
 :image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095038/WhatsApp_Image_2026-06-29_at_3.27.59_PM_2_ieq5dq.jpg"]'}
