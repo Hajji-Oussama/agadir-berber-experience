@@ -9,7 +9,8 @@
         loading="lazy"
       />
       <div v-else class="preview-hero-placeholder">
-        <span>🖼️ No featured image yet / لا توجد صورة بعد</span>
+        <AdminIcon name="image" :size="28" />
+        <span>No featured image yet / لا توجد صورة بعد</span>
       </div>
     </div>
 
@@ -90,6 +91,7 @@ const formattedDate = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   color: var(--text-secondary);
   font-size: 0.9rem;
 }

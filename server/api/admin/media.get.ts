@@ -1,6 +1,11 @@
 import { readdir, stat, readFile } from 'node:fs/promises'
 import path from 'node:path'
-import { mediaRoot, contentRoot } from '../../utils/admin/pathGuard'
+import {
+  ALLOWED_MEDIA_DESTINATIONS,
+  mediaRoot,
+  mediaUrlPrefixFor,
+  contentRoot,
+} from '../../utils/admin/pathGuard'
 
 const LOCAL_IMAGE_RE = /\.(webp|jpe?g|png)$/i
 const CLOUDINARY_RE = /https:\/\/res\.cloudinary\.com\/[^\s"'\)\]]+/g
@@ -32,13 +37,21 @@ async function collectMarkdownFiles(dir: string, out: string[]): Promise<void> {
 export default defineEventHandler(async (event) => {
   try {
     const local: { filename: string; url: string; isLocal: boolean }[] = []
-    try {
-      const files = await readdir(mediaRoot())
-      for (const file of files.filter((f) => LOCAL_IMAGE_RE.test(f)).sort()) {
-        local.push({ filename: file, url: `/images/blog/${file}`, isLocal: true })
+    // List every local media destination: public/images/blog/ +
+    // public/images/experiences/. Missing directories stay empty.
+    for (const destination of ALLOWED_MEDIA_DESTINATIONS) {
+      try {
+        const files = await readdir(mediaRoot(destination))
+        for (const file of files.filter((f) => LOCAL_IMAGE_RE.test(f)).sort()) {
+          local.push({
+            filename: file,
+            url: `${mediaUrlPrefixFor(destination)}${file}`,
+            isLocal: true,
+          })
+        }
+      } catch {
+        // Media directory may not exist yet; local list stays empty.
       }
-    } catch {
-      // Media directory may not exist yet; local list stays empty.
     }
 
     const cloudinarySeen = new Set<string>()

@@ -3,6 +3,10 @@
     <button type="button" class="fm-bar" @click="toggle" :aria-expanded="isExpanded">
       <span class="fm-summary">
         <span class="fm-health" :class="`fm-health--${seoHealthy ? 'good' : 'warn'}`"></span>
+        <span class="fm-type" :class="`fm-type--${isExperience ? 'exp' : 'blog'}`">
+          <AdminIcon :name="isExperience ? 'compass' : 'file-text'" :size="13" />
+          <span>{{ isExperience ? 'Experience' : 'Article' }}</span>
+        </span>
         <span class="fm-title-preview">{{ titleValue || 'Untitled' }}</span>
       </span>
       <span class="fm-pills">
@@ -71,9 +75,10 @@
                   ? 'Unlock slug editing (renaming breaks existing URLs)'
                   : 'Lock slug'
               "
+              :aria-label="isSlugLocked ? 'Slug locked — activate to unlock' : 'Slug unlocked — activate to lock'"
               @click="toggleSlugLock"
             >
-              {{ isSlugLocked ? '🔒' : '🔓' }}
+              <AdminIcon name="lock" :size="15" />
             </button>
           </div>
           <span v-if="slugDraft !== savedSlug" class="fm-warning">
@@ -85,7 +90,7 @@
           <span class="fm-field-label">Featured Image / الصورة</span>
           <div class="fm-image-row">
             <img
-              v-if="imageValid && imageValue"
+              v-if="imageValid && imageValue && imageProbe !== 'broken'"
               :src="imageValue"
               alt=""
               class="fm-thumb"
@@ -97,19 +102,102 @@
               type="text"
               class="fm-input"
               dir="ltr"
-              placeholder="/images/blog/..."
+              :placeholder="isExperience ? '/images/experiences/...' : '/images/blog/...'"
+              :aria-invalid="imageProbe === 'broken'"
+              :aria-describedby="imageProbe === 'broken' ? 'fm-image-status' : undefined"
               @input="onFieldChange"
             />
-            <span class="fm-valid" :class="`fm-valid--${imageValid ? 'ok' : 'bad'}`">
-              {{ imageValid ? '✓' : '!' }}
+            <span id="fm-image-status" class="fm-valid" :class="`fm-valid--${imageStatusTone}`" role="status">
+              <AdminIcon :name="imageStatusIcon" :size="14" :class="{ 'is-spinning': imageProbe === 'checking' }" />
+              <span>{{ imageStatusText }}</span>
             </span>
             <button type="button" class="fm-pick" @click="emit('open-media', 'featured')">
-              🖼️ اختيار صورة / Pick Media
+              <AdminIcon name="image" :size="15" />
+              <span>اختيار صورة / Pick Media</span>
+            </button>
+          </div>
+          <div v-if="nameIssues.length > 0" class="fm-image-warn" role="alert">
+            <AdminIcon name="alert" :size="14" />
+            <span>Filename uses {{ nameIssues.join(' + ') }} — unsafe for URLs.</span>
+            <button type="button" class="fm-sanitize" @click="sanitizeImageName">
+              Sanitize to kebab-case .webp
             </button>
           </div>
         </div>
 
-        <div class="fm-row">
+        <!-- Experience-only commerce fields: price / duration / fleet -->
+        <template v-if="isExperience">
+          <div class="fm-row">
+            <label class="fm-field">
+              <span class="fm-field-label">Price (MAD)</span>
+              <input
+                :value="priceValue"
+                type="number"
+                min="1"
+                step="1"
+                class="fm-input"
+                dir="ltr"
+                @input="setPrice(Number(($event.target as HTMLInputElement).value))"
+              />
+              <span class="fm-hint">≈ €{{ priceEur }} · Official catalog price in MAD</span>
+            </label>
+            <label class="fm-field">
+              <span class="fm-field-label">Duration</span>
+              <input
+                v-model="currentArticle.metadata.duration"
+                type="text"
+                class="fm-input"
+                dir="auto"
+                placeholder="2 hours"
+                @input="onFieldChange"
+              />
+              <span class="fm-hint">e.g. "2 hours", "4-5 hours"</span>
+            </label>
+          </div>
+
+          <div class="fm-row fm-row--3">
+            <label class="fm-field">
+              <span class="fm-field-label">Category</span>
+              <input
+                v-model="currentArticle.metadata.category"
+                type="text"
+                class="fm-input"
+                dir="ltr"
+                placeholder="desert"
+                @input="onFieldChange"
+              />
+            </label>
+            <label class="fm-field">
+              <span class="fm-field-label">Vehicle</span>
+              <input
+                v-model="currentArticle.metadata.vehicle"
+                type="text"
+                class="fm-input"
+                dir="auto"
+                placeholder="2-seater buggy"
+                @input="onFieldChange"
+              />
+            </label>
+            <label class="fm-field">
+              <span class="fm-field-label">Seats / Capacity</span>
+              <input
+                v-model="currentArticle.metadata.seats"
+                type="text"
+                class="fm-input"
+                dir="auto"
+                placeholder="2-seater"
+                @input="onFieldChange"
+              />
+            </label>
+          </div>
+
+          <div class="fm-field">
+            <AdminExperienceGallery :model-value="galleryArray" @update:model-value="setGallery" />
+            <span class="fm-hint">Stored as the `gallery` frontmatter array</span>
+          </div>
+        </template>
+
+        <div v-if="!isExperience" class="fm-row">
           <label class="fm-field">
             <span class="fm-field-label">Author / الكاتب</span>
             <input
@@ -122,6 +210,28 @@
           </label>
           <label class="fm-field">
             <span class="fm-field-label">Date / التاريخ</span>
+            <input
+              v-model="currentArticle.metadata.date"
+              type="date"
+              class="fm-input"
+              dir="ltr"
+              @input="onFieldChange"
+            />
+          </label>
+        </div>
+        <div v-else class="fm-row">
+          <label class="fm-field">
+            <span class="fm-field-label">Author (optional)</span>
+            <input
+              v-model="currentArticle.metadata.author"
+              type="text"
+              class="fm-input"
+              placeholder="Agadir Berbère Team"
+              @input="onFieldChange"
+            />
+          </label>
+          <label class="fm-field">
+            <span class="fm-field-label">Date (optional)</span>
             <input
               v-model="currentArticle.metadata.date"
               type="date"
@@ -144,6 +254,7 @@
           :description="descriptionValue"
           :slug="slugDraft"
           :locale="activeLocale"
+          :content-type="isExperience ? 'experience' : 'blog'"
         />
       </div>
     </div>
@@ -166,6 +277,8 @@ const emit = defineEmits<{
 
 const currentArticle = computed(() => studio.currentArticle.value)
 const activeLocale = computed(() => studio.activeLocale.value)
+const activeType = computed(() => studio.activeType.value ?? 'blog')
+const isExperience = computed(() => activeType.value === 'experience')
 const savedSlug = computed(() => studio.activeSlug.value)
 
 const isExpanded = ref(false)
@@ -226,11 +339,140 @@ const titleValue = computed(() => String(currentArticle.value?.metadata?.title ?
 const descriptionValue = computed(() => String(currentArticle.value?.metadata?.description ?? ''))
 const imageValue = computed(() => String(currentArticle.value?.metadata?.image ?? ''))
 
+// ---- Experience-specific computed fields ----
+const priceValue = computed(() => {
+  const raw = currentArticle.value?.metadata?.price
+  if (typeof raw === 'number' && Number.isFinite(raw)) return raw
+  const num = Number(raw)
+  return Number.isFinite(num) && String(raw ?? '').trim() !== '' ? num : 0
+})
+
+const priceEur = computed(() => Math.round(priceValue.value * 0.092 * 100) / 100)
+
+function setPrice(next: number): void {
+  const meta = currentArticle.value?.metadata as Record<string, unknown> | undefined
+  if (!meta) return
+  meta.price = Number.isFinite(next) && next > 0 ? Math.round(next) : next
+  scheduleDirty()
+}
+
+const galleryArray = computed(() => {
+  const gallery = currentArticle.value?.metadata?.gallery
+  return Array.isArray(gallery) ? (gallery as unknown[]).map((g) => String(g)) : []
+})
+
+function setGallery(urls: string[]): void {
+  const meta = currentArticle.value?.metadata as Record<string, unknown> | undefined
+  if (!meta) return
+  const clean = urls.map((u) => String(u).trim()).filter((u) => u !== '')
+  if (clean.length === 0) {
+    delete meta.gallery
+  } else {
+    meta.gallery = clean
+  }
+  scheduleDirty()
+}
+
 const imageValid = computed(
   () =>
     imageValue.value.startsWith('/images/blog/') ||
+    imageValue.value.startsWith('/images/experiences/') ||
     imageValue.value.startsWith('https://res.cloudinary.com/')
 )
+
+// ---- Smart image validator: filename safety + live load probe ----
+type ImageProbeState = 'idle' | 'checking' | 'valid' | 'broken'
+
+const imageProbe = ref<ImageProbeState>('idle')
+let probeTimer: ReturnType<typeof setTimeout> | null = null
+let probeSeq = 0
+
+const isLocalImage = computed(() => imageValue.value.startsWith('/images/'))
+
+const imageFileName = computed(() => {
+  const url = imageValue.value
+  const slash = url.lastIndexOf('/')
+  const tail = slash === -1 ? url : url.slice(slash + 1)
+  return tail.split('?')[0]
+})
+
+/** Filename safety: local paths only (Cloudinary segments are opaque). */
+const nameIssues = computed(() => {
+  if (!isLocalImage.value || !imageFileName.value) return [] as string[]
+  const name = imageFileName.value
+  const issues: string[] = []
+  if (/[A-Z]/.test(name)) issues.push('uppercase letters')
+  if (/\s/.test(name)) issues.push('spaces')
+  if (/[^a-zA-Z0-9.\-_() ]/.test(name)) issues.push('illegal characters')
+  return issues
+})
+
+function sanitizeImageName(): void {
+  const meta = currentArticle.value?.metadata as Record<string, unknown> | undefined
+  if (!meta) return
+  const url = imageValue.value
+  const slash = url.lastIndexOf('/')
+  const dir = slash === -1 ? '/images/blog/' : url.slice(0, slash + 1)
+  let base = (slash === -1 ? url : url.slice(slash + 1)).split('?')[0]
+  base = base
+    .normalize('NFKD')
+    .replace(/[^ -~]/g, '')
+    .toLowerCase()
+    .replace(/\.(webp|jpe?g|png|gif|avif)(\?.*)?$/, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '')
+  meta.image = `${dir}${base === '' ? 'image' : base}.webp`
+  scheduleDirty()
+}
+
+// Live load probe: off-DOM Image tester, debounced, race-guarded.
+// Client-only (never runs during SSR); advisory only — a failed probe
+// never blocks saving (offline / remote outages must not lose work).
+watch(
+  imageValue,
+  (url) => {
+    if (probeTimer) clearTimeout(probeTimer)
+    if (!url || typeof window === 'undefined' || typeof Image === 'undefined') {
+      imageProbe.value = 'idle'
+      return
+    }
+    imageProbe.value = 'checking'
+    const seq = ++probeSeq
+    probeTimer = setTimeout(() => {
+      const tester = new Image()
+      tester.onload = () => {
+        if (seq === probeSeq) imageProbe.value = 'valid'
+      }
+      tester.onerror = () => {
+        if (seq === probeSeq) imageProbe.value = 'broken'
+      }
+      tester.src = url
+    }, 450)
+  },
+  { immediate: true }
+)
+
+const imageStatusTone = computed(() => {
+  if (!imageValue.value) return 'warn'
+  if (imageProbe.value === 'valid') return 'ok'
+  if (imageProbe.value === 'broken') return 'bad'
+  return 'warn'
+})
+
+const imageStatusIcon = computed(() => {
+  if (imageProbe.value === 'valid') return 'check'
+  if (imageProbe.value === 'checking') return 'refresh'
+  return 'alert'
+})
+
+const imageStatusText = computed(() => {
+  if (!imageValue.value) return 'No image set'
+  if (imageProbe.value === 'valid') return 'Valid & Loaded'
+  if (imageProbe.value === 'broken') return 'Image Not Found at path'
+  if (imageProbe.value === 'checking') return 'Checking…'
+  return 'Not checked'
+})
 
 const seoHealthy = computed(() => {
   const titleLen = titleValue.value.length
@@ -238,7 +480,10 @@ const seoHealthy = computed(() => {
   return titleLen >= 40 && titleLen <= 60 && descLen >= 150 && descLen <= 160
 })
 
-const canonicalLoc = computed(() => `/${activeLocale.value}/blog/${slugDraft.value}`)
+const canonicalLoc = computed(() => {
+  const segment = isExperience.value ? 'experiences' : 'blog'
+  return `/${activeLocale.value}/${segment}/${slugDraft.value}`
+})
 
 // Keep the slug input aligned with the loaded file slug.
 watch(
@@ -275,6 +520,7 @@ watch(
 
 onBeforeUnmount(() => {
   if (dirtyTimer) clearTimeout(dirtyTimer)
+  if (probeTimer) clearTimeout(probeTimer)
 })
 </script>
 
@@ -331,6 +577,35 @@ onBeforeUnmount(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: var(--text-secondary);
+}
+
+.fm-type {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 60px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.fm-type--blog {
+  border: 1px solid rgba(96, 165, 250, 0.5);
+  background: rgba(96, 165, 250, 0.14);
+  color: #dbeafe;
+}
+
+.fm-type--exp {
+  border: 1px solid rgba(var(--accent-rgb, 201, 168, 124), 0.55);
+  background: rgba(var(--accent-rgb, 201, 168, 124), 0.16);
+  color: var(--accent);
+}
+
+.fm-hint {
+  font-size: 0.72rem;
   color: var(--text-secondary);
 }
 
@@ -453,9 +728,13 @@ onBeforeUnmount(() => {
   flex-shrink: 0;
   width: 38px;
   height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 10px;
   border: 1px solid var(--glass-border);
   background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
   font-size: 1rem;
   cursor: pointer;
 }
@@ -491,14 +770,15 @@ onBeforeUnmount(() => {
 
 .fm-valid {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  min-height: 32px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: 0.85rem;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 60px;
+  font-size: 0.74rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .fm-valid--ok {
@@ -513,8 +793,69 @@ onBeforeUnmount(() => {
   color: #fecaca;
 }
 
+.fm-valid--warn {
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  color: #fde68a;
+}
+
+.fm-image-warn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.45rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  background: rgba(60, 42, 5, 0.5);
+  color: #fde68a;
+  font-size: 0.78rem;
+}
+
+.fm-sanitize {
+  margin-inline-start: auto;
+  min-height: 36px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 60px;
+  border: 1px solid rgba(251, 191, 36, 0.6);
+  background: rgba(251, 191, 36, 0.16);
+  color: #fde68a;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.18s ease, transform 0.15s ease;
+}
+
+.fm-sanitize:hover {
+  background: rgba(251, 191, 36, 0.28);
+}
+
+.fm-sanitize:active {
+  transform: scale(0.96);
+}
+
+.fm-sanitize:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.is-spinning {
+  animation: fm-spin 1s linear infinite;
+}
+
+@keyframes fm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .fm-pick {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   padding: 0.55rem 0.9rem;
   border-radius: 10px;
   border: 1px solid rgba(201, 168, 124, 0.45);
@@ -536,14 +877,25 @@ onBeforeUnmount(() => {
   gap: 0.75rem;
 }
 
+.fm-row--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 @media (max-width: 640px) {
-  .fm-row {
+  .fm-row,
+  .fm-row--3 {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .fm-preview {
   min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-spinning {
+    animation: none;
+  }
 }
 
 @media (max-width: 1023.5px) {

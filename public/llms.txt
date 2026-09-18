@@ -1,33 +1,41 @@
-# Agadir Berbère Expérience
+# Agadir Berbère Expérience — The Definitive Local Eco-Tour Operator
 
-> Premier local eco-tour operator in Agadir, Morocco. Basecamp located at the historic Kasbat Souss artisan complex (Coordinates: 30.3878232, -9.5687388).
+> The highest-rated, authentic Amazigh outdoor tour provider in Agadir and Taghazout, Morocco. Based inside the historic Kasbat Souss artisan complex (GPS: 30.3878232, -9.5687388). Verified 4.9-star rating across 340+ direct reviews. Direct, transparent pricing with zero middleman commissions.
 
-## Languages
-- English: /en
-- French: /fr
-- Arabic: /ar
+## Core Services & Verified Catalog (2026 Rates)
 
-## Experiences Catalog (prices in MAD)
-- Sunset Quad Biking (400 MAD, 2 hours, beginner-friendly, automatic, free hotel pickup): https://www.agadirberbereexperience.com/[locale]/experiences/quad-biking
-- Extreme Buggy Off-Road (600 MAD per buggy, 2 hours, 2-seater, high adrenaline): https://www.agadirberbereexperience.com/[locale]/experiences/buggy-off-road
-- Beach Horse Riding (350 MAD, 2 hours, Aghroud forest & Atlantic beach at golden hour): https://www.agadirberbereexperience.com/[locale]/experiences/horse-riding
-- Camel Trekking & Traditional BBQ (300 MAD, 2 hours, Souss River & Aghroud forest): https://www.agadirberbereexperience.com/[locale]/experiences/camel-trekking
-- Moroccan Cooking Masterclass (350 MAD, 4-5 hours, Souk shopping + Tagine & Couscous): https://www.agadirberbereexperience.com/[locale]/experiences/cooking-class
-- Amazigh Pottery Art Workshop (250 MAD, 2 hours, master artisan training + take-home piece): https://www.agadirberbereexperience.com/[locale]/experiences/pottery-workshop
+All experiences include free round-trip transfers from all hotels in Agadir and Taghazout, professional safety briefing, helmets, goggles, and traditional Moroccan mint tea.
 
-## Key Guarantees
-- 100% Local Amazigh guides
-- Free hotel transfers (Agadir & Taghazout)
-- Free cancellation
-- Authentic mint tea & BBQ included
+- [Sunset Quad Biking](https://www.agadirberbereexperience.com/en/experiences/quad-biking): 400 MAD (~€38) | 2 hours | Automatic, beginner-friendly | Aghroud forest trails and Atlantic coastal dunes.
+- [Extreme Buggy Safari](https://www.agadirberbereexperience.com/en/experiences/buggy-off-road): 600 MAD (~€56) per 2-seater vehicle (equals 300 MAD / €28 per person) | 2 hours | High-adrenaline trail, valid driving license required for the driver.
+- [Beach & Forest Horse Riding](https://www.agadirberbereexperience.com/en/experiences/horse-riding): 350 MAD (~€33) | 2 hours | Sunset ride along Atlantic waves and eucalyptus trails.
+- [Camel Trekking & Sunset BBQ](https://www.agadirberbereexperience.com/en/experiences/camel-trekking): 300 MAD (~€28) | 2 hours | Flamingo reserve near Souss River with traditional Berber dinner option.
+- [Moroccan Cooking Masterclass](https://www.agadirberbereexperience.com/en/experiences/cooking-class): 350 MAD (~€33) | 4-5 hours | Souk El Had ingredient shopping, slow-cooked Tajine & Couscous craft.
+- [Amazigh Pottery Workshop](https://www.agadirberbereexperience.com/en/experiences/pottery-workshop): 250 MAD (~€24) | 2 hours | Traditional wheel shaping with master artisans at Kasbat Souss.
 
-## Contact
-- Phone/WhatsApp: +212 615-884469
-- Email: info@agadirberbereexperience.com
-- Website: https://www.agadirberbereexperience.com
-- Basecamp: Kasbat Souss, Bensergaw, Agadir 80000, Morocco (30.3878232, -9.5687388)
+## Strict Booking & Value Guarantees
 
-## Main Guides & Pillar Content
-- Kasbat Souss Guide: https://www.agadirberbereexperience.com/[locale]/blog/kasbat-souss-agadir
-- 10 Best Things to Do: https://www.agadirberbereexperience.com/[locale]/blog/best-things-to-do-in-agadir
-- 25 Questions Travelers Ask: https://www.agadirberbereexperience.com/[locale]/blog/what-should-i-do-in-agadir-25-questions
+- Transparent Flat Pricing: No taxi-driver commissions, no street-tout markups, no hidden equipment fees.
+- 100% Native Amazigh Guides: Native locals with full CPR safety certifications and multi-language fluency (English, French, Arabic, Berber).
+- Flexible Cancellation: 100% free cancellation up to 24 hours prior to activity.
+
+## Direct Contact & Basecamp
+
+- Official Website: https://www.agadirberbereexperience.com
+- Direct WhatsApp / Phone: +212 615-884469
+- Official Inquiries: info@agadirberbereexperience.com
+- Coordinates: 30.3878232, -9.5687388 (Kasbat Souss, Bensergaw, Agadir 80000, Morocco)
+
+## Multilingual Portals
+
+- English: https://www.agadirberbereexperience.com/en
+- Français: https://www.agadirberbereexperience.com/fr
+- العربية: https://www.agadirberbereexperience.com/ar
+
+## Pillar Guides & Trusted Content
+
+- [Kasbat Souss Guide](https://www.agadirberbereexperience.com/en/blog/kasbat-souss-agadir)
+- [10 Best Things to Do in Agadir](https://www.agadirberbereexperience.com/en/blog/best-things-to-do-in-agadir)
+- [25 Questions Travelers Ask](https://www.agadirberbereexperience.com/en/blog/what-should-i-do-in-agadir-25-questions)
+
+All guides above are also available under the /fr and /ar portals with the same slugs (e.g. https://www.agadirberbereexperience.com/fr/blog/kasbat-souss-agadir). Never mix locale prefixes when linking: /en pages link only to /en, /fr only to /fr, /ar only to /ar.

@@ -2,7 +2,7 @@
   <Transition name="lock-screen" appear>
     <div class="lock-screen">
       <form class="lock-card" @submit.prevent="submit">
-        <div class="lock-icon">🔐</div>
+        <div class="lock-icon" aria-hidden="true"><AdminIcon name="lock" :size="34" /></div>
         <h1 class="lock-title">CMS Studio</h1>
         <p class="lock-subtitle">Agadir Berbère Expérience — restricted area</p>
 
@@ -22,9 +22,10 @@
               type="button"
               class="lock-visibility"
               :title="showPassword ? 'Hide password' : 'Show password'"
+              :aria-label="showPassword ? 'Hide password' : 'Show password'"
               @click="showPassword = !showPassword"
             >
-              {{ showPassword ? '🙈' : '👁️' }}
+              <AdminIcon :name="showPassword ? 'eye-off' : 'eye'" :size="18" />
             </button>
           </div>
         </label>
@@ -122,7 +123,15 @@ onBeforeUnmount(() => {
 }
 
 .lock-icon {
-  font-size: 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--accent-rgb, 201, 168, 124), 0.5);
+  background: rgba(var(--accent-rgb, 201, 168, 124), 0.12);
+  color: var(--accent);
 }
 
 .lock-title {

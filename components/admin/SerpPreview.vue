@@ -28,7 +28,7 @@
         <div class="serp-brand-text">
           <span class="serp-brand">Agadir Berbère Expérience</span>
           <span class="serp-url">
-            https://www.agadirberbereexperience.com › {{ locale }} › blog › {{ slug || '...' }}
+            https://www.agadirberbereexperience.com › {{ locale }} › {{ segment }} › {{ slug || '...' }}
           </span>
         </div>
       </div>
@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import type { StudioLocale } from '~/composables/admin/useStudio'
+import type { StudioContentType, StudioLocale } from '~/composables/admin/useStudio'
 
 const props = withDefaults(
   defineProps<{
@@ -49,14 +49,18 @@ const props = withDefaults(
     description?: string
     slug?: string
     locale?: StudioLocale
+    contentType?: StudioContentType
   }>(),
   {
     title: '',
     description: '',
     slug: '',
     locale: 'ar',
+    contentType: 'blog',
   }
 )
+
+const segment = computed(() => (props.contentType === 'experience' ? 'experiences' : 'blog'))
 
 const device = ref<'desktop' | 'mobile'>('desktop')
 

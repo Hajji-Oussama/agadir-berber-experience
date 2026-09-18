@@ -19,11 +19,13 @@
         type="button"
         class="media-copy"
         title="Copy link / نسخ الرابط"
+        :aria-label="`Copy link for ${item.filename}`"
         @click.stop="onCopy"
       >
-        نسخ الرابط 📋
+        <AdminIcon name="copy" :size="14" />
+        <span>نسخ الرابط</span>
       </button>
-      <span v-if="copied" class="media-copied">✓</span>
+      <span v-if="copied" class="media-copied" aria-hidden="true"><AdminIcon name="check" :size="14" /></span>
     </div>
     <div class="media-name" :title="item.filename">{{ item.filename }}</div>
   </div>
@@ -145,6 +147,9 @@ onBeforeUnmount(() => {
   position: absolute;
   bottom: 0.4rem;
   inset-inline-end: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   padding: 0.25rem 0.6rem;
   border-radius: 8px;
   border: 1px solid var(--glass-border);

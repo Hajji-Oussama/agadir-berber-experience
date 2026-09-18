@@ -9,7 +9,7 @@
           aria-label="Publish article"
         >
           <div class="publish-head">
-            <span class="publish-title">🚀 نشر المقال / Publish Article</span>
+            <span class="publish-title"><AdminIcon name="rocket" :size="18" /><span>نشر المقال / Publish Article</span></span>
             <button type="button" class="publish-close" aria-label="Close" @click="onClose">
               ✕
             </button>
@@ -18,7 +18,7 @@
           <div v-if="phase === 'form'" class="publish-body">
             <p class="publish-target">
               Target file:
-              <code dir="ltr">content/{{ activeLocale }}/blog/{{ activeSlug }}.md</code>
+              <code dir="ltr">content/{{ activeLocale }}/{{ contentType === 'experience' ? 'experiences' : 'blog' }}/{{ activeSlug }}.md</code>
             </p>
             <p v-if="articleTitle" class="publish-article">{{ articleTitle }}</p>
             <label class="publish-field">
@@ -59,7 +59,7 @@
           </div>
 
           <div v-else-if="phase === 'success'" class="publish-body publish-result">
-            <div class="publish-badge">✓</div>
+            <div class="publish-badge" aria-hidden="true"><AdminIcon name="check" :size="28" /></div>
             <p class="publish-message">تم النشر بنجاح إلى السيرفر الحي / Published live successfully</p>
             <span class="publish-hash" dir="ltr">#{{ commitHash }}</span>
             <button type="button" class="publish-confirm" @click="onClose">
@@ -86,7 +86,7 @@
 </template>
 
 <script setup lang="ts">
-import type { StudioLocale } from '~/composables/admin/useStudio'
+import type { StudioContentType, StudioLocale } from '~/composables/admin/useStudio'
 
 const props = withDefaults(
   defineProps<{
@@ -96,6 +96,7 @@ const props = withDefaults(
     articleTitle?: string
     metadata?: Record<string, unknown>
     rawContent?: string
+    contentType?: StudioContentType
   }>(),
   {
     activeLocale: 'ar',
@@ -103,6 +104,7 @@ const props = withDefaults(
     articleTitle: '',
     metadata: () => ({}),
     rawContent: '',
+    contentType: 'blog',
   }
 )
 
@@ -144,6 +146,7 @@ async function publish(): Promise<void> {
       body: {
         locale: props.activeLocale,
         slug: props.activeSlug,
+        type: props.contentType,
         metadata: props.metadata,
         rawContent: props.rawContent,
         commitNote: commitNote.value,
@@ -228,6 +231,9 @@ onBeforeUnmount(() => {
 }
 
 .publish-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-heading);
   font-size: 1.05rem;
   color: var(--text-primary);

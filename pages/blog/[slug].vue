@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import ContentBookingCard from '~/components/content/BookingCard.vue'
 import ContentComparisonTable from '~/components/content/ComparisonTable.vue'
+import ContentGroupPromo from '~/components/content/GroupPromo.vue'
+import ContentImageGallery from '~/components/content/ImageGallery.vue'
+import ContentInfoAlert from '~/components/content/InfoAlert.vue'
 import ContentMapEmbed from '~/components/content/MapEmbed.vue'
+import ContentShareButtons from '~/components/content/ShareButtons.vue'
+import ContentTrustBadges from '~/components/content/TrustBadges.vue'
 
 const route = useRoute()
 const { locale } = useI18n()
@@ -18,7 +23,12 @@ import {
 const mdcComponents = {
   'booking-card': ContentBookingCard,
   'comparison-table': ContentComparisonTable,
+  'group-promo': ContentGroupPromo,
+  'image-gallery': ContentImageGallery,
+  'info-alert': ContentInfoAlert,
   'map-embed': ContentMapEmbed,
+  'share-buttons': ContentShareButtons,
+  'trust-badges': ContentTrustBadges,
 }
 
 const slug = computed(() => {

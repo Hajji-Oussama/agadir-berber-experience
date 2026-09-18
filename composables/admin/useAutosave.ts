@@ -21,13 +21,21 @@ export function useAutosave() {
 
   let debounceTimer: ReturnType<typeof setTimeout> | null = null
 
-  const keyFor = (locale: string, slug: string): string => `cms_draft_${locale}_${slug}`
+  // Draft keys are namespaced by content type so a blog article and an
+  // experience sharing a locale+slug can never overwrite each other's
+  // local draft. Blog keeps the legacy key format (existing drafts survive);
+  // experiences use an `experience_` infix.
+  const keyFor = (locale: string, slug: string, contentType = 'blog'): string =>
+    contentType === 'experience'
+      ? `cms_draft_experience_${locale}_${slug}`
+      : `cms_draft_${locale}_${slug}`
 
   function saveLocalDraft(
     locale: string,
     slug: string,
     metadata: Record<string, unknown>,
-    rawContent: string
+    rawContent: string,
+    contentType = 'blog'
   ): void {
     if (!storageAvailable() || !locale || !slug) return
     if (debounceTimer) clearTimeout(debounceTimer)
@@ -35,7 +43,7 @@ export function useAutosave() {
     debounceTimer = setTimeout(() => {
       try {
         window.localStorage.setItem(
-          keyFor(locale, slug),
+          keyFor(locale, slug, contentType),
           JSON.stringify({ metadata, rawContent, timestamp: Date.now() })
         )
       } catch {
@@ -49,14 +57,15 @@ export function useAutosave() {
   function checkExistingDraft(
     locale: string,
     slug: string,
-    diskSavedContent: string
+    diskSavedContent: string,
+    contentType = 'blog'
   ): boolean {
     hasDraft.value = false
     draftTime.value = null
     if (!storageAvailable() || !locale || !slug) return false
     let draft: LocalDraft | null = null
     try {
-      const raw = window.localStorage.getItem(keyFor(locale, slug))
+      const raw = window.localStorage.getItem(keyFor(locale, slug, contentType))
       if (!raw) return false
       draft = JSON.parse(raw) as LocalDraft
     } catch {
@@ -73,10 +82,10 @@ export function useAutosave() {
     return true
   }
 
-  function restoreDraft(locale: string, slug: string): LocalDraft | null {
+  function restoreDraft(locale: string, slug: string, contentType = 'blog'): LocalDraft | null {
     if (!storageAvailable() || !locale || !slug) return null
     try {
-      const raw = window.localStorage.getItem(keyFor(locale, slug))
+      const raw = window.localStorage.getItem(keyFor(locale, slug, contentType))
       if (!raw) return null
       const draft = JSON.parse(raw) as LocalDraft
       if (!draft || typeof draft.rawContent !== 'string') return null
@@ -87,7 +96,7 @@ export function useAutosave() {
       }
     } catch {
       try {
-        window.localStorage.removeItem(keyFor(locale, slug))
+        window.localStorage.removeItem(keyFor(locale, slug, contentType))
       } catch {
         // best effort
       }
@@ -95,10 +104,10 @@ export function useAutosave() {
     }
   }
 
-  function clearDraft(locale: string, slug: string): void {
+  function clearDraft(locale: string, slug: string, contentType = 'blog'): void {
     if (storageAvailable() && locale && slug) {
       try {
-        window.localStorage.removeItem(keyFor(locale, slug))
+        window.localStorage.removeItem(keyFor(locale, slug, contentType))
       } catch {
         // best effort
       }

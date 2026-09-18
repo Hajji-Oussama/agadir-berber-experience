@@ -6,6 +6,7 @@
       :articles="articles"
       :active-locale="activeLocale"
       :active-slug="activeSlug"
+      :content-type="activeType"
       :dirty="saveStatus === 'dirty'"
       :view-mode="viewMode"
       :save-status="saveStatus"
@@ -61,7 +62,7 @@
       <AdminSplitPane v-else :mode="viewMode">
         <template #left>
           <section class="editor-pane">
-            <div class="pane-label">Editor — {{ activeLocale }}/{{ activeSlug }}</div>
+            <div class="pane-label">Editor — {{ activeLocale }}/{{ contentSegment }}/{{ activeSlug }}</div>
             <AdminEditorToolbar
               :stats="editorStats"
               :capture-selection="captureEditorRange"
@@ -136,6 +137,7 @@
       :is-open="isPublishModalOpen"
       :active-locale="activeLocale"
       :active-slug="activeSlug"
+      :content-type="activeType"
       :article-title="String(currentArticle?.metadata?.title ?? '')"
       :metadata="currentArticle?.metadata ?? {}"
       :raw-content="currentArticle?.rawContent ?? ''"
@@ -167,18 +169,24 @@
         :title="saveStatus"
       ></span>
       <button type="button" class="mobile-action" @click="saveCurrentArticle">
-        💾 حفظ
+        <AdminIcon name="save" :size="18" />
+        <span>حفظ</span>
       </button>
       <button type="button" class="mobile-action mobile-action--publish" @click="isPublishModalOpen = true">
-        🚀 نشر
+        <AdminIcon name="rocket" :size="18" />
+        <span>نشر</span>
       </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useStudio } from '~/composables/admin/useStudio'
-import type { StudioLocale, ViewMode } from '~/composables/admin/useStudio'
+import {
+  useStudio,
+  normalizeStudioContentType,
+  routeSegmentForType,
+} from '~/composables/admin/useStudio'
+import type { StudioLocale, StudioContentType, ViewMode } from '~/composables/admin/useStudio'
 import { useMdcRenderer } from '~/composables/admin/useMdcRenderer'
 import { useAutosave } from '~/composables/admin/useAutosave'
 
@@ -204,6 +212,7 @@ const {
   currentArticle,
   activeLocale,
   activeSlug,
+  activeType,
   viewMode,
   saveStatus,
   errorMessage,
@@ -387,29 +396,34 @@ function setViewMode(mode: ViewMode): void {
 }
 
 function onSelectArticle(locale: StudioLocale, slug: string): void {
-  void loadArticle(locale, slug).then(() => {
-    checkExistingDraft(locale, slug, currentArticle.value?.rawContent ?? '')
+  void loadArticle(locale, slug, activeType.value).then(() => {
+    checkExistingDraft(
+      locale,
+      slug,
+      currentArticle.value?.rawContent ?? '',
+      activeType.value
+    )
   })
 }
 
 function onCreateDraft(locale: StudioLocale, title: string, slug: string): void {
-  void createNewDraft(locale, title, slug).then(() => {
+  void createNewDraft(locale, title, slug, activeType.value).then(() => {
     flushNow(currentArticle.value?.rawContent ?? '')
-    checkExistingDraft(locale, slug, currentArticle.value?.rawContent ?? '')
+    checkExistingDraft(locale, slug, currentArticle.value?.rawContent ?? '', activeType.value)
   })
 }
 
 function onRestoreDraft(): void {
-  const draft = restoreDraft(activeLocale.value, activeSlug.value)
+  const draft = restoreDraft(activeLocale.value, activeSlug.value, activeType.value)
   if (draft && currentArticle.value) {
     currentArticle.value = { metadata: draft.metadata, rawContent: draft.rawContent }
     checkDirty()
   }
-  clearDraft(activeLocale.value, activeSlug.value)
+  clearDraft(activeLocale.value, activeSlug.value, activeType.value)
 }
 
 function onDismissDraft(): void {
-  clearDraft(activeLocale.value, activeSlug.value)
+  clearDraft(activeLocale.value, activeSlug.value, activeType.value)
 }
 
 function showPublishToast(message: string): void {
@@ -421,12 +435,13 @@ function showPublishToast(message: string): void {
 }
 
 function onPublished(commitHash: string): void {
-  clearDraft(activeLocale.value, activeSlug.value)
+  clearDraft(activeLocale.value, activeSlug.value, activeType.value)
   saveStatus.value = 'saved'
   showPublishToast(`تم النشر بنجاح #${commitHash} / Published live #${commitHash}`)
 }
 
 // Autosave every keystroke-driven mutation (debounced 3s inside the composable).
+// Draft storage is namespaced by content type (blog vs experience).
 watch(
   () => [currentArticle.value?.rawContent ?? '', JSON.stringify(currentArticle.value?.metadata ?? {})],
   () => {
@@ -435,7 +450,8 @@ watch(
       activeLocale.value,
       activeSlug.value,
       currentArticle.value.metadata,
-      currentArticle.value.rawContent
+      currentArticle.value.rawContent,
+      activeType.value
     )
   }
 )
@@ -473,6 +489,9 @@ function isStudioLocale(value: unknown): value is StudioLocale {
   return value === 'ar' || value === 'en' || value === 'fr'
 }
 
+/** Active public route segment (blog | experiences) for labels. */
+const contentSegment = computed(() => routeSegmentForType(activeType.value))
+
 const isZenMode = ref(false)
 
 // Auth state is owned by layouts/admin.vue; this page initializes its
@@ -489,10 +508,10 @@ let workspaceInitialized = false
 const readingTime = computed(() => {
   const words = editorStats.value.words
   const minutes = Math.max(1, Math.round(words / 180))
-  if (minutes === 1) return '⏱️ دقيقة واحدة للقراءة'
-  if (minutes === 2) return '⏱️ دقيقتان للقراءة'
-  if (minutes <= 10) return `⏱️ ${minutes} دقائق للقراءة`
-  return `⏱️ ${minutes} دقيقة للقراءة`
+  if (minutes === 1) return 'دقيقة واحدة للقراءة'
+  if (minutes === 2) return 'دقيقتان للقراءة'
+  if (minutes <= 10) return `${minutes} دقائق للقراءة`
+  return `${minutes} دقيقة للقراءة`
 })
 
 function exitZenMode(): void {
@@ -522,7 +541,12 @@ async function logout(): Promise<void> {
 
 async function initializeWorkspace(): Promise<void> {
   try {
-    await fetchArticles()
+    // `type` query param selects the content silo (default: blog). Strict
+    // localization still applies: only content/<locale>/<type>/ is touched.
+    const queryType = Array.isArray(route.query.type) ? route.query.type[0] : route.query.type
+    const contentType: StudioContentType = normalizeStudioContentType(queryType)
+    activeType.value = contentType
+    await fetchArticles(contentType)
     const queryLocale = Array.isArray(route.query.locale)
       ? route.query.locale[0]
       : route.query.locale
@@ -531,14 +555,16 @@ async function initializeWorkspace(): Promise<void> {
       ? route.query.draft[0]
       : route.query.draft
     // Dashboard "New Article" flow: in-memory draft, saved on first Ctrl+S.
+    // Blog-only: the experiences catalog is fixed (6 tours, no creation).
     if (
+      contentType === 'blog' &&
       isStudioLocale(queryLocale) &&
       typeof querySlug === 'string' &&
       /^[a-z0-9-]+$/.test(querySlug) &&
       typeof queryDraft === 'string' &&
       queryDraft.trim() !== ''
     ) {
-      await createNewDraft(queryLocale, queryDraft.trim().slice(0, 120), querySlug)
+      await createNewDraft(queryLocale, queryDraft.trim().slice(0, 120), querySlug, 'blog')
       articles.value.unshift({
         slug: querySlug,
         locale: queryLocale,
@@ -555,13 +581,18 @@ async function initializeWorkspace(): Promise<void> {
       querySlug !== '' &&
       articles.value.some((a) => a.locale === queryLocale && a.slug === querySlug)
     ) {
-      await loadArticle(queryLocale, querySlug)
+      await loadArticle(queryLocale, querySlug, contentType)
     } else if (articles.value.length > 0) {
       const first = articles.value[0]
-      await loadArticle(first.locale, first.slug)
+      await loadArticle(first.locale, first.slug, contentType)
     }
     flushNow(currentArticle.value?.rawContent ?? '')
-    checkExistingDraft(activeLocale.value, activeSlug.value, currentArticle.value?.rawContent ?? '')
+    checkExistingDraft(
+      activeLocale.value,
+      activeSlug.value,
+      currentArticle.value?.rawContent ?? '',
+      activeType.value
+    )
   } finally {
     loading.value = false
   }
@@ -826,6 +857,11 @@ onBeforeUnmount(() => {
 }
 
 .mobile-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 48px;
   padding: 0.55rem 1.4rem;
   border-radius: 60px;
   border: 1px solid var(--glass-border);

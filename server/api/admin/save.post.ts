@@ -1,9 +1,25 @@
-import { resolveSafeContentPath } from '../../utils/admin/pathGuard'
+import {
+  contentDirFor,
+  normalizeContentType,
+  resolveSafeContentPath,
+} from '../../utils/admin/pathGuard'
 import { validateArticlePayload } from '../../utils/admin/validator'
 import { serializeArticleFile, atomicWriteFile } from '../../utils/admin/fileOps'
 import { requireAdminSession } from '../../utils/admin/authGuard'
 
-const CANONICAL_KEY_ORDER = ['title', 'description', 'image', 'author', 'date', 'sitemap']
+const BLOG_KEY_ORDER = ['title', 'description', 'image', 'author', 'date', 'sitemap']
+const EXPERIENCE_KEY_ORDER = [
+  'title',
+  'description',
+  'image',
+  'price',
+  'duration',
+  'category',
+  'vehicle',
+  'seats',
+  'gallery',
+  'sitemap',
+]
 
 export default defineEventHandler(async (event) => {
   try {
@@ -11,6 +27,7 @@ export default defineEventHandler(async (event) => {
     const body = await readBody<{
       locale?: unknown
       slug?: unknown
+      type?: unknown
       metadata?: unknown
       rawContent?: unknown
     }>(event)
@@ -28,11 +45,16 @@ export default defineEventHandler(async (event) => {
       }
     }
 
+    // `type` defaults to `blog` (backward compatible). Strict localization:
+    // the resolved path always stays inside content/<locale>/<type>/.
+    const contentType = normalizeContentType(body?.type)
+
     const result = validateArticlePayload(
       locale,
       slug,
       metadata,
-      typeof rawContent === 'string' ? rawContent : ''
+      typeof rawContent === 'string' ? rawContent : '',
+      contentType
     )
     if (!result.isValid) {
       setResponseStatus(event, 400)
@@ -46,13 +68,15 @@ export default defineEventHandler(async (event) => {
       }
     }
 
-    const targetPath = resolveSafeContentPath(locale, slug)
+    const targetPath = resolveSafeContentPath(locale, slug, contentType)
 
-    // Canonical key order first (validator already applied the author default),
-    // then any extra keys preserved to avoid data loss.
+    // Canonical key order first (validator already applied the author default
+    // for blog), then any extra keys preserved to avoid data loss.
+    const canonicalOrder =
+      contentType === 'experience' ? EXPERIENCE_KEY_ORDER : BLOG_KEY_ORDER
     const ordered: Record<string, unknown> = {}
     const source = (metadata ?? {}) as Record<string, unknown>
-    for (const key of CANONICAL_KEY_ORDER) {
+    for (const key of canonicalOrder) {
       if (source[key] !== undefined) ordered[key] = source[key]
     }
     for (const [key, value] of Object.entries(source)) {
@@ -65,7 +89,8 @@ export default defineEventHandler(async (event) => {
     return {
       success: true,
       data: {
-        path: `content/${locale}/blog/${slug}.md`,
+        path: `content/${locale}/${contentDirFor(contentType)}/${slug}.md`,
+        type: contentType,
         savedAt: new Date().toISOString(),
         warnings: result.warnings,
       },

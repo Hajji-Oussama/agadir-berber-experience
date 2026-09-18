@@ -8,7 +8,7 @@
           aria-modal="true"
           aria-label="Confirm deletion"
         >
-          <div class="delete-icon">🗑️</div>
+          <div class="delete-icon" aria-hidden="true"><AdminIcon name="trash" :size="34" /></div>
           <h2 class="delete-title">حذف المقال / Delete Article</h2>
           <p class="delete-text" dir="auto">
             The article <strong>{{ title }}</strong> ({{ locale }}/{{ slug }}) will be
@@ -159,7 +159,15 @@ onBeforeUnmount(() => {
 }
 
 .delete-icon {
-  font-size: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgba(251, 113, 133, 0.5);
+  background: rgba(251, 113, 133, 0.12);
+  color: #fda4af;
 }
 
 .delete-title {

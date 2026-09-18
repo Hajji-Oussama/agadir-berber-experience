@@ -1,5 +1,10 @@
 import { execFile } from 'node:child_process'
-import { resolveSafeContentPath, findProjectRoot } from '../../utils/admin/pathGuard'
+import {
+  contentDirFor,
+  normalizeContentType,
+  resolveSafeContentPath,
+  findProjectRoot,
+} from '../../utils/admin/pathGuard'
 import { validateArticlePayload } from '../../utils/admin/validator'
 import { serializeArticleFile, atomicWriteFile } from '../../utils/admin/fileOps'
 import { requireAdminSession } from '../../utils/admin/authGuard'
@@ -37,7 +42,19 @@ function runGit(args: string[], timeoutMs = GIT_TIMEOUT_MS): Promise<string> {
   })
 }
 
-const CANONICAL_KEY_ORDER = ['title', 'description', 'image', 'author', 'date', 'sitemap']
+const BLOG_KEY_ORDER = ['title', 'description', 'image', 'author', 'date', 'sitemap']
+const EXPERIENCE_KEY_ORDER = [
+  'title',
+  'description',
+  'image',
+  'price',
+  'duration',
+  'category',
+  'vehicle',
+  'seats',
+  'gallery',
+  'sitemap',
+]
 
 function isNothingToCommit(message: string): boolean {
   return /nothing to commit|no changes added to commit|working tree clean/i.test(message)
@@ -60,6 +77,7 @@ export default defineEventHandler(async (event) => {
     const body = await readBody<{
       locale?: unknown
       slug?: unknown
+      type?: unknown
       metadata?: unknown
       rawContent?: unknown
       commitNote?: unknown
@@ -79,11 +97,15 @@ export default defineEventHandler(async (event) => {
       }
     }
 
+    // `type` defaults to `blog` (backward compatible).
+    const contentType = normalizeContentType(body?.type)
+
     const result = validateArticlePayload(
       locale,
       slug,
       metadata,
-      typeof rawContent === 'string' ? rawContent : ''
+      typeof rawContent === 'string' ? rawContent : '',
+      contentType
     )
     if (!result.isValid) {
       setResponseStatus(event, 400)
@@ -97,12 +119,14 @@ export default defineEventHandler(async (event) => {
       }
     }
 
-    const targetPath = resolveSafeContentPath(locale, slug)
-    const targetRel = `content/${locale}/blog/${slug}.md`
+    const targetPath = resolveSafeContentPath(locale, slug, contentType)
+    const targetRel = `content/${locale}/${contentDirFor(contentType)}/${slug}.md`
 
+    const canonicalOrder =
+      contentType === 'experience' ? EXPERIENCE_KEY_ORDER : BLOG_KEY_ORDER
     const ordered: Record<string, unknown> = {}
     const source = (metadata ?? {}) as Record<string, unknown>
-    for (const key of CANONICAL_KEY_ORDER) {
+    for (const key of canonicalOrder) {
       if (source[key] !== undefined) ordered[key] = source[key]
     }
     for (const [key, value] of Object.entries(source)) {
@@ -123,8 +147,8 @@ export default defineEventHandler(async (event) => {
 
       // Step B: commit (tolerate clean tree — file may be byte-identical).
       const commitMsg = commitNote
-        ? `feat(content): ${slug} [${locale}] - ${commitNote}`
-        : `feat(content): publish ${slug} [${locale}]`
+        ? `feat(content): ${slug} [${locale}/${contentType}] - ${commitNote}`
+        : `feat(content): publish ${slug} [${locale}/${contentType}]`
       try {
         await runGit(['commit', '-m', commitMsg])
       } catch (err) {

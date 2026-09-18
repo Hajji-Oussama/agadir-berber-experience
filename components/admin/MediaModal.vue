@@ -26,7 +26,16 @@
               :class="{ 'media-tab--active': tab === 'browse' }"
               @click="tab = 'browse'"
             >
-              تصفح الوسائط / Browse Library
+              📁 تصفح الوسائط / Browse Library
+            </button>
+            <button
+              type="button"
+              role="tab"
+              class="media-tab"
+              :class="{ 'media-tab--active': tab === 'upload' }"
+              @click="tab = 'upload'"
+            >
+              ⬆️ رفع صورة محلية / Upload Local Image
             </button>
             <button
               type="button"
@@ -35,7 +44,7 @@
               :class="{ 'media-tab--active': tab === 'custom' }"
               @click="tab = 'custom'"
             >
-              رابط مخصص / Custom Cloudinary URL
+              🔗 رابط مخصص / Custom URL
             </button>
           </div>
 
@@ -80,6 +89,103 @@
             </div>
           </div>
 
+          <div v-else-if="tab === 'upload'" class="media-upload">
+            <div class="media-pills" role="group" aria-label="Upload destination">
+              <button
+                v-for="dest in uploadDestinations"
+                :key="dest.value"
+                type="button"
+                class="media-pill"
+                :class="{ 'media-pill--active': uploadDestination === dest.value }"
+                @click="uploadDestination = dest.value"
+              >
+                {{ dest.label }}
+              </button>
+            </div>
+
+            <div
+              class="upload-dropzone"
+              :class="{ 'upload-dropzone--dragging': isDragging, 'upload-dropzone--filled': uploadFile }"
+              role="button"
+              tabindex="0"
+              aria-label="Drop an image here or activate to browse files"
+              @click="fileInputRef?.click()"
+              @keydown.enter="fileInputRef?.click()"
+              @keydown.space.prevent="fileInputRef?.click()"
+              @dragover.prevent="isDragging = true"
+              @dragleave.prevent="isDragging = false"
+              @drop.prevent="onDrop"
+            >
+              <input
+                ref="fileInputRef"
+                type="file"
+                accept="image/*"
+                class="upload-native-input"
+                tabindex="-1"
+                aria-hidden="true"
+                @change="onFileInputChange"
+                @click.stop
+              />
+              <div v-if="uploadPreviewUrl" class="upload-preview">
+                <img :src="uploadPreviewUrl" alt="Upload preview" />
+              </div>
+              <div v-else class="upload-drop-hint">
+                <span class="upload-drop-icon" aria-hidden="true">⬆️</span>
+                <span>Drag &amp; drop an image here, or click to browse…</span>
+                <span class="upload-drop-sub">webp · jpg · png · gif · avif — max 8 MiB</span>
+              </div>
+            </div>
+
+            <div v-if="uploadFile" class="upload-name-row">
+              <label class="media-custom-label" for="upload-suggested-name">
+                Suggested SEO name → {{ mediaUrlPrefixFor(uploadDestination) }}
+              </label>
+              <div class="upload-name-input-row">
+                <input
+                  id="upload-suggested-name"
+                  v-model="uploadSuggestedName"
+                  type="text"
+                  class="media-custom-input"
+                  dir="ltr"
+                  spellcheck="false"
+                  autocomplete="off"
+                  placeholder="horse-riding-beach-agadir.webp"
+                />
+                <span
+                  class="upload-badge"
+                  :class="uploadNameValid ? 'upload-badge--ok' : 'upload-badge--warn'"
+                  role="status"
+                >
+                  {{ uploadNameValid ? '🟢 kebab-case .webp' : '🟡 needs sanitize' }}
+                </span>
+              </div>
+              <div class="upload-name-actions">
+                <button
+                  v-if="!uploadNameValid"
+                  type="button"
+                  class="upload-sanitize"
+                  @click="sanitizeUploadName"
+                >
+                  Sanitize Name
+                </button>
+                <button type="button" class="upload-change" @click="fileInputRef?.click()">
+                  Choose another file
+                </button>
+              </div>
+            </div>
+
+            <p v-if="uploadError" class="media-custom-error" role="alert">{{ uploadError }}</p>
+
+            <button
+              type="button"
+              class="media-confirm upload-submit"
+              :disabled="!uploadFile || uploading"
+              @click="uploadToProject"
+            >
+              {{ uploading ? 'Uploading…' : '⬆️ Upload to Project' }}
+            </button>
+          </div>
+
           <div v-else class="media-custom">
             <label class="media-custom-label">Cloudinary / local URL</label>
             <input
@@ -87,7 +193,7 @@
               type="text"
               class="media-custom-input"
               dir="ltr"
-              placeholder="https://res.cloudinary.com/… or /images/blog/…"
+              placeholder="https://res.cloudinary.com/… or /images/…"
             />
             <div v-if="customUrlValid" class="media-custom-preview">
               <img :src="customUrl" alt="" loading="lazy" @error="customPreviewBroken = true" />
@@ -96,12 +202,13 @@
               </span>
             </div>
             <span v-else-if="customUrl.trim() !== ''" class="media-custom-error">
-              Only https://res.cloudinary.com/* or /images/blog/* URLs are allowed.
+              Only https://res.cloudinary.com/* or /images/* URLs are allowed.
             </span>
           </div>
 
           <div class="media-actions">
             <button type="button" class="media-cancel" @click="emit('close')">Cancel / إلغاء</button>
+            <template v-if="tab !== 'upload'">
             <button
               v-if="mode === 'featured'"
               type="button"
@@ -128,6 +235,7 @@
             >
               إدراج صورة مفردة / Insert Image
             </button>
+            </template>
           </div>
         </div>
       </div>
@@ -168,12 +276,159 @@ const emit = defineEmits<{
 
 const items = ref<MediaItem[]>([])
 const loading = ref(false)
-const tab = ref<'browse' | 'custom'>('browse')
+type MediaTab = 'browse' | 'upload' | 'custom'
+const tab = ref<MediaTab>('browse')
 const search = ref('')
 const sourceFilter = ref<'all' | 'local' | 'cloudinary'>('all')
 const selected = ref<string[]>([])
 const customUrl = ref('')
 const customPreviewBroken = ref(false)
+
+// ---- Upload Local Image tab ----
+type UploadDestination = 'blog' | 'experiences'
+const MAX_UPLOAD_BYTES = 8 * 1024 * 1024
+
+const uploadDestinations = [
+  { value: 'blog', label: 'Blog (/images/blog/)' },
+  { value: 'experiences', label: 'Experiences (/images/experiences/)' },
+] as const
+
+const uploadFile = ref<File | null>(null)
+const uploadPreviewUrl = ref<string | null>(null)
+const uploadSuggestedName = ref('')
+const uploadDestination = ref<UploadDestination>('experiences')
+const isDragging = ref(false)
+const uploading = ref(false)
+const uploadError = ref<string | null>(null)
+const fileInputRef = ref<HTMLInputElement | null>(null)
+
+/** Client mirror of server/utils/admin/mediaName.ts — must stay in sync. */
+function sanitizeUploadBasename(raw: string): string {
+  const withoutExt = raw.split('?')[0].replace(/\.[a-z0-9]+$/i, '')
+  const ascii = withoutExt
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(/[^ -~]/g, '')
+    .toLowerCase()
+  const kebab = ascii
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '')
+  return (kebab === '' ? 'image' : kebab).slice(0, 120)
+}
+
+function suggestedNameFor(original: string): string {
+  return `${sanitizeUploadBasename(original)}.webp`
+}
+
+/** 🟢 Green only when strictly lowercase kebab-case ending in `.webp`. */
+const uploadNameValid = computed(() =>
+  /^[a-z0-9]+(-[a-z0-9]+)*\.webp$/.test(uploadSuggestedName.value)
+)
+
+function mediaUrlPrefixFor(destination: UploadDestination): string {
+  return `/images/${destination}/`
+}
+
+function revokeUploadPreview(): void {
+  if (uploadPreviewUrl.value) {
+    try {
+      URL.revokeObjectURL(uploadPreviewUrl.value)
+    } catch {
+      // best effort
+    }
+    uploadPreviewUrl.value = null
+  }
+}
+
+function pickUploadFile(file: File | undefined | null): void {
+  uploadError.value = null
+  if (!file) return
+  if (!file.type.startsWith('image/')) {
+    uploadError.value = 'Only image files are accepted (webp, jpg, png, gif, avif).'
+    return
+  }
+  if (file.size > MAX_UPLOAD_BYTES) {
+    uploadError.value = 'Image exceeds the 8 MiB upload limit.'
+    return
+  }
+  revokeUploadPreview()
+  uploadFile.value = file
+  uploadPreviewUrl.value = URL.createObjectURL(file)
+  uploadSuggestedName.value = suggestedNameFor(file.name)
+}
+
+function onFileInputChange(e: Event): void {
+  const input = e.target as HTMLInputElement | null
+  pickUploadFile(input?.files?.[0])
+  // Reset the native input so picking the same file twice still fires change.
+  if (input) input.value = ''
+}
+
+function onDrop(e: DragEvent): void {
+  isDragging.value = false
+  const file = e.dataTransfer?.files?.[0]
+  if (file) pickUploadFile(file)
+}
+
+function sanitizeUploadName(): void {
+  const seed =
+    uploadSuggestedName.value.trim() !== ''
+      ? uploadSuggestedName.value
+      : (uploadFile.value?.name ?? 'image')
+  uploadSuggestedName.value = suggestedNameFor(seed)
+}
+
+function resetUploadState(): void {
+  revokeUploadPreview()
+  uploadFile.value = null
+  uploadSuggestedName.value = ''
+  uploadDestination.value = 'experiences'
+  isDragging.value = false
+  uploading.value = false
+  uploadError.value = null
+}
+
+async function uploadToProject(): Promise<void> {
+  if (!uploadFile.value || uploading.value) return
+  if (!uploadNameValid.value) sanitizeUploadName()
+  uploading.value = true
+  uploadError.value = null
+  try {
+    const form = new FormData()
+    form.append('file', uploadFile.value, uploadSuggestedName.value)
+    form.append('filename', uploadSuggestedName.value)
+    form.append('destination', uploadDestination.value)
+    const res = await $fetch<{
+      success: boolean
+      url?: string
+      filename?: string
+      error?: { message?: string }
+    }>('/api/admin/upload', { method: 'POST', body: form })
+    if (!res?.success || !res.url) {
+      throw new Error(res?.error?.message ?? 'Upload failed.')
+    }
+    const url = res.url
+    // Newest first so the thumbnail renders immediately in the grid.
+    items.value = [{ filename: res.filename ?? url, url, isLocal: true }, ...items.value]
+    resetUploadState()
+    if (props.mode === 'featured') {
+      // Single click-through: pass the clean path straight back to the form.
+      emit('select-featured', url)
+      return
+    }
+    if (!selected.value.includes(url)) {
+      if (selected.value.length < 4) selected.value.push(url)
+      else selected.value = [...selected.value.slice(1), url]
+    }
+    tab.value = 'browse'
+  } catch (err) {
+    uploadError.value = err instanceof Error ? err.message : 'Upload failed.'
+  } finally {
+    uploading.value = false
+  }
+}
 
 const filterPills = [
   { value: 'all', label: 'الكل / All' },
@@ -196,7 +451,9 @@ const filtered = computed(() => {
 const customUrlValid = computed(() => {
   const url = customUrl.value.trim()
   return (
-    url.startsWith('https://res.cloudinary.com/') || url.startsWith('/images/blog/')
+    url.startsWith('https://res.cloudinary.com/') ||
+    url.startsWith('/images/blog/') ||
+    url.startsWith('/images/experiences/')
   )
 })
 
@@ -215,8 +472,11 @@ function selectionOrder(url: string): number | null {
 }
 
 function onSelect(url: string): void {
+  // Featured mode: single click inserts the URL and closes the modal
+  // (parent handles close on `select-featured`). Content mode keeps
+  // multi-select for gallery building.
   if (props.mode === 'featured') {
-    selected.value = [url]
+    emit('select-featured', url)
     return
   }
   const index = selected.value.indexOf(url)
@@ -270,6 +530,7 @@ function resetState(): void {
   selected.value = []
   customUrl.value = ''
   customPreviewBroken.value = false
+  resetUploadState()
 }
 
 function lockBodyScroll(lock: boolean): void {
@@ -302,6 +563,7 @@ watch(
 
 onBeforeUnmount(() => {
   lockBodyScroll(false)
+  revokeUploadPreview()
   if (typeof window !== 'undefined') {
     window.removeEventListener('keydown', onEscape)
   }
@@ -498,6 +760,163 @@ onBeforeUnmount(() => {
 .media-custom-error {
   font-size: 0.78rem;
   color: #fecaca;
+}
+
+/* Upload Local Image tab */
+.media-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.upload-dropzone {
+  border-radius: 14px;
+  border: 2px dashed rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone:focus-visible {
+  border-color: rgba(201, 168, 124, 0.6);
+  outline: none;
+}
+
+.upload-dropzone--dragging {
+  border-color: var(--accent);
+  background: rgba(201, 168, 124, 0.1);
+}
+
+.upload-drop-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 2rem 1rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.upload-drop-icon {
+  font-size: 1.6rem;
+}
+
+.upload-drop-sub {
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
+.upload-native-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.upload-preview {
+  padding: 0.6rem;
+}
+
+.upload-preview img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.upload-name-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.upload-name-input-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.upload-name-input-row .media-custom-input {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.upload-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: 60px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.upload-badge--ok {
+  background: rgba(52, 211, 153, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  color: #a7f3d0;
+}
+
+.upload-badge--warn {
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  color: #fde68a;
+}
+
+.upload-name-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.upload-sanitize {
+  min-height: 40px;
+  padding: 0.4rem 1rem;
+  border-radius: 60px;
+  border: 1px solid rgba(251, 191, 36, 0.6);
+  background: rgba(251, 191, 36, 0.16);
+  color: #fde68a;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.upload-sanitize:hover {
+  background: rgba(251, 191, 36, 0.28);
+}
+
+.upload-change {
+  min-height: 40px;
+  padding: 0.4rem 1rem;
+  border-radius: 60px;
+  border: 1px solid var(--glass-border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.upload-change:hover {
+  color: var(--text-primary);
+  border-color: rgba(201, 168, 124, 0.5);
+}
+
+.upload-submit {
+  align-self: flex-end;
+}
+
+.upload-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .media-actions {

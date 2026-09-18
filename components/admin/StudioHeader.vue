@@ -1,10 +1,14 @@
 <template>
   <header class="studio-header">
     <div class="header-group header-group--content">
-      <span class="brand-badge">CMS Studio</span>
       <NuxtLink to="/admin/" class="dashboard-btn" title="قائمة المقالات / Dashboard">
-        📋 <span class="dashboard-label">قائمة المقالات</span>
+        <AdminIcon name="grid" :size="15" />
+        <span class="dashboard-label">قائمة المقالات</span>
       </NuxtLink>
+      <span v-if="contentType === 'experience'" class="type-badge" title="Editing an experience (tour) page">
+        <AdminIcon name="compass" :size="14" />
+        <span>Experience</span>
+      </span>
       <AdminArticleSelector
         :articles="articles"
         :active-locale="activeLocale"
@@ -13,12 +17,13 @@
         @select="(locale, slug) => emit('select', locale, slug)"
       />
       <button
+        v-if="contentType !== 'experience'"
         type="button"
         class="new-article-btn"
         title="مقال جديد / New Article"
         @click="isNewArticleOpen = true"
       >
-        <span aria-hidden="true">➕</span>
+        <AdminIcon name="plus" :size="15" />
         <span class="new-article-label">مقال جديد</span>
       </button>
     </div>
@@ -65,13 +70,15 @@
         title="وضع التركيز / Zen Mode (Alt+Z)"
         @click="emit('toggle-zen')"
       >
-        🧘 تركيز
+        <AdminIcon name="expand" :size="14" />
+        <span>تركيز</span>
       </button>
     </div>
 
     <div class="header-group header-group--actions">
       <span v-if="readingTime" class="reading-pill" title="Estimated reading time">
-        {{ readingTime }}
+        <AdminIcon name="clock" :size="14" />
+        <span class="reading-pill-text">{{ readingTime }}</span>
       </span>
       <AdminStatusBadge
         class="header-status"
@@ -85,7 +92,8 @@
         @click="emit('save')"
         title="Save article (Ctrl+S)"
       >
-        حفظ <kbd>Ctrl+S</kbd>
+        <AdminIcon name="save" :size="15" />
+        <span>حفظ</span> <kbd>Ctrl+S</kbd>
       </button>
       <button
         type="button"
@@ -93,15 +101,17 @@
         @click="emit('publish')"
         title="Publish article to live site"
       >
-        🚀 نشر
+        <AdminIcon name="rocket" :size="15" />
+        <span>نشر</span>
       </button>
       <button
         type="button"
         class="logout-btn"
         title="Lock studio / تسجيل الخروج"
+        aria-label="Lock studio"
         @click="emit('logout')"
       >
-        🔒
+        <AdminIcon name="lock" :size="16" />
       </button>
     </div>
   </header>
@@ -111,6 +121,7 @@
 import type {
   SaveStatus,
   StudioArticleListItem,
+  StudioContentType,
   StudioLocale,
   ViewMode,
 } from '~/composables/admin/useStudio'
@@ -125,6 +136,7 @@ withDefaults(
     saveStatus?: SaveStatus
     errorMessage?: string | null
     readingTime?: string
+    contentType?: StudioContentType
   }>(),
   {
     articles: () => [],
@@ -135,6 +147,7 @@ withDefaults(
     saveStatus: 'saved',
     errorMessage: null,
     readingTime: '',
+    contentType: 'blog',
   }
 )
 
@@ -153,14 +166,15 @@ const isNewArticleOpen = ref(false)
 
 <style scoped>
 .studio-header {
-  height: 68px;
   width: 100%;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0 1rem;
+  gap: 1rem;
+  padding: 0.6rem 1.25rem;
+  min-height: 56px;
+  box-sizing: border-box;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(9, 9, 11, 0.8);
   backdrop-filter: blur(24px);
@@ -169,9 +183,13 @@ const isNewArticleOpen = ref(false)
   user-select: none;
 }
 
+/* NOTE: no overflow:hidden here — the article-selector dropdown is
+   absolutely positioned and must never be clipped. Crowding is handled
+   by min-width:0 chains, flexible groups, and the collapse rules below. */
+
 @media (min-width: 1024px) {
   .studio-header {
-    padding: 0 1.5rem;
+    padding: 0.6rem 1.5rem;
   }
 }
 
@@ -200,24 +218,24 @@ const isNewArticleOpen = ref(false)
   flex-shrink: 0;
 }
 
-.brand-badge {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.25rem 0.625rem;
-  border-radius: 6px;
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  color: #fbbf24;
-  font-size: 0.75rem;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .brand-badge {
+/* Responsive collapse (<=1200px): reading pill goes icon-only and
+   action buttons scale down so the selector never gets squeezed. */
+@media (max-width: 1200px) {
+  .reading-pill-text {
     display: none;
+  }
+
+  .reading-pill {
+    padding: 0.35rem 0.5rem;
+  }
+
+  .save-btn,
+  .publish-btn {
+    padding: 0 0.625rem;
+  }
+
+  .dashboard-btn {
+    padding: 0.45rem 0.6rem;
   }
 }
 
@@ -240,6 +258,21 @@ const isNewArticleOpen = ref(false)
 
 .dashboard-btn:hover {
   background: rgba(255, 255, 255, 0.1);
+}
+
+.type-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 60px;
+  border: 1px solid rgba(var(--accent-rgb, 201, 168, 124), 0.55);
+  background: rgba(var(--accent-rgb, 201, 168, 124), 0.16);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 @media (max-width: 767px) {
@@ -296,6 +329,9 @@ const isNewArticleOpen = ref(false)
 
 .mode-btn--zen {
   border: 1px dashed rgba(201, 168, 124, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .mode-btn kbd,

@@ -9,7 +9,7 @@
           aria-label="New article"
         >
           <div class="new-article-head">
-            <span class="new-article-title">➕ مقال جديد / New Article</span>
+            <span class="new-article-title"><AdminIcon name="plus" :size="18" /><span>مقال جديد / New Article</span></span>
             <button type="button" class="new-article-close" aria-label="Close" @click="emit('close')">
               ✕
             </button>
@@ -59,9 +59,10 @@
                   class="new-article-override"
                   :class="{ 'new-article-override--on': manualSlug }"
                   :title="manualSlug ? 'Auto-generate from title' : 'Edit slug manually'"
+                  :aria-label="manualSlug ? 'Slug editing unlocked — click to auto-generate' : 'Slug locked — click to edit manually'"
                   @click="manualSlug = !manualSlug"
                 >
-                  {{ manualSlug ? '🔓' : '🔒' }}
+                  <AdminIcon name="lock" :size="15" />
                 </button>
               </div>
               <span v-if="slugDraft && !slugValid" class="new-article-error">
@@ -218,6 +219,9 @@ onBeforeUnmount(() => {
 }
 
 .new-article-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-heading);
   font-size: 1.05rem;
   color: var(--text-primary);
@@ -318,9 +322,13 @@ onBeforeUnmount(() => {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 10px;
   border: 1px solid var(--glass-border);
   background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
   font-size: 1rem;
   cursor: pointer;
 }

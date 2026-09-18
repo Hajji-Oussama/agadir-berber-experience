@@ -1,13 +1,18 @@
 import { mkdir, rename, access } from 'node:fs/promises'
 import path from 'node:path'
-import { resolveSafeContentPath, findProjectRoot } from '../../utils/admin/pathGuard'
+import {
+  contentDirFor,
+  normalizeContentType,
+  resolveSafeContentPath,
+  findProjectRoot,
+} from '../../utils/admin/pathGuard'
 import { requireAdminSession } from '../../utils/admin/authGuard'
 
 export default defineEventHandler(async (event) => {
   try {
     requireAdminSession(event)
 
-    const body = await readBody<{ locale?: unknown; slug?: unknown }>(event)
+    const body = await readBody<{ locale?: unknown; slug?: unknown; type?: unknown }>(event)
     const locale = body?.locale
     const slug = body?.slug
     if (typeof locale !== 'string' || typeof slug !== 'string') {
@@ -18,7 +23,23 @@ export default defineEventHandler(async (event) => {
       }
     }
 
-    const sourcePath = resolveSafeContentPath(locale, slug)
+    const contentType = normalizeContentType(body?.type)
+
+    // The 6 core adventure tours are a protected catalog: experiences can be
+    // edited but never deleted through the Studio (prevents accidental loss
+    // of bookable services). Blog articles remain deletable (trash + restore).
+    if (contentType === 'experience') {
+      setResponseStatus(event, 403)
+      return {
+        success: false,
+        error: {
+          code: 'EXPERIENCE_DELETE_FORBIDDEN',
+          message: 'Experiences are a protected catalog and cannot be deleted. Edit them instead.',
+        },
+      }
+    }
+
+    const sourcePath = resolveSafeContentPath(locale, slug, contentType)
 
     try {
       await access(sourcePath)
@@ -28,7 +49,7 @@ export default defineEventHandler(async (event) => {
         success: false,
         error: {
           code: 'ARTICLE_NOT_FOUND',
-          message: `No article at content/${locale}/blog/${slug}.md.`,
+          message: `No article at content/${locale}/${contentDirFor(contentType)}/${slug}.md.`,
         },
       }
     }

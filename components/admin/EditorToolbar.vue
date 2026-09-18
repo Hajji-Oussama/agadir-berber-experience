@@ -16,21 +16,22 @@
       </button>
       <span class="tool-sep"></span>
       <button type="button" class="tool-btn" title="Link (Ctrl+K)" @click="emit('action', 'link')">
-        Link 🔗
+        Link
       </button>
       <button type="button" class="tool-btn" title="Table" @click="emit('action', 'table')">
-        Table 📊
+        Table
       </button>
       <span class="tool-sep"></span>
       <button type="button" class="tool-btn tool-btn--clean" title="Clean AI text" @click="emit('action', 'clean')">
-        Clean AI Text 🧹
+        Clean AI Text
       </button>
       <span class="tool-sep"></span>
       <button type="button" class="tool-btn" title="Media library" @click="openMediaLibrary">
-        🖼️ وسائط / Media
+        <AdminIcon name="image" :size="15" />
+        <span>وسائط / Media</span>
       </button>
       <button type="button" class="tool-btn" title="MDC components (Alt+C)" @click="openMdcInspector">
-        🧩 مكونات MDC / Components
+        <span>مكونات MDC / Components</span>
       </button>
     </div>
     <div class="toolbar-stats">
@@ -100,6 +101,9 @@ function openMdcInspector(): void {
 }
 
 .tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   padding: 0.35rem 0.6rem;
   border-radius: 8px;
   border: 1px solid transparent;

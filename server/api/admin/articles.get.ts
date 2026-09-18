@@ -1,6 +1,11 @@
 import { readdir, readFile } from 'node:fs/promises'
 import path from 'node:path'
-import { ALLOWED_LOCALES, contentRoot } from '../../utils/admin/pathGuard'
+import {
+  ALLOWED_LOCALES,
+  contentDirFor,
+  contentRoot,
+  normalizeContentType,
+} from '../../utils/admin/pathGuard'
 import { parseArticleFile } from '../../utils/admin/fileOps'
 import { requireAdminSession } from '../../utils/admin/authGuard'
 
@@ -23,6 +28,14 @@ export default defineEventHandler(async (event) => {
     const rawLocale = Array.isArray(query.locale) ? query.locale[0] : query.locale
     const rawSearch = Array.isArray(query.search) ? query.search[0] : query.search
 
+    // `type` defaults to `blog` (backward compatible). Each call reads from
+    // exactly ONE content directory — blog and experiences states are never
+    // mixed or duplicated.
+    const contentType = normalizeContentType(
+      Array.isArray(query.type) ? query.type[0] : query.type
+    )
+    const contentDir = contentDirFor(contentType)
+
     const limit = Math.min(50, asPositiveInt(rawLimit, 10))
     const localeFilter =
       rawLocale === 'ar' || rawLocale === 'en' || rawLocale === 'fr' ? rawLocale : 'all'
@@ -31,15 +44,19 @@ export default defineEventHandler(async (event) => {
     const items: {
       slug: string
       locale: string
+      type: string
       title: string
       description: string
       date: string
       image: string
+      price: number | null
+      duration: string
+      category: string
       path: string
     }[] = []
 
     for (const locale of ALLOWED_LOCALES) {
-      const dir = path.join(contentRoot(), locale, 'blog')
+      const dir = path.join(contentRoot(), locale, contentDir)
       let files: string[] = []
       try {
         files = (await readdir(dir)).filter((f) => f.endsWith('.md'))
@@ -62,11 +79,18 @@ export default defineEventHandler(async (event) => {
           items.push({
             slug,
             locale,
+            type: contentType,
             title,
             description: asString(metadata.description),
             date: asString(metadata.date),
             image: asString(metadata.image),
-            path: `content/${locale}/blog/${file}`,
+            price:
+              typeof metadata.price === 'number'
+                ? metadata.price
+                : Number(metadata.price) || null,
+            duration: asString(metadata.duration),
+            category: asString(metadata.category),
+            path: `content/${locale}/${contentDir}/${file}`,
           })
         } catch {
           continue
@@ -97,7 +121,7 @@ export default defineEventHandler(async (event) => {
 
     return {
       success: true,
-      data: { items: pageItems, total, totalPages, currentPage, counts },
+      data: { items: pageItems, total, totalPages, currentPage, counts, type: contentType },
     }
   } catch (err) {
     const statusCode =

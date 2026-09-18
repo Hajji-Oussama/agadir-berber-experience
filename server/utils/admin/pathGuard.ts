@@ -5,6 +5,25 @@ export type AdminLocale = 'ar' | 'en' | 'fr'
 
 export const ALLOWED_LOCALES: readonly AdminLocale[] = ['ar', 'en', 'fr']
 
+/**
+ * Admin-managed content types. `blog` maps to `content/<locale>/blog/`,
+ * `experience` maps to `content/<locale>/experiences/`. The strict
+ * localization rule applies to both: locale path segments are never mixed.
+ */
+export type AdminContentType = 'blog' | 'experience'
+
+export const ALLOWED_CONTENT_TYPES: readonly AdminContentType[] = ['blog', 'experience']
+
+/** Canonical experience slugs (the 6 core adventure tours). */
+export const EXPERIENCE_SLUGS: readonly string[] = [
+  'quad-biking',
+  'buggy-off-road',
+  'horse-riding',
+  'camel-trekking',
+  'cooking-class',
+  'pottery-workshop',
+]
+
 const SLUG_PATTERN = /^[a-z0-9-]+$/
 const MAX_SLUG_LENGTH = 120
 const MAX_FILENAME_LENGTH = 180
@@ -51,8 +70,36 @@ export function contentRoot(): string {
   return path.join(findProjectRoot(), 'content')
 }
 
-export function mediaRoot(): string {
-  return path.join(findProjectRoot(), 'public', 'images', 'blog')
+export function mediaRoot(destination: MediaDestination = 'blog'): string {
+  return path.join(findProjectRoot(), 'public', 'images', destination)
+}
+
+/** Media upload destinations: `blog` -> `public/images/blog/`, `experiences` -> `public/images/experiences/`. */
+export type MediaDestination = 'blog' | 'experiences'
+
+export const ALLOWED_MEDIA_DESTINATIONS: readonly MediaDestination[] = [
+  'blog',
+  'experiences',
+]
+
+/**
+ * Normalize a raw `destination` field to a MediaDestination.
+ * Defaults to `experiences` (the primary upload target for new imagery).
+ */
+export function normalizeMediaDestination(raw: unknown): MediaDestination {
+  if (raw == null || raw === '') return 'experiences'
+  const value = Array.isArray(raw) ? raw[0] : raw
+  if (value === 'blog' || value === 'experiences') return value
+  throw guardError(
+    400,
+    'INVALID_DESTINATION',
+    'Destination must be strictly one of: blog, experiences.'
+  )
+}
+
+/** Public URL prefix for a destination: `/images/blog/` or `/images/experiences/`. */
+export function mediaUrlPrefixFor(destination: MediaDestination): string {
+  return `/images/${destination}/`
 }
 
 function isWithin(parentDir: string, childPath: string): boolean {
@@ -83,15 +130,59 @@ function assertValidSlug(slug: unknown): asserts slug is string {
   }
 }
 
+function assertValidContentType(contentType: unknown): asserts contentType is AdminContentType {
+  if (
+    typeof contentType !== 'string' ||
+    !(ALLOWED_CONTENT_TYPES as readonly string[]).includes(contentType)
+  ) {
+    throw guardError(400, 'INVALID_CONTENT_TYPE', 'Type must be strictly one of: blog, experience.')
+  }
+}
+
 /**
- * Resolve `<rootDir>/content/<locale>/blog/<slug>.md` with strict
- * traversal protection. Throws 400 on invalid input, 403 on traversal.
+ * Normalize a raw `type` query/body value to an AdminContentType.
+ * Accepts the plural alias `experiences`; defaults to `blog` when omitted
+ * so every pre-existing blog-only caller keeps working.
  */
-export function resolveSafeContentPath(locale: string, slug: string): string {
+export function normalizeContentType(raw: unknown): AdminContentType {
+  if (raw == null || raw === '') return 'blog'
+  const value = Array.isArray(raw) ? raw[0] : raw
+  if (value === 'experiences') return 'experience'
+  assertValidContentType(value)
+  return value
+}
+
+/** Content subdirectory for a type: `blog` or `experiences`. */
+export function contentDirFor(contentType: AdminContentType): string {
+  return contentType === 'experience' ? 'experiences' : 'blog'
+}
+
+/** Public route segment for a type: `blog` or `experiences`. */
+export function routeSegmentFor(contentType: AdminContentType): string {
+  return contentDirFor(contentType)
+}
+
+/**
+ * Resolve `<rootDir>/content/<locale>/<blog|experiences>/<slug>.md` with
+ * strict traversal protection. Throws 400 on invalid input, 403 on
+ * traversal. The `contentType` parameter defaults to `blog` for backward
+ * compatibility with blog-only callers.
+ */
+export function resolveSafeContentPath(
+  locale: string,
+  slug: string,
+  contentType: AdminContentType = 'blog'
+): string {
   assertValidLocale(locale)
   assertValidSlug(slug)
+  assertValidContentType(contentType)
   const safeContentRoot = contentRoot()
-  const resolvedPath = path.resolve(safeContentRoot, locale, 'blog', `${slug}.md`)
+  const resolvedPath = path.resolve(
+    safeContentRoot,
+    locale,
+    contentDirFor(contentType),
+    `${slug}.md`
+  )
   if (!isWithin(safeContentRoot, resolvedPath)) {
     throw guardError(403, 'PATH_TRAVERSAL', 'Resolved content path escapes the allowed content root.')
   }
@@ -99,11 +190,23 @@ export function resolveSafeContentPath(locale: string, slug: string): string {
 }
 
 /**
- * Resolve a file inside `<rootDir>/public/images/blog/`. Called without a
- * filename returns the media root directory itself (used for listing).
+ * Resolve a file inside `<rootDir>/public/images/<blog|experiences>/`.
+ * Called without a filename returns the media root directory itself (used
+ * for listing). The `destination` parameter defaults to `blog` for backward
+ * compatibility with blog-only callers.
  */
-export function resolveSafeMediaPath(filename?: string): string {
-  const safeMediaRoot = mediaRoot()
+export function resolveSafeMediaPath(
+  filename?: string,
+  destination: MediaDestination = 'blog'
+): string {
+  if (destination !== 'blog' && destination !== 'experiences') {
+    throw guardError(
+      400,
+      'INVALID_DESTINATION',
+      'Destination must be strictly one of: blog, experiences.'
+    )
+  }
+  const safeMediaRoot = mediaRoot(destination)
   if (filename == null || filename === '') return safeMediaRoot
   if (typeof filename !== 'string' || filename.length > MAX_FILENAME_LENGTH) {
     throw guardError(400, 'INVALID_FILENAME', 'Media filename is invalid.')
