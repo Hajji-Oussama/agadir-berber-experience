@@ -11,7 +11,7 @@ sitemap:
 :trust-badges
 
 
-:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839092/WhatsApp_Image_2026-06-29_at_3.27.58_PM_qgatip.jpg", "/images/blog/woman-in-the-hors.jpg", "/images/blog/trip-hors.jpg"]'}
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782841969/WhatsApp_Image_2026-06-29_at_3.27.58_PM_ynmz9h.jpg", "/images/blog/womanInTheHors.jpg", "/images/blog/horsImage.jpg"]'}
 
 ## Overview
 
