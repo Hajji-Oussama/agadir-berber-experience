@@ -5,8 +5,10 @@ image: "/images/blog/moroccan-cooking-class-agadir.webp"
 author: "Agadir Berbère Team"
 date: "2026-09-18"
 sitemap:
-  loc: /en/blog/moroccan-cooking-class-agadir
+  loc: "/en/blog/moroccan-cooking-class-agadir"
 ---
+:image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783102855/WhatsApp_Image_2026-06-29_at_3.27.52_PM_flzd00.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg"]'}
+
 
 :trust-badges
 
@@ -20,11 +22,13 @@ The morning starts with pickup from your hotel in Agadir or the surf village of 
 
 Geography matters here, because the food is inseparable from it. The experience moves between two anchor points in Agadir. The first is Souk El Had, the city's great covered market, rebuilt after the 1960 earthquake and organized behind thirteen numbered gates with more than six thousand stalls selling vegetables, olives, preserved lemons, dates, argan products, textiles, and household goods. The spice and herb quarters, where your host takes you first, sit deep inside the complex, past the olive sellers and the mint growers. The second anchor is the traditional kitchen at the Kasbat Souss artisan basecamp in Bensergaw (GPS: 30.3878232, -9.5687388), a ten-minute drive from the market, where the cooking session and the shared meal happen in calm after the market's beautiful noise. Between the two lies the Souss river valley's market-garden belt, the same farmland that fills the crates you will see stacked at the souk — and beyond it, the Agadir beachfront promenade where many guests walk off the meal in the afternoon.
 
+:info-alert{title="Discover Kasbat Souss" text="Kasbat Souss is the beating heart of Amazigh craft in Agadir — hand-made everything, mint tea, and the best tagine in town." link="/en/blog/kasbat-souss-agadir"}
+
 ## Step 1: Doing the morning shopping at Souk El Had
 
 Entering the spice quarter hits all senses at once and in a specific order: first the low, warm smell of cumin toasting somewhere out of sight, then the sharper green note of wild thyme crushed underfoot, then the floral lift of dried Damascus rose petals sold for tea, and underneath it all the salty punch of preserved lemons stacked in glass jars. Your host slows the group down at each stall and teaches the small physical tests Moroccan cooks actually use: rubbing cumin between your palms to check whether the aroma blooms or falls flat, snapping a dried chili to hear whether it is still alive with oils, pressing an olive to feel whether the flesh gives back. Vendors offer tastes freely once they understand you are cooking today, not sightseeing — a spoonful of harissa here, a sliver of aged Bouhezza cheese there — and the choreography of it becomes the first lesson: shopping in Agadir is a conversation, not a transaction. You leave carrying the day's menu in cloth bags: seasonal vegetables, cilantro and flat-leaf parsley, mint, olives, olive oil, preserved lemons, and the spice measures your host weighs out in folded paper cones.
 
-:image-gallery{:images='["/images/blog/moroccan-cooking-class-agadir.webp"]'}
+:social-embed{platform="instagram" id="DaX04hIsX87"}
 
 ## Step 2: Building the Taqliya over unglazed clay
 
