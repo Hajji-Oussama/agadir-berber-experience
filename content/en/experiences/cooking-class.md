@@ -2,16 +2,17 @@
 title: "Cooking Masterclass"
 description: "Shop the Souk like a local, then master Tagine and Couscous with a traditional Moroccan chef at Kasbat Souss."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg"
-price: 350
+price: "350"
 duration: "4-5 hours"
 category: "cultural"
 sitemap:
-  loc: /en/experiences/cooking-class
+  loc: "/en/experiences/cooking-class"
 ---
 
-:trust-badges
 
 :image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783102855/WhatsApp_Image_2026-06-29_at_3.27.52_PM_flzd00.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg"]'}
+
+:trust-badges
 
 ## Overview
 
