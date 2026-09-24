@@ -2,13 +2,12 @@
 title: "ورشة الطبخ المغربي"
 description: "تسوق من السوق كالمحلي، ثم أتقن فن الطاجين والكسكس مع طباخ مغربي تقليدي في قصبة سوس."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg"
-price: 350
+price: "350"
 duration: "4-5 ساعات"
 category: "cultural"
 sitemap:
-  loc: /ar/experiences/cooking-class
+  loc: "/ar/experiences/cooking-class"
 ---
-
 :trust-badges
 
 :image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783102855/WhatsApp_Image_2026-06-29_at_3.27.52_PM_flzd00.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg"]'}
@@ -60,7 +59,7 @@ sitemap:
 - ❌ الإكرامية (اختيارية)
 
 :group-promo{title="تخفيض المجموعات" :discountAmount="50" condition="للمجموعات من 5 أشخاص فأكثر"}
-
+:image-gallery{:images='["/images/experiences/whats-app-image-2026-09-24-at-5-48-51-am.webp", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839436/WhatsApp_Image_2026-06-29_at_3.27.53_PM_3_evngol.jpg", "/images/experiences/2026-06-28-14.webp"]'}
 ## Cultural Connection
 
 المطبخ المغربي هو الضيافة القابلة للأكل — ولا أحد يتقنه مثل نساء ورجال أمازيغ سوس ماسة. ورشتنا تقام داخل المجمع الحرفي **قصبة سوس**، محاطة بورش حيث يُصنع الجلد والفخار والخشب والنسيج باليد. أنت لا تتعلم وصفة فحسب؛ بل تدخل تقاليد حية من الوجبات المشتركة والحكايات والشاي بالنعناع التي حددت الثقافة الأمازيغية لقرون.
