@@ -1,6 +1,6 @@
 ---
-title: "Cooking Masterclass"
-description: "Faites vos courses au Souk comme un local, puis maîtrisez le tagine et le couscous avec un chef marocain traditionnel à Kasbat Souss."
+title: "Cours de Cuisine Marocaine à Agadir : Souk & Tajine"
+description: "Visitez le Souk El Had avec un guide local et préparez un tajine et couscous traditionnels à la Kasbat Souss. Atelier authentique avec repas et thé inclus."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg"
 price: "350"
 duration: "4-5 heures"
