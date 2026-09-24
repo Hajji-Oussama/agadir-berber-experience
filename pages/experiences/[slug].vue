@@ -20,6 +20,7 @@ import {
   generateFaqPageSchema,
   type ContentBody,
 } from '~/composables/useJsonLd'
+import { buildWhatsAppUrl, normalizeLocale } from '~/composables/useWhatsApp'
 
 // Map MDC content components so they render server-side too
 // (the content module only resolves these client-side by default)
@@ -68,6 +69,20 @@ const experienceCanonicalUrl = computed(() => {
   const base: string = siteConfig.website ?? 'https://www.agadirberbereexperience.com'
   return `${base}/${locale.value}/experiences/${slug.value}`
 })
+
+// SSR-safe localized WhatsApp booking URL (valid href for crawlers / no-JS;
+// client click still routes through handleBooking for pixel/gtag tracking).
+const bookingUrl = computed(() =>
+  buildWhatsAppUrl(
+    {
+      id: slug.value,
+      title: experience.value?.title as string | undefined,
+      price: experience.value?.price as string | number | undefined,
+      url: experienceCanonicalUrl.value,
+    },
+    normalizeLocale(locale.value),
+  ),
+)
 
 const experienceSchema = computed(() => {
   if (!experience.value) return null
@@ -122,10 +137,10 @@ useHead(() => {
         <div class="experience-hero-meta">
           <span class="experience-price">{{ formatPrice(experience.price) }}</span>
           <span class="experience-duration"><i class="far fa-clock"></i> {{ experience.duration }}</span>
-          <button type="button" class="experience-book" @click="handleBooking(experience)">
+          <a :href="bookingUrl" target="_blank" rel="noopener noreferrer" class="experience-book" @click.prevent="handleBooking(experience)">
             <i class="fab fa-whatsapp"></i>
             Book Now via WhatsApp
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -155,10 +170,10 @@ useHead(() => {
             <span class="experience-duration"><i class="far fa-clock"></i> {{ experience.duration }}</span>
           </div>
         </div>
-        <button type="button" class="experience-book" @click="handleBooking(experience)">
+        <a :href="bookingUrl" target="_blank" rel="noopener noreferrer" class="experience-book" @click.prevent="handleBooking(experience)">
           <i class="fab fa-whatsapp"></i>
           Book Now via WhatsApp
-        </button>
+        </a>
       </div>
     </section>
 
@@ -352,6 +367,7 @@ useHead(() => {
   font-weight: 600;
   letter-spacing: 0.03em;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35);
 

@@ -1,21 +1,37 @@
-import siteConfig from '~/data/siteConfig.json'
-import promoConfig from '~/data/promoConfig.json'
 import { useCurrency } from '~/composables/useCurrency'
+import {
+  buildWhatsAppUrl as buildLocalizedWhatsAppUrl,
+  normalizeLocale,
+  type WhatsAppBookingInput,
+} from '~/composables/useWhatsApp'
 
 declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void
+    gtag?: (...args: unknown[]) => void
   }
 }
 
-const WHATSAPP_NUMBER = siteConfig.whatsapp.number
+export type BookingItem = WhatsAppBookingInput
+
 export const isBookingLoading = ref(false)
 let bookingTimer: ReturnType<typeof setTimeout> | null = null
 
-export function useBooking() {
-  const { formatPrice, activeCurrency } = useCurrency()
+function resolveLocale(explicit?: unknown): 'en' | 'fr' | 'ar' {
+  if (explicit) return normalizeLocale(explicit)
+  try {
+    return normalizeLocale(useI18n().locale.value)
+  }
+  catch {
+    return 'en'
+  }
+}
 
-  function firePixel(item: { name?: string; title?: string; price?: number | string } | null) {
+export function useBooking() {
+  const { activeCurrency } = useCurrency()
+  const bookingLocale = resolveLocale()
+
+  function firePixel(item: BookingItem | null) {
     const pixelPayload: Record<string, unknown> = {
       content_name: item?.name || item?.title || 'Bourmi Trip',
       currency: activeCurrency.value
@@ -30,36 +46,30 @@ export function useBooking() {
     }
   }
 
-  function buildWhatsAppUrl(item: { id?: string; name?: string; title?: string; price?: number | string } | null = null) {
-    const name = item?.name || item?.title || 'an adventure'
-    const price = item?.price ? ` ${formatPrice(item.price)}` : ''
-    const query = import.meta.client ? window.location.search : ''
-    const params = new URLSearchParams(query)
-    const refParts: string[] = []
-    const utmSource = params.get('utm_source')
-    const utmCampaign = params.get('utm_campaign')
-    const utmMedium = params.get('utm_medium')
-    const fbclid = params.get('fbclid')
-    if (fbclid) refParts.push(`fb:${fbclid.slice(0, 12)}`)
-    if (utmSource) refParts.push(utmSource)
-    if (utmCampaign) refParts.push(utmCampaign)
-    if (utmMedium) refParts.push(utmMedium)
-    const ref = refParts.length ? ` [Ref: ${refParts.join('|')}]` : ''
-    const promoFlag = promoConfig.isActive && item?.id === promoConfig.serviceId ? ' [Moroccan Promo Claimed]' : ''
-    const text = `Hello, I want to book the ${name} for${price}${ref}${promoFlag} \n\n\uD83D\uDCCD See details: ${siteConfig.website}`
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
+  /** Localized, SSR-safe wa.me URL (delegates to useWhatsApp; preserves UTM/promo suffixes). */
+  function buildWhatsAppUrl(item: BookingItem | null = null, localeOverride?: unknown) {
+    return buildLocalizedWhatsAppUrl(item, localeOverride ?? bookingLocale)
   }
 
-  function handleBooking(item: { id?: string; name?: string; title?: string; price?: number | string } | null = null) {
+  function handleBooking(item: BookingItem | null = null, localeOverride?: unknown) {
     if (!import.meta.client) return
     firePixel(item)
-    const url = buildWhatsAppUrl(item)
+    const url = buildWhatsAppUrl(item, localeOverride ?? bookingLocale)
     if (bookingTimer) clearTimeout(bookingTimer)
     isBookingLoading.value = true
 
-    // 1. Fire the Pixel instantly
+    // 1. Fire tracking instantly (Meta Pixel + Google Ads/GA4 if loaded)
     if (window.fbq) {
       window.fbq('trackCustom', 'WhatsAppClick')
+    }
+    if (typeof window.gtag === 'function') {
+      try {
+        window.gtag('event', 'generate_lead', {
+          method: 'whatsapp',
+          content_name: item?.name || item?.title || 'general',
+        })
+      }
+      catch { /* never block redirect on analytics failure */ }
     }
 
     // 2. Redirect instantly using location.href to bypass iOS Safari Popup Blocker
@@ -72,5 +82,5 @@ export function useBooking() {
     }, 1000)
   }
 
-  return { handleBooking, isBookingLoading }
+  return { handleBooking, buildWhatsAppUrl, isBookingLoading }
 }

@@ -2,20 +2,35 @@
   <div class="booking-card">
     <div class="booking-card-title" v-if="title">{{ title }}</div>
     <div class="booking-card-price" v-if="price">{{ price }}</div>
-    <NuxtLink v-if="link" :to="link" class="booking-card-btn">
+    <a :href="href" target="_blank" rel="noopener noreferrer" class="booking-card-btn">
       <i class="fab fa-whatsapp"></i>
-      Book Now
-    </NuxtLink>
-    <span v-else class="booking-card-btn booking-card-btn--disabled">Book Now</span>
+      {{ $t('services.book_now') }}
+    </a>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { computed } from 'vue'
+import { buildWhatsAppUrl, isExternalUrl, normalizeLocale } from '~/composables/useWhatsApp'
+
+const props = defineProps<{
   title?: string
   price?: string
   link?: string
 }>()
+
+const { locale } = useI18n()
+
+// SSR-safe: crawlers / no-JS users get a valid wa.me href at render time.
+// - External `link` (http… / https://wa.me…) is used verbatim.
+// - Internal route or missing `link` auto-builds a localized WhatsApp URL.
+const href = computed(() => {
+  if (props.link && isExternalUrl(props.link)) return props.link.trim()
+  return buildWhatsAppUrl(
+    { title: props.title, price: props.price },
+    normalizeLocale(locale.value),
+  )
+})
 </script>
 
 <style scoped>

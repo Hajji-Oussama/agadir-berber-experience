@@ -47,6 +47,23 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1.0',
+      script: [
+        // Google Ads / gtag.js (AW-18442780708) — static <script src> tags are
+        // SSR-safe: rendered once in <head>, executed client-side only.
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=AW-18442780708',
+          async: true,
+        },
+        {
+          innerHTML: `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18442780708');
+  `,
+          type: 'text/javascript',
+        },
+      ],
       link: [
         // Favicon
         { rel: 'icon', type: 'image/png', href: '/favicon.png' },

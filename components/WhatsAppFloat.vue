@@ -6,19 +6,29 @@
         {{ $t('whatsapp.tooltip') }}
       </div>
     </Transition>
-    <button
+    <a
+      :href="generalUrl"
+      target="_blank"
+      rel="noopener noreferrer"
       class="whatsapp-float"
       :class="{ 'whatsapp-float--hidden': isHidden }"
       aria-label="Chat on WhatsApp"
-      @click="handleBooking()"
+      @click.prevent="handleBooking()"
     >
       <i class="fab fa-whatsapp"></i>
-    </button>
+    </a>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { getGeneralInquiryUrl, normalizeLocale } from '~/composables/useWhatsApp'
+
 const { handleBooking } = useBooking()
+const { locale } = useI18n()
+
+// Localized general-inquiry URL; SSR-safe href for crawlers / no-JS.
+const generalUrl = computed(() => getGeneralInquiryUrl(normalizeLocale(locale.value)))
 
 const showTooltip = ref(false)
 const isHidden = ref(false)
@@ -108,6 +118,7 @@ onBeforeUnmount(() => {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
+  text-decoration: none;
   animation: pulse-whatsapp 2s infinite;
   will-change: transform;
 
