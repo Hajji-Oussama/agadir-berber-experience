@@ -2,13 +2,12 @@
 title: "Cooking Masterclass"
 description: "Faites vos courses au Souk comme un local, puis maîtrisez le tagine et le couscous avec un chef marocain traditionnel à Kasbat Souss."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg"
-price: 350
+price: "350"
 duration: "4-5 heures"
 category: "cultural"
 sitemap:
-  loc: /fr/experiences/cooking-class
+  loc: "/fr/experiences/cooking-class"
 ---
-
 :trust-badges
 
 :image-gallery{:images='["https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783102855/WhatsApp_Image_2026-06-29_at_3.27.52_PM_flzd00.jpg", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783102851/WhatsApp_Image_2026-06-29_at_3.27.55_PM_pmu3u3.jpg"]'}
@@ -60,6 +59,8 @@ Nos chefs sont des cuisiniers de maison traditionnels, pas des acteurs dans une 
 - ❌ Pourboires (optionnels)
 
 :group-promo{title="Réduction de Groupe" :discountAmount="50" condition="pour les groupes de 5 personnes et plus"}
+
+:image-gallery{:images='["/images/experiences/whats-app-image-2026-09-24-at-5-48-51-am.webp", "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839436/WhatsApp_Image_2026-06-29_at_3.27.53_PM_3_evngol.jpg", "/images/experiences/2026-06-28-14.webp"]'}
 
 ## Cultural Connection
 
