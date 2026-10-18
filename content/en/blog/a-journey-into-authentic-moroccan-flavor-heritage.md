@@ -12,7 +12,6 @@ sitemap:
 :trust-badges
 
 
-
 :image-gallery{:images='["/images/experiences/whats-app-image-2026-10-18-at-6-35-25-am-2.webp", "/images/experiences/whats-app-image-2026-10-18-at-6-35-24-am-1.webp", "/images/experiences/whats-app-image-2026-10-18-at-6-43-29-am-1.webp", "/images/experiences/whats-app-image-2026-10-18-at-6-43-29-am.webp"]'}
 
 
