@@ -1,4 +1,6 @@
 import { execFile } from 'node:child_process'
+import { existsSync } from 'node:fs'
+import path from 'node:path'
 import {
   contentDirFor,
   normalizeContentType,
@@ -136,19 +138,56 @@ export default defineEventHandler(async (event) => {
 
     isPublishing = true
     try {
-      // Step A: surgical staging — this exact file only, never `git add .`.
+      // Step A: stage the markdown file (surgical — this exact file only).
       try {
-        await runGit(['add', targetRel])
+        await runGit(['add', '--', targetRel])
       } catch (err) {
         const failure = err as GitFailure
         failure.code = 'GIT_ADD_FAILED'
         throw failure
       }
 
-      // Step B: commit (tolerate clean tree — file may be byte-identical).
+      // Step A2: atomic media sync — uploads land in public/images/ via the
+      // upload endpoint but were previously never staged, leaving orphaned
+      // untracked assets behind. Stage existing media dirs (existence-checked
+      // so a missing dir never fails the pathspec). No-op when clean.
+      const projectRoot = findProjectRoot()
+      const mediaDirs = ['public/images/experiences', 'public/images/blog'].filter((rel) =>
+        existsSync(path.join(projectRoot, rel))
+      )
+      if (mediaDirs.length > 0) {
+        try {
+          await runGit(['add', '--', ...mediaDirs])
+        } catch (err) {
+          const failure = err as GitFailure
+          failure.code = 'GIT_MEDIA_ADD_FAILED'
+          throw failure
+        }
+      }
+
+      // Step A3: verify which public/ assets are staged for this commit
+      // (observability — never blocks the publish on inspection failure).
+      let mediaSynced: string[] = []
+      try {
+        const statusOut = await runGit(['status', '--porcelain', '--', 'public/images'])
+        mediaSynced = statusOut
+          .split('\n')
+          .map((line) => line.trim())
+          .filter((line) => line.length > 0)
+          .map((line) => {
+            const entry = line.slice(2).trim()
+            const arrow = entry.lastIndexOf(' -> ')
+            return arrow >= 0 ? entry.slice(arrow + 4) : entry
+          })
+      } catch {
+        mediaSynced = []
+      }
+
+      // Step B: atomic commit of content + media (tolerate clean tree —
+      // file may be byte-identical and no media pending).
       const commitMsg = commitNote
-        ? `feat(content): ${slug} [${locale}/${contentType}] - ${commitNote}`
-        : `feat(content): publish ${slug} [${locale}/${contentType}]`
+        ? `content(cms): publish ${slug} [${locale}/${contentType}] with synced media assets - ${commitNote}`
+        : `content(cms): publish ${slug} [${locale}/${contentType}] with synced media assets`
       try {
         await runGit(['commit', '-m', commitMsg])
       } catch (err) {
@@ -177,6 +216,7 @@ export default defineEventHandler(async (event) => {
           commitHash,
           publishedAt: new Date().toISOString(),
           targetFile: targetRel,
+          mediaSynced,
           warnings: result.warnings,
         },
       }
