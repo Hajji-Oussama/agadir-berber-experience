@@ -2,7 +2,7 @@
 title: "agadir-pottery-workshop-kasbat-souss"
 description: "Join an authentic pottery art class in Agadir's Kasbat Souss. Spend 2 hours with master artisans, sculpt your own ceramic souvenir, and take it home."
 image: "/images/experiences/whats-app-image-2026-10-30-at-4-10-04-am-1.webp"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Experience"
 date: "2026-10-31"
 sitemap:
   loc: "/en/blog/agadir-pottery-workshop-kasbat-souss"
