@@ -7,7 +7,7 @@ date: "2026-10-31"
 sitemap:
   loc: "/en/blog/agadir-pottery-workshop-kasbat-souss"
 ---
-Agadir Pottery Workshop: Craft Your Own Moroccan Masterpiece
+## Agadir Pottery Workshop: Craft Your Own Moroccan Masterpiece
 
 
 :social-embed{platform="instagram" id="DaX04hIsX87"}
