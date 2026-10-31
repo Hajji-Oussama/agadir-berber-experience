@@ -82,6 +82,22 @@ export default defineNuxtConfig({
     },
   },
 
+  // Content Security Policy: allow Google Tag Manager / Google Ads while
+  // preserving the external origins the site already relies on.
+  routeRules: {
+    '/**': {
+      headers: {
+        'Content-Security-Policy': [
+          "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://connect.facebook.net",
+          "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://connect.facebook.net",
+          "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.googleadservices.com https://connect.facebook.net https://api.whatsapp.com https://wa.me",
+          "img-src 'self' data: blob: https: https://www.googletagmanager.com https://*.google-analytics.com",
+          "frame-src 'self' https://www.googletagmanager.com https://www.google.com https://www.youtube.com https://www.instagram.com https://www.tiktok.com https://www.facebook.com",
+        ].join('; '),
+      },
+    },
+  },
+
   // Global stylesheets (FontAwesome bundled from node_modules, glassmorphism via main.scss)
   css: [
     '@fortawesome/fontawesome-free/css/all.min.css',
