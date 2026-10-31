@@ -2,7 +2,7 @@
 title: "Moroccan Cooking Class in Agadir: Souk El Had & Tagine"
 description: "Join an authentic 4-hour Moroccan cooking class in Agadir with a Souk El Had market tour. Cook traditional Tagine, salads & mint tea with locals for 350 MAD."
 image: "/images/blog/moroccan-cooking-class-agadir.webp"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-09-18"
 sitemap:
   loc: "/en/blog/moroccan-cooking-class-agadir"

@@ -2,7 +2,7 @@
 title: "Quad ou Buggy à Agadir : Lequel Choisir pour Votre Aventure en 2026 ?"
 description: "Comparatif complet et honnête entre quad et buggy à Agadir : tarifs réels, sensations après 10 min, poussière, permis de conduire, et calculs pour couples."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-09-08"
 sitemap:
   loc: /fr/blog/quad-vs-buggy-in-agadir

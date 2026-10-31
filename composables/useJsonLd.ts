@@ -43,7 +43,7 @@ const ORG_ID = `${SITE_URL}/#organization`
 const LOGO_URL =
   'https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782908638/Design_sans_titre_1_1_b82llb.png'
 
-const ORG_NAME = 'Agadir Berbère Expérience'
+const ORG_NAME = 'Agadir Berber Experience'
 
 // High-authority entity types: LocalBusiness + TouristAttraction carry the
 // geo/rating signals AI search engines (2026 AEO/GEO) weight most heavily.

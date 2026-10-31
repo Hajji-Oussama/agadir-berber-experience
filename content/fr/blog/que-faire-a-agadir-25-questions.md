@@ -2,7 +2,7 @@
 title: "Que Faire à Agadir ? 25 Questions que les Voyageurs Posent Avant de Visiter"
 description: "Réponses honnêtes aux 25 questions qu'on nous pose le plus sur Agadir — des prix du quad aux arnaques à éviter. Écrit par des guides locaux qui vivent vraiment ici."
 image: "https://i.pinimg.com/736x/25/3e/86/253e86f56e7aa8b50ac55d257bcb2f54.jpg"
-author: "Équipe Agadir Berbère"
+author: "Équipe Agadir Berber"
 date: "2026-08-21"
 sitemap:
   loc: /fr/blog/que-faire-a-agadir-25-questions
@@ -720,6 +720,6 @@ Bon, vous avez lu toutes les 25 questions. Voici ce qu'il faut vraiment faire :
 
 **Vous avez encore des questions ?** On est là. Envoyez-nous un message, appelez-nous, ou présentez-vous juste à la Kasbah au coucher du soleil et on sera probablement là avec un quad et un sourire. À bientôt à Agadir.
 
-*— L'Équipe Agadir Berbère*
+*— L'Équipe Agadir Berber*
 
 *P.S. Si vous avez trouvé ce guide utile, partagez-le avec quelqu'un qui planifie son voyage. Et si vous réservez avec nous, mentionnez cet article — on vous offrira un verre de thé à la menthe supplémentaire.*

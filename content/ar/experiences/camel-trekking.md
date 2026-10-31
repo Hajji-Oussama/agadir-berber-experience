@@ -80,7 +80,7 @@ sitemap:
 قاعدتنا تقع بين بلوط الفلين في غابة أغرود، على دقائق من أكادير. نتكفل بكل النقل — استرخ واستمتع بالرحلة.
 
 <div class="map-embed">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440537.8362951347!2d-8.991956573437495!3d30.387823200000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b707cb0f0991%3A0x64f5767cbe32d430!2sAGADIR%20berb%C3%A8re%20exp%C3%A9rience!5e0!3m2!1sar!2sma!4v1787156653124!5m2!1sar!2sma" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AGADIR berbère expérience Map"></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440537.8362951347!2d-8.991956573437495!3d30.387823200000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b707cb0f0991%3A0x64f5767cbe32d430!2sAGADIR%20berb%C3%A8re%20exp%C3%A9rience!5e0!3m2!1sar!2sma!4v1787156653124!5m2!1sar!2sma" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AGADIR Berber Experience Map"></iframe>
 </div>
 
 ## Frequently Asked Questions

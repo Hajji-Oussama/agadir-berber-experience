@@ -2,7 +2,7 @@
 title: "Kasbat Souss Agadir : Le Guide Ultime du Complexe Artisanal Berbère"
 description: "Découvrez Kasbat Souss à Agadir : artisanat amazigh authentique, ateliers traditionnels, histoire et expériences de thé à la menthe."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783101325/Design_sans_titre_27_w4jtjk.png"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-08-19"
 sitemap:
   loc: /fr/blog/kasbat-souss-agadir
@@ -54,7 +54,7 @@ Pour un vrai goût de la région, le quartier des artisans est à deux pas de ta
 
 ## Où Nous Sommes Basés
 
-Agadir Berbère Expérience organise ses expériences d'ici même, à Kasbat Souss. Notre base quad et chameau est à quelques minutes du quartier artisanal — vous pouvez donc associer une montée d'adrénaline à une promenade dans l'artisanat amazigh vivant, et finir par un thé et un barbecue. C'est la combinaison qui rend la région du Souss-Massa inoubliable : aventure et culture, ensemble.
+Agadir Berber Experience organise ses expériences d'ici même, à Kasbat Souss. Notre base quad et chameau est à quelques minutes du quartier artisanal — vous pouvez donc associer une montée d'adrénaline à une promenade dans l'artisanat amazigh vivant, et finir par un thé et un barbecue. C'est la combinaison qui rend la région du Souss-Massa inoubliable : aventure et culture, ensemble.
 
 Nous serions ravis de vous accueillir. Voici deux de nos expériences les plus populaires :
 

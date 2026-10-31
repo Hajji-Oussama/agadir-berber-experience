@@ -2,7 +2,7 @@
 title: "Atelier de Poterie à Agadir : Créez Votre Chef-d'Œuvre à Kasbat Souss"
 description: "Rejoignez un cours de poterie authentique à Kasbat Souss, Agadir. Passez 2h avec des maîtres artisans, sculptez votre souvenir en céramique et ramenez-le.\n"
 image: "/images/experiences/whats-app-image-2026-10-30-at-4-10-04-am-1.webp"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-10-31"
 sitemap:
   loc: "/fr/blog/agadir-pottery-workshop-kasbat-souss"

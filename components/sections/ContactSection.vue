@@ -35,7 +35,7 @@
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="AGADIR berbère expérience Map"
+              title="AGADIR Berber Experience Map"
             ></iframe>
           </div>
         </CommonGlassCard>

@@ -2,7 +2,7 @@
 title: "What NOT to Do in Agadir (2026): 10 Tourist Traps & Mistakes to Avoid"
 description: "Brutally honest local guide to Agadir: taxi meter games, hotel lobby markups, fake street argan oil, and how to book real adventures at fixed prices."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095167/WhatsApp_Image_2026-06-29_at_3.27.50_PM_e4zhgg.jpg"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-09-10"
 sitemap:
   loc: "/en/blog/what-not-to-do-in-agadir-2026"

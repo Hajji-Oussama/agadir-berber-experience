@@ -202,7 +202,7 @@ definePageMeta({
 defineI18nRoute(false)
 
 useHead({
-  title: 'CMS Studio — Agadir Berbère Expérience',
+  title: 'CMS Studio — Agadir Berber Experience',
 })
 
 const route = useRoute()

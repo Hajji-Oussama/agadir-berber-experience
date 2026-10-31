@@ -2,7 +2,7 @@
 title: "ورشة الطبخ المغربي في أكادير: جولة سوق الأحد وسر الطاجين"
 description: "انضم إلى ورشة طبخ مغربي أصيلة في أكادير: جولة سوق الأحد، تحضير الطاجين والسلطات والشاي بالنعناع مع مضيف محلي خبير. 4 ساعات، 350 درهم للشخص، والنقل مجاني."
 image: "/images/blog/moroccan-cooking-class-agadir.webp"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-09-18"
 sitemap:
   loc: "/ar/blog/moroccan-cooking-class-agadir"

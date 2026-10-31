@@ -4,8 +4,8 @@
       
 
         <router-link to="/" class="logo" @click="scrollToTop">
-        <img src="https://res.cloudinary.com/nczftcee/image/upload/v1782908638/Design_sans_titre_1_1_b82llb.png" alt="Agadir Berbere Experience" class="logo-image" />
-        <span class="logo-text">Agadir <span>Berbère</span></span>
+        <img src="https://res.cloudinary.com/nczftcee/image/upload/v1782908638/Design_sans_titre_1_1_b82llb.png" alt="Agadir Berber Experience" class="logo-image" />
+        <span class="logo-text">Agadir <span>Berber</span></span>
       </router-link>
      
 

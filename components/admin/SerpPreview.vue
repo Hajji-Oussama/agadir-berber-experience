@@ -26,7 +26,7 @@
       <div class="serp-brand-row">
         <img src="/favicon.png" alt="" class="serp-favicon" width="28" height="28" />
         <div class="serp-brand-text">
-          <span class="serp-brand">Agadir Berbère Expérience</span>
+          <span class="serp-brand">Agadir Berber Experience</span>
           <span class="serp-url">
             https://www.agadirberbereexperience.com › {{ locale }} › {{ segment }} › {{ slug || '...' }}
           </span>

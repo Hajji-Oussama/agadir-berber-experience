@@ -2,7 +2,7 @@
 title: "Quad Biking vs. Buggy in Agadir: Which One Should You Book in 2026?"
 description: "Honest, direct comparison between quad biking and buggy off-road in Agadir: real prices, thumb throttle vs steering wheel, dust reality, and couples math."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1782839072/WhatsApp_Image_2026-06-29_at_3.27.59_PM_aranet.jpg"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-09-08"
 sitemap:
   loc: "/en/blog/quad-vs-buggy-in-agadir"

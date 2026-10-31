@@ -4,10 +4,10 @@
       <NuxtLink :to="$localePath('/')" class="logo">
         <img
           src="https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto/v1782908638/Design_sans_titre_1_1_b82llb.png"
-          alt="Agadir Berbere Experience"
+          alt="Agadir Berber Experience"
           class="logo-image"
         />
-        <span class="logo-text">Agadir <span>Berbère</span></span>
+        <span class="logo-text">Agadir <span>Berber</span></span>
       </NuxtLink>
 
       <nav class="nav-links">

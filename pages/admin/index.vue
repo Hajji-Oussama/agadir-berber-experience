@@ -456,7 +456,7 @@ definePageMeta({
 defineI18nRoute(false)
 
 useHead({
-  title: 'CMS Dashboard — Agadir Berbère Expérience',
+  title: 'CMS Dashboard — Agadir Berber Experience',
 })
 
 type LocaleFilter = 'all' | StudioLocale

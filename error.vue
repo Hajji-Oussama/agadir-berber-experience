@@ -7,7 +7,7 @@ const localePath = useLocalePath()
 const handleError = () => clearError({ redirect: localePath('/') })
 
 useHead({
-  title: `${locale.value === 'ar' ? 'خطأ' : locale.value === 'fr' ? 'Erreur' : 'Error'} - Agadir Berbère Expérience`,
+  title: `${locale.value === 'ar' ? 'خطأ' : locale.value === 'fr' ? 'Erreur' : 'Error'} - Agadir Berber Experience`,
 })
 </script>
 

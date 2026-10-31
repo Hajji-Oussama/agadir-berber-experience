@@ -2,7 +2,7 @@
 title: "Kasbat Souss Agadir: The Ultimate Guide to the Artisanal Berber Complex"
 description: "Discover Kasbat Souss in Agadir: authentic Amazigh craftsmanship, traditional workshops, history, and local mint tea experiences."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783101325/Design_sans_titre_27_w4jtjk.png"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-08-19"
 sitemap:
   loc: /en/blog/kasbat-souss-agadir
@@ -54,7 +54,7 @@ For a full taste of the region, the artisans' quarter sits steps away from tradi
 
 ## Where We're Based
 
-Agadir Berbère Expérience runs its experiences from right here, at Kasbat Souss. Our quad and camel basecamp is a few minutes from the artisan quarter — which means you can pair an adrenaline ride with a walk through living Amazigh craft, then finish with mint tea and a barbecue feast. It's the combination that makes the Souss-Massa region unforgettable: adventure and culture, together.
+Agadir Berber Experience runs its experiences from right here, at Kasbat Souss. Our quad and camel basecamp is a few minutes from the artisan quarter — which means you can pair an adrenaline ride with a walk through living Amazigh craft, then finish with mint tea and a barbecue feast. It's the combination that makes the Souss-Massa region unforgettable: adventure and culture, together.
 
 We'd love to host you. Here are two of our most popular experiences:
 

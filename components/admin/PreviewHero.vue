@@ -44,7 +44,7 @@ const description = computed(() => String(props.metadata?.description ?? ''))
 const image = computed(() => String(props.metadata?.image ?? ''))
 const category = computed(() => String(props.metadata?.category ?? 'Blog'))
 const author = computed(
-  () => String(props.metadata?.author ?? '') || 'Agadir Berbère Team'
+  () => String(props.metadata?.author ?? '') || 'Agadir Berber Team'
 )
 
 const formattedDate = computed(() => {

@@ -12,7 +12,7 @@ const TITLE_MIN = 40
 const TITLE_MAX = 60
 const DESCRIPTION_MIN = 150
 const DESCRIPTION_MAX = 160
-const DEFAULT_AUTHOR = 'Agadir Berbère Team'
+const DEFAULT_AUTHOR = 'Agadir Berber Team'
 
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0

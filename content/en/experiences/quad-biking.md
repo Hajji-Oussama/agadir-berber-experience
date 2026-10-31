@@ -17,7 +17,7 @@ sitemap:
 
 Close your eyes for a second. That's the sound of an engine firing up at the edge of the desert — and in about twenty minutes, that engine is **yours to control**. This is the ride that made Agadir famous on every travel forum worth reading: two hours of pure adrenaline as you carve across golden sand dunes and chase the coastline where the Sahara meets the Atlantic. At golden hour, the dunes turn molten amber and your photos will look like a movie set.
 
-We know the question you're asking: *"Is it safe? Are the machines decent?"* Fair ones. At **Agadir Berbère Expérience** we run a small, carefully maintained fleet of **factory-serviced quad bikes** inspected before every ride. Our guides are **true locals** from the Souss-Massa region who have ridden these trails since childhood. You're a guest we're responsible for, not a number in a queue.
+We know the question you're asking: *"Is it safe? Are the machines decent?"* Fair ones. At **Agadir Berber Experience** we run a small, carefully maintained fleet of **factory-serviced quad bikes** inspected before every ride. Our guides are **true locals** from the Souss-Massa region who have ridden these trails since childhood. You're a guest we're responsible for, not a number in a queue.
 
 > "I've done quad tours in three countries and this was the best-organised by far. Brand-new bike, a guide who genuinely cared about safety, and a sunset over the dunes that made our entire holiday. Worth every penny." — **Sarah T., London, UK** ⭐⭐⭐⭐⭐
 
@@ -83,7 +83,7 @@ Everything else — the bike, the helmet, the fuel, the adventure — is on us.
 Our private basecamp sits at the edge of the Agadir dunes, a short drive from the city centre — close enough to make the most of your holiday, far enough to feel like a different world. We pick you up from your hotel, so you never need to worry about directions.
 
 <div class="map-embed">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440537.8362951347!2d-8.991956573437495!3d30.387823200000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b707cb0f0991%3A0x64f5767cbe32d430!2sAGADIR%20berb%C3%A8re%20exp%C3%A9rience!5e0!3m2!1sar!2sma!4v1787156653124!5m2!1sar!2sma" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AGADIR berbère expérience Map"></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440537.8362951347!2d-8.991956573437495!3d30.387823200000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b707cb0f0991%3A0x64f5767cbe32d430!2sAGADIR%20berb%C3%A8re%20exp%C3%A9rience!5e0!3m2!1sar!2sma!4v1787156653124!5m2!1sar!2sma" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AGADIR Berber Experience Map"></iframe>
 </div>
 
 ## Frequently Asked Questions

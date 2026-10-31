@@ -4,7 +4,7 @@
     <div class="map-embed-frame">
       <iframe
         :src="embedSrc"
-        :title="title || 'Agadir Berbère Expérience — Kasbat Souss, Agadir'"
+        :title="title || 'Agadir Berber Experience — Kasbat Souss, Agadir'"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         allowfullscreen

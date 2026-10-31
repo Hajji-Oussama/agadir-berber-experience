@@ -4,7 +4,7 @@
       <form class="lock-card" @submit.prevent="submit">
         <div class="lock-icon" aria-hidden="true"><AdminIcon name="lock" :size="34" /></div>
         <h1 class="lock-title">CMS Studio</h1>
-        <p class="lock-subtitle">Agadir Berbère Expérience — restricted area</p>
+        <p class="lock-subtitle">Agadir Berber Experience — restricted area</p>
 
         <label class="lock-field">
           <span class="lock-label">كلمة المرور / Password</span>

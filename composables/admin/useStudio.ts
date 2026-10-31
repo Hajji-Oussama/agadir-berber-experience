@@ -201,7 +201,7 @@ export function useStudio() {
         title: cleanTitle,
         description: '',
         image: '/images/blog/default.webp',
-        author: 'Agadir Berbère Team',
+        author: 'Agadir Berber Team',
         date: new Date().toISOString().slice(0, 10),
         sitemap: { loc: `/${locale}/${segment}/${slug}` },
       },

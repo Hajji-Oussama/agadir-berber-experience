@@ -2,7 +2,7 @@
 title: "​A Journey into Authentic Moroccan Flavor & Heritage! 🇲🇦"
 description: "Explore the Agadir souk, handpick fresh spices, and cook a traditional tagine with a professional chef at Kasbah Souss. Book your Moroccan cooking class today!"
 image: "/images/experiences/whats-app-image-2026-10-18-at-6-35-25-am.webp"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-10-18"
 sitemap:
   loc: "/en/blog/a-journey-into-authentic-moroccan-flavor-heritage"
@@ -19,7 +19,7 @@ Afterwards, return with your fresh ingredients to our centre for an interactive,
 
 > "We came for a cooking class and left feeling like we'd spent the day with family. Shopping in the souk with our guide, cooking with the chef, and eating what we made — this is the real Morocco, not a tourist show." — Isabella & Marco, Milan, Italy ⭐⭐⭐⭐⭐
 
-Welcome to Agadir Berbère Expérience — where every experience tells a story. ✨
+Welcome to Agadir Berber Experience — where every experience tells a story. ✨
 
 ## 1. Key Details
 
@@ -94,7 +94,7 @@ Food is the most honest door into Amazigh culture. The dish you'll cook is the s
 Your experience begins and ends at Kasbah Souss (Bensergaw Traditional Crafts Complex), a short drive from anywhere in Agadir. We handle all transport from your hotel — you just turn up hungry.
 
 <div class="map-embed">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440537.8362951347!2d-8.991956573437495!3d30.387823200000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b707cb0f0991%3A0x64f5767cbe32d430!2sAGADIR%20berb%C3%A8re%20exp%C3%A9rience!5e0!3m2!1sar!2sma!4v1787156653124!5m2!1sar!2sma" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AGADIR berbère expérience Map"></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440537.8362951347!2d-8.991956573437495!3d30.387823200000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b707cb0f0991%3A0x64f5767cbe32d430!2sAGADIR%20berb%C3%A8re%20exp%C3%A9rience!5e0!3m2!1sar!2sma!4v1787156653124!5m2!1sar!2sma" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AGADIR Berber Experience Map"></iframe>
 </div>
 
 ## 7. Frequently Asked Questions

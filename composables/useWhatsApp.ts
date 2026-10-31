@@ -54,9 +54,9 @@ function resolvePrice(input: WhatsAppBookingInput | null): string {
 
 /**
  * Localized base message (spec templates):
- * EN: "Hello Agadir Berbère Expérience, I would like to book the {title} ({price}) for {date/details}."
- * FR: "Bonjour Agadir Berbère Expérience, je souhaite réserver l'expérience {title} ({price})."
- * AR: "السلام عليكم Agadir Berbère Expérience، أريد حجز تجربة {title} بسعر {price}."
+ * EN: "Hello Agadir Berber Experience, I would like to book the {title} ({price}) for {date/details}."
+ * FR: "Bonjour Agadir Berber Experience, je souhaite réserver l'expérience {title} ({price})."
+ * AR: "السلام عليكم Agadir Berber Experience، أريد حجز تجربة {title} بسعر {price}."
  * Missing title/price degrade cleanly (no empty parentheses).
  */
 export function buildWhatsAppMessage(
@@ -69,12 +69,12 @@ export function buildWhatsAppMessage(
   const details = input?.details?.trim() ?? ''
 
   if (locale === 'fr') {
-    return `Bonjour Agadir Berbère Expérience, je souhaite réserver l'expérience ${title}${price ? ` (${price})` : ''}.`
+    return `Bonjour Agadir Berber Experience, je souhaite réserver l'expérience ${title}${price ? ` (${price})` : ''}.`
   }
   if (locale === 'ar') {
-    return `السلام عليكم Agadir Berbère Expérience، أريد حجز تجربة ${title}${price ? ` بسعر ${price}` : ''}.`
+    return `السلام عليكم Agadir Berber Experience، أريد حجز تجربة ${title}${price ? ` بسعر ${price}` : ''}.`
   }
-  return `Hello Agadir Berbère Expérience, I would like to book the ${title}${price ? ` (${price})` : ''}${details ? ` for ${details}` : ''}.`
+  return `Hello Agadir Berber Experience, I would like to book the ${title}${price ? ` (${price})` : ''}${details ? ` for ${details}` : ''}.`
 }
 
 /** Client-only attribution (UTM/fbclid) — empty string on SSR so crawler href stays valid. */
@@ -129,9 +129,9 @@ export function buildWhatsAppUrl(
 
 export function getGeneralInquiryMessage(localeInput: unknown = 'en'): string {
   const locale = normalizeLocale(localeInput)
-  if (locale === 'fr') return 'Bonjour Agadir Berbère Expérience, j\'ai besoin d\'aide pour réserver une expérience.'
-  if (locale === 'ar') return 'السلام عليكم Agadir Berbère Expérience، أحتاج مساعدة في حجز تجربة.'
-  return 'Hello Agadir Berbère Expérience, I need help booking an experience.'
+  if (locale === 'fr') return 'Bonjour Agadir Berber Experience, j\'ai besoin d\'aide pour réserver une expérience.'
+  if (locale === 'ar') return 'السلام عليكم Agadir Berber Experience، أحتاج مساعدة في حجز تجربة.'
+  return 'Hello Agadir Berber Experience, I need help booking an experience.'
 }
 
 export function getGeneralInquiryUrl(localeInput: unknown = 'en'): string {

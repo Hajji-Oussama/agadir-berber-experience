@@ -2,7 +2,7 @@
 title: "Buggy in Agadir Price Guide 2026: 600 MAD Tour"
 description: "Buggy in Agadir costs 600 MAD (~€56) per 2-seater for 2 hours, with free hotel pickup in Agadir and Taghazout. Full 2026 price, license and circuit guide."
 image: "/images/blog/quad-biking-agadir.webp"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-09-16"
 sitemap:
   loc: "/en/blog/buggy-in-agadir-price-guide-2026"
@@ -101,7 +101,7 @@ What you actually ride through:
 3. **Eucalyptus forest** – shaded technical section, cooler and dusty
 4. **Berber village stop** – 20-minute mint tea break with local hosts, use of traditional tents, photos in Amazigh scarves
 
-:map-embed{title="Agadir Berbère Experience"}
+:map-embed{title="Agadir Berber Experience"}
 
 Total riding time is about 1h30 plus transfers and tea break to make 2 hours door-to-door. Sunset slots are the most cinematic for photos, morning slots are cooler and less dusty.
 
@@ -135,7 +135,7 @@ We keep it frictionless:
 
 Combine it to make a half-day: many guests add pottery or a [cooking class](/en/experiences/cooking-class) at Kasbat Souss after the ride. Ask when booking.
 
-:group-promo{title="Offer for Couples & Families" discountAmount="50" condition="Direct booking via Agadir Berbère Team"}
+:group-promo{title="Offer for Couples & Families" discountAmount="50" condition="Direct booking via Agadir Berber Team"}
 
 ## FAQ: Buggy in Agadir
 

@@ -1,7 +1,7 @@
 import siteConfig from '@/data/siteConfig.json'
 
 export function updateSEO(locale, t) {
-  const siteName = 'Agadir Berbère Expérience'
+  const siteName = 'Agadir Berber Experience'
   const baseUrl = 'https://agadirberbereexperience.com'
 
   const meta = {
@@ -56,7 +56,7 @@ export function updateSEO(locale, t) {
         '@type': ['LocalBusiness', 'TravelAgency'],
         '@id': `${baseUrl}/#business`,
         name: siteName,
-        alternateName: 'Agadir Berbere Experience',
+        alternateName: 'Agadir Berber Experience',
         description: current.description,
         url: baseUrl,
         telephone: siteConfig.whatsapp.number,
@@ -64,7 +64,7 @@ export function updateSEO(locale, t) {
         foundingDate: '2018',
         founder: {
           '@type': 'Person',
-          name: 'Agadir Berbère Expérience'
+          name: 'Agadir Berber Experience'
         },
         address: {
           '@type': 'PostalAddress',
@@ -76,7 +76,7 @@ export function updateSEO(locale, t) {
         },
         location: {
           '@type': 'Place',
-          name: 'Agadir Berbère Expérience',
+          name: 'Agadir Berber Experience',
           address: {
             '@type': 'PostalAddress',
             addressLocality: 'Agadir',

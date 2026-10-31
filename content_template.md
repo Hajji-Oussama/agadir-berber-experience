@@ -1,4 +1,4 @@
-# Agadir Berbère Expérience — Definitive Content Reference for AI Writers
+# Agadir Berber Experience — Definitive Content Reference for AI Writers
 
 This file is the single source of truth for producing 100% syntactically correct
 Markdown articles. Follow every rule below exactly. When in doubt, copy the
@@ -60,7 +60,7 @@ in the localized values. Do not add, rename, or remove keys.
 title: "Localized Article Title Here"
 description: "High-intent meta description (150-160 characters) answering search intent directly."
 image: "/images/blog/topic-name.webp"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-09-08"
 sitemap:
   loc: /[locale]/blog/[slug]
@@ -74,7 +74,7 @@ Field rules:
 | `title`       | Fully localized headline. 40–60 characters. No locale prefix inside.  |
 | `description` | 150–160 characters, answers the search intent directly. Localized.   |
 | `image`       | `/images/blog/[filename].webp` for new images, or a full Cloudinary URL for legacy ones. |
-| `author`      | Always `"Agadir Berbère Team"` unless told otherwise.                 |
+| `author`      | Always `"Agadir Berber Team"` unless told otherwise.                 |
 | `date`        | ISO format `YYYY-MM-DD`. Use the article's publish date.              |
 | `sitemap.loc` | MUST equal `/[locale]/blog/[slug]` with the real locale and slug.    |
 
@@ -357,7 +357,7 @@ const mdcComponents = {
 title: "Localized Article Title Here"
 description: "High-intent meta description (150-160 characters) answering search intent directly."
 image: "/images/blog/topic-name.webp"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-09-08"
 sitemap:
   loc: /en/blog/topic-slug

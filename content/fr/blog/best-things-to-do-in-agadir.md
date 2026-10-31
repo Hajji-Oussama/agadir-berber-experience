@@ -2,7 +2,7 @@
 title: "Le Guide Ultime : 10 Meilleures Choses à Faire à Agadir en 2026"
 description: "Découvrez les expériences les plus authentiques d'Agadir, du quad dans le désert aux plages cachées. Un guide d'initiés par des guides locaux."
 image: "https://res.cloudinary.com/nczftcee/image/upload/f_auto,q_auto,w_1200,c_limit/v1783095267/WhatsApp_Image_2026-06-29_at_3.27.53_PM_2_yuqsy5.jpg"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-08-18"
 sitemap:
   loc: /fr/blog/best-things-to-do-in-agadir

@@ -53,7 +53,7 @@ async function share() {
   if (navigator.share) {
     try {
       await navigator.share({
-        title: 'Agadir Berbère Expérience',
+        title: 'Agadir Berber Experience',
         text: shareTitle,
         url: shareUrl
       })

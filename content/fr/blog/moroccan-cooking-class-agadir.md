@@ -2,7 +2,7 @@
 title: "Atelier Cuisine Marocaine à Agadir : Souk El Had & Tajine"
 description: "Participez à un cours de cuisine marocaine de 4h à Agadir avec visite du Souk El Had. Préparez tajine, salades et thé à la menthe, 350 MAD, tout inclus."
 image: "/images/blog/moroccan-cooking-class-agadir.webp"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-09-18"
 sitemap:
   loc: "/fr/blog/moroccan-cooking-class-agadir"

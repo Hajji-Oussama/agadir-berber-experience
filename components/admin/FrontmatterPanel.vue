@@ -204,7 +204,7 @@
               v-model="currentArticle.metadata.author"
               type="text"
               class="fm-input"
-              placeholder="Agadir Berbère Team"
+              placeholder="Agadir Berber Team"
               @input="onFieldChange"
             />
           </label>
@@ -226,7 +226,7 @@
               v-model="currentArticle.metadata.author"
               type="text"
               class="fm-input"
-              placeholder="Agadir Berbère Team"
+              placeholder="Agadir Berber Team"
               @input="onFieldChange"
             />
           </label>

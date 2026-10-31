@@ -2,7 +2,7 @@
 title: "ورشة الفخار في أكادير: اصنع تحفتك المغربية بيديك في قصبة سوس"
 description: "انضم إلى ورشة فخار أصيلة في قصبة سوس بأكادير. اقضِ ساعتين مع حرفيين محترفين، شكل تذكارك السيراميكي الخاص، وخذه معك إلى المنزل."
 image: "/images/experiences/whats-app-image-2026-10-30-at-4-10-04-am-1.webp"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-10-31"
 sitemap:
   loc: "/ar/blog/agadir-pottery-workshop-kasbat-souss"

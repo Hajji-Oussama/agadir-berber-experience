@@ -2,7 +2,7 @@
 title: "What Should I Do in Agadir? 25 Questions Travelers Ask Before Visiting"
 description: "Honest answers to the 25 questions we get asked most about Agadir — from quad biking prices to avoiding tourist traps. Written by local guides who actually live here."
 image: "https://i.pinimg.com/736x/25/3e/86/253e86f56e7aa8b50ac55d257bcb2f54.jpg"
-author: "Agadir Berbère Team"
+author: "Agadir Berber Team"
 date: "2026-08-21"
 sitemap:
   loc: /en/blog/what-should-i-do-in-agadir-25-questions
@@ -720,6 +720,6 @@ Right, you've read all 25 questions. Here's what to actually do:
 
 **Still have questions?** We're here. Message us, call us, or just turn up at the Kasbah at sunset and we'll probably be there with a quad and a grin. See you in Agadir.
 
-*— The Agadir Berbère Team*
+*— The Agadir Berber Team*
 
 *P.S. If you found this guide useful, share it with someone planning their trip. And if you book with us, mention this article — we'll throw in an extra glass of mint tea.*
