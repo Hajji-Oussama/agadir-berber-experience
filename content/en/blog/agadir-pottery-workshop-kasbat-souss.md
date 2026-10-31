@@ -7,15 +7,8 @@ date: "2026-10-31"
 sitemap:
   loc: "/en/blog/agadir-pottery-workshop-kasbat-souss"
 ---
----
-title: "Agadir Pottery Workshop: Craft Your Own Moroccan Masterpiece"
-description: "Join an authentic pottery art class in Agadir's Kasbat Souss. Spend 2 hours with master artisans, sculpt your own ceramic souvenir, and take it home."
-image: "/images/blog/pottery-workshop-agadir.webp"
-author: "Agadir Berbère Team"
-date: "2026-10-31"
-sitemap:
-  loc: /en/blog/agadir-pottery-workshop-kasbat-souss
----
+Agadir Pottery Workshop: Craft Your Own Moroccan Masterpiece
+
 
 :social-embed{platform="instagram" id="DaX04hIsX87"}
 
