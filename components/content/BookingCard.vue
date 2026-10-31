@@ -2,7 +2,13 @@
   <div class="booking-card">
     <div class="booking-card-title" v-if="title">{{ title }}</div>
     <div class="booking-card-price" v-if="price">{{ price }}</div>
-    <a :href="href" target="_blank" rel="noopener noreferrer" class="booking-card-btn">
+    <a
+      :href="href"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="booking-card-btn"
+      @click="handleBookingClick"
+    >
       <i class="fab fa-whatsapp"></i>
       {{ $t('services.book_now') }}
     </a>
@@ -31,6 +37,40 @@ const href = computed(() => {
     normalizeLocale(locale.value),
   )
 })
+
+// Google Ads click conversion (AW-18442780708). Fires on the WhatsApp button,
+// then redirects once the event has been handed to gtag.
+const CONVERSION_SEND_TO = 'AW-18442780708/RLcWCMzOwq8dEKSAmtpE'
+
+type GtagWindow = Window & { gtag?: (...args: unknown[]) => void }
+
+function gtag_report_conversion(url: string) {
+  const callback = function () {
+    if (typeof url !== 'undefined' && url) {
+      window.location.href = url
+    }
+  }
+
+  const gtagWindow = window as GtagWindow
+  if (import.meta.client && typeof gtagWindow.gtag === 'function') {
+    gtagWindow.gtag('event', 'conversion', {
+      send_to: CONVERSION_SEND_TO,
+      value: 1.0,
+      currency: 'MAD',
+      event_callback: callback,
+    })
+  }
+  else {
+    callback()
+  }
+  return false
+}
+
+function handleBookingClick(event: MouseEvent) {
+  // Prevent the default link navigation so the conversion fires first.
+  event.preventDefault()
+  gtag_report_conversion(href.value)
+}
 </script>
 
 <style scoped>
